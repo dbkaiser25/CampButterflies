@@ -1,0 +1,32 @@
+public class Activity 
+{
+    /**
+     * A class to describe a camp activity
+     * @author dbkaiser
+     */
+    private String name;
+    private String location;
+    private String description;
+
+    /**
+     * Creates an instance of an activity with a name, location and description
+     * @param name a string for the name
+     * @param location a string for the location
+     * @param description a string for the description
+     */
+    public Activity(String name, String location, String description)
+    {
+        this.name = name;
+        this.location = location;
+        this.description = description;
+    }
+
+    /**
+     * A description of the activity in string form
+     * @return a string description of the activity
+     */
+    public String toString()
+    {
+        return "string of the activity";
+    }
+}
