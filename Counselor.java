@@ -23,7 +23,8 @@ public class Counselor extends Person
      * @param pediatrician A contact for their pediatrician
      * @param userLogin Logininfo for the individual counselor
      */
-    public Counselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress, String dateOfBirth, String medicalInfo, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin)
+    public Counselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress, 
+    String dateOfBirth, String medicalInfo, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin)
     {
         super(firstName,lastName,dateOfBirth,homeAddress);
         this.emailAddress = emailAddress;

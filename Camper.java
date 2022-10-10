@@ -19,7 +19,8 @@ public class Camper extends Person
      * @param pediatrician A contact for the camper's pediatrician
      * TODO Figure out the constructors for emergency contacts and maybe pediatrician
      */
-    public Camper(String firstName, String lastName, String PhoneNumber, String emailAddress, String homeAddress, String dateOfBirth, String sex, String medicalInfo, ArrayList<Contact> emergencyContacts, Contact pediatrician)
+    public Camper(String firstName, String lastName, String PhoneNumber, String emailAddress, String homeAddress, String dateOfBirth,
+     String sex, String medicalInfo, ArrayList<Contact> emergencyContacts, Contact pediatrician)
     {
         super(firstName,lastName,dateOfBirth,homeAddress);
         this.sex = sex;
