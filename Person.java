@@ -2,8 +2,11 @@
  * An abstract class that defines a person to be inherited 
  * @author dbkaiser
  */
+
+ import java.util.UUID;
 public abstract class Person 
 {
+    protected UUID uuid;
     protected String firstName;
     protected String lastName;
     protected String dateOfBirth;
@@ -16,8 +19,19 @@ public abstract class Person
      * @param dateOfBirth A string for their date of birth
      * @param homeAddress A string for their home address
      */
+    //Constructor without UUID
     public Person(String firstName, String lastName, String dateOfBirth, String homeAddress)
     {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.homeAddress = homeAddress;
+    }
+
+    //constructor with UUID
+    public Person(UUID uuid, String firstName, String lastName, String dateOfBirth, String homeAddress)
+    {
+        this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;

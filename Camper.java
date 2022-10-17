@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * A class that defines a camper for the camp
@@ -7,7 +8,8 @@ import java.util.ArrayList;
 public class Camper extends Person
 {
     private String sex;
-    private String medicalInfo;
+    private ArrayList<Medication> medications = new ArrayList();
+    private ArrayList<String> allergies = new ArrayList();
     private ArrayList<Contact> emergencyContacts = new ArrayList();
     private Contact pediatrician;
   
@@ -20,11 +22,24 @@ public class Camper extends Person
      * TODO Figure out the constructors for emergency contacts and maybe pediatrician
      */
     public Camper(String firstName, String lastName, String PhoneNumber, String emailAddress, String homeAddress, String dateOfBirth,
-     String sex, String medicalInfo, ArrayList<Contact> emergencyContacts, Contact pediatrician)
+     String sex, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician)
     {
         super(firstName,lastName,dateOfBirth,homeAddress);
         this.sex = sex;
-        this.medicalInfo = medicalInfo;
+        this.medications = medications;
+        this.allergies = allergies;
+        this.emergencyContacts = emergencyContacts;
+        this.pediatrician = pediatrician;
+    }
+
+    //constructor with UUID
+    public Camper(UUID uuid, String firstName, String lastName, String PhoneNumber, String emailAddress, String homeAddress, String dateOfBirth,
+     String sex, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician)
+    {
+        super(uuid,firstName,lastName,dateOfBirth,homeAddress);
+        this.sex = sex;
+        this.medications = medications;
+        this.allergies = allergies;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
     }
