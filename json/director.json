@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "firstName": "Connor",
+    "lastName": "Bradley",
+    "dateOfBirth": "11/4/1980",
+    "homeAddress": "1101 Prizer Court",
+    "username": "connorbradley",
+    "password": "bluebutterflies2022",
+    "Calendar": [
+      {
+        "calendar": [
+          {
+            "group": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "Week": 1
+          }
+        ],
+        "activityList": [
+          {
+            "name": "hiking",
+            "location": "Butterfly Hill",
+            "description": "campers will go on a two-mile hike up Butterfly Hill"
+          },
+          {
+            "name": "kayaking",
+            "location": "Lake Butterflies",
+            "description": "campers will go kayaking on Lake Butterflies"
+          },
+          {
+            "name": "Archery",
+            "location": "Butterfly range",
+            "description": "campers will practice archery at the Butterfly range"
+          }
+        ]
+      }
+    ]
+  }
+]
