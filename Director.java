@@ -17,7 +17,8 @@ public class Director extends Person
    }
 
    public void removeCamper(String firstName, String lastName)
-   {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+   {
+
       //not forard to write this method
    }
 
