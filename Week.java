@@ -6,6 +6,7 @@ public class Week
 {
     //TODO figure out the dimension labels of schedule/masterschedule hashmap
     private HashMap<Group, ArrayList<Activity>> schedule; 
+    private String theme;
     private ArrayList<Group> groups;
     private ArrayList<Counselor> counselors;
     private ArrayList<Camper> campers;
