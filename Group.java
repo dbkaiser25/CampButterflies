@@ -5,6 +5,7 @@ import java.util.ArrayList;
  */
 public class Group 
 {
+    private int number;
     private Counselor counselor;
     private ArrayList<Camper> campers;
 
@@ -13,6 +14,13 @@ public class Group
      * @param counselor A counselor to be in charge of the group
      * @param campers A list of campers who are apart of the group
      */
+    public Group(int num, Counselor counselor, ArrayList<Camper> campers)
+    {
+        num = number;
+        this.counselor = counselor;
+        this.campers = campers;
+    }
+
     public Group(Counselor counselor, ArrayList<Camper> campers)
     {
         this.counselor = counselor;
