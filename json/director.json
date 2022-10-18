@@ -11,7 +11,7 @@
       {
         "calendar": [
           {
-            "group": [
+            "selected_groups": [
               1,
               2,
               3,
@@ -21,7 +21,7 @@
             "Week": 1
           }
         ],
-        "activityList": [
+        "activity_list": [
           {
             "name": "hiking",
             "location": "Butterfly Hill",

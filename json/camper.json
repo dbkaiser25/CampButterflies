@@ -4,21 +4,21 @@
     "firstName": "Tracy",
     "lastName": "Smith",
     "dateOfBirth": "3/2/2010",
-    "homeAddress": "20 Windy Street",
+    "homeAddress": "20 Windy Street, Downingtown, PA, 19425",
     "sex": "Female",
     "allergies":["peanut", "strawberries"],
     "medicalInfo": [{
-      "name" : "peanut allergy",
-      "medication" : "epipen", 
-      "dosage" : "one shot"
+      "med_name" : "peanut allergy",
+      "med_medication" : "epipen", 
+      "med_dosage" : "one shot"
       }
     ],
     "contacts": [
       {
-        "firstName": "Alan",
-        "lastName": "Smith",
-        "phoneNumber": "315-934-2048",
-        "emailAddress": "asmith@gmail.com",
+        "contact_firstName": "Alan",
+        "contact_lastName": "Smith",
+        "contact_phoneNumber": "315-934-2048",
+        "contact_emailAddress": "asmith@gmail.com",
         "relationtoPerson": "Father"
       },
       {
