@@ -37,4 +37,24 @@ public abstract class Person
         this.dateOfBirth = dateOfBirth;
         this.homeAddress = homeAddress;
     }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
 }
