@@ -1,27 +1,38 @@
 import java.util.ArrayList;
 
-public class CounselorList {
+public class CounselorList 
+{
     private ArrayList<Counselor> conselors;
     private static CounselorList counselorList;
 
-private CounselorList(){
-    // add constructor
-}
-public static CounselorList getInstance(){
-    return null;
-}
-public void addCounselor(Counselor counselor){
+    private CounselorList()
+    {
+        // add constructor
+    }
 
-}
-public Counselor getCounselor(){
-    return null;
-}
-public void editCounselor(){
+    public static CounselorList getInstance()
+    {
+        return null;
+    }
 
-}
-public void saveCounselor(){
+    public void addCounselor(Counselor counselor)
+    {
 
-}
+    }
+
+    public Counselor getCounselor()
+    {
+        return null;
+    }
+
+    public void editCounselor()
+    {
+
+    }    
+    public void saveCounselor()
+    {
+
+    }
 
 
 }

@@ -19,7 +19,7 @@ public class Week
     {
         //Constructor goes here
     }
-
+                                                                                        
     public void generateSchedule()
     {
         //do schedule things here
