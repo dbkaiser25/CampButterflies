@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class Camper extends Person
 {
-    private String sex;
+    private Sex sex;
     private ArrayList<Medication> medications = new ArrayList();
     private ArrayList<String> allergies = new ArrayList();
     private ArrayList<Contact> emergencyContacts = new ArrayList();
@@ -22,7 +22,7 @@ public class Camper extends Person
      * TODO Figure out the constructors for emergency contacts and maybe pediatrician
      */
     public Camper(String firstName, String lastName, String homeAddress, String dateOfBirth,
-     String sex, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician)
+     Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician)
     {
         super(firstName,lastName,dateOfBirth,homeAddress);
         this.sex = sex;
@@ -34,7 +34,7 @@ public class Camper extends Person
 
     //constructor with UUID
     public Camper(UUID uuid, String firstName, String lastName, String homeAddress, String dateOfBirth,
-     String sex, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician)
+     Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician)
     {
         super(uuid,firstName,lastName,dateOfBirth,homeAddress);
         this.sex = sex;
