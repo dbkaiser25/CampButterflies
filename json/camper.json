@@ -1,0 +1,299 @@
+[
+  {
+    "id": "1035e216-e038-4541-abe9-a4e5441eb592",
+    "firstName": "Tracy",
+    "lastName": "Smith",
+    "dateOfBirth": "3/2/2010",
+    "homeAddress": "20 Windy Street, Downingtown, PA, 19425",
+    "sex": "Female",
+    "allergies":["peanut", "strawberries"],
+    "medicalInfo": [{
+      "med_name" : "peanut allergy",
+      "med_medication" : "epipen", 
+      "med_dosage" : "one shot"
+      }
+    ],
+    "contacts": [
+      {
+        "contact_firstName": "Alan",
+        "contact_lastName": "Smith",
+        "contact_phoneNumber": "315-934-2048",
+        "contact_emailAddress": "asmith@gmail.com",
+        "relationtoPerson": "Father"
+      },
+      {
+        "firstName": "Cindy",
+        "lastName": "Smith",
+        "phoneNumber": "333-593-5902",
+        "emailAddress": "csmith@gmail.com",
+        "relationToPerson": "Mother"
+      }
+    ],
+    "pediatrician": {
+      "firstName": "Robert",
+      "lastName": "Greene",
+      "phoneNumber": "230-123-5445",
+      "emailAddress": "rgreen@gmail.com",
+      "relationToPerson": "Pediatrician"
+    }
+  },
+  {
+    "id": 2,
+    "firstName": "Joe",
+    "lastName": "Smalls",
+    "dateOfBirth": "1/13/2011",
+    "homeAddress": "77 Baker Court",
+    "sex": "Male",
+    "medicalInfo": [{
+    "name" : "none",
+    "medication" : "none", 
+    "dosage" : "none"
+    }],
+    "contacts": [
+      {
+        "firstName": "Adam",
+        "lastName": "Smalls",
+        "phoneNumber": "442-402-5046",
+        "emailAddress": "asmalls@gmail.com",
+        "relationtoPerson": "Father"
+      },
+      {
+        "firstName": "Christine",
+        "lastName": "Smalls",
+        "phoneNumber": "534-257-1023",
+        "emailAddress": "csmalls@gmail.com",
+        "relationToPerson": "Mother"
+      }
+    ],
+    "pediatrician": [
+      {
+        "firstName": "Robert",
+        "lastName": "Greene",
+        "phoneNumber": "230-123-5445",
+        "relationToPerson": "Pediatrician"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "firstName": "Thomas",
+    "lastName": "Tuchel",
+    "dateOfBirth": "04/24/2012",
+    "homeAddress": "16 Samford Drive",
+    "sex": "Male",
+    "medicalInfo": [{
+    "name" : "Asthma",
+    "medication" : "Fasenra", 
+    "dosage" : "100 mg"
+    }],
+    "contacts": [
+      {
+        "firstName": "Martha",
+        "lastName": "Tuchel",
+        "phoneNumber": "120-944-0593",
+        "emailAddress": "mtuchel@gmail.com",
+        "relationtoPerson": "Mother"
+      },
+      {
+        "firstName": "Robert",
+        "lastName": "Tuchel",
+        "phoneNumber": "340-102-4025",
+        "emailAddress": "rtuchel@gmail.com",
+        "relationToPerson": "Father"
+      }
+    ],
+    "pediatrician": [
+      {
+        "firstName": "Bailey",
+        "lastName": "Thomas",
+        "phoneNumber": "204-203-1125",
+        "relationToPerson": "Pediatrician"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "firstName": "James",
+    "lastName": "Henderson",
+    "dateOfBirth": "03/30/2013",
+    "homeAddress": "14 Under Street",
+    "sex": "Male",
+    "medicalInfo": [{
+    "name" : "seasonal allergies",
+    "medication" : "Claratin", 
+    "dosage" : "one pill"
+    }],
+    "contacts": [
+      {
+        "firstName": "Terry",
+        "lastName": "Henderson",
+        "phoneNumber": "201-145-2049",
+        "emailAddress": "thenderson@gmail.com",
+        "relationtoPerson": "Mother"
+      },
+      {
+        "firstName": "Michael",
+        "lastName": "Henderson",
+        "phoneNumber": "204-190-2049",
+        "emailAddress": "mhenderson@gmail.com",
+        "relationToPerson": "Father"
+      }
+    ],
+    "pediatrician": [
+      {
+        "firstName": "Michael",
+        "lastName": "Straub",
+        "phoneNumber": "102-454-5948",
+        "relationToPerson": "Pediatrician"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "firstName": "Jordan",
+    "lastName": "Milner",
+    "dateOfBirth": "04/23/2011",
+    "homeAddress": "78 Elden Court",
+    "sex": "Female",
+    "medicalInfo": [{
+    "name" : "Asthma",
+    "medication" : "Fasenra", 
+    "dosage" : "100 mg"
+    }],
+    "contacts": [
+      {
+        "firstName": "Michelle",
+        "lastName": "Milner",
+        "phoneNumber": "201-203-4403",
+        "emailAddress": "mmilner@gmail.com",
+        "relationtoPerson": "Mother"
+      },
+      {
+        "firstName": "Dean",
+        "lastName": "Milner",
+        "phoneNumber": "201-230-4305",
+        "emailAddress": "dmilner@gmail.com",
+        "relationToPerson": "Father"
+      }
+    ],
+    "pediatrician": [
+      {
+        "firstName": "Melissa",
+        "lastName": "Rodgers",
+        "phoneNumber": "302-203-1022",
+        "relationToPerson": "Pediatrician"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "firstName": "Freddy",
+    "lastName": "Blue",
+    "dateOfBirth": "06/21/2012",
+    "homeAddress": "102 Benson Lane",
+    "sex": "Male",
+    "medicalInfo": [{
+    "name" : "none",
+    "medication" : "none", 
+    "dosage" : "none"
+    }],
+    "contacts": [
+      {
+        "firstName": "Bethany",
+        "lastName": "Blue",
+        "phoneNumber": "201-402-4032",
+        "emailAddress": "bethblue@gmail.com",
+        "relationtoPerson": "Mother"
+      },
+      {
+        "firstName": "Tyler",
+        "lastName": "Blue",
+        "phoneNumber": "201-204-3924",
+        "emailAddress": "tyblue@gmail.com",
+        "relationToPerson": "Father"
+      }
+    ],
+    "pediatrician": [
+      {
+        "firstName": "Walt",
+        "lastName": "Aaronson",
+        "phoneNumber": "304-503-2132",
+        "relationToPerson": "Pediatrician"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "firstName": "Jimmy",
+    "lastName": "Smith",
+    "dateOfBirth": "05/05/2012",
+    "homeAddress": "43 Bell Street",
+    "sex": "Male",
+    "medicalInfo": [{
+    "name" : "Gluten Allergy",
+    "medication" : "none", 
+    "dosage" : "none"
+    }],
+    "contacts": [
+      {
+        "firstName": "Nancy",
+        "lastName": "Smith",
+        "phoneNumber": "394-999-2940",
+        "emailAddress": "nancysmith@gmail.com",
+        "relationtoPerson": "Mother"
+      },
+      {
+        "firstName": "James",
+        "lastName": "Smith",
+        "phoneNumber": "202-102-4231",
+        "emailAddress": "jamessmith1@gmail.com",
+        "relationToPerson": "Father"
+      }
+    ],
+    "pediatrician": [
+      {
+        "firstName": "Billy",
+        "lastName": "Kimberton",
+        "phoneNumber": "203-102-5064",
+        "relationToPerson": "Pediatrician"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "firstName": "Jon",
+    "lastName": "Atkinson",
+    "dateOfBirth": "10/12/2011",
+    "homeAddress": "101 Premier Drive",
+    "sex": "Male",
+    "medicalInfo": [{
+    "name" : "none",
+    "medication" : "none", 
+    "dosage" : "none"
+    }],
+    "contacts": [
+      {
+        "firstName": "Susan",
+        "lastName": "Atkinson",
+        "phoneNumber": "404-425-9984",
+        "emailAddress": "susanatkinson@gmail.com",
+        "relationtoPerson": "Mother"
+      },
+      {
+        "firstName": "Ryan",
+        "lastName": "Atkinson",
+        "phoneNumber": "404-342-1125",
+        "emailAddress": "ryanatkinson@gmail.com",
+        "relationToPerson": "Father"
+      }
+    ],
+    "pediatrician": [
+      {
+        "firstName": "Patrice",
+        "lastName": "Bloom",
+        "phoneNumber": "105-334-0499",
+        "relationToPerson": "Pediatrician"
+      }
+    ]
+  }
+]

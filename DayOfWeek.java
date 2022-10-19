@@ -1,4 +1,4 @@
-//TODO figure out if this is needed because idk
+
 enum DayOfWeek 
 {
   SUNDAY,

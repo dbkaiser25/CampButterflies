@@ -29,4 +29,9 @@ public class Activity
     {
         return "string of the activity";
     }
+
+    public String getName()
+    {
+        return name;
+    }
 }

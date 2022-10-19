@@ -1,19 +1,25 @@
 
 import java.util.ArrayList;
-//import java.util.UUID;
+import java.util.UUID;
 
 public class Director extends Person
 {
-   private int id;
-   private Calendar calendar;
+   //private Calendar calendar; Consider this deleated, i don't think it is needed 
    private LoginInfo userLogin;
 
    public Director(String firstName, String lastName, String dateOfBirth, 
    String homeAddress, LoginInfo userLogin)
    {
       super(firstName,lastName,dateOfBirth,homeAddress);
-      this.id = 0; //idk what this is supposed to do
+      
       //the calendar will probably need to call the get instance of the calendar object but yea that aint written yet
+   }
+
+   public Director(UUID uuid, String firstName, String lastName, String dateOfBirth, 
+   String homeAddress, LoginInfo userLogin)
+   {
+      super(uuid,firstName,lastName,dateOfBirth,homeAddress);
+      
    }
 
    public void removeCamper(String firstName, String lastName)

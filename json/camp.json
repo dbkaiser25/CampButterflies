@@ -1,0 +1,115 @@
+[
+    {
+        "camp_name":"Blue ridge special",
+        "camp_description": "mountain camping",
+        "weeks":[
+            {
+                "camp_week_number":1,
+                "camp_theme":"nature",
+                "camp_groups":[
+                    {
+                      "id": 1,
+                      "daily_activities": 
+                        {
+                          "Monday": [
+                            {
+                              "activity_name": "kayaking",
+                              "activity_location": "Lake Butterfly",
+                              "activity_description": "Campers will go kayaking on lake butterfly"
+                            },
+                            {
+                              "activity_name": "Hiking",
+                              "activity_location": "Butterfly Hill",
+                              "activity_description": "Campers will go on a two-mile hike up Butterfly Hill"
+                            },
+                            {
+                              "activity_name": "Archery",
+                              "activity_location": "Butterfly Range",
+                              "activity_description": "Campers will practice archery at Butterfly Range"
+                            }
+                          ],
+                          "Tuesday": [
+                            {
+                              "activity_name": "Hiking",
+                              "activity_location": "Butterfly Hill",
+                              "activity_description": "Campers will go on a two-mile hike up Butterfly Hill"
+                            },
+                            {
+                              "activity_name": "Archery",
+                              "activity_location": "Butterfly Range",
+                              "activity_description": "Campers will practice archery at Butterfly Range"
+                            },
+                            {
+                              "activity_name": "Swimming",
+                              "activity_location": "Lake Butterfly",
+                              "activity_description": "Campers will go swimming in Lake Butterfly"
+                            }
+                          ]
+                        },
+                      "CounselorID": 1,
+                      "campers": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8
+                      ]
+                    }
+                  ]
+            }
+            ,{
+                "week_number":2,
+                "theme":"swimming",
+                "groups":[
+                    {
+                      "id": 1,
+                      "dailyActivities": 
+                        {
+                          "Monday": [
+                            {
+                              "name": "kayaking",
+                              "location": "Lake Butterfly",
+                              "description": "Campers will go kayaking on lake butterfly"
+                            },
+                            {
+                              "name": "Hiking",
+                              "location": "Butterfly Hill",
+                              "description": "Campers will go on a two-mile hike up Butterfly Hill"
+                            },
+                            {
+                              "name": "Archery",
+                              "location": "Butterfly Range",
+                              "description": "Campers will practice archery at Butterfly Range"
+                            }
+                          ],
+                          "Tuesday": [
+                            {
+                              "name": "Soccer",
+                              "location": "Butterfly Soccer Filed",
+                              "description": "Campers will play soccer at the Butterfly Soccer Field"
+                            },
+                            {
+                              "name": "Bird Watching",
+                              "location": "Butterfly Forest",
+                              "description": "Campers will go bird watching in the Butterfly Forest"
+                            },
+                            {
+                              "name": "Swimming",
+                              "location": "Lake Butterfly",
+                              "description": "Campers will go swimming in Lake Butterfly"
+                            }
+                          ]
+                        },
+                      "CounselorID": 2,
+                      "campers": [
+                        9,10,11,12,13,14,15,16
+                      ]
+                    }
+                  ]
+            }
+        ]
+    }
+]
