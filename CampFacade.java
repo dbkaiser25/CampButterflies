@@ -75,6 +75,10 @@ public class CampFacade
         return null;
     }
 
+    public String getActivities()
+    {
+        return null;
+    }
     //this needs an instance but of what?????
     //TODO
     public void getInstance()
