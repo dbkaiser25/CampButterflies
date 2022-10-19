@@ -43,8 +43,24 @@ public class CampButterfliesDriver {
             switch(choice){
                 case 1:
                     //facade.getActivities();
+                    backToHomepage();
                     break;
                 case 2:
+                    //facade.getWeeks();
+                    backToHomepage();
+                    break;
+                case 3:
+                    price();
+                    backToHomepage();
+                    break;
+                case 4:
+                    contact();
+                    backToHomepage();
+                case 5:
+                    //register
+                case 6:
+                    //login
+
             }                       
             
 
@@ -96,8 +112,28 @@ public class CampButterfliesDriver {
 		}
     }
 
+    /**
+     * Returns the user back to the mainpage of the camp
+     */
     public void backToHomepage(){
          System.out.println("Press ENTER to go back");
          scan.next();
+    }
+
+    /**
+     * Prints out camp price and available discounts
+     */
+    public void price(){
+        System.out.println("The general price of our camp is $675\n" +
+                            "Discounts Available:\n" +
+                            "\tReturning Camper - 10% off\n" +
+                            "\t2+ Campers Registered - 10% off\n" +
+                            "\tRegsistered for Multiple Weeks - 10% off");
+    }
+
+    public void contact(){
+        System.out.println("Contact us with any questions or concerns\n" +
+                            "Phone Number: 555-123-CAMP\n" +
+                            "Email: help@campbutterflies.org");
     }
 }
