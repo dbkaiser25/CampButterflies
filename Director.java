@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Director extends Person
 {
-   private Calendar calendar;
+   //private Calendar calendar; Consider this deleated, i don't think it is needed 
    private LoginInfo userLogin;
 
    public Director(String firstName, String lastName, String dateOfBirth, 

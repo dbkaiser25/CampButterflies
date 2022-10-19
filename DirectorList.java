@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class DirectorList 
 {
-    private ArrayList<Director> directors;
+    private ArrayList<Director> directors;   
     private static DirectorList directorList;
 
     private DirectorList()
