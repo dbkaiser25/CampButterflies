@@ -95,7 +95,6 @@ public class User extends Person
                 }
             }
         }
-
     }
 
     //TODO consider deleating

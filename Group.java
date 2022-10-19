@@ -50,4 +50,21 @@ public class Group
     {
         return "a string";
     }
+
+    //TODO do we need this
+    public Camper getCamper(int num)
+    {
+        return campers.get(num);
+    }
+
+    //or this instead
+    public ArrayList<Camper> getCamperList()
+    {
+        return campers;
+    }
+
+    public HashMap<DayOfWeek,ArrayList<Activity>> getSchedule()
+    {
+        return schedule;
+    }
 }
