@@ -7,7 +7,7 @@ public class GroupList
 
     private GroupList()
     {
-        //constructor goes here 
+        groups = new ArrayList<Group>();
     }
 
     public static GroupList getInstance()
@@ -19,9 +19,17 @@ public class GroupList
         return groupList;
     }
 
-    public void addGroup(Group group)
+    public boolean addGroup(Group group)
     {
-        //add group
+        if(group == null)
+        {
+            return false;
+        }
+        else
+        {
+            groups.add(group);
+            return true;
+        }
     }
 
     public Group getGroup()
