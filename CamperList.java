@@ -8,28 +8,17 @@ public class CamperList
    
    private CamperList()
    {
-
+          campers = new ArrayList<Camper>();
    }
 
-   public ArrayList<Camper> getCampers() {
-     return campers;
-}
 
-public void setCampers(ArrayList<Camper> campers) {
-     this.campers = campers;
-}
-
-public static CamperList getCamperList() {
-     return camperList;
-}
-
-public static void setCamperList(CamperList camperList) {
-     CamperList.camperList = camperList;
-}
-
-public CamperList getInstance()
+public static CamperList getInstance()
    {
-        return null;
+          if(camperList == null)
+          {
+               camperList = new CamperList();
+          }
+          return camperList;
    }
 
    public void addCamper(Camper camper)
