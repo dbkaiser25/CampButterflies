@@ -31,13 +31,13 @@ public class CounselorList
     }
     */
 
-    public ArrayList<Counselor> getConselors() {
-        return conselors;
-    }
+    //public ArrayList<Counselor> getConselors() {
+        //return conselors;
+    //}
 
-    public void setConselors(ArrayList<Counselor> conselors) {
-        this.conselors = conselors;
-    }
+    //public void setConselors(ArrayList<Counselor> conselors) {
+        //this.conselors = conselors;
+    //}
 
     public static CounselorList getCounselorList() {
         return counselorList;
@@ -60,12 +60,23 @@ public class CounselorList
         }
     }
 
-    
+    //returns a counselor in the list with the given userName
     public Counselor getCounselorByUsername(String userName)
     {
         for(Counselor c: counselors)
         {
-            //if
+            if(c.getUserLogin().getUserName().equals(userName))
+                return c;
+        }
+        return null;
+    }
+
+    public Counselor getCounselorByUUID(UUID uuid)
+    {
+        for(Counselor c: counselors)
+        {
+            if(c.getUUID().equals(uuid))
+                return c;
         }
         return null;
     }
