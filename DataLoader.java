@@ -105,6 +105,11 @@ public class DataLoader extends DataConstants{
                 ArrayList<Contact> contacts = new ArrayList<Contact>(); 
                 contacts = (ArrayList<Contact>)counselorJSON.get(CONTACTS); 
                 Contact pediatrician = (Contact)counselorJSON.get(PEDIATRICIAN); 
+                /*
+                 * camperList: getCamperByUUID(UUID)
+                 * arrayLists: make a JSON array
+                 * make a getCurrentWeek method in facade 
+                 */
                 
                 counselors.add(new Counselor(id, firstName, lastName, dateOfBirth, homeAddress, phoneNumber, emailAddress, contacts, pediatrician, counselorLogin));
 

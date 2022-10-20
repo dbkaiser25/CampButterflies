@@ -31,6 +31,22 @@ public class CounselorList
     }
     */
 
+    public ArrayList<Counselor> getConselors() {
+        return conselors;
+    }
+
+    public void setConselors(ArrayList<Counselor> conselors) {
+        this.conselors = conselors;
+    }
+
+    public static CounselorList getCounselorList() {
+        return counselorList;
+    }
+
+    public static void setCounselorList(CounselorList counselorList) {
+        CounselorList.counselorList = counselorList;
+    }
+
     public boolean addCounselor(Counselor counselor)
     {
         if(counselor == null)

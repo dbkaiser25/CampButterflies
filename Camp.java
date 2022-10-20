@@ -14,6 +14,38 @@ public class Camp
         //TODO figure out Calendar constructor
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public HashMap<Integer, Week> getMasterSchedule() {
+        return masterSchedule;
+    }
+
+    public void setMasterSchedule(HashMap<Integer, Week> masterSchedule) {
+        this.masterSchedule = masterSchedule;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(ArrayList<Activity> activities) {
+        this.activities = activities;
+    }
+
     public void editCalendar()
     {
         //do some editing of the calendar

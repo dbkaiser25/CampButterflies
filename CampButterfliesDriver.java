@@ -21,7 +21,7 @@ public class CampButterfliesDriver {
         homepageOptions[1] = "View Available Weeks";
         homepageOptions[2] = "View Pricing and Discounts";
         homepageOptions[3] = "Contact the Camp";
-        homepageOptions[4] = "Register";
+        homepageOptions[4] = "Create an Account";
         homepageOptions[5] = "Login";
         homepageOptions[6] = "View other camps";
     }
@@ -43,11 +43,11 @@ public class CampButterfliesDriver {
             switch(choice){
                 case 1:
                     //facade.getActivities();
-                    backToHomepage();
+                    //backToHomepage();
                     break;
                 case 2:
                     //facade.getWeeks();
-                    backToHomepage();
+                    //backToHomepage();
                     break;
                 case 3:
                     price();
@@ -55,11 +55,14 @@ public class CampButterfliesDriver {
                     break;
                 case 4:
                     contact();
-                    backToHomepage();
+                    //backToHomepage();
+                    break;
                 case 5:
                     //register
+                    break;
                 case 6:
                     //login
+                    break;
 
             }                       
             
@@ -76,16 +79,16 @@ public class CampButterfliesDriver {
         int choice;
 
 		try {
-			choice = Integer.parseInt(scan.nextLine()) - 1;
+			choice = Integer.parseInt(scan.nextLine());
 		} catch (Exception e) {
+            clear();
 			System.out.println("You need to enter a valid number\n");
-			clear();
 			return -1;
 		}
 
 		clear();
 
-		if (choice < 0 || choice > range) {
+		if (choice < 1 || choice > range) {
 			clear();
 			System.out.println("Sorry, your option is not in the valid range.\n");
 			return -1;
@@ -105,7 +108,7 @@ public class CampButterfliesDriver {
      * prints the hompage UI
      */
     public void homepage(){
-        System.out.println("\tWelcome to Camp Butterflies");
+        System.out.println("\n\tWelcome to Camp Butterflies");
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < homepageOptions.length; i++) {
 			System.out.println((i + 1) + ". " + homepageOptions[i]);
@@ -116,7 +119,7 @@ public class CampButterfliesDriver {
      * Returns the user back to the mainpage of the camp
      */
     public void backToHomepage(){
-         System.out.println("Press ENTER to go back");
+         System.out.println("Enter any key to return to the homepage");
          scan.next();
     }
 
@@ -135,5 +138,15 @@ public class CampButterfliesDriver {
         System.out.println("Contact us with any questions or concerns\n" +
                             "Phone Number: 555-123-CAMP\n" +
                             "Email: help@campbutterflies.org");
+    }
+
+    public void creatAccount(){
+        
+    }
+
+
+    public static void main(String[] args){
+        CampButterfliesDriver driver = new CampButterfliesDriver();
+        driver.run();
     }
 }

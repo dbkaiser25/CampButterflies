@@ -48,6 +48,55 @@ public class Counselor extends Person
         this.phoneNumber = phoneNumber;
         this.userLogin = userLogin;
     }
+    
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public ArrayList<Contact> getEmergencyContacts() {
+        return emergencyContacts;
+    }
+
+    public void setEmergencyContacts(ArrayList<Contact> emergencyContacts) {
+        this.emergencyContacts = emergencyContacts;
+    }
+
+    public Contact getPediatricion() {
+        return pediatricion;
+    }
+
+    public void setPediatricion(Contact pediatricion) {
+        this.pediatricion = pediatricion;
+    }
+
+    public String getMedicalInfo() {
+        return medicalInfo;
+    }
+
+    public void setMedicalInfo(String medicalInfo) {
+        this.medicalInfo = medicalInfo;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public LoginInfo getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(LoginInfo userLogin) {
+        this.userLogin = userLogin;
+    }
 
     //counselors need to be able to view the campers in their group
     //Can we just pass them their group somehow? I am going to assume we can but to be determined later TODO

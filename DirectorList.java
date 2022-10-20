@@ -9,6 +9,22 @@ public class DirectorList
     {
     //add constructor
     }
+    
+    public ArrayList<Director> getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(ArrayList<Director> directors) {
+        this.directors = directors;
+    }
+
+    public static DirectorList getDirectorList() {
+        return directorList;
+    }
+
+    public static void setDirectorList(DirectorList directorList) {
+        DirectorList.directorList = directorList;
+    }
 
     public static DirectorList getInstance()
     {

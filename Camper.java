@@ -46,6 +46,46 @@ public class Camper extends Person
         this.pediatrician = pediatrician;
     }
 
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
+    public ArrayList<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(ArrayList<Medication> medications) {
+        this.medications = medications;
+    }
+
+    public ArrayList<String> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(ArrayList<String> allergies) {
+        this.allergies = allergies;
+    }
+
+    public ArrayList<Contact> getEmergencyContacts() {
+        return emergencyContacts;
+    }
+
+    public void setEmergencyContacts(ArrayList<Contact> emergencyContacts) {
+        this.emergencyContacts = emergencyContacts;
+    }
+
+    public Contact getPediatrician() {
+        return pediatrician;
+    }
+
+    public void setPediatrician(Contact pediatrician) {
+        this.pediatrician = pediatrician;
+    }
+
     /**
      * A description of the camper in string form
      * @return A string description of the camper
