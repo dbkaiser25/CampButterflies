@@ -23,30 +23,6 @@ public class CounselorList
         return counselorList;
     }
 
-    /* IDK if we need this or not
-    public Counselor getCounselorUUID(UUID uuid)
-    {
-
-        return null;
-    }
-    */
-
-    //public ArrayList<Counselor> getConselors() {
-        //return conselors;
-    //}
-
-    //public void setConselors(ArrayList<Counselor> conselors) {
-        //this.conselors = conselors;
-    //}
-
-    public static CounselorList getCounselorList() {
-        return counselorList;
-    }
-
-    public static void setCounselorList(CounselorList counselorList) {
-        CounselorList.counselorList = counselorList;
-    }
-
     public boolean addCounselor(Counselor counselor)
     {
         if(counselor == null)

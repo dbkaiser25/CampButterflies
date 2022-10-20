@@ -89,10 +89,9 @@ public class DataLoader extends DataConstants{
                 /*
                  * arrayList issue
                  */
-                ArrayList<Camper> camperslist = new ArrayList<Camper>(); 
-                camperslist = (ArrayList<Camper>)userJSON.get(CAMPERS); 
+                ArrayList<Camper> camperslist = new ArrayList<Camper>();
 
-                JSONArray campers = new JSONArray(); 
+                JSONArray campers = (JSONArray)userJSON.get(CAMPERS);
 
 
                 /*
@@ -101,7 +100,10 @@ public class DataLoader extends DataConstants{
                  */
                 for(int j=0;j<campers.size();j++)
                 {
-                    Camper camper = CamperList.getInstance().getCamperByUUID(ID); 
+                    UUID camperID = UUID.fromString((String)campers.get(j));
+                    Camper camper = CamperList.getInstance().getCamperByUUID(camperID); 
+                    camperslist.add(camper);
+
                 }
 
                 users.add(new User(id, firstName, lastName, dateOfBirth, homeAddress, userLogin, campers));
