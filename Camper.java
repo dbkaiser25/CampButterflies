@@ -13,7 +13,6 @@ public class Camper extends Person
     private ArrayList<Contact> emergencyContacts = new ArrayList();
     private Contact pediatrician;
 
-
   
     /**
      * The following attributes are needed to create an individual camper

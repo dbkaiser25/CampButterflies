@@ -143,34 +143,12 @@ public class CampButterfliesDriver {
     }
 
     private void creatAccount(){
-        String username = get("Username");
-        String password = get("Password");
-        String firstName = get("First Name");
-        String lastName = get("Last Name");
-        String homeAddress = get("Home Address");
-        String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
-        Sex sex = Enum.valueOf(Sex.class,get("Sex(MALE/FEMALE)"));
-        String med = get("Would you like to add any medications(yes/no)");
-        ArrayList<Medication> medications = new ArrayList<>();
-        if(med.equalsIgnoreCase("yes")){
-            boolean more = true;
-            while(more){
-                String type = get("Medication Name");
-                String dose = get("Dose Amount");
-                String time = get("Time Taken");
-                Medication newMeds = new Medication(type, dose, time);
-                medications.add(newMeds);
-                String answer = get("Would you like to add more(yes/no");
-                if(answer.equalsIgnoreCase("no"))
-                    more = false;
-            }
-        }
+        
+
+        
     }
 
-    private String get(String prompt){
-        System.out.print(prompt + ": ");
-        return scan.nextLine();
-    }
+
 
     public static void main(String[] args){
         CampButterfliesDriver driver = new CampButterfliesDriver();
