@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 public class CamperList 
 {
    private ArrayList<Camper> campers;
@@ -35,7 +36,15 @@ public CamperList getInstance()
    {
 
    }
-
+   public Camper getCamperByUUID(UUID uuid)
+    {
+        for(Camper c: campers)
+        {
+            if(c.getUUID().equals(uuid))
+                return c;
+        }
+        return null;
+    }
    public Camper getCamper()
    {
         return null;
