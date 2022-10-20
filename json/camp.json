@@ -1,48 +1,48 @@
 [
     {
-        "camp_name":"Blue ridge special",
-        "camp_description": "mountain camping",
+        "name":"Blue ridge special",
+        "description": "mountain camping",
         "weeks":[
             {
                 "camp_week_number":1,
-                "camp_theme":"nature",
-                "camp_groups":[
+                "theme":"nature",
+                "groups":[
                     {
                       "id": 1,
                       "daily_activities": 
                         {
                           "Monday": [
                             {
-                              "activity_name": "kayaking",
-                              "activity_location": "Lake Butterfly",
-                              "activity_description": "Campers will go kayaking on lake butterfly"
+                              "name": "kayaking",
+                              "location": "Lake Butterfly",
+                              "description": "Campers will go kayaking on lake butterfly"
                             },
                             {
-                              "activity_name": "Hiking",
-                              "activity_location": "Butterfly Hill",
-                              "activity_description": "Campers will go on a two-mile hike up Butterfly Hill"
+                              "name": "Hiking",
+                              "location": "Butterfly Hill",
+                              "description": "Campers will go on a two-mile hike up Butterfly Hill"
                             },
                             {
-                              "activity_name": "Archery",
-                              "activity_location": "Butterfly Range",
-                              "activity_description": "Campers will practice archery at Butterfly Range"
+                              "name": "Archery",
+                              "location": "Butterfly Range",
+                              "description": "Campers will practice archery at Butterfly Range"
                             }
                           ],
                           "Tuesday": [
                             {
-                              "activity_name": "Hiking",
-                              "activity_location": "Butterfly Hill",
-                              "activity_description": "Campers will go on a two-mile hike up Butterfly Hill"
+                              "name": "Hiking",
+                              "location": "Butterfly Hill",
+                              "description": "Campers will go on a two-mile hike up Butterfly Hill"
                             },
                             {
-                              "activity_name": "Archery",
-                              "activity_location": "Butterfly Range",
-                              "activity_description": "Campers will practice archery at Butterfly Range"
+                              "name": "Archery",
+                              "location": "Butterfly Range",
+                              "description": "Campers will practice archery at Butterfly Range"
                             },
                             {
-                              "activity_name": "Swimming",
-                              "activity_location": "Lake Butterfly",
-                              "activity_description": "Campers will go swimming in Lake Butterfly"
+                              "name": "Swimming",
+                              "location": "Lake Butterfly",
+                              "description": "Campers will go swimming in Lake Butterfly"
                             }
                           ]
                         },

@@ -21,6 +21,14 @@ public class Director extends Person
       super(uuid,firstName,lastName,dateOfBirth,homeAddress);
       
    }
+   
+   public LoginInfo getUserLogin() {
+      return userLogin;
+   }
+
+   public void setUserLogin(LoginInfo userLogin) {
+      this.userLogin = userLogin;
+   }
 
    public void removeCamper(String firstName, String lastName)
    {

@@ -10,6 +10,22 @@ public class UserList
     // constructor foes here
     }
 
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
+
+    public static UserList getUserList() {
+        return userList;
+    }
+
+    public static void setUserList(UserList userList) {
+        UserList.userList = userList;
+    }
+
     public static UserList getInstance()
     {
         return null;

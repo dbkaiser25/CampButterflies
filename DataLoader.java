@@ -24,16 +24,39 @@ public class DataLoader extends DataConstants{
                 String dateOfBirth = (String)camperJSON.get(DOB); 
                 String homeAddress = (String)camperJSON.get(HOMEADDRESS); 
                 String sex = (String)camperJSON.get(GENDER); 
+                JSONArray allergiesJson = (JSONArray)camperJSON.get(ALLERGIES);
                 /*
-                 * see how to add arrayLists into JSON (adding all contents of the arrayList)
+                 * test this to see if it's correct; might be wrong
                  */
-                ArrayList<String> allergies = new ArrayList<String>(); 
-                allergies = (ArrayList<String>)camperJSON.get(ALLERGIES);
+                ArrayList<String> allergies = new ArrayList<String>();
+                for(int j=0;i<allergiesJson.size();j++) {
+                    String allergy = (String)allergiesJson.get(j);
+                    allergies.add(allergy);
+                } 
+                //allergies = (ArrayList<String>)camperJSON.get(ALLERGIES);
+
                 ArrayList<Medication> medications = new ArrayList<Medication>(); 
-                medications = (ArrayList<Medication>)camperJSON.get(MEDICALINFO);  
+                for(int j=0;i<medications.size();j++) {
+                    String dose = (String)camperJSON.get(MED_DOSAGE);
+                    String type = (String)camperJSON.get(MED_TYPE);
+                    String time = (String)camperJSON.get(MED_TIME);
+                    Medication medication = new Medication (dose, type, time); 
+                    medications.add(medication);
+                }
+                //medications = (ArrayList<Medication>)camperJSON.get(MEDICALINFO);  
                 ArrayList<Contact> contacts = new ArrayList<Contact>(); 
-                contacts = (ArrayList<Contact>)camperJSON.get(CONTACTS); 
-                Contact pediatrician = (Contact)camperJSON.get(PEDIATRICIAN);
+                for(int j=0;j>contacts.size();j++) {
+                    String contFirstName = (String)camperJSON.get(CONT_FIRST_NAME);
+                    String contLastName = (String)camperJSON.get(CONT_LAST_NAME); 
+                    String contPhoneNum = (String)camperJSON.get(CONT_PHONE_NUM);
+                    String contEmail = (String)camperJSON.get(CONT_EMAIL); 
+                    String contRelationToPerson = (String)camperJSON.get(CONT_RELATION_TO_PERSON);
+                    Contact contact = new Contact(contFirstName, contLastName, contPhoneNum, contEmail, contRelationToPerson); 
+                    contacts.add(contact); 
+                }
+                //contacts = (ArrayList<Contact>)camperJSON.get(CONTACTS); 
+                Contact pediatrician = new Contact(); 
+                
                 campers.add(new Camper(id, firstName, lastName, dateOfBirth, homeAddress, sex, medications, allergies, contacts, pediatrician)); 
             }
             return campers; 
@@ -66,8 +89,22 @@ public class DataLoader extends DataConstants{
                 /*
                  * arrayList issue
                  */
-                ArrayList<Camper> campers = new ArrayList<Camper>(); 
-                campers = (ArrayList<Camper>)userJSON.get(CAMPERS); 
+                ArrayList<Camper> camperslist = new ArrayList<Camper>();
+
+                JSONArray campers = (JSONArray)userJSON.get(CAMPERS);
+
+
+                /*
+                 * Loop through json array of camper uuids
+                 * Camper camper = CamperList.getInstance().getCamperByUUID(id);
+                 */
+                for(int j=0;j<campers.size();j++)
+                {
+                    UUID camperID = UUID.fromString((String)campers.get(j));
+                    Camper camper = CamperList.getInstance().getCamperByUUID(camperID); 
+                    camperslist.add(camper);
+
+                }
 
                 users.add(new User(id, firstName, lastName, dateOfBirth, homeAddress, userLogin, campers));
             }
@@ -105,6 +142,11 @@ public class DataLoader extends DataConstants{
                 ArrayList<Contact> contacts = new ArrayList<Contact>(); 
                 contacts = (ArrayList<Contact>)counselorJSON.get(CONTACTS); 
                 Contact pediatrician = (Contact)counselorJSON.get(PEDIATRICIAN); 
+                /*
+                 * camperList: getCamperByUUID(UUID)
+                 * arrayLists: make a JSON array
+                 * make a getCurrentWeek method in facade 
+                 */
                 
                 counselors.add(new Counselor(id, firstName, lastName, dateOfBirth, homeAddress, phoneNumber, emailAddress, contacts, pediatrician, counselorLogin));
 

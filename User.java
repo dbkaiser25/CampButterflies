@@ -27,6 +27,30 @@ public class User extends Person
         this.campers = campers;
     }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public LoginInfo getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(LoginInfo userLogin) {
+        this.userLogin = userLogin;
+    }
+
+    public ArrayList<Camper> getCampers() {
+        return campers;
+    }
+
+    public void setCampers(ArrayList<Camper> campers) {
+        this.campers = campers;
+    }
+
     public void addCamper(Camper camper)
     {
         if(camper != null)

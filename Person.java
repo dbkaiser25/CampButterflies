@@ -38,6 +38,11 @@ public abstract class Person
         this.homeAddress = homeAddress;
     }
 
+    public UUID getUUID()
+    {
+        return uuid;
+    }
+
     public String getFirstName()
     {
         return firstName;

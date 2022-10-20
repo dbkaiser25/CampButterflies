@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 public class CamperList 
 {
    private ArrayList<Camper> campers;
@@ -7,19 +8,32 @@ public class CamperList
    
    private CamperList()
    {
-
+          campers = new ArrayList<Camper>();
    }
 
-   public CamperList getInstance()
+
+public static CamperList getInstance()
    {
-        return null;
+          if(camperList == null)
+          {
+               camperList = new CamperList();
+          }
+          return camperList;
    }
 
    public void addCamper(Camper camper)
    {
 
    }
-
+   public Camper getCamperByUUID(UUID uuid)
+    {
+        for(Camper c: campers)
+        {
+            if(c.getUUID().equals(uuid))
+                return c;
+        }
+        return null;
+    }
    public Camper getCamper()
    {
         return null;
