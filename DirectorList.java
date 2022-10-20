@@ -28,7 +28,11 @@ public class DirectorList
 
     public static DirectorList getInstance()
     {
-        return null;
+        if(directorList == null)
+        {
+            directorList = new DirectorList();
+        }
+        return directorList;
     }
 
     public void addDirector(Director director)
