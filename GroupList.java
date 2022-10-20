@@ -12,7 +12,11 @@ public class GroupList
 
     public static GroupList getInstance()
     {
-        return null;
+        if(groupList == null)
+        {
+            groupList = new GroupList();
+        }
+        return groupList;
     }
 
     public void addGroup(Group group)
