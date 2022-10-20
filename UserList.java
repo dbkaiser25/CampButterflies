@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class UserList 
 {
@@ -7,34 +8,51 @@ public class UserList
 
     private UserList()
     {
-    // constructor foes here
-    }
-
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
-
-    public static UserList getUserList() {
-        return userList;
-    }
-
-    public static void setUserList(UserList userList) {
-        UserList.userList = userList;
+        users = new ArrayList<User>();
     }
 
     public static UserList getInstance()
     {
+        if(userList == null)
+        {
+            userList = new UserList();
+        }
+        return userList;
+    }
+
+    public boolean addUser(User user)
+    {
+        if(user == null)
+        {
+            return false;
+        }
+        else
+        {
+            users.add(user);
+        }
+        return false;
+    }
+
+    public User getUserByUUID(UUID uuid)
+    {
+        for(User u: users)
+        {
+            if(u.getUUID().equals(uuid))
+                return u;
+        }
         return null;
     }
 
-    public void addUser(User user)
+    public User getUserByUserName(String userName)
     {
-        // add user
+        for(User u: users)
+        {
+            if(u.getUserLogin().getUserName().equals(userName))
+                return u;
+        }
+        return null;
     }
+
     public User getUser()
     {
         return null;
