@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+
 /**
  * the UI code for the Camp Butterfly program 
  */
@@ -51,7 +53,7 @@ public class CampButterfliesDriver {
                     break;
                 case 3:
                     price();
-                    backToHomepage();
+                    //backToHomepage();
                     break;
                 case 4:
                     contact();
@@ -75,7 +77,7 @@ public class CampButterfliesDriver {
      * @param range the valid range in options
      * @return the choice or -1 if not valid
      */
-    public int getChoice(int range){
+    private int getChoice(int range){
         int choice;
 
 		try {
@@ -107,7 +109,7 @@ public class CampButterfliesDriver {
     /**
      * prints the hompage UI
      */
-    public void homepage(){
+    private void homepage(){
         System.out.println("\n\tWelcome to Camp Butterflies");
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < homepageOptions.length; i++) {
@@ -118,7 +120,7 @@ public class CampButterfliesDriver {
     /**
      * Returns the user back to the mainpage of the camp
      */
-    public void backToHomepage(){
+    private void backToHomepage(){
          System.out.println("Enter any key to return to the homepage");
          scan.next();
     }
@@ -126,7 +128,7 @@ public class CampButterfliesDriver {
     /**
      * Prints out camp price and available discounts
      */
-    public void price(){
+    private void price(){
         System.out.println("The general price of our camp is $675\n" +
                             "Discounts Available:\n" +
                             "\tReturning Camper - 10% off\n" +
@@ -134,16 +136,41 @@ public class CampButterfliesDriver {
                             "\tRegsistered for Multiple Weeks - 10% off");
     }
 
-    public void contact(){
+    private void contact(){
         System.out.println("Contact us with any questions or concerns\n" +
                             "Phone Number: 555-123-CAMP\n" +
                             "Email: help@campbutterflies.org");
     }
 
-    public void creatAccount(){
-        
+    private void creatAccount(){
+        String username = get("Username");
+        String password = get("Password");
+        String firstName = get("First Name");
+        String lastName = get("Last Name");
+        String homeAddress = get("Home Address");
+        String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
+        Sex sex = Enum.valueOf(Sex.class,get("Sex(MALE/FEMALE)"));
+        String med = get("Would you like to add any medications(yes/no)");
+        ArrayList<Medication> medications = new ArrayList<>();
+        if(med.equalsIgnoreCase("yes")){
+            boolean more = true;
+            while(more){
+                String type = get("Medication Name");
+                String dose = get("Dose Amount");
+                String time = get("Time Taken");
+                Medication newMeds = new Medication(type, dose, time);
+                medications.add(newMeds);
+                String answer = get("Would you like to add more(yes/no");
+                if(answer.equalsIgnoreCase("no"))
+                    more = false;
+            }
+        }
     }
 
+    private String get(String prompt){
+        System.out.print(prompt + ": ");
+        return scan.nextLine();
+    }
 
     public static void main(String[] args){
         CampButterfliesDriver driver = new CampButterfliesDriver();
