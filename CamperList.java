@@ -10,7 +10,23 @@ public class CamperList
 
    }
 
-   public CamperList getInstance()
+   public ArrayList<Camper> getCampers() {
+     return campers;
+}
+
+public void setCampers(ArrayList<Camper> campers) {
+     this.campers = campers;
+}
+
+public static CamperList getCamperList() {
+     return camperList;
+}
+
+public static void setCamperList(CamperList camperList) {
+     CamperList.camperList = camperList;
+}
+
+public CamperList getInstance()
    {
         return null;
    }
