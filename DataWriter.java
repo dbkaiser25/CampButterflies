@@ -1,6 +1,8 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject; 
 
@@ -40,7 +42,7 @@ public class DataWriter extends DataConstants{
         camperDetails.put(ALLERGIES, camper.getAllergies()); 
         camperDetails.put(CONTACTS, camper.getEmergencyContacts()); 
         camperDetails.put(PEDIATRICIAN, camper.getPediatrician()); 
-
+        
         return camperDetails; 
     }
     
@@ -75,8 +77,16 @@ public class DataWriter extends DataConstants{
         userDetails.put(HOMEADDRESS, user.getHomeAddress()); 
         userDetails.put(USERNAME, user.getUserLogin().getUserName()); 
         userDetails.put(PASSWORD, user.getUserLogin().getPassword()); 
-        userDetails.put(CAMPERS, user.getCampers()); 
-
+        
+        /*
+         * adding arrayLists
+         */
+        JSONArray campersJSON = new JSONArray(); 
+        for(int i=0;i<user.getCampers().size();i++) {
+            UUID camperID = user.getCampers().get(i).getUUID(); 
+            campersJSON.add(camperID.toString());
+        }
+        userDetails.put(CAMPERS, campersJSON); 
         return userDetails; 
     }
 
@@ -108,8 +118,13 @@ public class DataWriter extends DataConstants{
         counselorDetails.put(PHONE_NUM, counselor.getPhoneNumber()); 
         counselorDetails.put(EMAIL, counselor.getEmailAddress()); 
         counselorDetails.put(HOMEADDRESS, counselor.getHomeAddress()); 
-        counselorDetails.put(DOB, counselor.getDateOfBirth()); 
+        counselorDetails.put(DOB, counselor.getDateOfBirth()); //store as date in object, store as String in JSON
+        //look up how to convert String to a date 
+
         counselorDetails.put(CONTACTS, counselor.getEmergencyContacts()); 
+        JSONArray
+
+
         counselorDetails.put(PEDIATRICIAN, counselor.getPediatricion()); 
         counselorDetails.put(USERNAME, counselor.getUserLogin().getUserName()); 
         counselorDetails.put(PASSWORD, counselor.getUserLogin().getPassword()); 

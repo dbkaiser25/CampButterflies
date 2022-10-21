@@ -8,9 +8,9 @@ import java.util.UUID;
 public class Camper extends Person
 {
     private Sex sex;
-    private ArrayList<Medication> medications = new ArrayList();
-    private ArrayList<String> allergies = new ArrayList();
-    private ArrayList<Contact> emergencyContacts = new ArrayList();
+    private ArrayList<Medication> medications = new ArrayList<Medication>(); 
+    private ArrayList<String> allergies = new ArrayList<String>(); 
+    private ArrayList<Contact> emergencyContacts = new ArrayList<Contact>(); 
     private Contact pediatrician;
 
   
@@ -91,6 +91,6 @@ public class Camper extends Person
      */
     public String toString()
     {
-        return "this is harder than i thought";
+        return firstName+" "+lastName;
     }
 }
