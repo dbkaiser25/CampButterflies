@@ -4,6 +4,8 @@ public class CampList {
     
     private ArrayList<Camp> camps;
     private static CampList campList;
+    private ArrayList<Group> groups;
+
 
     private CampList(){
         camps = new ArrayList<Camp>();
@@ -28,7 +30,15 @@ public class CampList {
         }
     }
 
-    public Camp getCamp(){
+    public Camp getCamp(String name)
+    {
+        for(Camp c: camps)
+        {
+            if(c.getName().equals(name))
+            {
+                return c;
+            }
+        }
         return null;
     }
 
