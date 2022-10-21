@@ -66,5 +66,9 @@ public class CounselorList
 
     }
 
+    public ArrayList<Counselor> getCounselors() {
+        return counselors;
+    }
+
 
 }

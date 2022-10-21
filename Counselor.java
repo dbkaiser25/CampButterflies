@@ -25,26 +25,24 @@ public class Counselor extends Person
      * @param userLogin Logininfo for the individual counselor
      */
     public Counselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress, 
-    String dateOfBirth, String medicalInfo, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin)
+    String dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin)
     {
         super(firstName,lastName,dateOfBirth,homeAddress);
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatricion = pediatricion;
-        this.medicalInfo = medicalInfo;
         this.phoneNumber = phoneNumber;
         this.userLogin = userLogin;
     }
 
     //Constructor with UUID
     public Counselor(UUID uuid, String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress, 
-    String dateOfBirth, String medicalInfo, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin)
+    String dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin)
     {
         super(uuid,firstName,lastName,dateOfBirth,homeAddress);
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatricion = pediatricion;
-        this.medicalInfo = medicalInfo;
         this.phoneNumber = phoneNumber;
         this.userLogin = userLogin;
     }

@@ -7,7 +7,7 @@ public class User extends Person
 {
     private UUID uuid;  
     private LoginInfo userLogin;
-    private ArrayList<Camper> campers = new ArrayList();
+    private ArrayList<Camper> campers = new ArrayList<Camper>();
     
     //Constructor without UUID
     public User(String firstName, String lastName, String dateOfBirth, 

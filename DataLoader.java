@@ -1,5 +1,6 @@
 import java.io.FileReader; 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 import org.json.simple.JSONArray;
@@ -23,41 +24,45 @@ public class DataLoader extends DataConstants{
                 String lastName = (String)camperJSON.get(LASTNAME); 
                 String dateOfBirth = (String)camperJSON.get(DOB); 
                 String homeAddress = (String)camperJSON.get(HOMEADDRESS); 
-                String sex = (String)camperJSON.get(GENDER); 
+                Sex sex = (Sex)camperJSON.get(GENDER); 
                 JSONArray allergiesJson = (JSONArray)camperJSON.get(ALLERGIES);
-                /*
-                 * test this to see if it's correct; might be wrong
-                 */
                 ArrayList<String> allergies = new ArrayList<String>();
                 for(int j=0;i<allergiesJson.size();j++) {
                     String allergy = (String)allergiesJson.get(j);
                     allergies.add(allergy);
                 } 
                 //allergies = (ArrayList<String>)camperJSON.get(ALLERGIES);
-
+                //keep an eye on this part, might be wrong 
+                JSONArray medicationsJSON =(JSONArray)camperJSON.get(MEDICATIONS);
                 ArrayList<Medication> medications = new ArrayList<Medication>(); 
-                for(int j=0;i<medications.size();j++) {
-                    String dose = (String)camperJSON.get(MED_DOSAGE);
-                    String type = (String)camperJSON.get(MED_TYPE);
-                    String time = (String)camperJSON.get(MED_TIME);
-                    Medication medication = new Medication (dose, type, time); 
+                for(int j=0;i<medicationsJSON.size();j++) {
+                    Medication medication = (Medication)medicationsJSON.get(j);
                     medications.add(medication);
+                     // ArrayList<String> medInfo = new ArrayList<String>(); 
+                    // String dose = (String)camperJSON.get(DOSAGE);
+                    // String type = (String)camperJSON.get(TYPE);
+                    // String time = (String)camperJSON.get(TIME);
+                    // medInfo.add(dose); 
+                    // medInfo.add(type); 
+                    // medInfo.add(time); 
                 }
-                //medications = (ArrayList<Medication>)camperJSON.get(MEDICALINFO);  
+                JSONArray contactsJSON = (JSONArray)camperJSON.get(CONTACTS); 
                 ArrayList<Contact> contacts = new ArrayList<Contact>(); 
                 for(int j=0;j>contacts.size();j++) {
-                    String contFirstName = (String)camperJSON.get(CONT_FIRST_NAME);
-                    String contLastName = (String)camperJSON.get(CONT_LAST_NAME); 
-                    String contPhoneNum = (String)camperJSON.get(CONT_PHONE_NUM);
-                    String contEmail = (String)camperJSON.get(CONT_EMAIL); 
-                    String contRelationToPerson = (String)camperJSON.get(CONT_RELATION_TO_PERSON);
-                    Contact contact = new Contact(contFirstName, contLastName, contPhoneNum, contEmail, contRelationToPerson); 
+                    // String contFirstName = (String)camperJSON.get(FIRSTNAME);
+                    // String contLastName = (String)camperJSON.get(LASTNAME); 
+                    // String contPhoneNum = (String)camperJSON.get(PHONE_NUM);
+                    // String contEmail = (String)camperJSON.get(EMAIL); 
+                    // String contRelationToPerson = (String)camperJSON.get(CONT_RELATION_TO_PERSON);
+                    // Contact contact = new Contact(contFirstName, contLastName, contPhoneNum, contEmail, contRelationToPerson); 
+                    // contacts.add(contact); 
+                    Contact contact = (Contact)contactsJSON.get(j);
                     contacts.add(contact); 
                 }
                 //contacts = (ArrayList<Contact>)camperJSON.get(CONTACTS); 
-                Contact pediatrician = new Contact(); 
-                
-                campers.add(new Camper(id, firstName, lastName, dateOfBirth, homeAddress, sex, medications, allergies, contacts, pediatrician)); 
+                Contact pediatrician = (Contact)camperJSON.get(PEDIATRICIAN);
+
+                campers.add(new Camper(id, firstName, lastName, homeAddress, dateOfBirth, sex, medications, allergies, contacts, pediatrician)); 
             }
             return campers; 
         }
@@ -89,11 +94,8 @@ public class DataLoader extends DataConstants{
                 /*
                  * arrayList issue
                  */
-                ArrayList<Camper> camperslist = new ArrayList<Camper>();
-
+                ArrayList<Camper> campersList = new ArrayList<Camper>();
                 JSONArray campers = (JSONArray)userJSON.get(CAMPERS);
-
-
                 /*
                  * Loop through json array of camper uuids
                  * Camper camper = CamperList.getInstance().getCamperByUUID(id);
@@ -102,8 +104,7 @@ public class DataLoader extends DataConstants{
                 {
                     UUID camperID = UUID.fromString((String)campers.get(j));
                     Camper camper = CamperList.getInstance().getCamperByUUID(camperID); 
-                    camperslist.add(camper);
-
+                    campersList.add(camper);
                 }
 
                 users.add(new User(id, firstName, lastName, dateOfBirth, homeAddress, userLogin, campers));
@@ -120,7 +121,7 @@ public class DataLoader extends DataConstants{
         ArrayList<Counselor> counselors = new ArrayList<Counselor>(); 
 
         try {
-            FileReader reader = new FileReader(USER_FILE); 
+            FileReader reader = new FileReader(COUNSELOR_FILE); 
             JSONParser parser = new JSONParser(); 
             JSONArray counselorsJSON = (JSONArray)new JSONParser().parse(reader);
 
@@ -148,7 +149,7 @@ public class DataLoader extends DataConstants{
                  * make a getCurrentWeek method in facade 
                  */
                 
-                counselors.add(new Counselor(id, firstName, lastName, dateOfBirth, homeAddress, phoneNumber, emailAddress, contacts, pediatrician, counselorLogin));
+                counselors.add(new Counselor(id, firstName, lastName, phoneNumber, emailAddress, homeAddress, dateOfBirth, contacts, pediatrician, counselorLogin));
 
             }
             return counselors; 
@@ -163,33 +164,56 @@ public class DataLoader extends DataConstants{
         ArrayList<Director> directors = new ArrayList<Director>(); 
 
         try {
-            FileReader reader = new FileReader(USER_FILE); 
+            FileReader reader = new FileReader(DIRECTOR_FILE); 
             JSONParser parser = new JSONParser(); 
-            JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
+            JSONArray directorsJSON = (JSONArray)new JSONParser().parse(reader);
 
-            for(int i=0;i<usersJSON.size();i++) {
-                
+            for(int i=0;i<directorsJSON.size();i++) {
+                JSONObject directorJSON = (JSONObject)directorsJSON.get(i); 
+                UUID id = (UUID)directorJSON.get(ID); 
+                String firstName = (String)directorJSON.get(FIRSTNAME); 
+                String lastName = (String)directorJSON.get(LASTNAME); 
+                String dateOfBirth = (String)directorJSON.get(DOB); 
+                String homeAddress = (String)directorJSON.get(HOMEADDRESS); 
+                String userName = (String)directorJSON.get(USERNAME); 
+                String password = (String)directorJSON.get(PASSWORD);
+                LoginInfo directorLogin = new LoginInfo(userName, password);  
+
+                directors.add(new Director(id, firstName, lastName, dateOfBirth, homeAddress, directorLogin));
             }
+            return directors; 
         }
         catch (Exception e) {
             e.printStackTrace(); 
         }
+        return null; 
     }
 
-    public static ArrayList<Calendar> loadCamps() {
-        ArrayList<User> users = new ArrayList<User>(); 
+    /*
+     * this is the hardest part. See if you can figure this out Friday
+     */
+    public static ArrayList<Camp> loadCamps() {
+        ArrayList<Camp> camps = new ArrayList<Camp>(); 
 
         try {
-            FileReader reader = new FileReader(USER_FILE); 
+            FileReader reader = new FileReader(CAMP_FILE); 
             JSONParser parser = new JSONParser(); 
-            JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
+            JSONArray campsJSON = (JSONArray)new JSONParser().parse(reader);
 
-            for(int i=0;i<usersJSON.size();i++) {
-                
+            for(int i=0;i<campsJSON.size();i++) {
+                JSONObject campJSON = (JSONObject)campsJSON.get(i); 
+                String name = (String)campJSON.get(NAME); 
+                String description = (String)campJSON.get(DESCRIPTION); 
+                HashMap<Integer, Week> masterSchedule = (HashMap<Integer, Week>)campJSON.get(WEEK);
+                ArrayList<Activity> activities = (ArrayList<Activity>)campJSON.get(DAILY_ACTIVITIES); 
+
+                camps.add(new Camp(name, description, masterSchedule, activities));
             }
+            return camps; 
         }
         catch (Exception e) {
             e.printStackTrace(); 
         }
+        return null; 
     }
 }
