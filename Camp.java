@@ -14,6 +14,22 @@ public class Camp
         //TODO figure out Calendar constructor
     }
 
+    //TODO figure out which constructors are needed --> Ask Zak
+    public Camp(String name, String description)
+    {
+        this.name = name;
+        this.description = description;
+        masterSchedule = new HashMap<Integer, Week>();
+    }
+
+    public Camp(String name, String description, ArrayList<Activity> activities)
+    {
+        this.name = name;
+        this.description = description;
+        this.activities = activities;
+        masterSchedule = new HashMap<Integer, Week>();
+    }
+
     public String getName() {
         return name;
     }
@@ -47,6 +63,20 @@ public class Camp
         }
 
         return temp;
+    }
+
+    public boolean addActivity(Activity activity)
+    {
+        if(activity == null)
+        {
+            return false;
+        }
+        else
+        {
+            activities.add(activity);
+            return true;
+        }
+        
     }
 
     //public void setActivities(ArrayList<Activity> activities) {

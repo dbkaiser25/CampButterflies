@@ -26,9 +26,9 @@ public class Director extends Person
       return userLogin;
    }
 
-   public void setUserLogin(LoginInfo userLogin) {
-      this.userLogin = userLogin;
-   }
+   //public void setUserLogin(LoginInfo userLogin) {
+      //this.userLogin = userLogin;
+   //}
 
    public void removeCamper(String firstName, String lastName)
    {
@@ -41,8 +41,10 @@ public class Director extends Person
 
    }
 
-   public void addActivity(Activity activity)
+   //this assumes we can pass what 
+   public void addActivity(Camp camp, Activity activity)
    {
+      camp.addActivity(activity);
       //add dat activity
    }
 
