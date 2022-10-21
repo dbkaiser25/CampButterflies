@@ -24,10 +24,34 @@ public class CampFacade
 
     public void Login(LoginInfo userLogin)
     {
-
+        
     }
 
-    public void addCamper()
+    public void addUser(){
+        String username = get("Username");
+        String password = get("Password");
+        LoginInfo loginInfo = new LoginInfo(username, password);
+        String firstName = get("First Name");
+        String lastName = get("Last Name");
+        String homeAddress = get("Home Address");
+        String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
+
+        ArrayList<Camper> campers = new ArrayList<>();
+        boolean more = true;
+        while(more){
+            System.out.println("Camper Information");
+            Camper camper = addCamper();
+            campers.add(camper);
+            String answer = get("Would you like to add more campers?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    more = false;
+        }
+
+        User user = new User(firstName, lastName, dateOfBirth, homeAddress, loginInfo, campers);
+        userList.addUser(user);
+    }
+
+    public Camper addCamper()
     {
         String firstName = get("First Name");
         String lastName = get("Last Name");
@@ -87,6 +111,7 @@ public class CampFacade
 
         Camper camper = new Camper(firstName, lastName, homeAddress, dateOfBirth, sex, medications, allergies, emergencyContacts, pediatrician);
         camperList.addCamper(camper);
+        return camper;
     }
 
     private String get(String prompt){

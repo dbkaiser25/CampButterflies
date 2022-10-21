@@ -39,7 +39,7 @@ public class Camp
     }
 
     public ArrayList<Activity> getActivities() {
-        return activities;
+        
     }
 
     public void setActivities(ArrayList<Activity> activities) {
