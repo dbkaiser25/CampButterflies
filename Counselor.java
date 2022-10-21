@@ -33,6 +33,7 @@ public class Counselor extends Person
         this.pediatricion = pediatricion;
         this.phoneNumber = phoneNumber;
         this.userLogin = userLogin;
+        uuid = UUID.randomUUID();
     }
 
     //Constructor with UUID

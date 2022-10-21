@@ -155,7 +155,11 @@ public class CampButterfliesDriver {
         int choice = scan.nextInt();
         switch(choice){
             case 1:
-
+                facade.addUser();
+                break;
+            case 2:
+                facade.addCounselor();
+                break;
         }
     }
 
