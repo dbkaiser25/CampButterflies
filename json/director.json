@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "CampUUID": 1,
     "firstName": "Connor",
     "lastName": "Bradley",
     "dateOfBirth": "11/4/1980",
@@ -9,16 +9,18 @@
     "password": "bluebutterflies2022",
     "calendar": [
       {
+        "name": "Camp Blue Butterflies", 
+        "description": "Fun outdoor camp", 
         "calendar_hash": [
           {
             "week_number" : 1, 
             "week": [{
               "theme":"swimming", 
               "groups": [{
-                "group_number" : 1, 
-                "counselorUUID" : 1, 
+                "groupUUID" : "1", 
+                "counselorUUID" : "1", 
                 "group_campers" :[
-                  1,2,3,4,5,6,7,8
+                  "1","2","3","4","5","6","7","8"
                 ],
                 "group_hash" : [{
                   "day_of_week" : "SUNDAY",

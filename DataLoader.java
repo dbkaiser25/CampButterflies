@@ -65,10 +65,7 @@ public class DataLoader extends DataConstants {
                 String phoneNumber = (String) pediatricianJSON.get(PHONE_NUM);
                 String email = (String) pediatricianJSON.get(EMAIL);
                 String relationToPerson = (String) pediatricianJSON.get(CONT_RELATION_TO_PERSON);
-                Contact pediatrician = new Contact(pedFirstName, pedLastName, phoneNumber, email, relationToPerson); // see
-                                                                                                                     // if
-                                                                                                                     // this
-                                                                                                                     // works
+                Contact pediatrician = new Contact(pedFirstName, pedLastName, phoneNumber, email, relationToPerson);
                 campers.add(new Camper(id, firstName, lastName, homeAddress, dateOfBirth, sex, medications, allergies,
                         contacts, pediatrician));
             }
@@ -84,7 +81,6 @@ public class DataLoader extends DataConstants {
 
         try {
             FileReader reader = new FileReader(USER_FILE);
-            JSONParser parser = new JSONParser();
             JSONArray usersJSON = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < usersJSON.size(); i++) {
@@ -124,7 +120,6 @@ public class DataLoader extends DataConstants {
 
         try {
             FileReader reader = new FileReader(COUNSELOR_FILE);
-            JSONParser parser = new JSONParser();
             JSONArray counselorsJSON = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < counselorsJSON.size(); i++) {
@@ -183,7 +178,6 @@ public class DataLoader extends DataConstants {
 
         try {
             FileReader reader = new FileReader(DIRECTOR_FILE);
-            JSONParser parser = new JSONParser();
             JSONArray directorsJSON = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < directorsJSON.size(); i++) {
@@ -265,7 +259,6 @@ public class DataLoader extends DataConstants {
 
         try {
             FileReader reader = new FileReader(CAMP_FILE);
-            JSONParser parser = new JSONParser();
             JSONArray campsJSON = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < campsJSON.size(); i++) {
