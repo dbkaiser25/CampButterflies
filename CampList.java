@@ -5,10 +5,12 @@ public class CampList {
     private ArrayList<Camp> camps;
     private static CampList campList;
     private ArrayList<Group> groups;
+    //private static GroupList groupList;
 
 
     private CampList(){
         camps = new ArrayList<Camp>();
+        groups = new ArrayList<Group>();
     }
     
     public static CampList getInstance()
@@ -18,6 +20,18 @@ public class CampList {
             campList = new CampList();
         }
         return campList;
+    }
+
+    public boolean addGroup(Group group)
+    {
+        if(group == null)
+        {
+            return false;
+        }
+        else{
+            groups.add(group);
+            return true;
+        }
     }
 
     public boolean addCamp(Camp camp){
@@ -41,6 +55,30 @@ public class CampList {
         }
         return null;
     }
+
+    /* Zach do you want these and if so what should they do!!!!!
+    public Group getGroup()
+    {
+        return null;
+    }
+
+    public void editGroup()
+    {
+
+    }
+
+    public void saveGroup()
+    {
+        
+    }
+
+    */
+
+
+
+
+
+
 
     public void editGroup(){
         
