@@ -12,8 +12,8 @@ public class CampButterfliesDriver {
     /**
      * Creates the driver and initializes the scanner
      */
-    public CampButterfliesDriver(){
-        //facade = new CampFacade(null, null, null, null, null);
+    public CampButterfliesDriver(CampFacade facade){
+        this.facade = facade;
         scan = new Scanner(System.in);
 
 
@@ -151,7 +151,13 @@ public class CampButterfliesDriver {
 
 
     public static void main(String[] args){
-        CampButterfliesDriver driver = new CampButterfliesDriver();
+        CamperList camperList = CamperList.getInstance();
+        UserList userList = UserList.getInstance();
+        CounselorList counselorList = CounselorList.getInstance();
+        DirectorList directorList = DirectorList.getInstance();
+
+        CampFacade facade = new CampFacade(null, camperList, userList, counselorList, directorList);
+        CampButterfliesDriver driver = new CampButterfliesDriver(facade);
         driver.run();
     }
 }
