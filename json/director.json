@@ -44,7 +44,7 @@
             }]
           }
         ],
-        "all_activities" [
+        "all_activities" :[
           {
           "name": "swimming", 
           "location": "Lake Butterfly", 

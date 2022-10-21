@@ -23,7 +23,7 @@ public abstract class DataConstants {
     protected static final String GROUPS = "groups"; 
     protected static final String DAILY_ACTIVITIES = "daily_activities"; 
     protected static final String LOCATION = "location"; 
-    protected static final String CAMPERS = "campers"; 
+    protected static final String CAMPERS = "group_campers"; 
     protected static final String COUNSELOR_ID = "CounselorID";
     
     protected static final String DIRECTOR_FILE = "director.json"; 
@@ -31,7 +31,16 @@ public abstract class DataConstants {
     protected static final String SELECTED_GROUPS = "group";
     protected static final String ACTIVITY_LIST = "activity_list"; 
     protected static final String CALENDAR_HASH = "calendar_hash";
-    protected static final String 
+    protected static final String GROUP_NUM = "group_number";
+    protected static final String GROUP_CAMPERS = "group_campers"; 
+    protected static final String WEEK_COUNSELORS = "week_counselors"; 
+    protected static final String WEEK_CAMPERS = "week_campers"; 
+    protected static final String START_DATE = "start_date"; 
+    protected static final String END_DATE = "end_date";
+    protected static final String ISFULL = "isFull"; 
+    protected static final String ALL_ACTIVITIES = "all_activities"; 
+    
+
 
 
     protected static final String USER_FILE = "user.json"; 
