@@ -30,21 +30,28 @@ public class Camp
         this.description = description;
     }
 
-    public HashMap<Integer, Week> getMasterSchedule() {
-        return masterSchedule;
+    //public HashMap<Integer, Week> getMasterSchedule() {
+        //return masterSchedule;
+    //}
+
+    //public void setMasterSchedule(HashMap<Integer, Week> masterSchedule) {
+        //this.masterSchedule = masterSchedule;
+    //}
+
+    public String getActivities() 
+    {
+        String temp = new String();
+        for(Activity a: activities)
+        {
+            temp = temp + a.toString() + "\n";
+        }
+
+        return temp;
     }
 
-    public void setMasterSchedule(HashMap<Integer, Week> masterSchedule) {
-        this.masterSchedule = masterSchedule;
-    }
-
-    public ArrayList<Activity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(ArrayList<Activity> activities) {
-        this.activities = activities;
-    }
+    //public void setActivities(ArrayList<Activity> activities) {
+        //this.activities = activities;
+    //}
 
     public void editCalendar()
     {
