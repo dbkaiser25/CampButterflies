@@ -16,6 +16,7 @@ public class User extends Person
         super(firstName,lastName,dateOfBirth,homeAddress);
         this.userLogin = userLogin;
         this.campers = campers;
+        uuid = UUID.randomUUID();
     }
 
     //Constructor with UUID
