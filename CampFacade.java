@@ -225,9 +225,10 @@ public class CampFacade
         return null;
     }
 
-    public String getActivities()
+    public String getActivities(String campName)
     {
-        return null;
+        Camp camp = campList.getCamp(campName);
+        return camp.getActivities();
     }
     //this needs an instance but of what?????
     //TODO

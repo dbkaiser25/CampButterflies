@@ -43,7 +43,7 @@ public class CampButterfliesDriver {
 
             switch(choice){
                 case 1:
-                    facade.getActivities();
+                    facade.getActivities("Camp Butterflies");
                     //backToHomepage();
                     break;
                 case 2:

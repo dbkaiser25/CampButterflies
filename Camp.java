@@ -56,13 +56,13 @@ public class Camp
 
     public String getActivities() 
     {
-        String temp = new String();
-        for(Activity a: activities)
+        String displayActivities = new String();
+        for(Activity activity: activities)
         {
-            temp = temp + a.toString() + "\n";
+            displayActivities += activity.toString() + "\n";
         }
 
-        return temp;
+        return displayActivities;
     }
 
     public boolean addActivity(Activity activity)
