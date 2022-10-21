@@ -6,11 +6,16 @@ public class Calendar
    private  HashMap<Integer, Week> masterSchedule;
    private ArrayList<Activity> activities;
 
-   public Calendar()
+   public Calendar(HashMap<Integer,Week> MasterSchedule, ArrayList<Activity> Activities)
    {
     //TODO figure out Calendar constructor
+    this.masterSchedule = MasterSchedule; 
+    this.activities = Activities; 
    }
-
+   public Calendar() {
+     this.masterSchedule = null; 
+     this.activities = null; 
+   }
    public void editCalendar()
    {
         //do some editing of the calendar
