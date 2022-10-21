@@ -25,7 +25,7 @@
         "relationToPerson": "Father"
       }
     ],
-    "Pediatrician": {
+    "pediatrician": {
       "firstName": "Bridget",
       "lastName": "Sampson",
       "phoneNumber": "102-493-2901",

@@ -5,17 +5,17 @@ import java.util.Scanner;
 
 public class CampFacade 
 {
-    private GroupList groupList;
+    private CampList campList;
     private CamperList camperList;
     private UserList userList;
     private CounselorList counselorList;
     private DirectorList directorList;
     private Scanner scan = new Scanner(System.in);
 
-    public CampFacade(GroupList groupList, CamperList camperList, UserList userList, 
+    public CampFacade(CampList campList, CamperList camperList, UserList userList, 
     CounselorList counselorList, DirectorList directorList)
     {
-        this.groupList = groupList;
+        this.campList = campList;
         this.camperList = camperList;
         this.userList = userList;
         this.counselorList = counselorList;
@@ -29,8 +29,6 @@ public class CampFacade
 
     public void addCamper()
     {
-        String username = get("Username");
-        String password = get("Password");
         String firstName = get("First Name");
         String lastName = get("Last Name");
         String homeAddress = get("Home Address");
@@ -54,7 +52,41 @@ public class CampFacade
         }
 
         ArrayList<String> allergies = new ArrayList<>();
-        String allergy = get("Any Allergies");
+        boolean moreAllergies = true;
+        while(moreAllergies){
+            String allergy = get("Allergies:");
+            allergies.add(allergy);
+            String answer = get("Would you like to add more allergies?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    moreAllergies = false;
+        }
+
+        System.out.println("\nDoctor Information");
+        String relationToPerson = "Pediatrician";
+        String doctorFirstName = get("First Name");
+        String doctorLastName = get("Last Name");
+        String phoneNumber = get("Phone Number");
+        String doctorAddress = get("Email Address");
+        Contact pediatrician = new Contact(doctorFirstName,doctorLastName,phoneNumber,doctorAddress,relationToPerson);
+
+        System.out.println("\nEmergency Contacts");
+        ArrayList<Contact> emergencyContacts = new ArrayList<>();
+        boolean moreContacts = true;
+        while(moreContacts){
+            String contactFirstName = get("First Name");
+            String contactLastName = get("Last Name");
+            String conatctphoneNumber = get("Phone Number");
+            String contactAddress = get("Email Address");
+            String conatctrelationToPerson = get("Relation To Person");
+            Contact contact = new Contact(contactFirstName, contactLastName, conatctphoneNumber, contactAddress, conatctrelationToPerson);
+            emergencyContacts.add(contact);
+            String answer = get("Would you like to add more emergency contacts?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    moreContacts = false;
+        }
+
+        Camper camper = new Camper(firstName, lastName, homeAddress, dateOfBirth, sex, medications, allergies, emergencyContacts, pediatrician);
+        camperList.addCamper(camper);
     }
 
     private String get(String prompt){
@@ -74,7 +106,68 @@ public class CampFacade
 
     public void addCounselor()
     {
+        String username = get("Username");
+        String password = get("Password");
+        LoginInfo loginInfo = new LoginInfo(username, password);
+        String firstName = get("First Name");
+        String lastName = get("Last Name");
+        String phoneNumber = get("Phone Number");
+        String emailAddress = get("Email Address");
+        String homeAddress = get("Home Address");
+        String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
+        String med = get("Would you like to add any medications(yes/no)");
 
+        ArrayList<Medication> medications = new ArrayList<>();
+        if(med.equalsIgnoreCase("yes")){
+            boolean more = true;
+            while(more){
+                String type = get("Medication Name");
+                String dose = get("Dose Amount");
+                String time = get("Time Taken");
+                Medication newMeds = new Medication(type, dose, time);
+                medications.add(newMeds);
+                String answer = get("Would you like to add more(yes/no)");
+                if(answer.equalsIgnoreCase("no"))
+                    more = false;
+            }
+        }
+
+        ArrayList<String> allergies = new ArrayList<>();
+        boolean moreAllergies = true;
+        while(moreAllergies){
+            String allergy = get("Allergies:");
+            allergies.add(allergy);
+            String answer = get("Would you like to add more allergies?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    moreAllergies = false;
+        }
+
+        System.out.println("\nDoctor Information");
+        String relationToPerson = "Pediatrician";
+        String doctorFirstName = get("First Name");
+        String doctorLastName = get("Last Name");
+        String doctorphoneNumber = get("Phone Number");
+        String doctorAddress = get("Email Address");
+        Contact pediatrician = new Contact(doctorFirstName,doctorLastName,doctorphoneNumber,doctorAddress,relationToPerson);
+
+        System.out.println("\nEmergency Contacts");
+        ArrayList<Contact> emergencyContacts = new ArrayList<>();
+        boolean moreContacts = true;
+        while(moreContacts){
+            String contactFirstName = get("First Name");
+            String contactLastName = get("Last Name");
+            String conatctphoneNumber = get("Phone Number");
+            String contactAddress = get("Email Address");
+            String conatctrelationToPerson = get("Relation To Person");
+            Contact contact = new Contact(contactFirstName, contactLastName, conatctphoneNumber, contactAddress, conatctrelationToPerson);
+            emergencyContacts.add(contact);
+            String answer = get("Would you like to add more emergency contacts?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    moreContacts = false;
+        }
+
+        Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, dateOfBirth, emergencyContacts, pediatrician, loginInfo);
+        counselorList.addCounselor(counselor);
     }
 
     public boolean qualifiesForDiscount()

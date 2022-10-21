@@ -12,8 +12,8 @@ public class CampButterfliesDriver {
     /**
      * Creates the driver and initializes the scanner
      */
-    public CampButterfliesDriver(){
-        //facade = new CampFacade(null, null, null, null, null);
+    public CampButterfliesDriver(CampFacade facade){
+        this.facade = facade;
         scan = new Scanner(System.in);
 
 
@@ -25,16 +25,15 @@ public class CampButterfliesDriver {
         homepageOptions[3] = "Contact the Camp";
         homepageOptions[4] = "Create an Account";
         homepageOptions[5] = "Login";
-        homepageOptions[6] = "View other camps";
+        homepageOptions[6] = "Quit";
     }
 
     /**
      * starts running the system
      */
     public void run(){
-        
-
-        while(true){
+        boolean running = true;
+        while(running){
             homepage();
             int choice = getChoice(homepageOptions.length-1);
             
@@ -44,7 +43,7 @@ public class CampButterfliesDriver {
 
             switch(choice){
                 case 1:
-                    //facade.getActivities();
+                    facade.getActivities();
                     //backToHomepage();
                     break;
                 case 2:
@@ -60,12 +59,15 @@ public class CampButterfliesDriver {
                     //backToHomepage();
                     break;
                 case 5:
-                    //register
+                    createAccount();
                     break;
                 case 6:
                     //login
                     break;
-
+                case 7:
+                    System.out.println("Have a good day!");
+                    running = false;
+                    break;
             }                       
             
 
@@ -83,15 +85,15 @@ public class CampButterfliesDriver {
 		try {
 			choice = Integer.parseInt(scan.nextLine());
 		} catch (Exception e) {
-            clear();
+           //clear();
 			System.out.println("You need to enter a valid number\n");
 			return -1;
 		}
 
-		clear();
+		//clear();
 
 		if (choice < 1 || choice > range) {
-			clear();
+			///clear();
 			System.out.println("Sorry, your option is not in the valid range.\n");
 			return -1;
 		}
@@ -136,22 +138,38 @@ public class CampButterfliesDriver {
                             "\tRegsistered for Multiple Weeks - 10% off");
     }
 
+    /**
+     * Prints out the campscontact information
+     */
     private void contact(){
         System.out.println("Contact us with any questions or concerns\n" +
                             "Phone Number: 555-123-CAMP\n" +
                             "Email: help@campbutterflies.org");
     }
 
-    private void creatAccount(){
-        
+    /**
+     * Lets the user create a new account
+     */
+    private void createAccount(){
+        System.out.println("Would you like to create a \n1. Parent Account \n2. Counselor Account");
+        int choice = scan.nextInt();
+        switch(choice){
+            case 1:
 
-        
+        }
     }
 
 
 
     public static void main(String[] args){
-        CampButterfliesDriver driver = new CampButterfliesDriver();
+        CampList campList = CampList.getInstance();
+        CamperList camperList = CamperList.getInstance();
+        UserList userList = UserList.getInstance();
+        CounselorList counselorList = CounselorList.getInstance();
+        DirectorList directorList = DirectorList.getInstance();
+
+        CampFacade facade = new CampFacade(campList, camperList, userList, counselorList, directorList);
+        CampButterfliesDriver driver = new CampButterfliesDriver(facade);
         driver.run();
     }
 }

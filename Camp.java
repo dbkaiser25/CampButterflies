@@ -9,7 +9,7 @@ public class Camp
     private  HashMap<Integer, Week> masterSchedule;
     private ArrayList<Activity> activities;
 
-    public Camp()
+    public Camp(String name, String description, HashMap<Integer, Week> masterSchedule, ArrayList<Activity> activities)
     {
         //TODO figure out Calendar constructor
     }

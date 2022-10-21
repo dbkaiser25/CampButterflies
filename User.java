@@ -7,7 +7,7 @@ public class User extends Person
 {
     //private UUID uuid;  This is inherited from person
     private LoginInfo userLogin;
-    private ArrayList<Camper> campers = new ArrayList();
+    private ArrayList<Camper> campers = new ArrayList<Camper>();
     
     //Constructor without UUID
     public User(String firstName, String lastName, String dateOfBirth, 
@@ -16,6 +16,7 @@ public class User extends Person
         super(firstName,lastName,dateOfBirth,homeAddress);
         this.userLogin = userLogin;
         this.campers = campers;
+        uuid = UUID.randomUUID();
     }
 
     //Constructor with UUID

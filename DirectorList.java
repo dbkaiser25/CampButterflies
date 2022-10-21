@@ -3,12 +3,13 @@ import java.util.UUID;
 
 public class DirectorList 
 {
-    private ArrayList<Director> directors;   
+    private ArrayList<Director> directors = new ArrayList<Director>(); 
     private static DirectorList directorList;
 
     private DirectorList()
     {
-        directors = new ArrayList<Director>();
+        //directors = new ArrayList<Director>();
+        directors = DataLoader.loadDirectors(); 
     }
     
     public static DirectorList getInstance()
@@ -19,7 +20,6 @@ public class DirectorList
         }
         return directorList;
     }
-
     public boolean addDirector(Director director)
     {
         if(director == null)
@@ -50,7 +50,9 @@ public class DirectorList
         }
         return null;
     }
-
+    public ArrayList<Director> getDirectors() {
+        return directors; 
+    }
     public Director getDirector()
     {
         return null;
@@ -63,6 +65,6 @@ public class DirectorList
 
     public void saveDirector()
     {
-    
+        DataWriter.saveDirectors(); 
     }
 }

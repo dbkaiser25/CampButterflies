@@ -4,7 +4,7 @@
         "description": "mountain camping",
         "weeks":[
             {
-                "camp_week_number":1,
+                "week_number":1,
                 "theme":"nature",
                 "groups":[
                     {

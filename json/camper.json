@@ -7,18 +7,18 @@
     "homeAddress": "20 Windy Street, Downingtown, PA, 19425",
     "sex": "Female",
     "allergies":["peanut", "strawberries"],
-    "medicalInfo": [{
-      "med_name" : "peanut allergy",
-      "med_medication" : "epipen", 
-      "med_dosage" : "one shot"
+    "medications": [{
+      "dosage" : "one shot",
+      "type" : "epipen", 
+      "time" : "when allergy occurs"
       }
     ],
     "contacts": [
       {
-        "contact_firstName": "Alan",
-        "contact_lastName": "Smith",
-        "contact_phoneNumber": "315-934-2048",
-        "contact_emailAddress": "asmith@gmail.com",
+        "firstName": "Alan",
+        "lastName": "Smith",
+        "phoneNumber": "315-934-2048",
+        "emailAddress": "asmith@gmail.com",
         "relationtoPerson": "Father"
       },
       {

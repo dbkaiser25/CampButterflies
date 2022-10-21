@@ -3,15 +3,14 @@ import java.util.UUID;
 
 public class CounselorList 
 {
-    private ArrayList<Counselor> counselors;
+    private ArrayList<Counselor> counselors = new ArrayList<Counselor>(); 
     //private ArrayList<Counselor> conselors = new ArrayList();
     private static CounselorList counselorList;
 
     private CounselorList()
     {
-        counselors = new ArrayList<Counselor>();
         //counselors = new ArrayList<Counselor>();
-        // add constructor
+        DataLoader.loadCounselors(); 
     }
 
     public static CounselorList getInstance()
@@ -63,7 +62,11 @@ public class CounselorList
     }    
     public void saveCounselor()
     {
+        DataWriter.saveCounselors();
+    }
 
+    public ArrayList<Counselor> getCounselors() {
+        return counselors;
     }
 
 
