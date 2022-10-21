@@ -37,7 +37,7 @@ public class CounselorList
     }
 
     //returns a counselor in the list with the given userName
-    public Counselor getCounselorByUsername(String userName)
+    public Counselor getCounselorByUserName(String userName)
     {
         for(Counselor c: counselors)
         {
