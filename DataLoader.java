@@ -192,6 +192,8 @@ public class DataLoader extends DataConstants{
                 String password = (String)directorJSON.get(PASSWORD);
                 LoginInfo directorLogin = new LoginInfo(userName, password);  
 
+                
+
                 directors.add(new Director(id, firstName, lastName, dateOfBirth, homeAddress, directorLogin));
             }
             return directors; 
