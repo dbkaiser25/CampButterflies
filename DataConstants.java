@@ -30,6 +30,9 @@ public abstract class DataConstants {
     protected static final String CALENDAR = "calendar"; 
     protected static final String SELECTED_GROUPS = "group";
     protected static final String ACTIVITY_LIST = "activity_list"; 
+    protected static final String CALENDAR_HASH = "calendar_hash";
+    protected static final String 
+
 
     protected static final String USER_FILE = "user.json"; 
     protected static final String ID = "id"; 
