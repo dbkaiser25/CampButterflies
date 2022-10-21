@@ -18,7 +18,7 @@ public abstract class DataConstants {
     protected static final String CAMP_FILE = "camp.json"; 
     protected static final String DESCRIPTION = "description"; 
     protected static final String WEEK = "weeks"; 
-    protected static final String WEEKS_NUM = "week_number"; 
+    protected static final String WEEK_NUM = "week_number"; 
     protected static final String THEME = "theme"; 
     protected static final String GROUPS = "groups"; 
     protected static final String DAILY_ACTIVITIES = "daily_activities"; 
@@ -39,7 +39,7 @@ public abstract class DataConstants {
     protected static final String END_DATE = "end_date";
     protected static final String ISFULL = "isFull"; 
     protected static final String ALL_ACTIVITIES = "all_activities"; 
-    
+
 
 
 

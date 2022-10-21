@@ -192,7 +192,51 @@ public class DataLoader extends DataConstants{
                 String password = (String)directorJSON.get(PASSWORD);
                 LoginInfo directorLogin = new LoginInfo(userName, password);  
 
-                
+                JSONArray jsonCalendar = (JSONArray)directorJSON.get(CALENDAR); 
+                Calendar calendar = new Calendar(); 
+                for(int j=0;j<jsonCalendar.size();j++) {
+                    JSONObject calendarJSON = (JSONObject)jsonCalendar.get(j); 
+                    // HashMap<Integer,Week> calendarHash = (HashMap<Integer,Week>)calendarJSON.get(CALENDAR_HASH);
+                    JSONArray jsonHash = (JSONArray)calendarJSON.get(CALENDAR_HASH); 
+                    HashMap<Integer, Week> hashMap = new HashMap<Integer, Week>(); 
+                    Integer week_num = (Integer)calendarJSON.get(WEEK_NUM);
+                    Week week = (Week)calendarJSON.get(WEEK); 
+                    for(int k=0;k<jsonHash.size();k++) {
+                        JSONObject weekJSON = (JSONObject)jsonHash.get(k); 
+                        String theme = (String)weekJSON.get(THEME); 
+                        ArrayList<Group> groups = new ArrayList<Group>(); 
+                        JSONArray groupsJSON = (JSONArray)weekJSON.get(GROUPS); 
+                        for(int l=0;l<groupsJSON.size();l++) {
+                            JSONObject jsonGroup = (JSONObject)groupsJSON.get(l); 
+                            int number = (int)jsonGroup.get(GROUP_NUM); //see if this has to be a UUID 
+                            UUID counselorUUID = UUID.fromString((String)jsonGroup.get(COUNSELOR_ID));
+                            Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
+                            ArrayList<Camper> campersList = new ArrayList<Camper>();
+                            JSONArray campers = (JSONArray)jsonGroup.get(GROUP_CAMPERS);
+                            /*
+                            * Loop through json array of camper uuids
+                            * Camper camper = CamperList.getInstance().getCamperByUUID(id);
+                            */
+                            for(int m=0;m<campers.size();m++)
+                            {
+                                UUID camperID = UUID.fromString((String)campers.get(j));
+                                Camper camper = CamperList.getInstance().getCamperByUUID(camperID); 
+                                campersList.add(camper);
+                            }
+                            groups.add(new Group(counselor, campersList));//see if we need group number in constructor as well 
+                        }
+                        ArrayList<Counselor> week_counselors = new ArrayList<Counselor>(); 
+                        JSONArray counselorsJSON = (JSONArray)weekJSON.get(WEEK_COUNSELORS);
+                        for(int l=0;l<counselorsJSON.size();l++) {
+                            
+                        }
+                    }
+                    /*
+                     * figure out how to add to hashMap 
+                     */
+                    ArrayList<Activity> activities = new ArrayList<Activity>(); 
+                    calendar = new Calendar(hashMap, activities); 
+                }
 
                 directors.add(new Director(id, firstName, lastName, dateOfBirth, homeAddress, directorLogin));
             }
