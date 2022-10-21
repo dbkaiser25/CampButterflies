@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class User extends Person
 {
-    private UUID uuid;  
+    //private UUID uuid;  This is inherited from person
     private LoginInfo userLogin;
     private ArrayList<Camper> campers = new ArrayList();
     
@@ -25,14 +25,6 @@ public class User extends Person
         super(uuid,firstName,lastName,dateOfBirth,homeAddress);
         this.userLogin = userLogin;
         this.campers = campers;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
     }
 
     public LoginInfo getUserLogin() {
@@ -119,6 +111,7 @@ public class User extends Person
                 }
             }
         }
+        //this method is great and all but does it need to add the camper or something to a camperList?
     }
 
     //TODO consider deleating

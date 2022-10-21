@@ -133,7 +133,13 @@ public class Counselor extends Person
     {
         String temp = new String();
 
-        //This really looks like it should be a loop but i can't figure out a way to increment the days of the week in a way thats faster than this
+        //This is way cleaner if it works
+        for(DayOfWeek day: DayOfWeek.values())
+        {
+            temp = temp + getActivities(group, day) + "\n"; 
+        }
+        //old implementation
+        /* 
         temp = getActivities(group, DayOfWeek.SUNDAY);
         temp = temp + "\n" + getActivities(group, DayOfWeek.MONDAY);
         temp = temp + "\n" + getActivities(group, DayOfWeek.TUESDAY);
@@ -141,6 +147,7 @@ public class Counselor extends Person
         temp = temp + "\n" + getActivities(group, DayOfWeek.THURSDAY);
         temp = temp + "\n" + getActivities(group, DayOfWeek.FRIDAY);
         temp = temp + "\n" + getActivities(group, DayOfWeek.SATURDAY);
+        */
         return temp;
     }
 
