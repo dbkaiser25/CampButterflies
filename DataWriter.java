@@ -8,6 +8,10 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
 
+    public static void main(String[] args) {
+        saveCampers();
+    }
+
     public static void saveCampers() {
         CamperList campers = CamperList.getInstance();
         ArrayList<Camper> camperList = campers.getCampers();
@@ -195,14 +199,12 @@ public class DataWriter extends DataConstants {
      */
     public static void saveCamp() {
 
-        CampList camps = CampList.getInstance(); 
-        Array
+        CampList camps = CampList.getInstance();
 
         try (FileWriter file = new FileWriter(CAMP_FILE)) {
-            file.write(jsonCamp.toJSONString()); 
-            file.flush(); 
-        }
-        catch (IOException e){ 
+            file.write(jsonCamp.toJSONString());
+            file.flush();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

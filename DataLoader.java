@@ -15,7 +15,7 @@ public class DataLoader extends DataConstants {
         }
     }
 
-    public static ArrayList<Camper> loadCampers() { // tested: just have to cast String to enum in "sex"
+    public static ArrayList<Camper> loadCampers() { // tested: works
         ArrayList<Camper> campers = new ArrayList<Camper>();
 
         try {
@@ -29,8 +29,8 @@ public class DataLoader extends DataConstants {
                 String lastName = (String) camperJSON.get(LASTNAME);
                 String dateOfBirth = (String) camperJSON.get(DOB);
                 String homeAddress = (String) camperJSON.get(HOMEADDRESS);
-                // Sex sex = (Sex) camperJSON.get(GENDER); //have to cast string to enum
-                Sex sex = Sex.FEMALE;
+                String gender = (String) camperJSON.get(GENDER);
+                Sex sex = Sex.valueOf(gender.toUpperCase());
                 JSONArray allergiesJson = (JSONArray) camperJSON.get(ALLERGIES);
                 ArrayList<String> allergies = new ArrayList<String>();
                 for (int j = 0; j < allergiesJson.size(); j++) {
@@ -198,75 +198,86 @@ public class DataLoader extends DataConstants {
                     String campDescription = (String) calendarJSON.get(DESCRIPTION);
                     JSONArray jsonHash = (JSONArray) calendarJSON.get(CALENDAR_HASH);
                     HashMap<Integer, Week> masterScheduleHash = new HashMap<Integer, Week>();
-                    Integer week_num = ((Long) calendarJSON.get(WEEK_NUM)).intValue(); // have to convert from int to
-                                                                                       // long
-                    JSONObject weekJSON = (JSONObject) calendarJSON.get(WEEK);
-                    String theme = (String) weekJSON.get(THEME);
-                    ArrayList<Group> groups = new ArrayList<Group>();
-                    JSONArray groupsJSON = (JSONArray) weekJSON.get(GROUPS);
-                    for (int l = 0; l < groupsJSON.size(); l++) {
-                        JSONObject jsonGroup = (JSONObject) groupsJSON.get(l);
-                        UUID groupNum = UUID.fromString((String) jsonGroup.get(GROUP_ID));
-                        UUID counselorUUID = UUID.fromString((String) jsonGroup.get(COUNSELOR_ID));
-                        Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
-                        ArrayList<Camper> campersList = new ArrayList<Camper>();
-                        JSONArray campers = (JSONArray) jsonGroup.get(GROUP_CAMPERS);
-                        /*
-                         * Loop through json array of camper uuids
-                         * Camper camper = CamperList.getInstance().getCamperByUUID(id);
-                         */
-                        for (int m = 0; m < campers.size(); m++) {
-                            JSONObject camperUUID = (JSONObject) campers.get(m);
-                            UUID camperID = UUID.fromString((String) camperUUID.get(ID));
-                            Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
-                            campersList.add(camper);
-                        }
-                        JSONArray group_schedule = (JSONArray) jsonGroup.get(GROUP_SCHEDULE);
-                        HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek, ArrayList<Activity>>();
-                        for (int m = 0; m < group_schedule.size(); m++) {
-                            JSONObject scheduleJSON = (JSONObject) group_schedule.get(m);
-                            String dayOfWeek = (String) scheduleJSON.get(DAY_OF_WEEK); // convert from String to enum
-                            JSONArray activitiesJSON = (JSONArray) scheduleJSON.get(DAILY_ACTIVITIES);
-                            ArrayList<Activity> dailyActivities = new ArrayList<Activity>();
-                            for (int n = 0; n < activitiesJSON.size(); n++) {
-                                JSONObject thisActivity = (JSONObject) activitiesJSON.get(n);
-                                String activityName = (String) thisActivity.get(NAME);
-                                String activityLocaiton = (String) thisActivity.get(LOCATION);
-                                String activityDescription = (String) thisActivity.get(DESCRIPTION);
-                                dailyActivities.add(new Activity(activityName, activityLocaiton, activityDescription));
-                            }
-                            // figure out how to add to hashMap; not implemented yet
-                        }
-                        groups.add(new Group(counselor, campersList));
-                        System.out.println("Group added");
-                    }
-                    ArrayList<Counselor> week_counselors = new ArrayList<Counselor>();
-                    JSONArray counselorsJSON = (JSONArray) weekJSON.get(WEEK_COUNSELORS);
-                    for (int l = 0; l < counselorsJSON.size(); l++) {
-                        JSONObject counselorJSONID = (JSONObject) counselorsJSON.get(l);
-                        UUID counselorID = UUID.fromString((String) counselorJSONID.get(ID));
-                        Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorID);
-                        week_counselors.add(counselor);
-                    }
-                    ArrayList<Camper> week_campers = new ArrayList<Camper>();
-                    JSONArray campersJSON = (JSONArray) weekJSON.get(WEEK_CAMPERS);
-                    for (int l = 0; l < campersJSON.size(); l++) {
-                        JSONObject camperJSONID = (JSONObject) campersJSON.get(l);
-                        UUID camperUUID = UUID.fromString((String) camperJSONID.get(ID));
-                        Camper camper = CamperList.getInstance().getCamperByUUID(camperUUID);
-                        week_campers.add(camper);
-                    }
 
-                    /*
-                     * convert all three of these to Date/boolean
-                     */
-                    String startDate = (String) weekJSON.get(START_DATE);
-                    String endDate = (String) weekJSON.get(END_DATE);
-                    String isFull = (String) weekJSON.get(ISFULL);
-                    Week week = new Week(theme, groups, week_counselors, week_campers, null, null, true);
-                    /*
-                     * figure out how to add to hashMap
-                     */
+                    for (int k = 0; k < jsonHash.size(); k++) {
+                        // Integer week_num = ((Integer) calendarJSON.get(WEEK_NUM)).intValue(); // have
+                        // to convert from int to
+                        Integer week_num = 1;
+                        // Long weekNum = new Long(Integer.valueOf(week_num));
+                        JSONObject JSONWeek = (JSONObject) jsonHash.get(k);
+                        JSONObject weekJSON = (JSONObject) JSONWeek.get(WEEK);
+                        String theme = (String) weekJSON.get(THEME);
+                        ArrayList<Group> groups = new ArrayList<Group>();
+                        JSONArray groupsJSON = (JSONArray) weekJSON.get(GROUPS);
+                        for (int l = 0; l < groupsJSON.size(); l++) {
+                            JSONObject jsonGroup = (JSONObject) groupsJSON.get(l);
+                            UUID groupNum = UUID.fromString((String) jsonGroup.get(GROUP_ID));
+                            UUID counselorUUID = UUID.fromString((String) jsonGroup.get(COUNSELOR_ID));
+                            Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
+                            ArrayList<Camper> campersList = new ArrayList<Camper>();
+                            JSONArray campers = (JSONArray) jsonGroup.get(GROUP_CAMPERS);
+                            /*
+                             * Loop through json array of camper uuids
+                             * Camper camper = CamperList.getInstance().getCamperByUUID(id);
+                             */
+                            for (int m = 0; m < campers.size(); m++) {
+                                JSONObject camperUUID = (JSONObject) campers.get(m);
+                                UUID camperID = UUID.fromString((String) camperUUID.get(ID));
+                                Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
+                                campersList.add(camper);
+                            }
+                            // JSONArray group_schedule = (JSONArray) jsonGroup.get(GROUP_SCHEDULE);
+                            // HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek,
+                            // ArrayList<Activity>>();
+                            // for (int m = 0; m < group_schedule.size(); m++) {
+                            // JSONObject scheduleJSON = (JSONObject) group_schedule.get(m);
+                            // String dayOfWeek = (String) scheduleJSON.get(DAY_OF_WEEK);
+                            // DayOfWeek day = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
+                            // JSONArray activitiesJSON = (JSONArray) scheduleJSON.get(DAILY_ACTIVITIES);
+                            // ArrayList<Activity> dailyActivities = new ArrayList<Activity>();
+                            // for (int n = 0; n < activitiesJSON.size(); n++) {
+                            // JSONObject thisActivity = (JSONObject) activitiesJSON.get(n);
+                            // String activityName = (String) thisActivity.get(NAME);
+                            // String activityLocaiton = (String) thisActivity.get(LOCATION);
+                            // String activityDescription = (String) thisActivity.get(DESCRIPTION);
+                            // dailyActivities
+                            // .add(new Activity(activityName, activityLocaiton, activityDescription));
+                            // }
+                            // groupHashMap.put(day, dailyActivities);
+                            // // figure out how to add to hashMap; not implemented yet
+                            // }
+                            // groups.add(new Group(counselor, campersList, groupHashMap));
+                        }
+                        ArrayList<Counselor> week_counselors = new ArrayList<Counselor>();
+                        JSONArray counselorsJSON = (JSONArray) weekJSON.get(WEEK_COUNSELORS);
+                        for (int l = 0; l < counselorsJSON.size(); l++) {
+                            JSONObject counselorJSONID = (JSONObject) counselorsJSON.get(l);
+                            UUID counselorID = UUID.fromString((String) counselorJSONID.get(ID));
+                            Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorID);
+                            week_counselors.add(counselor);
+                        }
+                        ArrayList<Camper> week_campers = new ArrayList<Camper>();
+                        JSONArray campersJSON = (JSONArray) weekJSON.get(WEEK_CAMPERS);
+                        for (int l = 0; l < campersJSON.size(); l++) {
+                            JSONObject camperJSONID = (JSONObject) campersJSON.get(l);
+                            UUID camperUUID = UUID.fromString((String) camperJSONID.get(ID));
+                            Camper camper = CamperList.getInstance().getCamperByUUID(camperUUID);
+                            week_campers.add(camper);
+                        }
+
+                        /*
+                         * convert all three of these to Date/boolean
+                         */
+                        String startDate = (String) weekJSON.get(START_DATE);
+                        String endDate = (String) weekJSON.get(END_DATE);
+                        String isFull = (String) weekJSON.get(ISFULL);
+                        Week week = new Week(theme, groups, week_counselors, week_campers, null, null, true);
+
+                        masterScheduleHash.put(week_num, week);
+                        /*
+                         * figure out how to add to hashMap
+                         */
+                    }
                     ArrayList<Activity> activities = new ArrayList<Activity>();
                     JSONArray activitiesJSON = (JSONArray) calendarJSON.get(ALL_ACTIVITIES);
                     for (int l = 0; l < activitiesJSON.size(); l++) {
@@ -276,7 +287,6 @@ public class DataLoader extends DataConstants {
                         String description = (String) activity.get(DESCRIPTION);
                         activities.add(new Activity(name, location, description));
                     }
-
                     calendar = new Calendar(masterScheduleHash, activities);
                 }
 
@@ -289,9 +299,6 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    /*
-     * this is the hardest part. See if you can figure this out Friday
-     */
     public static ArrayList<Camp> loadCamps() {
         ArrayList<Camp> camps = new ArrayList<Camp>();
 
@@ -332,7 +339,8 @@ public class DataLoader extends DataConstants {
                     HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek, ArrayList<Activity>>();
                     for (int m = 0; m < group_schedule.size(); m++) {
                         JSONObject scheduleJSON = (JSONObject) group_schedule.get(m);
-                        String dayOfWeek = (String) scheduleJSON.get(DAY_OF_WEEK); // convert from String to enum
+                        String dayOfWeek = (String) scheduleJSON.get(DAY_OF_WEEK);
+                        DayOfWeek day = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
                         JSONArray activitiesJSON = (JSONArray) scheduleJSON.get(DAILY_ACTIVITIES);
                         ArrayList<Activity> dailyActivities = new ArrayList<Activity>();
                         for (int n = 0; n < activitiesJSON.size(); n++) {
@@ -370,7 +378,7 @@ public class DataLoader extends DataConstants {
                 String startDate = (String) weekJSON.get(START_DATE);
                 String endDate = (String) weekJSON.get(END_DATE);
                 String isFull = (String) weekJSON.get(ISFULL);
-                Week week = new Week(theme, groups, week_counselors, week_campers, null, null, true);
+                Week week = new Week(theme, groups, week_counselors, week_campers, null, null, true);// must update this
                 /*
                  * figure out how to add to hashMap
                  */

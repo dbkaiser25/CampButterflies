@@ -17,14 +17,14 @@ public abstract class DataConstants {
 
     protected static final String CAMP_FILE = "json/camp.json";
     protected static final String DESCRIPTION = "description";
-    protected static final String WEEK = "weeks";
+    protected static final String WEEK = "week";
     protected static final String WEEK_NUM = "week_number";
     protected static final String THEME = "theme";
     protected static final String GROUPS = "groups";
     protected static final String DAILY_ACTIVITIES = "daily_activities";
     protected static final String LOCATION = "location";
     protected static final String CAMPERS = "group_campers";
-    protected static final String COUNSELOR_ID = "CounselorID";
+    protected static final String COUNSELOR_ID = "counselorUUID";
     protected static final String TEST = "Test";
 
     protected static final String DIRECTOR_FILE = "json/director.json";

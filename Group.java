@@ -21,10 +21,11 @@ public class Group {
      * @param counselor A counselor to be in charge of the group
      * @param campers   A list of campers who are apart of the group
      */
-    public Group(Counselor counselor, ArrayList<Camper> campers) {
+    public Group(Counselor counselor, ArrayList<Camper> campers, HashMap<DayOfWeek, ArrayList<Activity>> schedule) {
         this.uuid = UUID.randomUUID();
         this.counselor = counselor;
         this.campers = campers;
+        this.schedule = schedule;
     }
 
     // TODO figure out if JSON or something else needs this
@@ -53,8 +54,8 @@ public class Group {
     }
 
     // TODO do we need this
-    public Camper getCamper(int num) {
-        return campers.get(num);
+    public Camper getCamper(UUID id) {
+        return campers.get(id);
     }
 
     // or this instead
