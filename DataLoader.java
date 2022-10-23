@@ -351,11 +351,11 @@ public class DataLoader extends DataConstants {
                         for (int n = 0; n < activitiesJSON.size(); n++) {
                             JSONObject thisActivity = (JSONObject) activitiesJSON.get(n);
                             String activityName = (String) thisActivity.get(NAME);
-                            String activityLocaiton = (String) thisActivity.get(LOCATION);
+                            String activityLocation = (String) thisActivity.get(LOCATION);
                             String activityDescription = (String) thisActivity.get(DESCRIPTION);
-                            dailyActivities.add(new Activity(activityName, activityLocaiton, activityDescription));
+                            dailyActivities.add(new Activity(activityName, activityLocation, activityDescription));
                         }
-                        // figure out how to add to hashMap; not implemented yet
+                        groupHashMap.put(day, dailyActivities);
                     }
                     groups.add(new Group(counselor, campersList, groupHashMap));
                     System.out.println("Group added");
@@ -396,7 +396,7 @@ public class DataLoader extends DataConstants {
                     String description = (String) activity.get(DESCRIPTION);
                     activities.add(new Activity(name, location, description));
                 }
-
+                masterScheduleHash.put(week_num, week);
                 camps.add(new Camp(campName, campDescription, masterScheduleHash, activities));
             }
             return camps;

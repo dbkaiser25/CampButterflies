@@ -260,6 +260,20 @@ public class DataWriter extends DataConstants {
     }
 
     private static Object getCampJSON(Camp camp) {
+        JSONObject campDetails = new JSONObject();
+        campDetails.put(NAME, camp.getName());
+        campDetails.put(DESCRIPTION, camp.getDescription());
 
+        JSONArray masterScheduleJSON = new JSONArray();
+        for (int i = 0; i < camp.getMasterSchedule().size(); i++) {
+            // include week number, week, week counselors, week campers, start date, end
+            // date, and is full
+            JSONObject msJSON = (JSONObject) masterScheduleJSON.get(i);
+        }
+
+        // campDetails.put(CALENDAR_HASH, camp.getMasterSchedule());
+
+        // campDetails.put(ALL_ACTIVITIES, );
+        return campDetails;
     }
 }
