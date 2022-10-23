@@ -10,7 +10,7 @@ public class Counselor extends Person {
     // TODO figure out which classes/arraylists need to be initialized here
     private String emailAddress;
     private ArrayList<Contact> emergencyContacts;
-    private Contact pediatricion;
+    private Contact pediatrician;
     private String medicalInfo;
     private String phoneNumber;
     private LoginInfo userLogin;
@@ -30,7 +30,7 @@ public class Counselor extends Person {
         super(firstName, lastName, dateOfBirth, homeAddress);
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
-        this.pediatricion = pediatricion;
+        this.pediatrician = pediatrician;
         this.phoneNumber = phoneNumber;
         this.userLogin = userLogin;
         uuid = UUID.randomUUID();
@@ -43,7 +43,7 @@ public class Counselor extends Person {
         super(uuid, firstName, lastName, dateOfBirth, homeAddress);
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
-        this.pediatricion = pediatricion;
+        this.pediatrician = pediatrician;
         this.phoneNumber = phoneNumber;
         this.userLogin = userLogin;
     }
@@ -64,12 +64,12 @@ public class Counselor extends Person {
         this.emergencyContacts = emergencyContacts;
     }
 
-    public Contact getPediatricion() {
-        return pediatricion;
+    public Contact getPediatrician() {
+        return pediatrician;
     }
 
-    public void setPediatricion(Contact pediatricion) {
-        this.pediatricion = pediatricion;
+    public void setPediatrician(Contact pediatrician) {
+        this.pediatrician = pediatrician;
     }
 
     public String getMedicalInfo() {

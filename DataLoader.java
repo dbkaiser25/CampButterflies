@@ -1,5 +1,9 @@
 import java.io.FileReader;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -9,6 +13,8 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
     public static void main(String[] args) {
+        // String date = "24/06/2003";
+        // convertToDate(date);
         ArrayList<Director> directors = DataLoader.loadDirectors();
         for (int i = 0; i < directors.size(); i++) {
             System.out.println(directors.get(i));
@@ -226,27 +232,26 @@ public class DataLoader extends DataConstants {
                                 Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
                                 campersList.add(camper);
                             }
-                            // JSONArray group_schedule = (JSONArray) jsonGroup.get(GROUP_SCHEDULE);
-                            // HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek,
-                            // ArrayList<Activity>>();
-                            // for (int m = 0; m < group_schedule.size(); m++) {
-                            // JSONObject scheduleJSON = (JSONObject) group_schedule.get(m);
-                            // String dayOfWeek = (String) scheduleJSON.get(DAY_OF_WEEK);
-                            // DayOfWeek day = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
-                            // JSONArray activitiesJSON = (JSONArray) scheduleJSON.get(DAILY_ACTIVITIES);
-                            // ArrayList<Activity> dailyActivities = new ArrayList<Activity>();
-                            // for (int n = 0; n < activitiesJSON.size(); n++) {
-                            // JSONObject thisActivity = (JSONObject) activitiesJSON.get(n);
-                            // String activityName = (String) thisActivity.get(NAME);
-                            // String activityLocaiton = (String) thisActivity.get(LOCATION);
-                            // String activityDescription = (String) thisActivity.get(DESCRIPTION);
-                            // dailyActivities
-                            // .add(new Activity(activityName, activityLocaiton, activityDescription));
-                            // }
-                            // groupHashMap.put(day, dailyActivities);
-                            // // figure out how to add to hashMap; not implemented yet
-                            // }
-                            // groups.add(new Group(counselor, campersList, groupHashMap));
+                            JSONArray group_schedule = (JSONArray) jsonGroup.get(GROUP_SCHEDULE);
+                            HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek, ArrayList<Activity>>();
+                            for (int m = 0; m < group_schedule.size(); m++) {
+                                JSONObject scheduleJSON = (JSONObject) group_schedule.get(m);
+                                String dayOfWeek = (String) scheduleJSON.get(DAY_OF_WEEK);
+                                DayOfWeek day = DayOfWeek.valueOf(dayOfWeek.toUpperCase());
+                                JSONArray activitiesJSON = (JSONArray) scheduleJSON.get(DAILY_ACTIVITIES);
+                                ArrayList<Activity> dailyActivities = new ArrayList<Activity>();
+                                for (int n = 0; n < activitiesJSON.size(); n++) {
+                                    JSONObject thisActivity = (JSONObject) activitiesJSON.get(n);
+                                    String activityName = (String) thisActivity.get(NAME);
+                                    String activityLocaiton = (String) thisActivity.get(LOCATION);
+                                    String activityDescription = (String) thisActivity.get(DESCRIPTION);
+                                    dailyActivities
+                                            .add(new Activity(activityName, activityLocaiton, activityDescription));
+                                }
+                                groupHashMap.put(day, dailyActivities);
+                                // figure out how to add to hashMap; not implemented yet
+                            }
+                            groups.add(new Group(counselor, campersList, groupHashMap));
                         }
                         ArrayList<Counselor> week_counselors = new ArrayList<Counselor>();
                         JSONArray counselorsJSON = (JSONArray) weekJSON.get(WEEK_COUNSELORS);
@@ -352,7 +357,7 @@ public class DataLoader extends DataConstants {
                         }
                         // figure out how to add to hashMap; not implemented yet
                     }
-                    groups.add(new Group(counselor, campersList));
+                    groups.add(new Group(counselor, campersList, groupHashMap));
                     System.out.println("Group added");
                 }
                 ArrayList<Counselor> week_counselors = new ArrayList<Counselor>();
@@ -396,6 +401,23 @@ public class DataLoader extends DataConstants {
             }
             return camps;
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Date convertToDate(String date) {
+        /*
+         * ask how to convert Strings to Dates
+         */
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date newDate;
+        try {
+            newDate = format.parse(date);
+            System.out.println(newDate);
+            // return newDate;
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;

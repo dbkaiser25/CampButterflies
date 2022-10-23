@@ -9,10 +9,10 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
-        saveCampers();
+
     }
 
-    public static void saveCampers() {
+    public static void saveCampers() { // finished not tested
         CamperList campers = CamperList.getInstance();
         ArrayList<Camper> camperList = campers.getCampers();
         JSONArray jsonCampers = new JSONArray();
@@ -33,19 +33,62 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    public static JSONObject getCamperJSON(Camper camper) {
+    public static JSONObject getCamperJSON(Camper camper) { // finished not tested
         JSONObject camperDetails = new JSONObject();
         camperDetails.put(ID, camper.getUUID().toString());
         camperDetails.put(FIRSTNAME, camper.getFirstName());
         camperDetails.put(LASTNAME, camper.getLastName());
         camperDetails.put(HOMEADDRESS, camper.getHomeAddress());
         camperDetails.put(DOB, camper.getDateOfBirth()); // TODO fix DOB
-        camperDetails.put(GENDER, camper.getSex()); // TODO convert String to enum
-
-        camperDetails.put(MEDICATIONS, camper.getMedications());
-        camperDetails.put(ALLERGIES, camper.getAllergies());
-        camperDetails.put(CONTACTS, camper.getEmergencyContacts());
-        camperDetails.put(PEDIATRICIAN, camper.getPediatrician());
+        Sex sex = camper.getSex();
+        String gender = sex.toString();
+        camperDetails.put(GENDER, gender);
+        JSONArray allergiesJSON = new JSONArray();
+        for (int i = 0; i < camper.getAllergies().size(); i++) {
+            String allergy = camper.getAllergies().get(i);
+            allergiesJSON.add(allergy);
+        }
+        camperDetails.put(ALLERGIES, allergiesJSON);
+        JSONArray medicationsJSON = new JSONArray();
+        for (int i = 0; i < camper.getMedications().size(); i++) {
+            String dosage = camper.getMedications().get(i).getDose();
+            camperDetails.put(DOSAGE, dosage);
+            String type = camper.getMedications().get(i).getType();
+            camperDetails.put(TYPE, type);
+            String time = camper.getMedications().get(i).getTime();
+            camperDetails.put(TIME, time);
+            medicationsJSON.add(new Medication(type, dosage, time));
+        }
+        camperDetails.put(MEDICATIONS, medicationsJSON);
+        JSONArray contactsJSON = new JSONArray();
+        for (int i = 0; i < camper.getEmergencyContacts().size(); i++) {
+            JSONObject contactObj = (JSONObject) contactsJSON.get(i);
+            String firstName = camper.getEmergencyContacts().get(i).getFirstName();
+            contactObj.put(FIRSTNAME, firstName);
+            String lastName = camper.getEmergencyContacts().get(i).getLastName();
+            contactObj.put(LASTNAME, lastName);
+            String phoneNumber = camper.getEmergencyContacts().get(i).getPhoneNumber();
+            contactObj.put(PHONE_NUM, phoneNumber);
+            String email = camper.getEmergencyContacts().get(i).getEmailAddress();
+            contactObj.put(EMAIL, email);
+            String relationtoPerson = camper.getEmergencyContacts().get(i).getRelationToPerson();
+            contactObj.put(CONT_RELATION_TO_PERSON, relationtoPerson);
+            contactsJSON.add(new Contact(firstName, lastName, phoneNumber, email, relationtoPerson));
+        }
+        camperDetails.put(CONTACTS, contactsJSON);
+        // see if this works
+        JSONObject pediatricianJSON = new JSONObject();
+        String firstName = camper.getPediatrician().getFirstName();
+        String lastName = camper.getPediatrician().getLastName();
+        String phoneNumber = camper.getPediatrician().getPhoneNumber();
+        String email = camper.getPediatrician().getEmailAddress();
+        String relationToPerson = camper.getPediatrician().getRelationToPerson();
+        pediatricianJSON.put(FIRSTNAME, firstName);
+        pediatricianJSON.put(LASTNAME, lastName);
+        pediatricianJSON.put(PHONE_NUM, phoneNumber);
+        pediatricianJSON.put(EMAIL, email);
+        pediatricianJSON.put(CONT_RELATION_TO_PERSON, relationToPerson);
+        camperDetails.put(PEDIATRICIAN, pediatricianJSON);
 
         return camperDetails;
     }
@@ -53,7 +96,7 @@ public class DataWriter extends DataConstants {
     /*
      * creating save-users and helper getUSERJSON methods
      */
-    public static void saveUsers() {
+    public static void saveUsers() { // finished not tested
         UserList users = UserList.getInstance();
         ArrayList<User> userList = users.getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -71,7 +114,7 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    private static JSONObject getUserJSON(User user) {
+    private static JSONObject getUserJSON(User user) { // finished not testeed
         JSONObject userDetails = new JSONObject();
         userDetails.put(ID, user.getUuid().toString());
         userDetails.put(FIRSTNAME, user.getFirstName());
@@ -96,7 +139,7 @@ public class DataWriter extends DataConstants {
     /*
      * create saveCounselors and getCounselorsJSON methods
      */
-    public static void saveCounselors() {
+    public static void saveCounselors() { // finished not tested
         CounselorList counselors = CounselorList.getInstance();
         ArrayList<Counselor> counselorList = counselors.getCounselors();
         JSONArray jsonCounselors = new JSONArray();
@@ -113,7 +156,7 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    public static JSONObject getCounselorJSON(Counselor counselor) {
+    public static JSONObject getCounselorJSON(Counselor counselor) { // finished not tested- still need to do date's
         JSONObject counselorDetails = new JSONObject();
         counselorDetails.put(ID, counselor.getUUID().toString());
         counselorDetails.put(FIRSTNAME, counselor.getFirstName());
@@ -129,33 +172,34 @@ public class DataWriter extends DataConstants {
 
         JSONArray contactsJSON = new JSONArray();
         for (int i = 0; i < counselor.getEmergencyContacts().size(); i++) {
+            JSONObject contactObj = (JSONObject) contactsJSON.get(i);
             String firstName = counselor.getEmergencyContacts().get(i).getFirstName();
-            counselorDetails.put(FIRSTNAME, firstName);
+            contactObj.put(FIRSTNAME, firstName);
             String lastName = counselor.getEmergencyContacts().get(i).getLastName();
-            counselorDetails.put(LASTNAME, lastName);
+            contactObj.put(LASTNAME, lastName);
             String phoneNumber = counselor.getEmergencyContacts().get(i).getPhoneNumber();
-            counselorDetails.put(PHONE_NUM, phoneNumber);
+            contactObj.put(PHONE_NUM, phoneNumber);
             String email = counselor.getEmergencyContacts().get(i).getEmailAddress();
-            counselorDetails.put(EMAIL, email);
+            contactObj.put(EMAIL, email);
             String relationtoPerson = counselor.getEmergencyContacts().get(i).getRelationToPerson();
-            counselorDetails.put(CONT_RELATION_TO_PERSON, relationtoPerson);
+            contactObj.put(CONT_RELATION_TO_PERSON, relationtoPerson);
             contactsJSON.add(new Contact(firstName, lastName, phoneNumber, email, relationtoPerson));
         }
         counselorDetails.put(CONTACTS, contactsJSON);
 
         // see if this works
-
-        counselorDetails.put(PEDIATRICIAN, counselor.getPediatricion());
-        String firstName = counselor.getPediatricion().getFirstName();
-        String lastName = counselor.getPediatricion().getLastName();
-        String phoneNumber = counselor.getPediatricion().getPhoneNumber();
-        String email = counselor.getPediatricion().getEmailAddress();
-        String relationToPerson = counselor.getPediatricion().getRelationToPerson();
-        counselorDetails.put(FIRSTNAME, firstName);
-        counselorDetails.put(LASTNAME, lastName);
-        counselorDetails.put(PHONE_NUM, phoneNumber);
-        counselorDetails.put(EMAIL, email);
-        counselorDetails.put(CONT_RELATION_TO_PERSON, relationToPerson);
+        JSONObject pediatricianJSON = new JSONObject();
+        String firstName = counselor.getPediatrician().getFirstName();
+        String lastName = counselor.getPediatrician().getLastName();
+        String phoneNumber = counselor.getPediatrician().getPhoneNumber();
+        String email = counselor.getPediatrician().getEmailAddress();
+        String relationToPerson = counselor.getPediatrician().getRelationToPerson();
+        pediatricianJSON.put(FIRSTNAME, firstName);
+        pediatricianJSON.put(LASTNAME, lastName);
+        pediatricianJSON.put(PHONE_NUM, phoneNumber);
+        pediatricianJSON.put(EMAIL, email);
+        pediatricianJSON.put(CONT_RELATION_TO_PERSON, relationToPerson);
+        counselorDetails.put(PEDIATRICIAN, pediatricianJSON);
 
         return counselorDetails;
     }
@@ -163,7 +207,7 @@ public class DataWriter extends DataConstants {
     /*
      * writing directors and getDirectorJSON methods
      */
-    public static void saveDirectors() {
+    public static void saveDirectors() { // finished not tested
 
         DirectorList directors = DirectorList.getInstance();
         ArrayList<Director> directorList = directors.getDirectors();
@@ -190,6 +234,7 @@ public class DataWriter extends DataConstants {
         directorDetails.put(HOMEADDRESS, director.getHomeAddress());
         directorDetails.put(USERNAME, director.getUserLogin().getUserName());
         directorDetails.put(PASSWORD, director.getUserLogin().getPassword());
+
         return directorDetails;
     }
 
@@ -200,12 +245,21 @@ public class DataWriter extends DataConstants {
     public static void saveCamp() {
 
         CampList camps = CampList.getInstance();
+        ArrayList<Camp> campList = camps.getCamps();
+        JSONArray jsonCamps = new JSONArray();
 
+        for (int i = 0; i < campList.size(); i++) {
+            jsonCamps.add(getCampJSON(campList.get(i)));
+        }
         try (FileWriter file = new FileWriter(CAMP_FILE)) {
-            file.write(jsonCamp.toJSONString());
+            file.write(jsonCamps.toJSONString());
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static Object getCampJSON(Camp camp) {
+
     }
 }
