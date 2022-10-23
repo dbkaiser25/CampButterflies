@@ -9,14 +9,13 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
     public static void main(String[] args) {
-        ArrayList<Camper> campers = DataLoader.loadCampers();
-        for (int i = 0; i < campers.size(); i++) {
-            System.out.println(campers.get(i));
+        ArrayList<Director> directors = DataLoader.loadDirectors();
+        for (int i = 0; i < directors.size(); i++) {
+            System.out.println(directors.get(i));
         }
-
     }
 
-    public static ArrayList<Camper> loadCampers() {
+    public static ArrayList<Camper> loadCampers() { // tested: just have to cast String to enum in "sex"
         ArrayList<Camper> campers = new ArrayList<Camper>();
 
         try {
@@ -65,7 +64,8 @@ public class DataLoader extends DataConstants {
                 String phoneNumber = (String) pediatricianJSON.get(PHONE_NUM);
                 String email = (String) pediatricianJSON.get(EMAIL);
                 String relationToPerson = (String) pediatricianJSON.get(CONT_RELATION_TO_PERSON);
-                Contact pediatrician = new Contact(pedFirstName, pedLastName, phoneNumber, email, relationToPerson);
+                Contact pediatrician = new Contact(pedFirstName, pedLastName, phoneNumber,
+                        email, relationToPerson);
                 campers.add(new Camper(id, firstName, lastName, homeAddress, dateOfBirth, sex, medications, allergies,
                         contacts, pediatrician));
             }
@@ -76,7 +76,7 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    public static ArrayList<User> loadUsers() {
+    public static ArrayList<User> loadUsers() { // tested: works
         ArrayList<User> users = new ArrayList<User>();
 
         try {
@@ -95,18 +95,19 @@ public class DataLoader extends DataConstants {
                 LoginInfo userLogin = new LoginInfo(userName, password);
 
                 ArrayList<Camper> campersList = new ArrayList<Camper>();
-                JSONArray campers = (JSONArray) userJSON.get(CAMPERS);
+                JSONArray campers = (JSONArray) userJSON.get(USER_CAMPERS);
                 /*
                  * Loop through json array of camper uuids
                  * Camper camper = CamperList.getInstance().getCamperByUUID(id);
                  */
                 for (int j = 0; j < campers.size(); j++) {
-                    UUID camperID = UUID.fromString((String) campers.get(j));
+                    JSONObject camperJSON = (JSONObject) campers.get(j);
+                    UUID camperID = UUID.fromString((String) camperJSON.get(CAMPER_ID));
                     Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
                     campersList.add(camper);
                 }
 
-                users.add(new User(id, firstName, lastName, dateOfBirth, homeAddress, userLogin, campers));
+                users.add(new User(id, firstName, lastName, dateOfBirth, homeAddress, userLogin, campersList));
             }
             return users;
         } catch (Exception e) {
@@ -115,7 +116,7 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    public static ArrayList<Counselor> loadCounselors() {
+    public static ArrayList<Counselor> loadCounselors() { // tested: works
         ArrayList<Counselor> counselors = new ArrayList<Counselor>();
 
         try {
@@ -151,17 +152,15 @@ public class DataLoader extends DataConstants {
                     contacts.add(new Contact(contactFirstName, contactLastName, contactPhoneNumber, contactEmailAddress,
                             relationToPerson));
                 }
-                JSONArray pediatricianJSON = (JSONArray) counselorJSON.get(PEDIATRICIAN);
-                Contact pediatrician = new Contact(); // see if this works
-                for (int j = 0; j < pediatricianJSON.size(); j++) {
-                    JSONObject pedJSON = (JSONObject) pediatricianJSON.get(j);
-                    String pedFirstName = (String) pedJSON.get(FIRSTNAME);
-                    String pedLastName = (String) pedJSON.get(LASTNAME);
-                    String pedPhoneNumber = (String) pedJSON.get(PHONE_NUM);
-                    String email = (String) pedJSON.get(EMAIL);
-                    String relationToPerson = (String) pedJSON.get(CONT_RELATION_TO_PERSON);
-                    pediatrician = new Contact(pedFirstName, pedLastName, pedPhoneNumber, email, relationToPerson);
-                }
+                JSONObject pediatricianJSON = (JSONObject) counselorJSON.get(PEDIATRICIAN);
+                String pedFirstName = (String) pediatricianJSON.get(FIRSTNAME);
+                String pedLastName = (String) pediatricianJSON.get(LASTNAME);
+                String pedPhoneNumber = (String) pediatricianJSON.get(PHONE_NUM);
+                String email = (String) pediatricianJSON.get(EMAIL);
+                String relationToPerson = (String) pediatricianJSON.get(CONT_RELATION_TO_PERSON);
+                Contact pediatrician = new Contact(pedFirstName, pedLastName, pedPhoneNumber,
+                        email, relationToPerson);
+
                 counselors.add(new Counselor(id, firstName, lastName, phoneNumber, emailAddress, homeAddress,
                         dateOfBirth, contacts, pediatrician, counselorLogin));
 
@@ -197,21 +196,22 @@ public class DataLoader extends DataConstants {
                     JSONObject calendarJSON = (JSONObject) jsonCalendar.get(j);
                     // HashMap<Integer,Week> calendarHash =
                     // (HashMap<Integer,Week>)calendarJSON.get(CALENDAR_HASH);
+                    String campName = (String) calendarJSON.get(NAME);
+                    String campDescription = (String) calendarJSON.get(DESCRIPTION);
                     JSONArray jsonHash = (JSONArray) calendarJSON.get(CALENDAR_HASH);
                     HashMap<Integer, Week> hashMap = new HashMap<Integer, Week>();
-                    Integer week_num = ((Long) calendarJSON.get(WEEK_NUM)).intValue();
+                    Integer week_num = ((Long) calendarJSON.get(WEEK_NUM)).intValue(); // have to convert from int to long
+                    // System.out.println(week_num);
                     /*
                      * potential
                      */
-                    Week week = (Week) calendarJSON.get(WEEK);
-                    for (int k = 0; k < jsonHash.size(); k++) {
-                        JSONObject weekJSON = (JSONObject) jsonHash.get(k);
-                        String theme = (String) weekJSON.get(THEME);
+                    JSONObject weekJSON = (JSONObject) calendarJSON.get(WEEK);
+                    String theme = (String) weekJSON.get(THEME);
                         ArrayList<Group> groups = new ArrayList<Group>();
                         JSONArray groupsJSON = (JSONArray) weekJSON.get(GROUPS);
                         for (int l = 0; l < groupsJSON.size(); l++) {
                             JSONObject jsonGroup = (JSONObject) groupsJSON.get(l);
-                            int number = (int) jsonGroup.get(GROUP_NUM); // see if this has to be a UUID
+                            UUID groupNum = UUID.fromString((String) jsonGroup.get(GROUP_ID));
                             // make group.json with just UUID
                             UUID counselorUUID = UUID.fromString((String) jsonGroup.get(COUNSELOR_ID));
                             Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
@@ -222,19 +222,34 @@ public class DataLoader extends DataConstants {
                              * Camper camper = CamperList.getInstance().getCamperByUUID(id);
                              */
                             for (int m = 0; m < campers.size(); m++) {
-                                UUID camperID = UUID.fromString((String) campers.get(j));
+                                JSONObject camperUUID = (JSONObject) campers.get(m);
+                                UUID camperID = UUID.fromString((String) camperUUID.get(ID));
                                 Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
                                 campersList.add(camper);
                             }
                             groups.add(new Group(counselor, campersList));// see if we need group number in constructor
-                                                                          // as well
+                            System.out.println("Group added");
                         }
                         ArrayList<Counselor> week_counselors = new ArrayList<Counselor>();
                         JSONArray counselorsJSON = (JSONArray) weekJSON.get(WEEK_COUNSELORS);
                         for (int l = 0; l < counselorsJSON.size(); l++) {
-
+                            JSONObject counselorJSONID = (JSONObject) counselorsJSON.get(l);
+                            UUID counselorID = UUID.fromString((String) counselorJSONID.get(ID));
+                            Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorID);
+                            week_counselors.add(counselor);
                         }
-                    }
+                        ArrayList<Camper> week_campers = new ArrayList<Camper>();
+                        JSONArray campersJSON = (JSONArray) weekJSON.get(WEEK_CAMPERS);
+                        for (int l = 0; l < campersJSON.size(); l++) {
+                            JSONObject camperJSONID = (JSONObject) campersJSON.get(l);
+                            UUID camperUUID = UUID.fromString((String) camperJSONID.get(ID));
+                            Camper camper = CamperList.getInstance().getCamperByUUID(camperUUID);
+                            week_campers.add(camper);
+                        }
+                        String startDate = (String) weekJSON.get(START_DATE);
+                        String endDate = (String) weekJSON.get(END_DATE);
+                        String isFull = (String) weekJSON.get(ISFULL);
+                        Week week = new Week()
                     /*
                      * figure out how to add to hashMap
                      */

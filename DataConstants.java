@@ -25,13 +25,14 @@ public abstract class DataConstants {
     protected static final String LOCATION = "location";
     protected static final String CAMPERS = "group_campers";
     protected static final String COUNSELOR_ID = "CounselorID";
+    protected static final String TEST = "Test";
 
     protected static final String DIRECTOR_FILE = "json/director.json";
     protected static final String CALENDAR = "calendar";
     protected static final String SELECTED_GROUPS = "group";
     protected static final String ACTIVITY_LIST = "activity_list";
     protected static final String CALENDAR_HASH = "calendar_hash";
-    protected static final String GROUP_NUM = "group_number";
+    protected static final String GROUP_ID = "group_UUID";
     protected static final String GROUP_CAMPERS = "group_campers";
     protected static final String WEEK_COUNSELORS = "week_counselors";
     protected static final String WEEK_CAMPERS = "week_campers";
@@ -48,6 +49,8 @@ public abstract class DataConstants {
     protected static final String HOMEADDRESS = "homeAddress";
     protected static final String USERNAME = "username";
     protected static final String PASSWORD = "password";
+    protected static final String USER_CAMPERS = "user_campers";
+    protected static final String CAMPER_ID = "camper_id";
 
     /**
      * how does the administrator go about setting up the camp

@@ -1,53 +1,7 @@
 [
   {
-    "id": 1,
-    "dailyActivities": 
-      {
-        "Monday": [
-          {
-            "name": "kayaking",
-            "location": "Lake Butterfly",
-            "description": "Campers will go kayaking on lake butterfly"
-          },
-          {
-            "name": "Hiking",
-            "location": "Butterfly Hill",
-            "description": "Campers will go on a two-mile hike up Butterfly Hill"
-          },
-          {
-            "name": "Archery",
-            "location": "Butterfly Range",
-            "description": "Campers will practice archery at Butterfly Range"
-          }
-        ],
-        "Tuesday": [
-          {
-            "name": "Hiking",
-            "location": "Butterfly Hill",
-            "description": "Campers will go on a two-mile hike up Butterfly Hill"
-          },
-          {
-            "name": "Archery",
-            "location": "Butterfly Range",
-            "description": "Campers will practice archery at Butterfly Range"
-          },
-          {
-            "name": "Swimming",
-            "location": "Lake Butterfly",
-            "description": "Campers will go swimming in Lake Butterfly"
-          }
-        ]
-      },
-    "CounselorID": 1,
-    "campers": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
-    ]
+    "id": "1ba44084-fad3-4c6c-a840-3a3592b25af5"
+  },{
+    "id" : "289ff272-2beb-4162-9c15-aeac888d198e"
   }
 ]
