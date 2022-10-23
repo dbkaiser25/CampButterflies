@@ -17,12 +17,27 @@
             "week": {
               "theme":"swimming", 
               "groups": [{
-                "group_UUID" : "1", 
-                "counselorUUID" : "1", 
-                "group_campers" :[
-                  "1","2","3","4","5","6","7","8"
-                ],
-                "group_hash" : [{
+                "group_UUID" : "8eae4ebb-9a1d-42f1-956d-9ba8fb27b2db", 
+                "counselorUUID" : "8ae79b19-679d-4c77-b33e-955e6fe4b05f", 
+                "group_campers" : [{
+                  "id" : "ccf29657-a857-4076-8e1a-2b14d849f193"
+                },{
+                  "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
+                },{
+                  "id" : "bf47a91d-3a69-4c07-b063-1ee50136351e"
+                },{
+                  "id" : "8ec29e90-d601-42e5-97b1-77fbef5b0675"
+                },{
+                  "id" : "9ad9dc0a-34da-46ca-b2a0-3f78a2b71953"
+                },{
+                  "id" : "4027b517-6de3-4106-a482-bc5f01d63b2c"
+                },{
+                  "id" : "d334d735-6138-4eb1-af4b-cb65d82ed002"
+                },{
+                  "id" : "2a840a4c-601a-4efe-86a6-4dcebba9baf0"
+                }
+              ],
+                "group_schedule" : [{
                   "day_of_week" : "SUNDAY",
                   "daily_activities" : [{
                     "name" : "Kayaking", 
@@ -57,12 +72,43 @@
             "week": {
               "theme": "nature",
               "groups": [{
-                "group_UUID" : 2, 
-                "counselorUUID" : 2, 
-                "group_campers" :[2,6,90,23,3,56,44,12]
-              }],
-              "week_counselors": [2,12,3],
-              "week_campers" : [1,5,2,6,7,40,36,45,25,23,53],
+                "group_UUID" : "d334d735-6138-4eb1-af4b-cb65d82ed002", 
+                "counselorUUID" : "2a840a4c-601a-4efe-86a6-4dcebba9baf0", 
+                "group_campers" :[{
+                    "id" : "b421f891-75a4-4273-8982-de3bf9107b94"
+                  },{
+                    "id" : "ea59d080-a6c7-4a37-bca7-c04217047258"
+                  },{
+                    "id" : "c50f3734-c63f-4a9d-be8a-1fad41cf7cc8"
+                  },{
+                    "id" : "4144703d-301c-4662-becd-bd9fab2b465b"
+                  },{
+                    "id" : "17b359e1-a088-45a0-a2bf-5efdaa92e9ba"
+                  },{
+                    "id" : "e9849230-c646-4c49-8741-cbe0db9a0d40"
+                  }
+                ]
+                }],
+                "week_counselors": [{
+                    "id" : "ec1ef8b7-a909-4746-b89c-f5d8ddbe0e49"
+                  },{
+                    "id" : "9d08276a-a0ae-4ab8-a8e6-bf286d343a43"
+                  }
+                ],
+                "week_campers" : [{
+                  "id" : "b421f891-75a4-4273-8982-de3bf9107b94"
+                },{
+                  "id" : "ea59d080-a6c7-4a37-bca7-c04217047258"
+                },{
+                  "id" : "c50f3734-c63f-4a9d-be8a-1fad41cf7cc8"
+                },{
+                  "id" : "4144703d-301c-4662-becd-bd9fab2b465b"
+                },{
+                  "id" : "17b359e1-a088-45a0-a2bf-5efdaa92e9ba"
+                },{
+                  "id" : "e9849230-c646-4c49-8741-cbe0db9a0d40"
+                }
+              ],
               "startDate": "6/6/2023",
               "endDate": "6/12/2023",
               "isFull": "false"

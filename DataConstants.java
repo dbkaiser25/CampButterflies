@@ -40,6 +40,8 @@ public abstract class DataConstants {
     protected static final String END_DATE = "end_date";
     protected static final String ISFULL = "isFull";
     protected static final String ALL_ACTIVITIES = "all_activities";
+    protected static final String GROUP_SCHEDULE = "group_schedule";
+    protected static final String DAY_OF_WEEK = "day_of_week";
 
     protected static final String USER_FILE = "json/user.json";
     protected static final String ID = "id";
