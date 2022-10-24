@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
+//Director doesn't have an email?!?!?! i think thats an issue
 public class Director extends Person {
    // private Calendar calendar; Consider this deleated, i don't think it is needed
    private LoginInfo userLogin;
@@ -24,35 +25,42 @@ public class Director extends Person {
       return userLogin;
    }
 
-   // public void setUserLogin(LoginInfo userLogin) {
-   // this.userLogin = userLogin;
-   // }
-
    public void removeCamper(String firstName, String lastName) {
 
       // not forard to write this method
    }
 
-   public void viewActivities() {
+   public void viewActivities() 
+   {
 
    }
 
-   // this assumes we can pass what
+   // this assumes we can pass Camp
    public void addActivity(Camp camp, Activity activity) {
       camp.addActivity(activity);
-      // add dat activity
    }
 
-   public void removeActivity(Activity activity) {
+   public void removeActivity(Activity activity) 
+   {
 
    }
 
-   public String viewCounselorInfo(String firstName, String lastName) {
-      // view dat info
-      return null;
+   public String viewCounselorInfo(String firstName, String lastName) 
+   {
+      Counselor temp;
+      temp = CounselorList.getInstance().getCounselorByName(firstName, lastName);
+      if(temp == null)
+         return null;
+      else
+         return temp.toString();
    }
 
-   public String toString() {
-      return "Read director file!";
+   public String toString() 
+   {
+      String temp = new String();
+      temp = "Director: " + firstName + " " + lastName + "\nUsername: " 
+      + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString() 
+      + "\nAddress: " + homeAddress; 
+      return temp;
    }
 }

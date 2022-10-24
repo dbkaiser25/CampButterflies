@@ -151,8 +151,8 @@ public class Counselor extends Person {
 
     public String toString() {
         String temp = new String();
-        temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " 
-        +  dateOfBirth.toString()+ "\nAddress: " + homeAddress + "\nEmail: " + emailAddress 
+        temp = "Counselor:  " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName() + "\nDate of Birth: " 
+        +  dateOfBirth.toString() + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress 
         + "\nPhone Number: " + phoneNumber + "\nMedications: \n" + printMedication() 
         + "\nAllergies: " + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() 
         + "\nPediatrician: \n" + pediatrician;

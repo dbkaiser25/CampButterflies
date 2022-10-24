@@ -46,6 +46,18 @@ public class CounselorList
         return null;
     }
 
+    public Counselor getCounselorByName(String firstName, String lastName)
+    {
+        for(Counselor c: counselors)
+        {
+            if(c.getFirstName().equals(firstName) && c.getLastName().equals(lastName))
+            {
+                return c;
+            }
+        }
+        return null;
+    }
+
     public Counselor getCounselorByUUID(UUID uuid)
     {
         for(Counselor c: counselors)
