@@ -1,4 +1,4 @@
-
+import java.util.Date;
 /**
  * An abstract class that defines a person to be inherited 
  * @author dbkaiser
@@ -10,7 +10,7 @@ public abstract class Person {
     protected UUID uuid;
     protected String firstName;
     protected String lastName;
-    protected String dateOfBirth;
+    protected Date dateOfBirth;
     protected String homeAddress;
 
     /**
@@ -22,7 +22,7 @@ public abstract class Person {
      * @param homeAddress A string for their home address
      */
     // Constructor without UUID
-    public Person(String firstName, String lastName, String dateOfBirth, String homeAddress) {
+    public Person(String firstName, String lastName, Date dateOfBirth, String homeAddress) {
         this.uuid = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,7 +31,7 @@ public abstract class Person {
     }
 
     // constructor with UUID
-    public Person(UUID uuid, String firstName, String lastName, String dateOfBirth, String homeAddress) {
+    public Person(UUID uuid, String firstName, String lastName, Date dateOfBirth, String homeAddress) {
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,11 +51,11 @@ public abstract class Person {
         this.uuid = uuid;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.Date;
 
 /**
  * A class that defines a counselor
@@ -26,7 +27,7 @@ public class Counselor extends Person {
      * @param userLogin         Logininfo for the individual counselor
      */
     public Counselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress,
-            String dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
+            Date dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(firstName, lastName, dateOfBirth, homeAddress);
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
@@ -39,7 +40,8 @@ public class Counselor extends Person {
     // Constructor with UUID
     public Counselor(UUID uuid, String firstName, String lastName, String phoneNumber, String emailAddress,
             String homeAddress,
-            String dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
+            Date dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) 
+    {
         super(uuid, firstName, lastName, dateOfBirth, homeAddress);
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
@@ -137,16 +139,6 @@ public class Counselor extends Person {
         for (DayOfWeek day : DayOfWeek.values()) {
             temp = temp + getActivities(group, day) + "\n";
         }
-        // old implementation
-        /*
-         * temp = getActivities(group, DayOfWeek.SUNDAY);
-         * temp = temp + "\n" + getActivities(group, DayOfWeek.MONDAY);
-         * temp = temp + "\n" + getActivities(group, DayOfWeek.TUESDAY);
-         * temp = temp + "\n" + getActivities(group, DayOfWeek.WEDNESDAY);
-         * temp = temp + "\n" + getActivities(group, DayOfWeek.THURSDAY);
-         * temp = temp + "\n" + getActivities(group, DayOfWeek.FRIDAY);
-         * temp = temp + "\n" + getActivities(group, DayOfWeek.SATURDAY);
-         */
         return temp;
     }
 
@@ -162,7 +154,13 @@ public class Counselor extends Person {
     }
 
     public String toString() {
-        return "this works";
+        String temp = new String();
+        //the date class is kinda weird, idk how day specifically works
+        //TODO add contact
+        temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.getMonth() + 
+        "/" + dateOfBirth.getDate() + "/" + dateOfBirth.getYear() + "\nAddress: " + homeAddress + 
+        "\nEmail: " + emailAddress + "\n " + pediatrician + "Medical Info: \n" + medicalInfo + "\nPhone Number: " + phoneNumber;
+        return temp;
     }
 
 }
