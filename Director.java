@@ -6,7 +6,7 @@ public class Director extends Person {
    // private Calendar calendar; Consider this deleated, i don't think it is needed
    private LoginInfo userLogin;
 
-   public Director(String firstName, String lastName, String dateOfBirth,
+   public Director(String firstName, String lastName, Date dateOfBirth,
          String homeAddress, LoginInfo userLogin) {
       super(firstName, lastName, dateOfBirth, homeAddress);
 
@@ -14,7 +14,7 @@ public class Director extends Person {
       // object but yea that aint written yet
    }
 
-   public Director(UUID uuid, String firstName, String lastName, String dateOfBirth,
+   public Director(UUID uuid, String firstName, String lastName, Date dateOfBirth,
          String homeAddress, LoginInfo userLogin) {
       super(uuid, firstName, lastName, dateOfBirth, homeAddress);
 

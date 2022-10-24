@@ -11,7 +11,8 @@ public class Counselor extends Person {
     private String emailAddress;
     private ArrayList<Contact> emergencyContacts;
     private Contact pediatrician;
-    private String medicalInfo;
+    private ArrayList<String> allergies = new ArrayList<String>();
+    private ArrayList<Medication> medications = new ArrayList<Medication>();
     private String phoneNumber;
     private LoginInfo userLogin;
 
@@ -26,8 +27,10 @@ public class Counselor extends Person {
      * @param userLogin         Logininfo for the individual counselor
      */
     public Counselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress,
-            Date dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
+            Date dateOfBirth, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(firstName, lastName, dateOfBirth, homeAddress);
+        this.medications = medications;
+        this.allergies = allergies;
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
@@ -39,9 +42,11 @@ public class Counselor extends Person {
     // Constructor with UUID
     public Counselor(UUID uuid, String firstName, String lastName, String phoneNumber, String emailAddress,
             String homeAddress,
-            Date dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) 
+            Date dateOfBirth, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) 
     {
         super(uuid, firstName, lastName, dateOfBirth, homeAddress);
+        this.medications = medications;
+        this.allergies = allergies;
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
@@ -71,14 +76,6 @@ public class Counselor extends Person {
 
     public void setPediatrician(Contact pediatrician) {
         this.pediatrician = pediatrician;
-    }
-
-    public String getMedicalInfo() {
-        return medicalInfo;
-    }
-
-    public void setMedicalInfo(String medicalInfo) {
-        this.medicalInfo = medicalInfo;
     }
 
     public String getPhoneNumber() {
@@ -154,11 +151,41 @@ public class Counselor extends Person {
 
     public String toString() {
         String temp = new String();
-        //the date class is kinda weird, idk how day specifically works
-        //TODO add contact
-        temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " +  dateOfBirth.toString()
-        + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress + "\n " 
-        + pediatrician + "Medical Info: \n" + medicalInfo + "\nPhone Number: " + phoneNumber;
+        temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " 
+        +  dateOfBirth.toString()+ "\nAddress: " + homeAddress + "\nEmail: " + emailAddress 
+        + "\nPhone Number: " + phoneNumber + "\nMedications: \n" + printMedication() 
+        + "\nAllergies: " + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() 
+        + "\nPediatrician: \n" + pediatrician;
+        return temp;
+    }
+
+    //DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
+    private String printMedication()
+    {
+        String temp = new String();
+        for(Medication m: medications)
+        {
+            temp = temp + m.toString() + "\n";
+        }
+        return temp;
+    }
+    private String printEmergencyContacts()
+    {
+        String temp = new String();
+        for(Contact c: emergencyContacts)
+        {
+            temp = temp + c.toString() + "\n";
+        }
+        return temp;
+    }
+
+    private String printAllergies()
+    {
+        String temp = new String();
+        for(String a: allergies)
+        {
+            temp = temp + a.toString() + "\n";
+        }
         return temp;
     }
 
