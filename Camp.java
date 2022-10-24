@@ -20,16 +20,15 @@ public class Camp {
     private HashMap<Integer, Week> masterSchedule;
     private ArrayList<Activity> activities;
 
-    //Empty constructor if we want to make a new camp? idk if we need this
-    public Camp()
-    {
+    // Empty constructor if we want to make a new camp? idk if we need this
+    public Camp() {
         name = null;
         description = null;
         masterSchedule = null;
         activities = null;
     }
 
-    //full constructor for reading from JSON
+    // full constructor for reading from JSON
     public Camp(String name, String description, HashMap<Integer, Week> masterSchedule,
             ArrayList<Activity> activities) {
         // TODO figure out Calendar constructor
@@ -88,15 +87,13 @@ public class Camp {
      * text me if you need help, not crazy urgent but I can't write the writer file
      * without this
      * -Zak
-     * Zak: this hashmap essentially functions as an array but i didn't want to change it 
+     * Zak: this hashmap essentially functions as an array but i didn't want to
+     * change it
      * let me know if it works how you want
      */
-    public Week getWeek(int num)
-    {
+    public Week getWeek(Integer num) {
         return masterSchedule.get(num);
     }
-
-
 
     public String getActivities() {
         String displayActivities = new String();

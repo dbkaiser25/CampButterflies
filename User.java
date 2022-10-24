@@ -1,4 +1,5 @@
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class User extends Person {
         return userLogin;
     }
 
-    //consider deleating
+    // consider deleating
     public void setUserLogin(LoginInfo userLogin) {
         this.userLogin = userLogin;
     }
@@ -46,7 +47,7 @@ public class User extends Person {
         return false;
     }
 
-    //TODO ill look at this later 
+    // TODO ill look at this later
     public void selectWeek() {
 
     }
@@ -56,13 +57,14 @@ public class User extends Person {
     // actual toString method is necessary because we have this instead
     public String viewUserProfile() {
         String temp = new String();
-        //do we want to show their password too?
-        temp = "User: " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString() + "\nAddress: " + homeAddress;
+        // do we want to show their password too?
+        temp = "User: " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName() + "\nDate of Birth: "
+                + dateOfBirth.toString() + "\nAddress: " + homeAddress;
         return temp;
     }
 
     // TODO how will this method work, can something like editCamper work?
-    //this method will likely be deleated in favor of just calling the setters
+    // this method will likely be deleated in favor of just calling the setters
     public void editUserProfile() {
 
     }
@@ -83,7 +85,8 @@ public class User extends Person {
         return "There are no campers with that name";
     }
 
-    //This method may be deleated in favor of just calling the necessary setters to change the information
+    // This method may be deleated in favor of just calling the necessary setters to
+    // change the information
     /**
      * This method will update one of the camper's information that the user has
      * registered

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
-//import java.util.Date;
+import java.util.Date;
 
 /**
  * A class that defines a camper for the camp
@@ -13,6 +13,7 @@ public class Camper extends Person {
     private ArrayList<String> allergies = new ArrayList<String>();
     private ArrayList<Contact> emergencyContacts = new ArrayList<Contact>();
     private Contact pediatrician;
+    private Date dateOfBirth;
 
     /**
      * The following attributes are needed to create an individual camper
@@ -27,7 +28,7 @@ public class Camper extends Person {
     public Camper(String firstName, String lastName, String homeAddress, Date dateOfBirth,
             Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies,
             ArrayList<Contact> emergencyContacts, Contact pediatrician) {
-        super(firstName,lastName,dateOfBirth,homeAddress);
+        super(firstName, lastName, dateOfBirth, homeAddress);
         this.sex = sex;
         this.medications = medications;
         this.allergies = allergies;
@@ -87,61 +88,65 @@ public class Camper extends Person {
         this.pediatrician = pediatrician;
     }
 
-    //public Camper getCa
+    // public Camper getCa
 
     /**
      * A description of the camper in string form
-     * A to string for when a counselor wants to see info about the campers in their group
+     * A to string for when a counselor wants to see info about the campers in their
+     * group
+     * 
      * @return A string description of the camper
      */
     public String toStringBrief() {
-        return firstName + " " + lastName + "\n" + dateOfBirth.toString();
+        return firstName + " " + lastName;
+        // + "\n" + dateOfBirth.toString()
+
     }
 
-    //different groups need to see different amounts of camper information
-    //when director or user wants to see camper information
-    public String toStringFull()
-    {
+    // different groups need to see different amounts of camper information
+    // when director or user wants to see camper information
+    public String toStringFull() {
         String temp = new String();
 
         /*
-         * temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.getMonth() + 
-        "/" + dateOfBirth.getDate() + "/" + dateOfBirth.getYear() + "\nAddress: " + homeAddress + 
-        "\nEmail: " + emailAddress + "\n " + pediatrician + "Medical Info: \n" + medicalInfo + "\nPhone Number: " + phoneNumber;
+         * temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " +
+         * dateOfBirth.getMonth() +
+         * "/" + dateOfBirth.getDate() + "/" + dateOfBirth.getYear() + "\nAddress: " +
+         * homeAddress +
+         * "\nEmail: " + emailAddress + "\n " + pediatrician + "Medical Info: \n" +
+         * medicalInfo + "\nPhone Number: " + phoneNumber;
          */
 
-        temp = "Camper: " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.toString() 
-        + "\nAddress: " + homeAddress + "\nSex: " + sex + "\nMedications: \n" + printMedication() + "\nAllergies: "
-        + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() + "\nPediatrician: " + pediatrician.toString();
+        temp = "Camper: " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.toString()
+                + "\nAddress: " + homeAddress + "\nSex: " + sex + "\nMedications: \n" + printMedication()
+                + "\nAllergies: "
+                + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() + "\nPediatrician: "
+                + pediatrician.toString();
         return temp;
     }
 
-    //helper methods 
-    //it seems weird these methods can't go into their own classes because I'm sure we'll need em again
-    private String printMedication()
-    {
+    // helper methods
+    // it seems weird these methods can't go into their own classes because I'm sure
+    // we'll need em again
+    private String printMedication() {
         String temp = new String();
-        for(Medication m: medications)
-        {
+        for (Medication m : medications) {
             temp = temp + m.toString() + "\n";
         }
         return temp;
     }
-    private String printEmergencyContacts()
-    {
+
+    private String printEmergencyContacts() {
         String temp = new String();
-        for(Contact c: emergencyContacts)
-        {
+        for (Contact c : emergencyContacts) {
             temp = temp + c.toString() + "\n";
         }
         return temp;
     }
 
-    private String printAllergies()
-    {
+    private String printAllergies() {
         String temp = new String();
-        for(String a: allergies)
-        {
+        for (String a : allergies) {
             temp = temp + a.toString() + "\n";
         }
         return temp;

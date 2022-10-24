@@ -51,13 +51,15 @@ public class DataWriter extends DataConstants {
         camperDetails.put(ALLERGIES, allergiesJSON);
         JSONArray medicationsJSON = new JSONArray();
         for (int i = 0; i < camper.getMedications().size(); i++) {
+            // make medication json object
+            JSONObject medJSON = new JSONObject();
             String dosage = camper.getMedications().get(i).getDose();
-            camperDetails.put(DOSAGE, dosage);
+            medJSON.put(DOSAGE, dosage);
             String type = camper.getMedications().get(i).getType();
-            camperDetails.put(TYPE, type);
+            medJSON.put(TYPE, type);
             String time = camper.getMedications().get(i).getTime();
-            camperDetails.put(TIME, time);
-            medicationsJSON.add(new Medication(type, dosage, time));
+            medJSON.put(TIME, time);
+            medicationsJSON.add(medJSON);
         }
         camperDetails.put(MEDICATIONS, medicationsJSON);
         JSONArray contactsJSON = new JSONArray();
@@ -268,7 +270,10 @@ public class DataWriter extends DataConstants {
         for (int i = 0; i < camp.getMasterSchedule().size(); i++) {
             // include week number, week, week counselors, week campers, start date, end
             // date, and is full
-            JSONObject msJSON = (JSONObject) masterScheduleJSON.get(i);
+            JSONObject msJSON =  (JSONObject) masterScheduleJSON.get(i); 
+            Integer weekNum = msJSON.put(WEEK_NUM, camp.getMasterSchedule().get(i); //how 
+            Week 
+
         }
 
         // campDetails.put(CALENDAR_HASH, camp.getMasterSchedule());

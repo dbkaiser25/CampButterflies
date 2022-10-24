@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.Date;
 
 /**
  * A class that defines a counselor
@@ -27,7 +28,8 @@ public class Counselor extends Person {
      * @param userLogin         Logininfo for the individual counselor
      */
     public Counselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress,
-            Date dateOfBirth, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
+            Date dateOfBirth, ArrayList<Medication> medications, ArrayList<String> allergies,
+            ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(firstName, lastName, dateOfBirth, homeAddress);
         this.medications = medications;
         this.allergies = allergies;
@@ -42,11 +44,8 @@ public class Counselor extends Person {
     // Constructor with UUID
     public Counselor(UUID uuid, String firstName, String lastName, String phoneNumber, String emailAddress,
             String homeAddress,
-            Date dateOfBirth, ArrayList<Medication> medications, ArrayList<String> allergies, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) 
-    {
+            Date dateOfBirth, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(uuid, firstName, lastName, dateOfBirth, homeAddress);
-        this.medications = medications;
-        this.allergies = allergies;
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
@@ -129,72 +128,69 @@ public class Counselor extends Person {
      * ...
      */
     public String viewSchedule(Group group) {
-        //String temp = new String();
+        // String temp = new String();
 
         // This is way cleaner if it works
-        //for (DayOfWeek day : DayOfWeek.values()) {
-            //temp = temp + getActivities(group, day) + "\n";
-        //}
+        // for (DayOfWeek day : DayOfWeek.values()) {
+        // temp = temp + getActivities(group, day) + "\n";
+        // }
 
-        //gonna need to know what group we are talking about before we can call the group method
-        //for know it'll be a parameter but maybe we call a get group or something
+        // gonna need to know what group we are talking about before we can call the
+        // group method
+        // for know it'll be a parameter but maybe we call a get group or something
         return group.printSchedule();
     }
 
     // helper method for viewSchedule
     // Same thing can be modified for prettier output
-    /* 
-    private String getActivities(Group group, DayOfWeek day) 
-    {
-        this code used to be here but now i believe is in a better place, in groups
-        it will be deleated eventually
-        String temp = new String();
-        temp = day.toString() + "\n";
-        for (int i = 0; i < group.getSchedule().get(day).size(); i++) {
-            temp = temp + group.getSchedule().get(day).get(i).getName() + "\n";
-        }
-        return temp;
-        
-
-
-    }
-    */
+    /*
+     * private String getActivities(Group group, DayOfWeek day)
+     * {
+     * this code used to be here but now i believe is in a better place, in groups
+     * it will be deleated eventually
+     * String temp = new String();
+     * temp = day.toString() + "\n";
+     * for (int i = 0; i < group.getSchedule().get(day).size(); i++) {
+     * temp = temp + group.getSchedule().get(day).get(i).getName() + "\n";
+     * }
+     * return temp;
+     * 
+     * 
+     * 
+     * }
+     */
 
     public String toString() {
         String temp = new String();
-        temp = "Counselor:  " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName() + "\nDate of Birth: " 
-        +  dateOfBirth.toString() + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress 
-        + "\nPhone Number: " + phoneNumber + "\nMedications: \n" + printMedication() 
-        + "\nAllergies: " + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() 
-        + "\nPediatrician: \n" + pediatrician;
+        temp = "Counselor:  " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName()
+                + "\nDate of Birth: "
+                + dateOfBirth.toString() + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress
+                + "\nPhone Number: " + phoneNumber + "\nMedications: \n" + printMedication()
+                + "\nAllergies: " + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts()
+                + "\nPediatrician: \n" + pediatrician;
         return temp;
     }
 
-    //DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
-    private String printMedication()
-    {
+    // DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
+    private String printMedication() {
         String temp = new String();
-        for(Medication m: medications)
-        {
+        for (Medication m : medications) {
             temp = temp + m.toString() + "\n";
         }
         return temp;
     }
-    private String printEmergencyContacts()
-    {
+
+    private String printEmergencyContacts() {
         String temp = new String();
-        for(Contact c: emergencyContacts)
-        {
+        for (Contact c : emergencyContacts) {
             temp = temp + c.toString() + "\n";
         }
         return temp;
     }
 
-    private String printAllergies()
-    {
+    private String printAllergies() {
         String temp = new String();
-        for(String a: allergies)
-        {
+        for (String a : allergies) {
             temp = temp + a.toString() + "\n";
         }
         return temp;

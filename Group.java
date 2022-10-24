@@ -29,10 +29,12 @@ public class Group {
     }
 
     // TODO figure out if JSON or something else needs this
-    public Group(UUID uuid, Counselor counselor, ArrayList<Camper> campers) {
+    public Group(UUID uuid, Counselor counselor, ArrayList<Camper> campers,
+            HashMap<DayOfWeek, ArrayList<Activity>> schedule) {
         this.uuid = uuid;
         this.counselor = counselor;
         this.campers = campers;
+        this.schedule = schedule;
     }
 
     /**
@@ -56,38 +58,37 @@ public class Group {
     // TODO do we need this
     public Camper getCamper(UUID id) {
         return CamperList.getInstance().getCamperByUUID(id);
-        //idk who needs this but ^^^^^^ this code can prolly just be called from wherever 
-        //its needed, no reason for a messenger method just get rid of the middle man
+        // idk who needs this but ^^^^^^ this code can prolly just be called from
+        // wherever
+        // its needed, no reason for a messenger method just get rid of the middle man
     }
 
-    //Do they want the actual list or just a pretty string of the list???? TODO
+    // Do they want the actual list or just a pretty string of the list???? TODO
     public ArrayList<Camper> getCamperList() {
         return campers;
     }
 
-    //TODO figure out if we keep this method or the one above ^^^^^ or both
-    public String viewCamperList()
-    {
+    // TODO figure out if we keep this method or the one above ^^^^^ or both
+    public String viewCamperList() {
         String temp = new String();
-        for(Camper c: campers)
-        {
+        for (Camper c : campers) {
             temp = temp + "\n" + c.toStringBrief();
         }
         return temp;
     }
 
-    //same thing with this one, do they want the actual schedule or to just view the schedule
+    // same thing with this one, do they want the actual schedule or to just view
+    // the schedule
     public HashMap<DayOfWeek, ArrayList<Activity>> getSchedule() {
         return schedule;
     }
 
-    //printing the schedule assuming its not empty
-    public String printSchedule()
-    {
+    // printing the schedule assuming its not empty
+    public String printSchedule() {
         String temp = new String();
 
         for (DayOfWeek day : DayOfWeek.values()) {
-            //temp = temp + getActivities(group, day) + "\n";
+            // temp = temp + getActivities(group, day) + "\n";
             temp = temp + getActivities(day) + "\n";
         }
         return temp;
@@ -104,10 +105,9 @@ public class Group {
         return temp;
     }
 
-
-    //when the schedule is automatically generated, it can be assigned as this group's schedule
-    public void setScedule(HashMap<DayOfWeek, ArrayList<Activity>> schedule)
-    {
+    // when the schedule is automatically generated, it can be assigned as this
+    // group's schedule
+    public void setScedule(HashMap<DayOfWeek, ArrayList<Activity>> schedule) {
         this.schedule = schedule;
     }
 }

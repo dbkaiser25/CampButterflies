@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.Date;
 
 //Director doesn't have an email?!?!?! i think thats an issue
 public class Director extends Person {
@@ -30,8 +31,7 @@ public class Director extends Person {
       // not forard to write this method
    }
 
-   public void viewActivities() 
-   {
+   public void viewActivities() {
 
    }
 
@@ -40,27 +40,25 @@ public class Director extends Person {
       camp.addActivity(activity);
    }
 
-   public void removeActivity(Activity activity) 
-   {
+   public void removeActivity(Activity activity) {
 
    }
 
-   public String viewCounselorInfo(String firstName, String lastName) 
-   {
+   public String viewCounselorInfo(String firstName, String lastName) {
       Counselor temp;
       temp = CounselorList.getInstance().getCounselorByName(firstName, lastName);
-      if(temp == null)
+      if (temp == null)
          return null;
       else
          return temp.toString();
    }
 
-   public String toString() 
-   {
-      String temp = new String();
-      temp = "Director: " + firstName + " " + lastName + "\nUsername: " 
-      + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString() 
-      + "\nAddress: " + homeAddress; 
-      return temp;
+   public String toString() {
+      return "works";
+      // String temp = new String();
+      // temp = "Director: " + firstName + " " + lastName + "\nUsername: "
+      // + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString()
+      // + "\nAddress: " + homeAddress;
+      // return temp;
    }
 }

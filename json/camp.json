@@ -54,7 +54,7 @@
           }, { 
             "id" : "1985545a-bd6c-4c33-b912-b46ed7fee101"
           }],
-          "start_date" : "5/29/2023", 
+          "start_date" : "5/29/2022", 
           "end_date" : "6/5/2023", 
           "isFull": "false"
         }
@@ -79,7 +79,22 @@
             },{
               "id" : "e9849230-c646-4c49-8741-cbe0db9a0d40"
             }
-          ]
+          ],
+          "group_schedule" : [{
+            "day_of_week" : "SUNDAY",
+            "daily_activities" : [{
+              "name" : "Kayaking", 
+              "location" : "Lake Butterfly", 
+              "description" : "Campers will go kayaking in Lake Butterfly"
+            }]
+          },{
+            "day_of_week": "MONDAY", 
+            "daily_activities" : [{
+              "name" : "Archery", 
+              "location" :"Butterfly range", 
+              "description" : "campers will practice archery at the Butterfly range"
+            }]
+          }] 
           }],
           "week_counselors": [{
             "id" : "ec1ef8b7-a909-4746-b89c-f5d8ddbe0e49"

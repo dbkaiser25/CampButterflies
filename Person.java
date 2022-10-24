@@ -1,3 +1,4 @@
+
 //import java.util.Date;
 /**
  * An abstract class that defines a person to be inherited 
@@ -5,6 +6,7 @@
  */
 
 import java.util.UUID;
+import java.util.Date;
 
 public abstract class Person {
     protected UUID uuid;
@@ -16,10 +18,10 @@ public abstract class Person {
     /**
      * A method to create an instance of a person
      * 
-     * @param firstName   A string for their first name
-     * @param lastName    A string for their last name
-     * @param dateOfBirth A string for their date of birth
-     * @param homeAddress A string for their home address
+     * @param firstName    A string for their first name
+     * @param lastName     A string for their last name
+     * @param dateOfBirth2 A string for their date of birth
+     * @param homeAddress  A string for their home address
      */
     // Constructor without UUID
     public Person(String firstName, String lastName, Date dateOfBirth, String homeAddress) {

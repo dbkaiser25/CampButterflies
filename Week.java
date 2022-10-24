@@ -11,6 +11,62 @@ public class Week {
 
     private String theme;
 
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
+    }
+
+    public ArrayList<Counselor> getCounselors() {
+        return counselors;
+    }
+
+    public void setCounselors(ArrayList<Counselor> counselors) {
+        this.counselors = counselors;
+    }
+
+    public ArrayList<Camper> getCampers() {
+        return campers;
+    }
+
+    public void setCampers(ArrayList<Camper> campers) {
+        this.campers = campers;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public boolean isFull() {
+        return isFull;
+    }
+
+    public void setFull(boolean isFull) {
+        this.isFull = isFull;
+    }
+
     private ArrayList<Group> groups = new ArrayList<Group>();
     private ArrayList<Counselor> counselors = new ArrayList<Counselor>();
     private ArrayList<Camper> campers = new ArrayList<Camper>();
@@ -23,7 +79,8 @@ public class Week {
         // Constructor goes here
     }
 
-    //and a full one so that when we read from JSON we can create weeks that have already been created/registered
+    // and a full one so that when we read from JSON we can create weeks that have
+    // already been created/registered
     public Week(String theme, ArrayList<Group> groups, ArrayList<Counselor> counselors, ArrayList<Camper> campers,
             Date startDate, Date endDate, boolean isFull) {
         this.theme = theme;
@@ -35,17 +92,14 @@ public class Week {
         this.isFull = isFull;
     }
 
-    public void generateSchedules() 
-    {
+    public void generateSchedules() {
 
         // do schedule things here
     }
 
-    public String viewSchedule() 
-    {
+    public String viewSchedule() {
         String temp = new String();
-        for(Group g: groups)
-        {
+        for (Group g : groups) {
             temp = temp + "\n\n\t\t" + g.printSchedule();
         }
         return null;
