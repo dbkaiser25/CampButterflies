@@ -20,6 +20,16 @@ public class Camp {
     private HashMap<Integer, Week> masterSchedule;
     private ArrayList<Activity> activities;
 
+    //Empty constructor if we want to make a new camp? idk if we need this
+    public Camp()
+    {
+        name = null;
+        description = null;
+        masterSchedule = null;
+        activities = null;
+    }
+
+    //full constructor for reading from JSON
     public Camp(String name, String description, HashMap<Integer, Week> masterSchedule,
             ArrayList<Activity> activities) {
         // TODO figure out Calendar constructor
@@ -67,13 +77,26 @@ public class Camp {
         this.description = description;
     }
 
-    // public HashMap<Integer, Week> getMasterSchedule() {
-    // return masterSchedule;
-    // }
+    /**
+     * Derek: I need to be able to access a specific week within the masterSchedule
+     * so if you could make getters and setters that could get a specific week and
+     * integer
+     * within the hashmap that'd be amazing
+     * essentially in the writer I want to be able to call:
+     * "campDetails.put(THEME, camp.getMasterSchedule().getWeek().getTheme());"
+     * which should theoretically write the camp's theme to the json file
+     * text me if you need help, not crazy urgent but I can't write the writer file
+     * without this
+     * -Zak
+     * Zak: this hashmap essentially functions as an array but i didn't want to change it 
+     * let me know if it works how you want
+     */
+    public Week getWeek(int num)
+    {
+        return masterSchedule.get(num);
+    }
 
-    // public void setMasterSchedule(HashMap<Integer, Week> masterSchedule) {
-    // this.masterSchedule = masterSchedule;
-    // }
+
 
     public String getActivities() {
         String displayActivities = new String();
@@ -93,10 +116,6 @@ public class Camp {
         }
 
     }
-
-    // public void setActivities(ArrayList<Activity> activities) {
-    // this.activities = activities;
-    // }
 
     public void editCalendar() {
         // do some editing of the calendar
