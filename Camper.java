@@ -89,14 +89,15 @@ public class Camper extends Person {
 
     /**
      * A description of the camper in string form
-     * 
+     * A to string for when a counselor wants to see info about the campers in their group
      * @return A string description of the camper
      */
     public String toStringBrief() {
-        return firstName + " " + lastName + " " + homeAddress;
+        return firstName + " " + lastName + "\n" + dateOfBirth.toString();
     }
 
     //different groups need to see different amounts of camper information
+    //when director or user wants to see camper information
     public String toStringFull()
     {
         String temp = new String();
@@ -107,7 +108,40 @@ public class Camper extends Person {
         "\nEmail: " + emailAddress + "\n " + pediatrician + "Medical Info: \n" + medicalInfo + "\nPhone Number: " + phoneNumber;
          */
 
-        temp = "Camper: " + firstName + " " + lastName + "\nDate of Birth: " + 
-        return "";
+        temp = "Camper: " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.toString() 
+        + "\nAddress: " + homeAddress + "\nSex: " + sex + "\nMedications: \n" + printMedication() + "\nAllergies: "
+        + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() + "\nPediatrician: " + pediatrician.toString();
+        return temp;
+    }
+
+    //helper methods 
+    //it seems weird these methods can't go into their own classes because I'm sure we'll need em again
+    private String printMedication()
+    {
+        String temp = new String();
+        for(Medication m: medications)
+        {
+            temp = temp + m.toString() + "\n";
+        }
+        return temp;
+    }
+    private String printEmergencyContacts()
+    {
+        String temp = new String();
+        for(Contact c: emergencyContacts)
+        {
+            temp = temp + c.toString() + "\n";
+        }
+        return temp;
+    }
+
+    private String printAllergies()
+    {
+        String temp = new String();
+        for(String a: allergies)
+        {
+            temp = temp + a.toString() + "\n";
+        }
+        return temp;
     }
 }

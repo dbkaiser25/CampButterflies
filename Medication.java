@@ -1,4 +1,6 @@
-public class Medication {
+
+public class Medication 
+{
     private String dose;
     private String type;
     private String time;
@@ -38,4 +40,6 @@ public class Medication {
                 "Dosage Amount: " + dose +
                 "Time Taken: " + time;
     }
+
+    
 }
