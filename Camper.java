@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.Date;
+//import java.util.Date;
 
 /**
  * A class that defines a camper for the camp
@@ -27,7 +27,7 @@ public class Camper extends Person {
     public Camper(String firstName, String lastName, String homeAddress, Date dateOfBirth,
             Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies,
             ArrayList<Contact> emergencyContacts, Contact pediatrician) {
-        super(firstName, lastName, dateOfBirth, homeAddress);
+        super(firstName,lastName,dateOfBirth,homeAddress);
         this.sex = sex;
         this.medications = medications;
         this.allergies = allergies;

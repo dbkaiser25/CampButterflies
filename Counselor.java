@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.Date;
 
 /**
  * A class that defines a counselor
@@ -157,9 +156,9 @@ public class Counselor extends Person {
         String temp = new String();
         //the date class is kinda weird, idk how day specifically works
         //TODO add contact
-        temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.getMonth() + 
-        "/" + dateOfBirth.getDate() + "/" + dateOfBirth.getYear() + "\nAddress: " + homeAddress + 
-        "\nEmail: " + emailAddress + "\n " + pediatrician + "Medical Info: \n" + medicalInfo + "\nPhone Number: " + phoneNumber;
+        temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " +  dateOfBirth.toString()
+        + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress + "\n " 
+        + pediatrician + "Medical Info: \n" + medicalInfo + "\nPhone Number: " + phoneNumber;
         return temp;
     }
 
