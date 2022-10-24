@@ -82,6 +82,7 @@ public class Contact
      */
     public String toString()
     {
-        return "A string of the contact";
+        return "Name: " + firstName + " " + lastName + "\nPhone Number: " + phoneNumber 
+        + "\nEmail: " + emailAddress + "\nRelation: " + relationToPerson;
     }
 }

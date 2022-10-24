@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.Date;
 
 /**
  * A class that defines a camper for the camp
@@ -23,7 +24,7 @@ public class Camper extends Person {
      *                          TODO Figure out the constructors for emergency
      *                          contacts and maybe pediatrician
      */
-    public Camper(String firstName, String lastName, String homeAddress, String dateOfBirth,
+    public Camper(String firstName, String lastName, String homeAddress, Date dateOfBirth,
             Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies,
             ArrayList<Contact> emergencyContacts, Contact pediatrician) {
         super(firstName, lastName, dateOfBirth, homeAddress);
@@ -35,7 +36,7 @@ public class Camper extends Person {
     }
 
     // constructor with UUID
-    public Camper(UUID uuid, String firstName, String lastName, String homeAddress, String dateOfBirth,
+    public Camper(UUID uuid, String firstName, String lastName, String homeAddress, Date dateOfBirth,
             Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies,
             ArrayList<Contact> emergencyContacts, Contact pediatrician) {
         super(uuid, firstName, lastName, dateOfBirth, homeAddress);
@@ -91,7 +92,22 @@ public class Camper extends Person {
      * 
      * @return A string description of the camper
      */
-    public String toString() {
+    public String toStringBrief() {
         return firstName + " " + lastName + " " + homeAddress;
+    }
+
+    //different groups need to see different amounts of camper information
+    public String toStringFull()
+    {
+        String temp = new String();
+
+        /*
+         * temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.getMonth() + 
+        "/" + dateOfBirth.getDate() + "/" + dateOfBirth.getYear() + "\nAddress: " + homeAddress + 
+        "\nEmail: " + emailAddress + "\n " + pediatrician + "Medical Info: \n" + medicalInfo + "\nPhone Number: " + phoneNumber;
+         */
+
+        temp = "Camper: " + firstName + " " + lastName + "\nDate of Birth: " + 
+        return "";
     }
 }
