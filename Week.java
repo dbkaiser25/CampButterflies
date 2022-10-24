@@ -10,6 +10,7 @@ public class Week {
     // them to group and keeps one in camp/calendar
 
     private String theme;
+
     private ArrayList<Group> groups = new ArrayList<Group>();
     private ArrayList<Counselor> counselors = new ArrayList<Counselor>();
     private ArrayList<Camper> campers = new ArrayList<Camper>();
@@ -17,11 +18,12 @@ public class Week {
     private Date endDate;
     private boolean isFull;
 
-    // TODO write constructor
+    // Maybe we want an empty constructor, for when new weeks need to be registered
     public Week() {
         // Constructor goes here
     }
 
+    //and a full one so that when we read from JSON we can create weeks that have already been created/registered
     public Week(String theme, ArrayList<Group> groups, ArrayList<Counselor> counselors, ArrayList<Camper> campers,
             Date startDate, Date endDate, boolean isFull) {
         this.theme = theme;
@@ -33,12 +35,19 @@ public class Week {
         this.isFull = isFull;
     }
 
-    public void generateSchedule() {
+    public void generateSchedules() 
+    {
+
         // do schedule things here
     }
 
-    public String viewSchedule() {
-        // do more schedule things here (related to viewing)
+    public String viewSchedule() 
+    {
+        String temp = new String();
+        for(Group g: groups)
+        {
+            temp = temp + "\n\n\t\t" + g.printSchedule();
+        }
         return null;
     }
 

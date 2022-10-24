@@ -129,25 +129,36 @@ public class Counselor extends Person {
      * ...
      */
     public String viewSchedule(Group group) {
-        String temp = new String();
+        //String temp = new String();
 
         // This is way cleaner if it works
-        for (DayOfWeek day : DayOfWeek.values()) {
-            temp = temp + getActivities(group, day) + "\n";
-        }
-        return temp;
+        //for (DayOfWeek day : DayOfWeek.values()) {
+            //temp = temp + getActivities(group, day) + "\n";
+        //}
+
+        //gonna need to know what group we are talking about before we can call the group method
+        //for know it'll be a parameter but maybe we call a get group or something
+        return group.printSchedule();
     }
 
     // helper method for viewSchedule
     // Same thing can be modified for prettier output
-    private String getActivities(Group group, DayOfWeek day) {
+    /* 
+    private String getActivities(Group group, DayOfWeek day) 
+    {
+        this code used to be here but now i believe is in a better place, in groups
+        it will be deleated eventually
         String temp = new String();
         temp = day.toString() + "\n";
         for (int i = 0; i < group.getSchedule().get(day).size(); i++) {
             temp = temp + group.getSchedule().get(day).get(i).getName() + "\n";
         }
         return temp;
+        
+
+
     }
+    */
 
     public String toString() {
         String temp = new String();

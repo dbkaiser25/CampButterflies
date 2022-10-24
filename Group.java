@@ -55,15 +55,59 @@ public class Group {
 
     // TODO do we need this
     public Camper getCamper(UUID id) {
-        return campers.get(id);
+        return CamperList.getInstance().getCamperByUUID(id);
+        //idk who needs this but ^^^^^^ this code can prolly just be called from wherever 
+        //its needed, no reason for a messenger method just get rid of the middle man
     }
 
-    // or this instead
+    //Do they want the actual list or just a pretty string of the list???? TODO
     public ArrayList<Camper> getCamperList() {
         return campers;
     }
 
+    //TODO figure out if we keep this method or the one above ^^^^^ or both
+    public String viewCamperList()
+    {
+        String temp = new String();
+        for(Camper c: campers)
+        {
+            temp = temp + "\n" + c.toStringBrief();
+        }
+        return temp;
+    }
+
+    //same thing with this one, do they want the actual schedule or to just view the schedule
     public HashMap<DayOfWeek, ArrayList<Activity>> getSchedule() {
         return schedule;
+    }
+
+    //printing the schedule assuming its not empty
+    public String printSchedule()
+    {
+        String temp = new String();
+
+        for (DayOfWeek day : DayOfWeek.values()) {
+            //temp = temp + getActivities(group, day) + "\n";
+            temp = temp + getActivities(day) + "\n";
+        }
+        return temp;
+    }
+
+    // helper method for printSchedule
+    // Same thing can be modified for prettier output
+    private String getActivities(DayOfWeek day) {
+        String temp = new String();
+        temp = day.toString() + "\n";
+        for (int i = 0; i < schedule.get(day).size(); i++) {
+            temp = temp + schedule.get(day).get(i).getName() + "\n";
+        }
+        return temp;
+    }
+
+
+    //when the schedule is automatically generated, it can be assigned as this group's schedule
+    public void setScedule(HashMap<DayOfWeek, ArrayList<Activity>> schedule)
+    {
+        this.schedule = schedule;
     }
 }
