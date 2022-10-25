@@ -124,8 +124,8 @@
                   "id" : "e9849230-c646-4c49-8741-cbe0db9a0d40"
                 }
               ],
-              "startDate": "6/6/2023",
-              "endDate": "6/12/2023",
+              "start_date": "6/6/2023",
+              "end_date": "6/12/2023",
               "isFull": "false"
             }
           }

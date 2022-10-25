@@ -39,7 +39,7 @@ public class DataWriter extends DataConstants {
         camperDetails.put(FIRSTNAME, camper.getFirstName());
         camperDetails.put(LASTNAME, camper.getLastName());
         camperDetails.put(HOMEADDRESS, camper.getHomeAddress());
-        camperDetails.put(DOB, camper.getDateOfBirth()); // TODO fix DOB
+        camperDetails.put(DOB, camper.getDateOfBirth().toString()); // TODO fix DOB
         Sex sex = camper.getSex();
         String gender = sex.toString();
         camperDetails.put(GENDER, gender);
@@ -273,24 +273,28 @@ public class DataWriter extends DataConstants {
             // date, and is full
             JSONObject msJSON = (JSONObject) masterScheduleJSON.get(i);
             // ask about this
-            Integer weekNum = camp;
-            Integer weeknum = msJSON.put(WEEK_NUM, camp.getMasterSchedule().get(WEEK_NUM.valueOf(weekNum)));
+            msJSON.put(WEEK_NUM, camp.getMasterSchedule().get(WEEK_NUM));
 
             JSONObject weekObj = new JSONObject();
-            weekObj.put(THEME, camp.getWeek(weekNum).getTheme());
+            weekObj.put(THEME, camp.getWeek(i).getTheme());
             JSONArray groupArray = new JSONArray();
             for (int j = 0; j < camp.getWeek(i).getGroups().size(); j++) {
                 JSONObject groupObj = (JSONObject) groupArray.get(j);
                 // see if these work for ID
                 groupObj.put(GROUP_ID, camp.getWeek(i).getGroups().get(j).getUuid().toString());
-                groupObj.put(COUNSELOR_ID, camp.getWeek(i).getCounselors().get(j).getUUID().toString());
+                groupObj.put(COUNSELOR_ID, camp.getWeek(i).getGroups().get(j).getCounselor().getUUID().toString());
+
+                // groupObj.put(COUNSELOR_ID,
+                // camp.getWeek(i).getCounselors().get(j).getUUID().toString());
 
                 JSONArray campersArray = new JSONArray();
                 for (int k = 0; k < camp.getWeek(i).getGroups().get(j).getCampers().size(); k++) {
                     JSONObject camperObj = (JSONObject) campersArray.get(k);
-                    camperObj.put(ID, camp.getWeek(i).getGroups().get(j).getCampers().get(k)); // see if this is
-                                                                                               // correct, might have to
-                                                                                               // be getbyUUID
+                    camperObj.put(ID, camp.getWeek(i).getGroups().get(j).getCampers().get(k).getUUID().toString()); // see
+                                                                                                                    // if
+                                                                                                                    // this
+                                                                                                                    // is
+                                                                                                                    // right
                     campersArray.add(camperObj);
                 }
                 groupObj.put(GROUP_CAMPERS, campersArray);
@@ -305,7 +309,10 @@ public class DataWriter extends DataConstants {
                                                                      // to return one single activity
                     }
                 }
+                groupArray.add(groupObj);
             }
+            weekObj.put(GROUPS, groupArray);
+            msJSON.put(WEEK, weekObj);
 
         }
 
