@@ -13,6 +13,7 @@ public class CampFacade
     private CounselorList counselorList;
     private DirectorList directorList;
     private Scanner scan = new Scanner(System.in);
+    private Person currentUser;
 
     public CampFacade(CampList campList, CamperList camperList, UserList userList, 
     CounselorList counselorList, DirectorList directorList)
@@ -27,9 +28,15 @@ public class CampFacade
     public CampList getCampList(){
         return campList;
     }
-    public void Login(LoginInfo userLogin)
+    public boolean Login(LoginInfo userLogin)
     {
-        
+        if(!userList.haveUser(userLogin)||!counselorList.haveCounselor(userLogin))
+            return false;
+        else if(userList.haveUser(userLogin))
+            currentUser = userList.getUserByUserName(userLogin.getUserName());
+        else 
+            currentUser = counselorList.getCounselorByUserName(userLogin.getUserName());
+        return true;
     }
 
     public void addUser(){
@@ -148,7 +155,6 @@ public class CampFacade
         String homeAddress = get("Home Address");
         String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
         Date doB = formatDate(dateOfBirth);
-        String med = get("Would you like to add any medications(yes/no)");
 
         System.out.println("\nDoctor Information");
         String relationToPerson = "Pediatrician";
