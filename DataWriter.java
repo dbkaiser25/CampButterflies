@@ -1,5 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -9,6 +11,8 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
+        Date dob = new Date(06, 24, 2003);
+        convertDateToString(dob);
 
     }
 
@@ -320,5 +324,11 @@ public class DataWriter extends DataConstants {
 
         // campDetails.put(ALL_ACTIVITIES, );
         return campDetails;
+    }
+
+    public static String convertDateToString(Date date) {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        String newDate = df.format(date);
+        return newDate;
     }
 }
