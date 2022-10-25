@@ -1,5 +1,4 @@
 
-import java.util.UUID;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -195,6 +194,12 @@ public class CampFacade
         counselorList.addCounselor(counselor);
     }
 
+    /*private Date formatDate(String date){
+        try{
+            return
+        }
+    }*/
+
     public boolean qualifiesForDiscount()
     {
         return true;
@@ -230,11 +235,11 @@ public class CampFacade
         Camp camp = campList.getCamp(campName);
         return camp.getActivities();
     }
-    //this needs an instance but of what?????
-    //TODO
-    public void getInstance()
+   
+    public void getWeeks(String campName)
     {
-
+        Camp camp = campList.getCamp(campName);
+        return camp.
     }
 
 
