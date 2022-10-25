@@ -9,6 +9,35 @@ import java.util.UUID;
  */
 public class Group {
     private UUID uuid;
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public Counselor getCounselor() {
+        return counselor;
+    }
+
+    public void setCounselor(Counselor counselor) {
+        this.counselor = counselor;
+    }
+
+    public ArrayList<Camper> getCampers() {
+        return campers;
+    }
+
+    public void setCampers(ArrayList<Camper> campers) {
+        this.campers = campers;
+    }
+
+    public void setSchedule(HashMap<DayOfWeek, ArrayList<Activity>> schedule) {
+        this.schedule = schedule;
+    }
+
     private Counselor counselor;
     private ArrayList<Camper> campers;
 

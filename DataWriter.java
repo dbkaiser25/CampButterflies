@@ -166,8 +166,9 @@ public class DataWriter extends DataConstants {
         counselorDetails.put(PHONE_NUM, counselor.getPhoneNumber());
         counselorDetails.put(EMAIL, counselor.getEmailAddress());
         counselorDetails.put(HOMEADDRESS, counselor.getHomeAddress());
-        counselorDetails.put(DOB, counselor.getDateOfBirth()); // store as date in object, store as String in JSON
-        // look up how to convert String to a date
+        // see if this works- think it should
+        String dob = counselor.getDateOfBirth().toString();
+        counselorDetails.put(DOB, dob);
 
         counselorDetails.put(USERNAME, counselor.getUserLogin().getUserName());
         counselorDetails.put(PASSWORD, counselor.getUserLogin().getPassword());
@@ -185,7 +186,7 @@ public class DataWriter extends DataConstants {
             contactObj.put(EMAIL, email);
             String relationtoPerson = counselor.getEmergencyContacts().get(i).getRelationToPerson();
             contactObj.put(CONT_RELATION_TO_PERSON, relationtoPerson);
-            contactsJSON.add(new Contact(firstName, lastName, phoneNumber, email, relationtoPerson));
+            contactsJSON.add(contactObj);
         }
         counselorDetails.put(CONTACTS, contactsJSON);
 
@@ -270,9 +271,41 @@ public class DataWriter extends DataConstants {
         for (int i = 0; i < camp.getMasterSchedule().size(); i++) {
             // include week number, week, week counselors, week campers, start date, end
             // date, and is full
-            JSONObject msJSON =  (JSONObject) masterScheduleJSON.get(i); 
-            Integer weekNum = msJSON.put(WEEK_NUM, camp.getMasterSchedule().get(i); //how 
-            Week 
+            JSONObject msJSON = (JSONObject) masterScheduleJSON.get(i);
+            // ask about this
+            Integer weekNum = camp;
+            Integer weeknum = msJSON.put(WEEK_NUM, camp.getMasterSchedule().get(WEEK_NUM.valueOf(weekNum)));
+
+            JSONObject weekObj = new JSONObject();
+            weekObj.put(THEME, camp.getWeek(weekNum).getTheme());
+            JSONArray groupArray = new JSONArray();
+            for (int j = 0; j < camp.getWeek(i).getGroups().size(); j++) {
+                JSONObject groupObj = (JSONObject) groupArray.get(j);
+                // see if these work for ID
+                groupObj.put(GROUP_ID, camp.getWeek(i).getGroups().get(j).getUuid().toString());
+                groupObj.put(COUNSELOR_ID, camp.getWeek(i).getCounselors().get(j).getUUID().toString());
+
+                JSONArray campersArray = new JSONArray();
+                for (int k = 0; k < camp.getWeek(i).getGroups().get(j).getCampers().size(); k++) {
+                    JSONObject camperObj = (JSONObject) campersArray.get(k);
+                    camperObj.put(ID, camp.getWeek(i).getGroups().get(j).getCampers().get(k)); // see if this is
+                                                                                               // correct, might have to
+                                                                                               // be getbyUUID
+                    campersArray.add(camperObj);
+                }
+                groupObj.put(GROUP_CAMPERS, campersArray);
+                JSONArray groupSchedule = new JSONArray();
+                for (int k = 0; k < camp.getWeek(i).getGroups().get(j).getSchedule().size(); k++) {
+                    JSONObject scheduleObj = (JSONObject) groupSchedule.get(k);
+                    scheduleObj.put(DAY_OF_WEEK, camp.getWeek(i).getGroups().get(j).getSchedule().get(k));
+                    JSONArray dailyActivitiesArray = new JSONArray();
+                    for (int l = 0; l < camp.getWeek(i).getGroups().get(j).getSchedule().get(k).size(); l++) {
+                        JSONObject activityObj = (JSONObject) dailyActivitiesArray.get(l);
+                        activityObj.put(NAME, camp.getActivities()); // see if this will work- don't know how to get it
+                                                                     // to return one single activity
+                    }
+                }
+            }
 
         }
 
