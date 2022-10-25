@@ -1,5 +1,8 @@
-
+import java.util.HashMap;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class CampFacade 
@@ -21,6 +24,9 @@ public class CampFacade
         this.directorList = directorList;
     }
 
+    public CampList getCampList(){
+        return campList;
+    }
     public void Login(LoginInfo userLogin)
     {
         
@@ -34,6 +40,7 @@ public class CampFacade
         String lastName = get("Last Name");
         String homeAddress = get("Home Address");
         String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
+        Date doB = formatDate(dateOfBirth);
 
         ArrayList<Camper> campers = new ArrayList<>();
         boolean more = true;
@@ -46,7 +53,7 @@ public class CampFacade
                     more = false;
         }
 
-        User user = new User(firstName, lastName, dateOfBirth, homeAddress, loginInfo, campers);
+        User user = new User(firstName, lastName, doB, homeAddress, loginInfo, campers);
         userList.addUser(user);
     }
 
@@ -56,6 +63,7 @@ public class CampFacade
         String lastName = get("Last Name");
         String homeAddress = get("Home Address");
         String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
+        Date doB = formatDate(dateOfBirth);
         Sex sex = Enum.valueOf(Sex.class,get("Sex(MALE/FEMALE)"));
         String med = get("Would you like to add any medications(yes/no)");
 
@@ -108,7 +116,7 @@ public class CampFacade
                     moreContacts = false;
         }
 
-        Camper camper = new Camper(firstName, lastName, homeAddress, dateOfBirth, sex, medications, allergies, emergencyContacts, pediatrician);
+        Camper camper = new Camper(firstName, lastName, homeAddress, doB, sex, medications, allergies, emergencyContacts, pediatrician);
         camperList.addCamper(camper);
         return camper;
     }
@@ -139,32 +147,8 @@ public class CampFacade
         String emailAddress = get("Email Address");
         String homeAddress = get("Home Address");
         String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
+        Date doB = formatDate(dateOfBirth);
         String med = get("Would you like to add any medications(yes/no)");
-
-        ArrayList<Medication> medications = new ArrayList<>();
-        if(med.equalsIgnoreCase("yes")){
-            boolean more = true;
-            while(more){
-                String type = get("Medication Name");
-                String dose = get("Dose Amount");
-                String time = get("Time Taken");
-                Medication newMeds = new Medication(type, dose, time);
-                medications.add(newMeds);
-                String answer = get("Would you like to add more(yes/no)");
-                if(answer.equalsIgnoreCase("no"))
-                    more = false;
-            }
-        }
-
-        ArrayList<String> allergies = new ArrayList<>();
-        boolean moreAllergies = true;
-        while(moreAllergies){
-            String allergy = get("Allergies:");
-            allergies.add(allergy);
-            String answer = get("Would you like to add more allergies?(yes/no)");
-            if(answer.equalsIgnoreCase("no"))
-                    moreAllergies = false;
-        }
 
         System.out.println("\nDoctor Information");
         String relationToPerson = "Pediatrician";
@@ -190,15 +174,18 @@ public class CampFacade
                     moreContacts = false;
         }
 
-        Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, dateOfBirth, emergencyContacts, pediatrician, loginInfo);
+        Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB, emergencyContacts, pediatrician, loginInfo);
         counselorList.addCounselor(counselor);
     }
 
-    /*private Date formatDate(String date){
+    private Date formatDate(String date){
         try{
-            return
+            return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+        } catch (ParseException e) {
+            System.out.println("Sorry " + date + " is not parsable");
+            return null;
         }
-    }*/
+    }
 
     public boolean qualifiesForDiscount()
     {
@@ -236,10 +223,11 @@ public class CampFacade
         return camp.getActivities();
     }
    
-    public void getWeeks(String campName)
+    public HashMap<Integer,Week> getWeeks(String campName)
     {
         Camp camp = campList.getCamp(campName);
-        return camp.
+        HashMap<Integer,Week> weeks = camp.getWeeks();
+        return weeks;
     }
 
 

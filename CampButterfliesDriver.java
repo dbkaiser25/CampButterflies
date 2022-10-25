@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -40,11 +39,11 @@ public class CampButterfliesDriver {
 
             switch(choice){
                 case 1:
-                    System.out.println(facade.getActivities("Blue ridge special"));
+                    System.out.println(facade.getActivities("Camp Blue Butterflies"));
                     //backToHomepage();
                     break;
                 case 2:
-                    //facade.getWeeks();
+                    System.out.println(facade.getWeeks("Camp Blue Butterflies"));
                     //backToHomepage();
                     break;
                 case 3:
@@ -109,7 +108,7 @@ public class CampButterfliesDriver {
      * prints the hompage UI
      */
     private void homepage(){
-        System.out.println("\n\tWelcome to Camp Butterflies");
+        System.out.println("\n\tWelcome to Camp Blue Butterflies");
         System.out.println("-----------------------------------------------");
         for (int i = 0; i < homepageOptions.length; i++) {
 			System.out.println((i + 1) + ". " + homepageOptions[i]);
@@ -161,6 +160,10 @@ public class CampButterfliesDriver {
     }
 
 
+    private String get(String prompt){
+        System.out.print(prompt + ": ");
+        return scan.nextLine();
+    }
 
     public static void main(String[] args){
         CampList campList = CampList.getInstance();

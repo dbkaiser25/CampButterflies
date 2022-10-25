@@ -72,4 +72,12 @@ public class CampList {
     public void editGroup() {
 
     }
+
+    public String toString(){
+        String allCamps="";
+        for(Camp camp: camps){
+            allCamps += camp + "\n";
+        }
+        return allCamps;
+    }
 }
