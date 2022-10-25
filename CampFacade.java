@@ -153,10 +153,10 @@ public class CampFacade
      * @param campName
      * @return
      */
-    public HashMap<Integer,Week> getWeeks(String campName)
+    public ArrayList<Week> getWeeks(String campName)
     {
         Camp camp = campList.getCamp(campName);
-        HashMap<Integer,Week> weeks = camp.getWeeks();
+        ArrayList<Week> weeks = camp.getWeeks();
         return weeks;
     }
 
