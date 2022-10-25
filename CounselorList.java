@@ -68,6 +68,14 @@ public class CounselorList
         return null;
     }
 
+    public boolean haveCounselor(LoginInfo info){
+        for(Counselor counselor: counselors){
+            if(counselor.getUserLogin().equals(info))
+                return true;
+        }
+        return false;
+    }
+
     public void editCounselor()
     {
 

@@ -129,4 +129,8 @@ public class Camp {
         // be changed to that and create view schedule in Facade
         return null;
     }
+
+    public String toString(){
+        return name + ": " + description;
+    }
 }
