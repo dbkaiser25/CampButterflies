@@ -238,6 +238,7 @@ public class DataLoader extends DataConstants {
                                             .add(new Activity(activityName, activityLocaiton, activityDescription));
                                 }
                                 groupHashMap.put(day, dailyActivities);
+                                // System.out.println("Hash: " + groupHashMap); //group hash works
                                 // figure out how to add to hashMap; not implemented yet
                             }
                             groups.add(new Group(groupNum, counselor, campersList, groupHashMap));
@@ -271,9 +272,8 @@ public class DataLoader extends DataConstants {
                         Week week = new Week(theme, groups, week_counselors, week_campers, startDate, endDate, isFull);
 
                         masterScheduleHash.put(week_num, week);
-                        /*
-                         * figure out how to add to hashMap
-                         */
+                        // System.out.println("HashMap " + masterScheduleHash.toString()); //believe
+                        // this works
                     }
                     ArrayList<Activity> activities = new ArrayList<Activity>();
                     JSONArray activitiesJSON = (JSONArray) calendarJSON.get(ALL_ACTIVITIES);
