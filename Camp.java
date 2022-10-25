@@ -95,6 +95,11 @@ public class Camp {
         return masterSchedule.get(num);
     }
 
+    public HashMap<Integer,Week> getWeeks()
+    {
+        return masterSchedule;
+    }
+
     public String getActivities() {
         String displayActivities = new String();
         for (Activity activity : activities) {

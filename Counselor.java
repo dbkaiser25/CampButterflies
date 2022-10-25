@@ -12,8 +12,8 @@ public class Counselor extends Person {
     private String emailAddress;
     private ArrayList<Contact> emergencyContacts;
     private Contact pediatrician;
-    private ArrayList<String> allergies = new ArrayList<String>();
-    private ArrayList<Medication> medications = new ArrayList<Medication>();
+    //private ArrayList<String> allergies = new ArrayList<String>();
+    //private ArrayList<Medication> medications = new ArrayList<Medication>();
     private String phoneNumber;
     private LoginInfo userLogin;
 
@@ -31,8 +31,8 @@ public class Counselor extends Person {
             Date dateOfBirth, ArrayList<Medication> medications, ArrayList<String> allergies,
             ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(firstName, lastName, dateOfBirth, homeAddress);
-        this.medications = medications;
-        this.allergies = allergies;
+        //this.medications = medications;
+        //this.allergies = allergies;
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
