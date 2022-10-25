@@ -1,9 +1,6 @@
 import java.util.HashMap;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 public class CampFacade 
 {
@@ -12,22 +9,30 @@ public class CampFacade
     private UserList userList;
     private CounselorList counselorList;
     private DirectorList directorList;
-    private Scanner scan = new Scanner(System.in);
     private Person currentUser;
 
-    public CampFacade(CampList campList, CamperList camperList, UserList userList, 
-    CounselorList counselorList, DirectorList directorList)
+    public CampFacade()
     {
-        this.campList = campList;
-        this.camperList = camperList;
-        this.userList = userList;
-        this.counselorList = counselorList;
-        this.directorList = directorList;
+        campList = CampList.getInstance();
+        camperList = CamperList.getInstance();
+        userList = UserList.getInstance();
+        counselorList = CounselorList.getInstance();
+        directorList = DirectorList.getInstance();
     }
 
+    /**
+     * returns all camps
+     * @return all camps
+     */
     public CampList getCampList(){
         return campList;
     }
+
+    /**
+     * Checks to see if login information exists
+     * @param userLogin 
+     * @return true if it exists, false if it doesnt
+     */
     public boolean Login(LoginInfo userLogin)
     {
         if(!userList.haveUser(userLogin)||!counselorList.haveCounselor(userLogin))
@@ -39,98 +44,57 @@ public class CampFacade
         return true;
     }
 
-    public void addUser(){
-        String username = get("Username");
-        String password = get("Password");
-        LoginInfo loginInfo = new LoginInfo(username, password);
-        String firstName = get("First Name");
-        String lastName = get("Last Name");
-        String homeAddress = get("Home Address");
-        String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
-        Date doB = formatDate(dateOfBirth);
-
-        ArrayList<Camper> campers = new ArrayList<>();
-        boolean more = true;
-        while(more){
-            System.out.println("Camper Information");
-            Camper camper = addCamper();
-            campers.add(camper);
-            String answer = get("Would you like to add more campers?(yes/no)");
-            if(answer.equalsIgnoreCase("no"))
-                    more = false;
-        }
+    /**
+     * Adds a user
+     * @param firstName
+     * @param lastName
+     * @param doB
+     * @param homeAddress
+     * @param loginInfo
+     * @param campers
+     */
+    public void addUser(String firstName, String lastName, Date doB, String homeAddress, LoginInfo loginInfo, ArrayList<Camper> campers){
 
         User user = new User(firstName, lastName, doB, homeAddress, loginInfo, campers);
         userList.addUser(user);
     }
 
-    public Camper addCamper()
-    {
-        String firstName = get("First Name");
-        String lastName = get("Last Name");
-        String homeAddress = get("Home Address");
-        String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
-        Date doB = formatDate(dateOfBirth);
-        Sex sex = Enum.valueOf(Sex.class,get("Sex(MALE/FEMALE)"));
-        String med = get("Would you like to add any medications(yes/no)");
-
-        ArrayList<Medication> medications = new ArrayList<>();
-        if(med.equalsIgnoreCase("yes")){
-            boolean more = true;
-            while(more){
-                String type = get("Medication Name");
-                String dose = get("Dose Amount");
-                String time = get("Time Taken");
-                Medication newMeds = new Medication(type, dose, time);
-                medications.add(newMeds);
-                String answer = get("Would you like to add more(yes/no)");
-                if(answer.equalsIgnoreCase("no"))
-                    more = false;
-            }
-        }
-
-        ArrayList<String> allergies = new ArrayList<>();
-        boolean moreAllergies = true;
-        while(moreAllergies){
-            String allergy = get("Allergies:");
-            allergies.add(allergy);
-            String answer = get("Would you like to add more allergies?(yes/no)");
-            if(answer.equalsIgnoreCase("no"))
-                    moreAllergies = false;
-        }
-
-        System.out.println("\nDoctor Information");
-        String relationToPerson = "Pediatrician";
-        String doctorFirstName = get("First Name");
-        String doctorLastName = get("Last Name");
-        String phoneNumber = get("Phone Number");
-        String doctorAddress = get("Email Address");
-        Contact pediatrician = new Contact(doctorFirstName,doctorLastName,phoneNumber,doctorAddress,relationToPerson);
-
-        System.out.println("\nEmergency Contacts");
-        ArrayList<Contact> emergencyContacts = new ArrayList<>();
-        boolean moreContacts = true;
-        while(moreContacts){
-            String contactFirstName = get("First Name");
-            String contactLastName = get("Last Name");
-            String conatctphoneNumber = get("Phone Number");
-            String contactAddress = get("Email Address");
-            String conatctrelationToPerson = get("Relation To Person");
-            Contact contact = new Contact(contactFirstName, contactLastName, conatctphoneNumber, contactAddress, conatctrelationToPerson);
-            emergencyContacts.add(contact);
-            String answer = get("Would you like to add more emergency contacts?(yes/no)");
-            if(answer.equalsIgnoreCase("no"))
-                    moreContacts = false;
-        }
-
+    /**
+     * Adds a camper
+     * @param firstName
+     * @param lastName
+     * @param homeAddress
+     * @param doB
+     * @param sex
+     * @param medications
+     * @param allergies
+     * @param emergencyContacts
+     * @param pediatrician
+     * @return
+     */
+    public Camper addCamper(String firstName, String lastName, String homeAddress, Date doB, Sex sex, ArrayList<Medication> medications,ArrayList<String> allergies, 
+                            ArrayList<Contact> emergencyContacts, Contact pediatrician){
         Camper camper = new Camper(firstName, lastName, homeAddress, doB, sex, medications, allergies, emergencyContacts, pediatrician);
         camperList.addCamper(camper);
         return camper;
     }
 
-    private String get(String prompt){
-        System.out.print(prompt + ": ");
-        return scan.nextLine();
+    /**
+     * Adds a counselor
+     * @param firstName
+     * @param lastName
+     * @param phoneNumber
+     * @param emailAddress
+     * @param homeAddress
+     * @param doB
+     * @param emergencyContacts
+     * @param pediatrician
+     * @param loginInfo
+     */
+    public void addCounselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress, Date doB, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo loginInfo)
+    {
+        Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB, emergencyContacts, pediatrician, loginInfo);
+        counselorList.addCounselor(counselor);
     }
 
     public void editCamperProfile()
@@ -141,56 +105,6 @@ public class CampFacade
     public void editUserProfile()
     {
 
-    }
-
-    public void addCounselor()
-    {
-        String username = get("Username");
-        String password = get("Password");
-        LoginInfo loginInfo = new LoginInfo(username, password);
-        String firstName = get("First Name");
-        String lastName = get("Last Name");
-        String phoneNumber = get("Phone Number");
-        String emailAddress = get("Email Address");
-        String homeAddress = get("Home Address");
-        String dateOfBirth = get("Date of Birth(MM/DD/YYYY)");
-        Date doB = formatDate(dateOfBirth);
-
-        System.out.println("\nDoctor Information");
-        String relationToPerson = "Pediatrician";
-        String doctorFirstName = get("First Name");
-        String doctorLastName = get("Last Name");
-        String doctorphoneNumber = get("Phone Number");
-        String doctorAddress = get("Email Address");
-        Contact pediatrician = new Contact(doctorFirstName,doctorLastName,doctorphoneNumber,doctorAddress,relationToPerson);
-
-        System.out.println("\nEmergency Contacts");
-        ArrayList<Contact> emergencyContacts = new ArrayList<>();
-        boolean moreContacts = true;
-        while(moreContacts){
-            String contactFirstName = get("First Name");
-            String contactLastName = get("Last Name");
-            String conatctphoneNumber = get("Phone Number");
-            String contactAddress = get("Email Address");
-            String conatctrelationToPerson = get("Relation To Person");
-            Contact contact = new Contact(contactFirstName, contactLastName, conatctphoneNumber, contactAddress, conatctrelationToPerson);
-            emergencyContacts.add(contact);
-            String answer = get("Would you like to add more emergency contacts?(yes/no)");
-            if(answer.equalsIgnoreCase("no"))
-                    moreContacts = false;
-        }
-
-        Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB, emergencyContacts, pediatrician, loginInfo);
-        counselorList.addCounselor(counselor);
-    }
-
-    private Date formatDate(String date){
-        try{
-            return new SimpleDateFormat("MM/dd/yyyy").parse(date);
-        } catch (ParseException e) {
-            System.out.println("Sorry " + date + " is not parsable");
-            return null;
-        }
     }
 
     public boolean qualifiesForDiscount()
@@ -223,12 +137,22 @@ public class CampFacade
         return null;
     }
 
+    /**
+     * returns all the activities the camp offers
+     * @param campName
+     * @return
+     */
     public String getActivities(String campName)
     {
         Camp camp = campList.getCamp(campName);
         return camp.getActivities();
     }
    
+    /**
+     * returns all the weeks the camp offers
+     * @param campName
+     * @return
+     */
     public HashMap<Integer,Week> getWeeks(String campName)
     {
         Camp camp = campList.getCamp(campName);
