@@ -28,7 +28,7 @@ public class Counselor extends Person {
      * @param userLogin         Logininfo for the individual counselor
      */
     public Counselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress,
-            Date dateOfBirth, ArrayList<Medication> medications, ArrayList<String> allergies,
+            Date dateOfBirth,
             ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(firstName, lastName, dateOfBirth, homeAddress);
         //this.medications = medications;
@@ -165,21 +165,14 @@ public class Counselor extends Person {
         temp = "Counselor:  " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName()
                 + "\nDate of Birth: "
                 + dateOfBirth.toString() + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress
-                + "\nPhone Number: " + phoneNumber + "\nMedications: \n" + printMedication()
-                + "\nAllergies: " + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts()
+                + "\nPhone Number: " + phoneNumber + "\nEmergency Contacts: \n" + printEmergencyContacts()
                 + "\nPediatrician: \n" + pediatrician;
         return temp;
     }
 
     // DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
-    private String printMedication() {
-        String temp = new String();
-        for (Medication m : medications) {
-            temp = temp + m.toString() + "\n";
-        }
-        return temp;
-    }
 
+    //to be deleated
     private String printEmergencyContacts() {
         String temp = new String();
         for (Contact c : emergencyContacts) {
@@ -188,12 +181,6 @@ public class Counselor extends Person {
         return temp;
     }
 
-    private String printAllergies() {
-        String temp = new String();
-        for (String a : allergies) {
-            temp = temp + a.toString() + "\n";
-        }
-        return temp;
-    }
+  
 
 }
