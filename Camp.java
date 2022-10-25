@@ -95,9 +95,15 @@ public class Camp {
         return masterSchedule.get(num);
     }
 
-    public HashMap<Integer,Week> getWeeks()
-    {
-        return masterSchedule;
+    public ArrayList<Week> getWeeks() {
+        ArrayList<Week> weeks = new ArrayList<Week>();
+        Integer weekNum = 0;
+        for (int i = 0; i < masterSchedule.size(); i++) {
+            Week week = masterSchedule.get(weekNum);
+            weeks.add(week);
+            weekNum++;
+        }
+        return weeks;
     }
 
     public String getActivities() {

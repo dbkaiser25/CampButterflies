@@ -288,7 +288,7 @@ public class DataLoader extends DataConstants {
                 }
 
                 // need to talk with Derek about creating constructor that includes the calendar
-                directors.add(new Director(id, firstName, lastName, dob, homeAddress, directorLogin));
+                directors.add(new Director(id, firstName, lastName, dob, homeAddress, directorLogin, calendar));
             }
             return directors;
         } catch (Exception e) {

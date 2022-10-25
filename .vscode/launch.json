@@ -4,7 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
-
+        {
+            "type": "java",
+            "name": "Launch DataWriter",
+            "request": "launch",
+            "mainClass": "DataWriter",
+            "projectName": "CampButterflies_ff4c34ce"
+        }
     ]
 }

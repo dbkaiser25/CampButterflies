@@ -1,62 +1,51 @@
 import java.util.ArrayList;
 import java.util.UUID;
-public class CamperList 
-{
+
+public class CamperList {
      private ArrayList<Camper> campers;
      private static CamperList camperList;
-   
-   
-     private CamperList()
-     {
-          campers = new ArrayList<Camper>();
+
+     private CamperList() {
+          campers = DataLoader.loadCampers();
      }
 
-
-     public static CamperList getInstance()
-     {
-          if(camperList == null)
-          {
+     public static CamperList getInstance() {
+          if (camperList == null) {
                camperList = new CamperList();
           }
           return camperList;
      }
 
-     public boolean addCamper(Camper camper)
-     {
-          if(camper == null)
-          {
+     public boolean addCamper(Camper camper) {
+          if (camper == null) {
                return false;
-          }
-          else
-          {
+          } else {
                campers.add(camper);
           }
           return false;
      }
 
-
-     public Camper getCamperByUUID(UUID uuid)
-     {
-          for(Camper c: campers)
-          {
-               if(c.getUUID().equals(uuid))
+     public Camper getCamperByUUID(UUID uuid) {
+          for (Camper c : campers) {
+               if (c.getUUID().equals(uuid))
                     return c;
           }
           return null;
      }
 
-     public Camper getCamper()
-     {
+     public ArrayList<Camper> getCampers() {
+          return campers;
+     }
+
+     public Camper getCamper() {
           return null;
      }
 
-     public void editCamper()
-     {
+     public void editCamper() {
 
      }
 
-     public void saveCamper()
-     {
-    
+     public void saveCampers() {
+          DataWriter.saveCampers();
      }
 }
