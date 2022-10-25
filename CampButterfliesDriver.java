@@ -16,9 +16,6 @@ public class CampButterfliesDriver {
         this.facade = facade;
         scan = new Scanner(System.in);
 
-
-
-
         homepageOptions[0] = "View Activities";
         homepageOptions[1] = "View Available Weeks";
         homepageOptions[2] = "View Pricing and Discounts";
@@ -43,7 +40,7 @@ public class CampButterfliesDriver {
 
             switch(choice){
                 case 1:
-                    facade.getActivities("Camp Butterflies");
+                    System.out.println(facade.getActivities("Blue ridge special"));
                     //backToHomepage();
                     break;
                 case 2:
