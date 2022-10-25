@@ -33,6 +33,14 @@ public class UserList
         return false;
     }
 
+    public boolean haveUser(LoginInfo info){
+        for(User user: users){
+            if(user.getUserLogin().equals(info))
+                return true;
+        }
+        return false;
+    }
+
     public User getUserByUUID(UUID uuid)
     {
         for(User u: users)

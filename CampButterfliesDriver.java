@@ -58,7 +58,7 @@ public class CampButterfliesDriver {
                     createAccount();
                     break;
                 case 6:
-                    //login
+                    login();
                     break;
                 case 7:
                     System.out.println("Have a good day!");
@@ -159,6 +159,13 @@ public class CampButterfliesDriver {
         }
     }
 
+    private void login(){
+        String userName = get("Username");
+        String password = get("Password");
+        LoginInfo loginInfo = new LoginInfo(userName, password);
+        if(!facade.Login(loginInfo))
+            System.out.println("Username and Password not valid");
+    }
 
     private String get(String prompt){
         System.out.print(prompt + ": ");

@@ -36,6 +36,8 @@ public class Camper extends Person {
         this.pediatrician = pediatrician;
     }
 
+ 
+
     // constructor with UUID
     public Camper(UUID uuid, String firstName, String lastName, String homeAddress, Date dateOfBirth,
             Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies,

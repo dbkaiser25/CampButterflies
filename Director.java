@@ -37,22 +37,59 @@ public class Director extends Person {
       this.camp = camp;
    }
 
-   public void removeCamper(String firstName, String lastName) {
+   public void removeCamper(String firstName, String lastName, Week week) 
+   {
+      // 1. they need to be removed from the list of campers for that given week
+      for(int i = 0; i < week.getCampers().size(); i++)
+      {
+         if(week.getCampers().get(i).getFirstName().equals(firstName) 
+         && week.getCampers().get(i).getLastName().equals(lastName))
+         {
+            removeCamperFromGroup(week,week.getCampers().get(i));
+            week.getCampers().remove(i);
+            //exit the loop
+            i = week.getCampers().size();
+         }
+      }
+   }
 
-      // not forard to write this method
+   // 2. they need to be removed from whatever group they are in 
+   //helper method
+   private boolean removeCamperFromGroup(Week week, Camper camperToBeRemoved)
+   {
+      for(Group g: week.getGroups())
+      {
+         for(int i = 0; i < g.getCampers().size(); i++)
+         {
+            if(g.getCampers().get(i).equals(camperToBeRemoved))
+            {
+               g.getCampers().remove(i);
+               return true;
+            }
+         }
+      }
+      //camper not found
+      return false;
    }
 
    public void viewActivities() {
 
    }
 
-   // this assumes we can pass Camp
-   public void addActivity(Camp camp, Activity activity) {
+   public void addActivity(Activity activity) {
       camp.addActivity(activity);
    }
 
-   public void removeActivity(Activity activity) {
-
+   public void removeActivity(Activity activity) 
+   {
+      for(int i = 0; i < camp.getActivitiesArrayList().size();i++)
+      {
+         if(camp.getActivitiesArrayList().get(i).equals(activity))
+         {
+            camp.getActivitiesArrayList().remove(i);
+            i = camp.getActivitiesArrayList().size();
+         }
+      }
    }
 
    public String viewCounselorInfo(String firstName, String lastName) {

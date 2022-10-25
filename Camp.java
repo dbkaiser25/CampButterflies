@@ -115,6 +115,11 @@ public class Camp {
         return displayActivities;
     }
 
+    public ArrayList<Activity> getActivitiesArrayList()
+    {
+        return activities;
+    }
+
     public boolean addActivity(Activity activity) {
         if (activity == null) {
             return false;
@@ -134,5 +139,9 @@ public class Camp {
         // TODO figure out if this is essentially just a toString method and should
         // be changed to that and create view schedule in Facade
         return null;
+    }
+
+    public String toString(){
+        return name + ": " + description;
     }
 }
