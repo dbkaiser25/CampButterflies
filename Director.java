@@ -7,23 +7,34 @@ import java.util.Date;
 public class Director extends Person {
    // private Calendar calendar; Consider this deleated, i don't think it is needed
    private LoginInfo userLogin;
+   private Camp camp;
 
    public Director(String firstName, String lastName, Date dateOfBirth,
-         String homeAddress, LoginInfo userLogin) {
+         String homeAddress, LoginInfo userLogin, Camp camp) {
       super(firstName, lastName, dateOfBirth, homeAddress);
-
+      this.camp = camp;
       // the calendar will probably need to call the get instance of the calendar
       // object but yea that aint written yet
    }
 
    public Director(UUID uuid, String firstName, String lastName, Date dateOfBirth,
-         String homeAddress, LoginInfo userLogin) {
+         String homeAddress, LoginInfo userLogin, Camp camp) {
       super(uuid, firstName, lastName, dateOfBirth, homeAddress);
-
+      this.camp = camp;
    }
 
    public LoginInfo getUserLogin() {
       return userLogin;
+   }
+
+   public Camp getCamp()
+   {
+      return camp;
+   }
+
+   public void setCamp(Camp camp)
+   {
+      this.camp = camp;
    }
 
    public void removeCamper(String firstName, String lastName) {

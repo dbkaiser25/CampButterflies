@@ -22,7 +22,6 @@ public class Counselor extends Person {
      * 
      * @param emailAddress      A string for their email address
      * @param dateOfBirth       A string for their date of birth
-     * @param medicalInfo       A string for their medical info
      * @param emergencyContacts An arraylist for their emergency contacts
      * @param pediatrician      A contact for their pediatrician
      * @param userLogin         Logininfo for the individual counselor
