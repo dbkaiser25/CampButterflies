@@ -82,7 +82,14 @@ public class Director extends Person {
 
    public void removeActivity(Activity activity) 
    {
-      
+      for(int i = 0; i < camp.getActivitiesArrayList().size();i++)
+      {
+         if(camp.getActivitiesArrayList().get(i).equals(activity))
+         {
+            camp.getActivitiesArrayList().remove(i);
+            i = camp.getActivitiesArrayList().size();
+         }
+      }
    }
 
    public String viewCounselorInfo(String firstName, String lastName) {

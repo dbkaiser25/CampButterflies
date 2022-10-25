@@ -109,6 +109,11 @@ public class Camp {
         return displayActivities;
     }
 
+    public ArrayList<Activity> getActivitiesArrayList()
+    {
+        return activities;
+    }
+
     public boolean addActivity(Activity activity) {
         if (activity == null) {
             return false;
