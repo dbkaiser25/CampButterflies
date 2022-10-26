@@ -3,15 +3,31 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
+import java.util.Date;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * notes on automation
+ * makeSchedule should have other methods to help it
+ * should have themes, schedules, year, number of cabins, - in facade
+ * 
+ */
+
 public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
+        CamperList campers = CamperList.getInstance();
+        campers.saveCampers();
 
+        ArrayList<Camper> newCampers = DataLoader.loadCampers();
+
+        for (int i = 0; i < newCampers.size(); i++) {
+            System.out.println(newCampers.get(i));
+        }
     }
 
     public static void saveCampers() { // finished not tested
@@ -41,7 +57,7 @@ public class DataWriter extends DataConstants {
         camperDetails.put(FIRSTNAME, camper.getFirstName());
         camperDetails.put(LASTNAME, camper.getLastName());
         camperDetails.put(HOMEADDRESS, camper.getHomeAddress());
-        camperDetails.put(DOB, camper.getDateOfBirth().toString()); // TODO fix DOB
+        camperDetails.put(DOB, convertDateToString(camper.getDateOfBirth())); // TODO fix DOB
         Sex sex = camper.getSex();
         String gender = sex.toString();
         camperDetails.put(GENDER, gender);
@@ -398,24 +414,13 @@ public class DataWriter extends DataConstants {
                 for (int k = 0; k < camp.getWeek(i).getGroups().get(j).getSchedule().size(); k++) {
                     JSONObject scheduleObj = (JSONObject) groupSchedule.get(k);
                     String day = camp.getWeek(i).getGroups().get(j).getSchedule().keySet().toString().valueOf(k); // see
-                                                                                                                  // if
-                                                                                                                  // this
-                                                                                                                  // works
                     scheduleObj.put(DAY_OF_WEEK, day);
                     JSONArray dailyActivitiesArray = new JSONArray();
                     for (int l = 0; l < camp.getWeek(i).getGroups().get(j).getSchedule().get(k).size(); l++) {
                         JSONObject activityObj = (JSONObject) dailyActivitiesArray.get(l);
                         activityObj.put(NAME,
                                 camp.getWeek(i).getGroups().get(j).getSchedule().get(day).get(l).getName()); // see if
-                                                                                                             // this
-                                                                                                             // will
-                                                                                                             // work-
-                                                                                                             // don't
-                                                                                                             // know how
-                                                                                                             // to get
-                                                                                                             // it to
-                                                                                                             // return
-                                                                                                             // one
+                                                                                                             // this //
                                                                                                              // activity
                         activityObj.put(LOCATION,
                                 camp.getWeek(i).getGroups().get(j).getSchedule().get(day).get(l).getLocation());
@@ -470,7 +475,24 @@ public class DataWriter extends DataConstants {
         return campDetails;
     }
 
-    public static String convertDateToString(java.util.Date dateOfBirth) {
+    public static void writeGroupFiles(UUID id) {
+        // get the group, write the schedule, add it to a txt file
+        // should print schedule, allergy information of all campers
+        Group group = CampList.getInstance().getGroupByUUID(id); // getting group
+        HashMap<DayOfWeek, ArrayList<Activity>> groupSchedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
+
+        try (FileWriter file = new FileWriter(CAMP_FILE)) { // how do I create a new txt file
+            // must write entire Hashmap to txt file, along with group name, other
+            // formatting stuff
+            // file.write(); // should write the hashmap
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String convertDateToString(Date dateOfBirth) {
+        System.out.println(dateOfBirth);
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String newDate = df.format(dateOfBirth);
         return newDate;

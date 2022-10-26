@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CampList {
 
@@ -46,6 +47,15 @@ public class CampList {
         return null;
     }
 
+    public Group getGroupByUUID(UUID id) {
+        for (Group g : groups) {
+            if (g.getUuid().equals(id)) {
+                return g;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Camp> getCamps() {
         return camps;
     }
@@ -73,9 +83,9 @@ public class CampList {
 
     }
 
-    public String toString(){
-        String allCamps="";
-        for(Camp camp: camps){
+    public String toString() {
+        String allCamps = "";
+        for (Camp camp : camps) {
             allCamps += camp + "\n";
         }
         return allCamps;
