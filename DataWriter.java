@@ -11,8 +11,6 @@ import org.json.simple.JSONObject;
 public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
-        Date dob = new Date(06, 24, 2003);
-        convertDateToString(dob);
 
     }
 
@@ -171,7 +169,8 @@ public class DataWriter extends DataConstants {
         counselorDetails.put(EMAIL, counselor.getEmailAddress());
         counselorDetails.put(HOMEADDRESS, counselor.getHomeAddress());
         // see if this works- think it should
-        String dob = counselor.getDateOfBirth().toString();
+        java.util.Date dateOfBirth = counselor.getDateOfBirth();
+        String dob = convertDateToString(dateOfBirth); // think this should work but keep an eye out
         counselorDetails.put(DOB, dob);
 
         counselorDetails.put(USERNAME, counselor.getUserLogin().getUserName());
@@ -242,6 +241,109 @@ public class DataWriter extends DataConstants {
         directorDetails.put(USERNAME, director.getUserLogin().getUserName());
         directorDetails.put(PASSWORD, director.getUserLogin().getPassword());
 
+        JSONArray calendarArr = new JSONArray();
+        for (int a = 0; a < director.getCamps().size(); a++) {
+            JSONObject campDetails = (JSONObject) calendarArr.get(a);
+            campDetails.put(NAME, director.getCamps().get(a).getName());
+            campDetails.put(DESCRIPTION, director.getCamps().get(a).getDescription());
+
+            JSONArray masterScheduleJSON = new JSONArray();
+            for (int i = 0; i < director.getCamps().get(a).getMasterSchedule().size(); i++) {
+                JSONObject msJSON = (JSONObject) masterScheduleJSON.get(i);
+                msJSON.put(WEEK_NUM, director.getCamps().get(a).getWeek(i)); // think this could work- might be wrong
+                                                                             // though
+
+                JSONObject weekObj = new JSONObject();
+                weekObj.put(THEME, director.getCamps().get(a).getWeek(i).getTheme());
+                JSONArray groupsArray = new JSONArray();
+                for (int j = 0; j < director.getCamps().get(a).getWeek(i).getGroups().size(); j++) {
+                    JSONObject groupObj = (JSONObject) groupsArray.get(j);
+                    // see if these work for ID
+                    groupObj.put(GROUP_ID,
+                            director.getCamps().get(a).getWeek(i).getGroups().get(j).getUuid().toString());
+                    groupObj.put(COUNSELOR_ID, director.getCamps().get(a).getWeek(i).getGroups().get(j).getCounselor()
+                            .getUUID().toString());
+
+                    JSONArray campersArray = new JSONArray();
+                    for (int k = 0; k < director.getCamps().get(a).getWeek(i).getGroups().get(j).getCampers()
+                            .size(); k++) {
+                        JSONObject camperObj = (JSONObject) campersArray.get(k);
+                        camperObj.put(ID, director.getCamps().get(a).getWeek(i).getGroups().get(j).getCampers().get(k)
+                                .getUUID().toString());
+                        campersArray.add(camperObj);
+                    }
+                    groupObj.put(GROUP_CAMPERS, campersArray);
+                    JSONArray groupSchedule = new JSONArray();
+                    for (int k = 0; k < director.getCamps().get(a).getWeek(i).getGroups().get(j).getSchedule()
+                            .size(); k++) {
+                        JSONObject scheduleObj = (JSONObject) groupSchedule.get(k);
+                        String day = director.getCamps().get(a).getWeek(i).getGroups().get(j).getSchedule().keySet()
+                                .toString().valueOf(k); // see if this works
+                        scheduleObj.put(DAY_OF_WEEK, day);
+                        JSONArray dailyActivitiesArray = new JSONArray();
+                        for (int l = 0; l < director.getCamps().get(a).getWeek(i).getGroups().get(j).getSchedule()
+                                .get(k).size(); l++) {
+                            JSONObject activityObj = (JSONObject) dailyActivitiesArray.get(l);
+                            activityObj.put(NAME, director.getCamps().get(a).getWeek(i).getGroups().get(j).getSchedule()
+                                    .get(day).get(l).getName()); // see if this will work- don't know how to get it to
+                                                                 // return one activity
+                            activityObj.put(LOCATION, director.getCamps().get(a).getWeek(i).getGroups().get(j)
+                                    .getSchedule().get(day).get(l).getLocation());
+                            activityObj.put(DESCRIPTION, director.getCamps().get(a).getWeek(i).getGroups().get(j)
+                                    .getSchedule().get(day).get(l).getDescription());
+                            dailyActivitiesArray.add(activityObj);
+                        }
+                        scheduleObj.put(DAILY_ACTIVITIES, dailyActivitiesArray);
+                        groupSchedule.add(scheduleObj);
+                    }
+                    groupObj.put(GROUP_SCHEDULE, groupSchedule);
+                    groupsArray.add(groupObj);
+                }
+                weekObj.put(GROUPS, groupsArray);
+
+                JSONArray weekCounselorsArr = new JSONArray();
+                for (int k = 0; k < director.getCamps().get(a).getWeek(i).getCounselors().size(); k++) {
+                    JSONObject counselorObj = (JSONObject) weekCounselorsArr.get(k);
+                    counselorObj.put(ID, director.getCamps().get(a).getWeek(i).getCounselors().get(k).getUUID());
+                    weekCounselorsArr.add(counselorObj);
+                }
+                weekObj.put(WEEK_COUNSELORS, weekCounselorsArr);
+
+                JSONArray weekCampersArr = new JSONArray();
+                for (int j = 0; j < director.getCamps().get(a).getWeek(i).getCampers().size(); j++) {
+                    JSONObject camperObj = (JSONObject) weekCampersArr.get(j);
+                    camperObj.put(ID, director.getCamps().get(a).getWeek(i).getCampers().get(j).getUUID());
+                    weekCampersArr.add(camperObj);
+                }
+                weekObj.put(WEEK_CAMPERS, weekCampersArr);
+
+                weekObj.put(START_DATE, director.getCamps().get(a).getWeek(i).getStartDate().toString()); // might have
+                                                                                                          // to do date
+                                                                                                          // conversions
+                weekObj.put(END_DATE, director.getCamps().get(a).getWeek(i).getEndDate().toString()); // convert
+                Boolean isFullBoolean = director.getCamps().get(a).getWeek(i).isFull();
+                String isFull = Boolean.toString(isFullBoolean);
+                weekObj.put(ISFULL, isFull);
+
+                msJSON.put(WEEK, weekObj); // weeks have been added
+
+                // adding all activities
+                JSONArray allActivitiesArr = new JSONArray();
+                for (int j = 0; j < director.getCamps().get(a).getActivitiesArrayList().size(); j++) {
+                    JSONObject activityObj = (JSONObject) allActivitiesArr.get(j);
+                    activityObj.put(NAME, director.getCamps().get(a).getActivitiesArrayList().get(j).getName());
+                    activityObj.put(LOCATION, director.getCamps().get(a).getActivitiesArrayList().get(j).getLocation());
+                    activityObj.put(DESCRIPTION,
+                            director.getCamps().get(a).getActivitiesArrayList().get(j).getDescription());
+                    allActivitiesArr.add(activityObj);
+                }
+                msJSON.put(ALL_ACTIVITIES, allActivitiesArr); // all activities have been added
+                campDetails.put(CALENDAR_HASH, msJSON);
+            }
+            calendarArr.add(campDetails);
+        }
+        directorDetails.put(CALENDAR, calendarArr);
+
         return directorDetails;
     }
 
@@ -249,7 +351,7 @@ public class DataWriter extends DataConstants {
      * writing Camp and getCampJSON methods
      * create campList
      */
-    public static void saveCamp() {
+    public static void saveCamps() {
 
         CampList camps = CampList.getInstance();
         ArrayList<Camp> campList = camps.getCamps();
@@ -273,62 +375,104 @@ public class DataWriter extends DataConstants {
 
         JSONArray masterScheduleJSON = new JSONArray();
         for (int i = 0; i < camp.getMasterSchedule().size(); i++) {
-            // include week number, week, week counselors, week campers, start date, end
-            // date, and is full
             JSONObject msJSON = (JSONObject) masterScheduleJSON.get(i);
-            // ask about this
-            msJSON.put(WEEK_NUM, camp.getMasterSchedule().get(WEEK_NUM));
+            msJSON.put(WEEK_NUM, camp.getWeek(i)); // think this could work- might be wrong though
 
             JSONObject weekObj = new JSONObject();
             weekObj.put(THEME, camp.getWeek(i).getTheme());
-            JSONArray groupArray = new JSONArray();
+            JSONArray groupsArray = new JSONArray();
             for (int j = 0; j < camp.getWeek(i).getGroups().size(); j++) {
-                JSONObject groupObj = (JSONObject) groupArray.get(j);
+                JSONObject groupObj = (JSONObject) groupsArray.get(j);
                 // see if these work for ID
                 groupObj.put(GROUP_ID, camp.getWeek(i).getGroups().get(j).getUuid().toString());
                 groupObj.put(COUNSELOR_ID, camp.getWeek(i).getGroups().get(j).getCounselor().getUUID().toString());
 
-                // groupObj.put(COUNSELOR_ID,
-                // camp.getWeek(i).getCounselors().get(j).getUUID().toString());
-
                 JSONArray campersArray = new JSONArray();
                 for (int k = 0; k < camp.getWeek(i).getGroups().get(j).getCampers().size(); k++) {
                     JSONObject camperObj = (JSONObject) campersArray.get(k);
-                    camperObj.put(ID, camp.getWeek(i).getGroups().get(j).getCampers().get(k).getUUID().toString()); // see
-                                                                                                                    // if
-                                                                                                                    // this
-                                                                                                                    // is
-                                                                                                                    // right
+                    camperObj.put(ID, camp.getWeek(i).getGroups().get(j).getCampers().get(k).getUUID().toString());
                     campersArray.add(camperObj);
                 }
                 groupObj.put(GROUP_CAMPERS, campersArray);
                 JSONArray groupSchedule = new JSONArray();
                 for (int k = 0; k < camp.getWeek(i).getGroups().get(j).getSchedule().size(); k++) {
                     JSONObject scheduleObj = (JSONObject) groupSchedule.get(k);
-                    scheduleObj.put(DAY_OF_WEEK, camp.getWeek(i).getGroups().get(j).getSchedule().get(k));
+                    String day = camp.getWeek(i).getGroups().get(j).getSchedule().keySet().toString().valueOf(k); // see
+                                                                                                                  // if
+                                                                                                                  // this
+                                                                                                                  // works
+                    scheduleObj.put(DAY_OF_WEEK, day);
                     JSONArray dailyActivitiesArray = new JSONArray();
                     for (int l = 0; l < camp.getWeek(i).getGroups().get(j).getSchedule().get(k).size(); l++) {
                         JSONObject activityObj = (JSONObject) dailyActivitiesArray.get(l);
-                        activityObj.put(NAME, camp.getActivities()); // see if this will work- don't know how to get it
-                                                                     // to return one single activity
+                        activityObj.put(NAME,
+                                camp.getWeek(i).getGroups().get(j).getSchedule().get(day).get(l).getName()); // see if
+                                                                                                             // this
+                                                                                                             // will
+                                                                                                             // work-
+                                                                                                             // don't
+                                                                                                             // know how
+                                                                                                             // to get
+                                                                                                             // it to
+                                                                                                             // return
+                                                                                                             // one
+                                                                                                             // activity
+                        activityObj.put(LOCATION,
+                                camp.getWeek(i).getGroups().get(j).getSchedule().get(day).get(l).getLocation());
+                        activityObj.put(DESCRIPTION,
+                                camp.getWeek(i).getGroups().get(j).getSchedule().get(day).get(l).getDescription());
+                        dailyActivitiesArray.add(activityObj);
                     }
+                    scheduleObj.put(DAILY_ACTIVITIES, dailyActivitiesArray);
+                    groupSchedule.add(scheduleObj);
                 }
-                groupArray.add(groupObj);
+                groupObj.put(GROUP_SCHEDULE, groupSchedule);
+                groupsArray.add(groupObj);
             }
-            weekObj.put(GROUPS, groupArray);
-            msJSON.put(WEEK, weekObj);
+            weekObj.put(GROUPS, groupsArray);
 
+            JSONArray weekCounselorsArr = new JSONArray();
+            for (int k = 0; k < camp.getWeek(i).getCounselors().size(); k++) {
+                JSONObject counselorObj = (JSONObject) weekCounselorsArr.get(k);
+                counselorObj.put(ID, camp.getWeek(i).getCounselors().get(k).getUUID());
+                weekCounselorsArr.add(counselorObj);
+            }
+            weekObj.put(WEEK_COUNSELORS, weekCounselorsArr);
+
+            JSONArray weekCampersArr = new JSONArray();
+            for (int j = 0; j < camp.getWeek(i).getCampers().size(); j++) {
+                JSONObject camperObj = (JSONObject) weekCampersArr.get(j);
+                camperObj.put(ID, camp.getWeek(i).getCampers().get(j).getUUID());
+                weekCampersArr.add(camperObj);
+            }
+            weekObj.put(WEEK_CAMPERS, weekCampersArr);
+
+            weekObj.put(START_DATE, camp.getWeek(i).getStartDate().toString()); // might have to do date conversions
+            weekObj.put(END_DATE, camp.getWeek(i).getEndDate().toString()); // convert
+            Boolean isFullBoolean = camp.getWeek(i).isFull();
+            String isFull = Boolean.toString(isFullBoolean);
+            weekObj.put(ISFULL, isFull);
+
+            msJSON.put(WEEK, weekObj); // weeks have been added
+
+            // adding all activities
+            JSONArray allActivitiesArr = new JSONArray();
+            for (int j = 0; j < camp.getActivitiesArrayList().size(); j++) {
+                JSONObject activityObj = (JSONObject) allActivitiesArr.get(j);
+                activityObj.put(NAME, camp.getActivitiesArrayList().get(j).getName());
+                activityObj.put(LOCATION, camp.getActivitiesArrayList().get(j).getLocation());
+                activityObj.put(DESCRIPTION, camp.getActivitiesArrayList().get(j).getDescription());
+                allActivitiesArr.add(activityObj);
+            }
+            msJSON.put(ALL_ACTIVITIES, allActivitiesArr); // all activities have been added
+            campDetails.put(CALENDAR_HASH, msJSON);
         }
-
-        // campDetails.put(CALENDAR_HASH, camp.getMasterSchedule());
-
-        // campDetails.put(ALL_ACTIVITIES, );
         return campDetails;
     }
 
-    public static String convertDateToString(Date date) {
+    public static String convertDateToString(java.util.Date dateOfBirth) {
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        String newDate = df.format(date);
+        String newDate = df.format(dateOfBirth);
         return newDate;
     }
 }

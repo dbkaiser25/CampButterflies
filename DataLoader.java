@@ -193,6 +193,7 @@ public class DataLoader extends DataConstants {
                 LoginInfo directorLogin = new LoginInfo(userName, password);
 
                 JSONArray jsonCalendar = (JSONArray) directorJSON.get(CALENDAR);
+                ArrayList<Camp> camps = new ArrayList<Camp>();
                 Camp calendar = new Camp();
                 for (int j = 0; j < jsonCalendar.size(); j++) {
                     JSONObject calendarJSON = (JSONObject) jsonCalendar.get(j);
@@ -285,10 +286,11 @@ public class DataLoader extends DataConstants {
                         activities.add(new Activity(name, location, description));
                     }
                     calendar = new Camp(campName, campDescription, masterScheduleHash, activities);
+                    camps.add(calendar);
                 }
 
                 // need to talk with Derek about creating constructor that includes the calendar
-                directors.add(new Director(id, firstName, lastName, dob, homeAddress, directorLogin, calendar));
+                directors.add(new Director(id, firstName, lastName, dob, homeAddress, directorLogin, camps));
             }
             return directors;
         } catch (Exception e) {
