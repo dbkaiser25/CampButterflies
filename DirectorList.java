@@ -57,6 +57,14 @@ public class DirectorList
     {
         return null;
     }
+
+    public boolean haveDirector(LoginInfo info){
+        for(Director director: directors){
+            if(director.getUserLogin().equals(info));
+                return true;
+        }
+        return false;
+    }
     
     public void editDirector()
     {

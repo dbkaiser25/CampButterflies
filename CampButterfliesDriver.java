@@ -303,8 +303,14 @@ public class CampButterfliesDriver {
         String userName = get("Username");
         String password = get("Password");
         LoginInfo loginInfo = new LoginInfo(userName, password);
-        if(!facade.Login(loginInfo))
-            System.out.println("Username and Password not valid");
+        if(facade.Login(loginInfo)==1)
+            userScreen();
+        else if(facade.Login(loginInfo)==2)
+            counselorScreen();
+        else if (facade.Login(loginInfo)==3)
+            directorScreen();
+        else
+            System.out.println("Username and Password are not valid");
     }
 
     /**
@@ -326,9 +332,30 @@ public class CampButterfliesDriver {
         try{
             return new SimpleDateFormat("MM/dd/yyyy").parse(date);
         } catch (ParseException e) {
-            System.out.println("Sorry " + date + " is not parsable");
+            System.out.println("Sorry " + date + " is not valid");
             return null;
         }
+    }
+
+    /**
+     * The screen users see when they login
+     */
+    private void userScreen(){
+        
+    }
+
+    /**
+     * The screen counselors see when they login
+     */
+    private void counselorScreen(){
+
+    }
+
+    /**
+     * The screen directors see when the login
+     */
+    private void directorScreen(){
+
     }
 
     public static void main(String[] args){

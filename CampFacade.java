@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -33,15 +32,21 @@ public class CampFacade
      * @param userLogin 
      * @return true if it exists, false if it doesnt
      */
-    public boolean Login(LoginInfo userLogin)
+    public int Login(LoginInfo userLogin)
     {
-        if(!userList.haveUser(userLogin)||!counselorList.haveCounselor(userLogin))
-            return false;
-        else if(userList.haveUser(userLogin))
+        if(directorList.haveDirector(userLogin)){
+            currentUser = directorList.getDirectorByUserName(userLogin.getUserName());
+            return 3;
+        }
+        else if(userList.haveUser(userLogin)){
             currentUser = userList.getUserByUserName(userLogin.getUserName());
-        else 
+            return 1;
+        }
+        else if(counselorList.haveCounselor(userLogin)){
             currentUser = counselorList.getCounselorByUserName(userLogin.getUserName());
-        return true;
+            return 2;
+        }
+        return 0;
     }
 
     /**
