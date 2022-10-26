@@ -19,6 +19,10 @@ public class CampFacade
         directorList = DirectorList.getInstance();
     }
 
+    public Person getCurrentUser(){
+        return currentUser;
+    }
+
     /**
      * returns all camps
      * @return all camps

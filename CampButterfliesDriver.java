@@ -341,21 +341,25 @@ public class CampButterfliesDriver {
      * The screen users see when they login
      */
     private void userScreen(){
-        
+        welcomeScreen();
     }
 
     /**
      * The screen counselors see when they login
      */
     private void counselorScreen(){
-
+        welcomeScreen();
     }
 
     /**
      * The screen directors see when the login
      */
     private void directorScreen(){
+        welcomeScreen();
+    }
 
+    private void welcomeScreen(){
+        System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
     }
 
     public static void main(String[] args){
