@@ -10,6 +10,12 @@ public class Week {
     // them to group and keeps one in camp/calendar
 
     private String theme;
+    private ArrayList<Group> groups = new ArrayList<Group>();
+    private ArrayList<Counselor> counselors = new ArrayList<Counselor>();
+    private ArrayList<Camper> campers = new ArrayList<Camper>();
+    private Date startDate;
+    private Date endDate;
+    private boolean isFull;
 
     public String getTheme() {
         return theme;
@@ -66,13 +72,6 @@ public class Week {
     public void setFull(boolean isFull) {
         this.isFull = isFull;
     }
-
-    private ArrayList<Group> groups = new ArrayList<Group>();
-    private ArrayList<Counselor> counselors = new ArrayList<Counselor>();
-    private ArrayList<Camper> campers = new ArrayList<Camper>();
-    private Date startDate;
-    private Date endDate;
-    private boolean isFull;
 
     // Maybe we want an empty constructor, for when new weeks need to be registered
     public Week() {
