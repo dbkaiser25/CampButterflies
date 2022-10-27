@@ -108,11 +108,7 @@ public class Camp {
         return weeks;
     }
 
-    public ArrayList<Activity> getActivitiesList()
-    {
-        return activities;
-    }
-    
+
     public String getActivities() {
         String displayActivities = new String();
         for (Activity activity : activities) {

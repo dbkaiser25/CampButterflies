@@ -74,12 +74,22 @@ public class Director extends Person {
    }
 
    //view all of the activities 
-   public void viewActivities(int year) 
+   public String viewActivities(int year) 
    {
+      String temp = new String();
       for(Camp c: camps)
       {
-
+         if(c.getYear() == year)
+         {
+            for(Activity a: c.getActivitiesArrayList())
+            {
+               temp = temp + a.toString() + "\n";
+            }
+            return temp;
+         }
       }
+      //no camp with the given year
+      return null;
    }
 
    public void addActivity(int year, Activity activity) 
@@ -88,7 +98,7 @@ public class Director extends Person {
       {
          if(c.getYear() == year)
          {
-            c.getActivitiesList().add(activity);
+            c.getActivitiesArrayList().add(activity);
             break;
          }
       }
