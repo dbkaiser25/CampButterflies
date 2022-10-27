@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch DataLoader",
+            "request": "launch",
+            "mainClass": "DataLoader",
+            "projectName": "CampButterflies_ff4c34ce"
+        },
+        {
+            "type": "java",
+            "name": "Launch CampButterfliesDriver",
+            "request": "launch",
+            "mainClass": "CampButterfliesDriver",
+            "projectName": "CampButterflies_ff4c34ce"
+        },
+        {
+            "type": "java",
             "name": "Launch DataWriter",
             "request": "launch",
             "mainClass": "DataWriter",

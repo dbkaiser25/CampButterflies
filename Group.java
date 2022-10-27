@@ -39,7 +39,7 @@ public class Group {
     }
 
     private Counselor counselor;
-    private ArrayList<Camper> campers;
+    private ArrayList<Camper> campers = new ArrayList<Camper>();
 
     // TODO adding new HashMap Configuration figure out if its good
     private HashMap<DayOfWeek, ArrayList<Activity>> schedule;

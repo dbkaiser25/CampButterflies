@@ -1,15 +1,15 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CampList {
 
     private ArrayList<Camp> camps;
     private static CampList campList;
-    private ArrayList<Group> groups;
+    private ArrayList<Group> groups = new ArrayList<Group>();
     // private static GroupList groupList;
 
     private CampList() {
-        camps = new ArrayList<Camp>();
-        groups = new ArrayList<Group>();
+        camps = DataLoader.loadCamps();
     }
 
     public static CampList getInstance() {
@@ -46,8 +46,21 @@ public class CampList {
         return null;
     }
 
+    public Group getGroupByUUID(UUID id) {
+        for (Group g : groups) {
+            if (g.getUuid().equals(id)) {
+                return g;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Camp> getCamps() {
         return camps;
+    }
+
+    public void saveCamps() {
+        DataWriter.saveCamps();
     }
 
     /*
@@ -73,9 +86,9 @@ public class CampList {
 
     }
 
-    public String toString(){
-        String allCamps="";
-        for(Camp camp: camps){
+    public String toString() {
+        String allCamps = "";
+        for (Camp camp : camps) {
             allCamps += camp + "\n";
         }
         return allCamps;

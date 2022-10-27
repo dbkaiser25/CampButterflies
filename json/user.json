@@ -8,9 +8,7 @@
     "username": "cindysmith",
     "password": "CSmith1980",
     "user_campers": [
-      {
-        "camper_id": "1035e216-e038-4541-abe9-a4e5441eb592"
-      }
+        "1035e216-e038-4541-abe9-a4e5441eb592"
     ]
   },
   {
@@ -22,9 +20,7 @@
     "username": "adamsmalls",
     "password": "AdamSmalls1125",
     "user_campers": [
-      {
-        "camper_id": "3e7084bd-9262-45f6-a82c-cee6fc09fdff"
-      }
+        "1035e216-e038-4541-abe9-a4e5441eb592", "3e7084bd-9262-45f6-a82c-cee6fc09fdff"
     ]
   },
   {
@@ -36,9 +32,7 @@
     "username": "susanatkinson",
     "password": "sUs@n@tkinson",
     "user_campers": [
-      {
-        "camper_id": "3e7084bd-9262-45f6-a82c-cee6fc09fdff"
-      }
+        "3e7084bd-9262-45f6-a82c-cee6fc09fdff", "1035e216-e038-4541-abe9-a4e5441eb592"
     ]
   }
 ]

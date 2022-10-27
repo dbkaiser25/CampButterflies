@@ -12,8 +12,8 @@ public class Counselor extends Person {
     private String emailAddress;
     private ArrayList<Contact> emergencyContacts;
     private Contact pediatrician;
-    //private ArrayList<String> allergies = new ArrayList<String>();
-    //private ArrayList<Medication> medications = new ArrayList<Medication>();
+    // private ArrayList<String> allergies = new ArrayList<String>();
+    // private ArrayList<Medication> medications = new ArrayList<Medication>();
     private String phoneNumber;
     private LoginInfo userLogin;
 
@@ -30,8 +30,8 @@ public class Counselor extends Person {
             Date dateOfBirth,
             ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(firstName, lastName, dateOfBirth, homeAddress);
-        //this.medications = medications;
-        //this.allergies = allergies;
+        // this.medications = medications;
+        // this.allergies = allergies;
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
@@ -171,7 +171,7 @@ public class Counselor extends Person {
 
     // DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
 
-    //to be deleated
+    // to be deleated
     private String printEmergencyContacts() {
         String temp = new String();
         for (Contact c : emergencyContacts) {
@@ -179,7 +179,5 @@ public class Counselor extends Person {
         }
         return temp;
     }
-
-  
 
 }

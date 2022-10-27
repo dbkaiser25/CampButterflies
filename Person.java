@@ -45,10 +45,6 @@ public abstract class Person {
         return uuid;
     }
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
