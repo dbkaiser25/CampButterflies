@@ -17,21 +17,22 @@ public class Camp {
      */
     private String name;
     private String description;
-    private HashMap<Integer, Week> masterSchedule;
-    private ArrayList<Activity> activities;
+    private HashMap<Integer, Week> masterSchedule = new HashMap<Integer, Week>();
+    private ArrayList<Activity> activities = new ArrayList<Activity>();
 
     // Empty constructor if we want to make a new camp? idk if we need this
     public Camp() {
-        name = null;
-        description = null;
-        masterSchedule = null;
-        activities = null;
+
     }
 
     // full constructor for reading from JSON
     public Camp(String name, String description, HashMap<Integer, Week> masterSchedule,
             ArrayList<Activity> activities) {
         // TODO figure out Calendar constructor
+        this.name = name;
+        this.description = description;
+        this.masterSchedule = masterSchedule;
+        this.activities = activities;
     }
 
     // TODO figure out which constructors are needed --> Ask Zak
@@ -115,8 +116,7 @@ public class Camp {
         return displayActivities;
     }
 
-    public ArrayList<Activity> getActivitiesArrayList()
-    {
+    public ArrayList<Activity> getActivitiesArrayList() {
         return activities;
     }
 
@@ -141,7 +141,7 @@ public class Camp {
         return null;
     }
 
-    public String toString(){
+    public String toString() {
         return name + ": " + description;
     }
 }

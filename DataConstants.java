@@ -26,6 +26,7 @@ public abstract class DataConstants {
     protected static final String CAMPERS = "group_campers";
     protected static final String COUNSELOR_ID = "counselorUUID";
     protected static final String TEST = "Test";
+    protected static final String CAMP_NAME = "camp_name";
 
     protected static final String DIRECTOR_FILE = "json/director.json";
     protected static final String CALENDAR = "calendar";

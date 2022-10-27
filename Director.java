@@ -8,12 +8,13 @@ public class Director extends Person {
    // private Calendar calendar; Consider this deleated, i don't think it is needed
    private LoginInfo userLogin;
    private Camp camp;
-   private ArrayList<Camp> camps;
+   private ArrayList<Camp> camps = new ArrayList<Camp>();
 
    public Director(String firstName, String lastName, Date dateOfBirth,
          String homeAddress, LoginInfo userLogin, ArrayList<Camp> camps) {
       super(firstName, lastName, dateOfBirth, homeAddress);
       this.camps = camps;
+      this.userLogin = userLogin;
       // the calendar will probably need to call the get instance of the calendar
       // object but yea that aint written yet
    }
@@ -22,6 +23,7 @@ public class Director extends Person {
          String homeAddress, LoginInfo userLogin, ArrayList<Camp> camps) {
       super(uuid, firstName, lastName, dateOfBirth, homeAddress);
       this.camps = camps;
+      this.userLogin = userLogin;
    }
 
    public LoginInfo getUserLogin() {

@@ -5,12 +5,11 @@ public class CampList {
 
     private ArrayList<Camp> camps;
     private static CampList campList;
-    private ArrayList<Group> groups;
+    private ArrayList<Group> groups = new ArrayList<Group>();
     // private static GroupList groupList;
 
     private CampList() {
-        camps = new ArrayList<Camp>();
-        groups = new ArrayList<Group>();
+        camps = DataLoader.loadCamps();
     }
 
     public static CampList getInstance() {
@@ -58,6 +57,10 @@ public class CampList {
 
     public ArrayList<Camp> getCamps() {
         return camps;
+    }
+
+    public void saveCamps() {
+        DataWriter.saveCamps();
     }
 
     /*
