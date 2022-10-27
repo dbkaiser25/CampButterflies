@@ -16,24 +16,24 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         ArrayList<Director> directors = DataLoader.loadDirectors();
         for (int i = 0; i < directors.size(); i++) {
-            System.out.println("DIRECTOR: " + directors.get(i));
+            System.out.println("DIRECTOR: " + directors.get(i).getFirstName());
         }
-        ArrayList<Camp> camps = DataLoader.loadCamps();
-        for (int i = 0; i < camps.size(); i++) {
-            System.out.println("CAMP: " + camps.get(i));
-        }
-        ArrayList<Camper> campers = DataLoader.loadCampers();
-        for (int i = 0; i < campers.size(); i++) {
-            System.out.println("CAMPER: " + campers.get(i));
-        }
-        ArrayList<Counselor> counselors = DataLoader.loadCounselors();
-        for (int i = 0; i < counselors.size(); i++) {
-            System.out.println("COUNSELOR: " + counselors.get(i).getFirstName());
-        }
-        ArrayList<User> users = DataLoader.loadUsers();
-        for (int i = 0; i < users.size(); i++) {
-            System.out.println("USER: " + users.get(i));
-        }
+        // ArrayList<Camp> camps = DataLoader.loadCamps();
+        // for (int i = 0; i < camps.size(); i++) {
+        // System.out.println("CAMP: " + camps.get(i));
+        // }
+        // ArrayList<Camper> campers = DataLoader.loadCampers();
+        // for (int i = 0; i < campers.size(); i++) {
+        // System.out.println("CAMPER: " + campers.get(i));
+        // }
+        // ArrayList<Counselor> counselors = DataLoader.loadCounselors();
+        // for (int i = 0; i < counselors.size(); i++) {
+        // System.out.println("COUNSELOR: " + counselors.get(i).getFirstName());
+        // }
+        // ArrayList<User> users = DataLoader.loadUsers();
+        // for (int i = 0; i < users.size(); i++) {
+        // System.out.println("USER: " + users.get(i));
+        // }
 
     }
 
@@ -287,11 +287,15 @@ public class DataLoader extends DataConstants {
                         masterScheduleHash.put(week_num, week);
                     }
                     ArrayList<Activity> activities = new ArrayList<Activity>();
+                    // System.out.println(calendarJSON.get(ALL_ACTIVITIES));
                     JSONArray activitiesJSON = (JSONArray) calendarJSON.get(ALL_ACTIVITIES);
                     for (int l = 0; l < activitiesJSON.size(); l++) {
+                        System.out.println(activitiesJSON.size());
                         JSONObject activity = (JSONObject) activitiesJSON.get(l);
                         String name = (String) activity.get(NAME);
                         String location = (String) activity.get(LOCATION);
+                        System.out.println(activity.get(LOCATION));
+                        System.out.println(activity.get(DESCRIPTION));
                         String description = (String) activity.get(DESCRIPTION);
                         activities.add(new Activity(name, location, description));
                     }

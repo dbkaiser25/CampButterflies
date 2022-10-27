@@ -8,24 +8,12 @@
         "week": {
           "theme":"swimming", 
           "groups": [{
-            "group_UUID" : "8eae4ebb-9a1d-42f1-956d-9ba8fb27b2db", 
-            "counselorUUID" : "8ae79b19-679d-4c77-b33e-955e6fe4b05f", 
+            "group_UUID" : "b6a12faa-3eaa-44f5-8a24-62d6e839d41d", 
+            "counselorUUID" :  "1ba44084-fad3-4c6c-a840-3a3592b25af5", 
             "group_campers" : [{
-              "id" : "ccf29657-a857-4076-8e1a-2b14d849f193"
+              "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
             },{
               "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
-            },{
-              "id" : "bf47a91d-3a69-4c07-b063-1ee50136351e"
-            },{
-              "id" : "8ec29e90-d601-42e5-97b1-77fbef5b0675"
-            },{
-              "id" : "9ad9dc0a-34da-46ca-b2a0-3f78a2b71953"
-            },{
-              "id" : "4027b517-6de3-4106-a482-bc5f01d63b2c"
-            },{
-              "id" : "d334d735-6138-4eb1-af4b-cb65d82ed002"
-            },{
-              "id" : "2a840a4c-601a-4efe-86a6-4dcebba9baf0"
             }
           ],
             "group_schedule" : [{
@@ -45,14 +33,12 @@
             }] 
           }],
           "week_counselors" : [{
-            "id" : "1be26ce8-46e5-4cb6-abb8-8a43d572a091"
-          },{
-            "id" : "1985545a-bd6c-4c33-b912-b46ed7fee101"
+            "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
           }],
           "week_campers" : [{
-            "id" : "5a8bfb9a-816b-4e38-a5a5-6754537c77f0"
-          }, { 
-            "id" : "1985545a-bd6c-4c33-b912-b46ed7fee101"
+            "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
+          },{
+            "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
           }],
           "start_date" : "5/29/2022", 
           "end_date" : "6/5/2023", 
@@ -64,20 +50,12 @@
         "week": {
           "theme": "nature",
           "groups": [{
-            "group_UUID" : "d334d735-6138-4eb1-af4b-cb65d82ed002", 
-            "counselorUUID" : "2a840a4c-601a-4efe-86a6-4dcebba9baf0", 
+            "group_UUID" : "289ff272-2beb-4162-9c15-aeac888d198e", 
+            "counselorUUID" : "1ba44084-fad3-4c6c-a840-3a3592b25af5", 
             "group_campers" :[{
-              "id" : "b421f891-75a4-4273-8982-de3bf9107b94"
+              "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
             },{
-              "id" : "ea59d080-a6c7-4a37-bca7-c04217047258"
-            },{
-              "id" : "c50f3734-c63f-4a9d-be8a-1fad41cf7cc8"
-            },{
-              "id" : "4144703d-301c-4662-becd-bd9fab2b465b"
-            },{
-              "id" : "17b359e1-a088-45a0-a2bf-5efdaa92e9ba"
-            },{
-              "id" : "e9849230-c646-4c49-8741-cbe0db9a0d40"
+              "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
             }
           ],
           "group_schedule" : [{
@@ -97,23 +75,13 @@
           }] 
           }],
           "week_counselors": [{
-            "id" : "ec1ef8b7-a909-4746-b89c-f5d8ddbe0e49"
-          },{
-            "id" : "9d08276a-a0ae-4ab8-a8e6-bf286d343a43"
+            "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
           }
         ],
           "week_campers" : [{
-            "id" : "b421f891-75a4-4273-8982-de3bf9107b94"
+            "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
           },{
-            "id" : "ea59d080-a6c7-4a37-bca7-c04217047258"
-          },{
-            "id" : "c50f3734-c63f-4a9d-be8a-1fad41cf7cc8"
-          },{
-            "id" : "4144703d-301c-4662-becd-bd9fab2b465b"
-          },{
-            "id" : "17b359e1-a088-45a0-a2bf-5efdaa92e9ba"
-          },{
-            "id" : "e9849230-c646-4c49-8741-cbe0db9a0d40"
+            "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
           }
         ],
           "start_date": "6/6/2023",

@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import javax.xml.crypto.Data;
-
 import java.util.Date;
 
 import org.json.simple.JSONArray;
@@ -45,18 +43,28 @@ public class DataWriter extends DataConstants {
         // }
 
         DirectorList directors = DirectorList.getInstance();
+        for (int i = 0; i < directors.getDirectors().size(); i++) {
+            for (int j = 0; j < directors.getDirectors().get(i).getCamps().size(); j++) {
+                for (int k = 0; k < directors.getDirectors().get(i).getCamps().get(j).getActivitiesArrayList()
+                        .size(); k++) {
+                    System.out.println(
+                            "name " + directors.getDirectors().get(i).getCamps().get(j).getActivitiesArrayList().get(k)
+                                    .getName());
+                }
+            }
+        }
         directors.saveDirector();
         ArrayList<Director> newDirectors = DataLoader.loadDirectors();
         for (int i = 0; i < newDirectors.size(); i++) {
             System.out.println(newDirectors.get(i));
         }
 
-        CampList camps = CampList.getInstance();
-        camps.saveCamps();
-        ArrayList<Camp> newCamps = DataLoader.loadCamps();
-        for (int i = 0; i < newCamps.size(); i++) {
-            System.out.println(newCamps.get(i));
-        }
+        // CampList camps = CampList.getInstance();
+        // camps.saveCamps();
+        // ArrayList<Camp> newCamps = DataLoader.loadCamps();
+        // for (int i = 0; i < newCamps.size(); i++) {
+        // System.out.println(newCamps.get(i));
+        // }
     }
 
     public static void saveCampers() { // finished not tested
@@ -300,14 +308,13 @@ public class DataWriter extends DataConstants {
         directorDetails.put(ID, director.getUUID().toString());
         directorDetails.put(FIRSTNAME, director.getFirstName());
         directorDetails.put(LASTNAME, director.getLastName());
-        directorDetails.put(DOB, director.getDateOfBirth());
+        directorDetails.put(DOB, convertDateToString(director.getDateOfBirth()));
         directorDetails.put(HOMEADDRESS, director.getHomeAddress());
         directorDetails.put(USERNAME, director.getUserLogin().getUserName());
         directorDetails.put(PASSWORD, director.getUserLogin().getPassword());
 
         JSONArray calendarArr = new JSONArray();
         for (int a = 0; a < director.getCamps().size(); a++) {
-            // System.out.println("Calendar amt " + director.getCamps().size());
             JSONObject campDetails = new JSONObject();
             campDetails.put(NAME, director.getCamps().get(a).getName());
             campDetails.put(DESCRIPTION, director.getCamps().get(a).getDescription());
@@ -318,7 +325,6 @@ public class DataWriter extends DataConstants {
                 JSONObject calHashObj = new JSONObject();
                 Integer num = entry.getKey();
                 calHashObj.put(WEEK_NUM, num);
-                System.out.println(num);
                 // integer added
 
                 JSONObject weekObj = new JSONObject();
@@ -326,16 +332,17 @@ public class DataWriter extends DataConstants {
                 weekObj.put(THEME, week.getTheme());
                 JSONArray groupsArray = new JSONArray();
                 for (int i = 0; i < week.getGroups().size(); i++) {
-                    System.out.println(week.getGroups().get(i).getUuid().toString());
                     JSONObject groupObj = new JSONObject();
                     groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString()); // adding group id
+                    groupObj.put(COUNSELOR_ID, week.getGroups().get(i).getCounselor().getUUID().toString());
+
                     // groupObj.put(COUNSELOR_ID,
                     // week.getGroups().get(i).getCounselor().getUUID().toString());
                     JSONArray campersArr = new JSONArray();
                     for (int j = 0; j < week.getGroups().get(i).getCampers().size(); j++) {
                         JSONObject camperObj = new JSONObject();
-                        System.out.println(week.getGroups().get(i).getCampers().get(j).getFirstName());
-                        camperObj.put(ID, week.getGroups().get(i).getCampers().get(j).getUUID().toString());
+                        String id = week.getGroups().get(i).getCampers().get(j).getUUID().toString();
+                        camperObj.put(ID, id);
                         campersArr.add(camperObj);
                     }
                     groupObj.put(GROUP_CAMPERS, campersArr);
@@ -378,7 +385,7 @@ public class DataWriter extends DataConstants {
                 JSONArray weekCampersArr = new JSONArray();
                 for (int i = 0; i < week.getCampers().size(); i++) {
                     JSONObject camperObj = new JSONObject();
-                    camperObj.put(ID, week.getCampers().get(i).getUUID());
+                    camperObj.put(ID, week.getCampers().get(i).getUUID().toString());
                     weekCampersArr.add(camperObj);
                 }
                 weekObj.put(WEEK_CAMPERS, weekCampersArr);
@@ -395,8 +402,10 @@ public class DataWriter extends DataConstants {
                 // added weeks
 
                 JSONArray allActivitiesArr = new JSONArray();
+                System.out.println(director.getCamps().get(a).getActivitiesArrayList().size());
                 for (int i = 0; i < director.getCamps().get(a).getActivitiesArrayList().size(); i++) {
-                    JSONObject activityObj = (JSONObject) allActivitiesArr.get(i);
+                    System.out.println(TEST);
+                    JSONObject activityObj = (JSONObject) new JSONObject();
                     activityObj.put(NAME, director.getCamps().get(a).getActivitiesArrayList().get(i).getName());
                     activityObj.put(LOCATION, director.getCamps().get(a).getActivitiesArrayList().get(i).getLocation());
                     activityObj.put(DESCRIPTION,
