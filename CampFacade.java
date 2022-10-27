@@ -144,7 +144,7 @@ public class CampFacade
     {
         String campers = "";
         for(Camper camper: currentUser.getCampers()){
-            campers += camper.toString() + "\n";
+            campers += camper.toStringBrief() + "\n";
         }
         return campers;
     }

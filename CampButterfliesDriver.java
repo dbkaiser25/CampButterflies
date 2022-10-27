@@ -354,10 +354,11 @@ public class CampButterfliesDriver {
                     //edit profile
                     break;
                 case 3:
-                    chooseCamper("view");
+                    String view = chooseCamper("view");
+                    facade.viewCamperProfile(view);
                     break;
                 case 4:
-                    //edit campers
+                    String edit = chooseCamper("edit");
                     break;
                 case 5:
                     createCamper();
@@ -385,9 +386,10 @@ public class CampButterfliesDriver {
     /**
      * Displays all the campers that the user has and lets them choose one 
      */
-    private void chooseCamper(String action){
+    private String chooseCamper(String action){
         System.out.println("Your Current Campers: \n" + facade.viewCampers());
-        System.out.println("");
+        System.out.println("Please enter the first name of the one you want to " + action + ": ");
+        return scan.nextLine();
     }
 
     /**

@@ -106,7 +106,7 @@ public class Camper extends Person {
     // different groups need to see different amounts of camper information
     // when director or user wants to see camper information
     public String toStringFull() {
-        String temp = new String();
+        String temp = new String(); 
 
         /*
          * temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " +
