@@ -10,6 +10,9 @@ public class CampFacade
     private DirectorList directorList;
     private Person currentUser;
 
+    /**
+     * Creates the Camp facade with all of the instances of the lists
+     */
     public CampFacade()
     {
         campList = CampList.getInstance();
@@ -19,6 +22,10 @@ public class CampFacade
         directorList = DirectorList.getInstance();
     }
 
+    /**
+     * Returns the current user that is logged in
+     * @return
+     */
     public Person getCurrentUser(){
         return currentUser;
     }
@@ -169,11 +176,6 @@ public class CampFacade
         return weeks;
     }
 
-
-    public User getCurrentUser(LoginInfo userLogin)
-    {
-        return null;
-    }   
 
 }
 
