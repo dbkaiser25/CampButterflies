@@ -88,7 +88,7 @@ public class Camper extends Person {
         this.pediatrician = pediatrician;
     }
 
-    // public Camper getCa
+    
 
     /**
      * A description of the camper in string form

@@ -48,7 +48,24 @@ public class User extends Person {
     }
 
     // TODO ill look at this later
-    public void selectWeek() {
+    public void selectWeek(Camp camp, int weekNumber, int camperNumber) 
+    {
+        //In the UI, the user will register their campers
+        //then, they select the weeks option to figure out what weeks they want to sign up for
+        //and what camper gets signed up for whatever week
+        //paramters: we need to know what camp and year were talking about, 
+        //           we need to know which camper
+        //           and then which week
+        //im thinking this method will get called once to sign a camper up for a week
+        //then again for a different week
+        //then again for a different camper
+
+        //so for this method to work
+        //the camper needs to be added to the campers array list in week
+        //we can get to this by accessing the master schedule in camp
+        camp.getMasterSchedule().get(weekNumber).getCampers().add(campers.get(camperNumber));
+
+
 
     }
 
