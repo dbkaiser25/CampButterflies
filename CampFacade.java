@@ -8,7 +8,9 @@ public class CampFacade
     private UserList userList;
     private CounselorList counselorList;
     private DirectorList directorList;
-    private Person currentUser;
+    private User currentUser;
+    private Counselor currentCounselor;
+    private Director currentDirector;
 
     /**
      * Creates the Camp facade with all of the instances of the lists
@@ -46,7 +48,7 @@ public class CampFacade
     public int Login(LoginInfo userLogin)
     {
         if(directorList.haveDirector(userLogin)){
-            currentUser = directorList.getDirectorByUserName(userLogin.getUserName());
+            currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
             return 3;
         }
         else if(userList.haveUser(userLogin)){
@@ -54,7 +56,7 @@ public class CampFacade
             return 1;
         }
         else if(counselorList.haveCounselor(userLogin)){
-            currentUser = counselorList.getCounselorByUserName(userLogin.getUserName());
+            currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
             return 2;
         }
         return 0;
@@ -133,14 +135,23 @@ public class CampFacade
 
     }
 
-    public void viewUserProfile()
+    public String viewUserProfile()
     {
-
+        return currentUser.viewUserProfile();
     }
 
-    public void viewCamperProfile()
+    public String viewCampers()
     {
+        String campers = "";
+        for(Camper camper: currentUser.getCampers()){
+            campers += camper.toString() + "\n";
+        }
+        return campers;
+    }
 
+    public String viewCamperProfile(String firstName)
+    {
+        return currentUser.viewCamperProfile(firstName);
     }
 
     public void editCalendar()
@@ -175,7 +186,6 @@ public class CampFacade
         ArrayList<Week> weeks = camp.getWeeks();
         return weeks;
     }
-
 
 }
 

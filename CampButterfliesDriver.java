@@ -348,13 +348,13 @@ public class CampButterfliesDriver {
             int option = scan.nextInt();
             switch(option){
                 case 1: 
-                    //print out info\
+                    System.out.println(facade.viewUserProfile());
                     break;
                 case 2:
                     //edit profile
                     break;
                 case 3:
-                    //view campers
+                    chooseCamper("view");
                     break;
                 case 4:
                     //edit campers
@@ -374,9 +374,20 @@ public class CampButterfliesDriver {
 
     }
 
+    /**
+     * Prints the options the user has
+     */
     private void userOptions(){
         System.out.println("1. View My Profile\n2. Edit My Profile\n3. View My Existing Campers\n" +
                             "4. Edit My Existing Campers\n5. Register New Camper\n6. My Discounts\n7. Logout");
+    }
+
+    /**
+     * Displays all the campers that the user has and lets them choose one 
+     */
+    private void chooseCamper(String action){
+        System.out.println("Your Current Campers: \n" + facade.viewCampers());
+        System.out.println("");
     }
 
     /**
