@@ -342,6 +342,41 @@ public class CampButterfliesDriver {
      */
     private void userScreen(){
         welcomeScreen();
+        boolean run = true;
+        while(run){
+            userOptions();
+            int option = scan.nextInt();
+            switch(option){
+                case 1: 
+                    //print out info\
+                    break;
+                case 2:
+                    //edit profile
+                    break;
+                case 3:
+                    //view campers
+                    break;
+                case 4:
+                    //edit campers
+                    break;
+                case 5:
+                    createCamper();
+                    break;
+                case 6:
+                    //view price
+                    break;
+                case 7:
+                    run=false;
+                    break;
+            }
+        }
+
+
+    }
+
+    private void userOptions(){
+        System.out.println("1. View My Profile\n2. Edit My Profile\n3. View My Existing Campers\n" +
+                            "4. Edit My Existing Campers\n5. Register New Camper\n6. My Discounts\n7. Logout");
     }
 
     /**
@@ -358,9 +393,14 @@ public class CampButterfliesDriver {
         welcomeScreen();
     }
 
+    /**
+     * Welcomes the user once they sign in with their first and last name
+     */
     private void welcomeScreen(){
         System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
     }
+
+
 
     public static void main(String[] args){
         CampFacade facade = new CampFacade();
