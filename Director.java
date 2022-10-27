@@ -7,7 +7,6 @@ import java.util.Date;
 public class Director extends Person {
    // private Calendar calendar; Consider this deleated, i don't think it is needed
    private LoginInfo userLogin;
-   private Camp camp;
    private ArrayList<Camp> camps = new ArrayList<Camp>();
 
    public Director(String firstName, String lastName, Date dateOfBirth,
@@ -38,12 +37,12 @@ public class Director extends Person {
       this.camps = camps;
    }
 
-   public Camp getCamp() {
-      return camp;
+   public ArrayList<Camp> getCamp() {
+      return camps;
    }
 
-   public void setCamp(Camp camp) {
-      this.camp = camp;
+   public void addCamp(Camp camp) {
+      camps.add(camp);
    }
 
    public void removeCamper(String firstName, String lastName, Week week) {
@@ -74,21 +73,43 @@ public class Director extends Person {
       return false;
    }
 
-   public void viewActivities() {
+   //view all of the activities 
+   public void viewActivities(int year) 
+   {
+      for(Camp c: camps)
+      {
 
+      }
    }
 
-   public void addActivity(Activity activity) {
-      camp.addActivity(activity);
-   }
-
-   public void removeActivity(Activity activity) {
-      for (int i = 0; i < camp.getActivitiesArrayList().size(); i++) {
-         if (camp.getActivitiesArrayList().get(i).equals(activity)) {
-            camp.getActivitiesArrayList().remove(i);
-            i = camp.getActivitiesArrayList().size();
+   public void addActivity(int year, Activity activity) 
+   {
+      for(Camp c: camps)
+      {
+         if(c.getYear() == year)
+         {
+            c.getActivitiesList().add(activity);
+            break;
          }
       }
+   }
+
+   public void removeActivity(int year, Activity activity) {
+
+      for(Camp c: camps)
+      {
+         if(c.getYear() == year)
+         {
+            for (int i = 0; i < c.getActivitiesArrayList().size(); i++) {
+               if (c.getActivitiesArrayList().get(i).equals(activity)) {
+                  c.getActivitiesArrayList().remove(i);
+                  i = c.getActivitiesArrayList().size();
+               }
+            }
+            break;
+         }
+      }
+      
    }
 
    public String viewCounselorInfo(String firstName, String lastName) {
