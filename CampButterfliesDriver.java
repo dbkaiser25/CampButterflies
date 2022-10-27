@@ -342,6 +342,54 @@ public class CampButterfliesDriver {
      */
     private void userScreen(){
         welcomeScreen();
+        boolean run = true;
+        while(run){
+            userOptions();
+            int option = scan.nextInt();
+            switch(option){
+                case 1: 
+                    System.out.println(facade.viewUserProfile());
+                    break;
+                case 2:
+                    //edit profile
+                    break;
+                case 3:
+                    String view = chooseCamper("view");
+                    facade.viewCamperProfile(view);
+                    break;
+                case 4:
+                    String edit = chooseCamper("edit");
+                    break;
+                case 5:
+                    createCamper();
+                    break;
+                case 6:
+                    //view price
+                    break;
+                case 7:
+                    run=false;
+                    break;
+            }
+        }
+
+
+    }
+
+    /**
+     * Prints the options the user has
+     */
+    private void userOptions(){
+        System.out.println("1. View My Profile\n2. Edit My Profile\n3. View My Existing Campers\n" +
+                            "4. Edit My Existing Campers\n5. Register New Camper\n6. My Discounts\n7. Logout");
+    }
+
+    /**
+     * Displays all the campers that the user has and lets them choose one 
+     */
+    private String chooseCamper(String action){
+        System.out.println("Your Current Campers: \n" + facade.viewCampers());
+        System.out.println("Please enter the first name of the one you want to " + action + ": ");
+        return scan.nextLine();
     }
 
     /**
@@ -358,9 +406,14 @@ public class CampButterfliesDriver {
         welcomeScreen();
     }
 
+    /**
+     * Welcomes the user once they sign in with their first and last name
+     */
     private void welcomeScreen(){
         System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
     }
+
+
 
     public static void main(String[] args){
         CampFacade facade = new CampFacade();
