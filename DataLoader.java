@@ -14,10 +14,10 @@ import org.json.simple.parser.JSONParser;
 public class DataLoader extends DataConstants {
 
     public static void main(String[] args) {
-        ArrayList<Director> directors = DataLoader.loadDirectors();
-        for (int i = 0; i < directors.size(); i++) {
-            System.out.println("DIRECTOR: " + directors.get(i).getFirstName());
-        }
+        // ArrayList<Director> directors = DataLoader.loadDirectors();
+        // for (int i = 0; i < directors.size(); i++) {
+        // System.out.println("DIRECTOR: " + directors.get(i).getFirstName());
+        // }
         // ArrayList<Camp> camps = DataLoader.loadCamps();
         // for (int i = 0; i < camps.size(); i++) {
         // System.out.println("CAMP: " + camps.get(i));
@@ -213,6 +213,8 @@ public class DataLoader extends DataConstants {
                     JSONObject calendarJSON = (JSONObject) jsonCalendar.get(j);
                     String campName = (String) calendarJSON.get(NAME);
                     String campDescription = (String) calendarJSON.get(DESCRIPTION);
+                    Integer year = ((Long) calendarJSON.get(YEAR)).intValue(); // see if it's ok to cast as Integer
+                                                                               // instead of int
                     JSONArray jsonHash = (JSONArray) calendarJSON.get(CALENDAR_HASH);
                     HashMap<Integer, Week> masterScheduleHash = new HashMap<Integer, Week>();
 
@@ -287,19 +289,15 @@ public class DataLoader extends DataConstants {
                         masterScheduleHash.put(week_num, week);
                     }
                     ArrayList<Activity> activities = new ArrayList<Activity>();
-                    // System.out.println(calendarJSON.get(ALL_ACTIVITIES));
                     JSONArray activitiesJSON = (JSONArray) calendarJSON.get(ALL_ACTIVITIES);
                     for (int l = 0; l < activitiesJSON.size(); l++) {
-                        System.out.println(activitiesJSON.size());
                         JSONObject activity = (JSONObject) activitiesJSON.get(l);
                         String name = (String) activity.get(NAME);
                         String location = (String) activity.get(LOCATION);
-                        System.out.println(activity.get(LOCATION));
-                        System.out.println(activity.get(DESCRIPTION));
                         String description = (String) activity.get(DESCRIPTION);
                         activities.add(new Activity(name, location, description));
                     }
-                    calendar = new Camp(campName, campDescription, masterScheduleHash, activities);
+                    calendar = new Camp(campName, campDescription, masterScheduleHash, activities, year);
                     camps.add(calendar);
                 }
                 directors.add(new Director(id, firstName, lastName, dob, homeAddress, directorLogin, camps));
@@ -322,6 +320,7 @@ public class DataLoader extends DataConstants {
                 JSONObject campJSON = (JSONObject) campsJSON.get(i);
                 String campName = (String) campJSON.get(NAME);
                 String campDescription = (String) campJSON.get(DESCRIPTION);
+                Integer year = ((Long) campJSON.get(YEAR)).intValue();
                 JSONArray jsonHash = (JSONArray) campJSON.get(CALENDAR_HASH);
                 HashMap<Integer, Week> masterScheduleHash = new HashMap<Integer, Week>();
                 for (int j = 0; j < jsonHash.size(); j++) {
@@ -392,6 +391,7 @@ public class DataLoader extends DataConstants {
                  * figure out how to add to hashMap
                  */
                 ArrayList<Activity> activities = new ArrayList<Activity>();
+                System.out.println("all activities: " + campJSON.get(ALL_ACTIVITIES));
                 JSONArray activitiesJSON = (JSONArray) campJSON.get(ALL_ACTIVITIES);
                 for (int l = 0; l < activitiesJSON.size(); l++) {
                     JSONObject activity = (JSONObject) activitiesJSON.get(l);
@@ -400,7 +400,7 @@ public class DataLoader extends DataConstants {
                     String description = (String) activity.get(DESCRIPTION);
                     activities.add(new Activity(name, location, description));
                 }
-                Camp camp = new Camp(campName, campDescription, masterScheduleHash, activities);
+                Camp camp = new Camp(campName, campDescription, masterScheduleHash, activities, year);
                 camps.add(camp);
                 // camps.add(new Camp(campName, campDescription, masterScheduleHash,
                 // activities));
