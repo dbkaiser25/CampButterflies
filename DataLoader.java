@@ -3,6 +3,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
@@ -30,10 +31,10 @@ public class DataLoader extends DataConstants {
         // for (int i = 0; i < counselors.size(); i++) {
         // System.out.println("COUNSELOR: " + counselors.get(i).getFirstName());
         // }
-        // ArrayList<User> users = DataLoader.loadUsers();
-        // for (int i = 0; i < users.size(); i++) {
-        // System.out.println("USER: " + users.get(i));
-        // }
+        ArrayList<User> users = DataLoader.loadUsers();
+        for (int i = 0; i < users.size(); i++) {
+            System.out.println("USER: " + users.get(i));
+        }
 
     }
 
@@ -113,6 +114,9 @@ public class DataLoader extends DataConstants {
                 String lastName = (String) userJSON.get(LASTNAME);
                 String dateOfBirth = (String) userJSON.get(DOB);
                 Date dob = convertToDate(dateOfBirth);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(dob);
+                System.out.println("calendar month " + calendar.get(Calendar.MONTH));
                 String homeAddress = (String) userJSON.get(HOMEADDRESS);
                 String userName = (String) userJSON.get(USERNAME);
                 String password = (String) userJSON.get(PASSWORD);
