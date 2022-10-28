@@ -11,3 +11,10 @@ Activity 5
 
 Group can't have the same activity twice in the same day
 no two groups should be at an activity
+
+
+How to select a month/day/year from the date
+Date dob = convertToDate(dateOfBirth);
+Calendar calendar = Calendar.getInstance();
+calendar.setTime(dob); 
+System.out.println("calendar month " + calendar.get(Calendar.MONTH));

@@ -114,9 +114,6 @@ public class DataLoader extends DataConstants {
                 String lastName = (String) userJSON.get(LASTNAME);
                 String dateOfBirth = (String) userJSON.get(DOB);
                 Date dob = convertToDate(dateOfBirth);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(dob);
-                System.out.println("calendar month " + calendar.get(Calendar.MONTH));
                 String homeAddress = (String) userJSON.get(HOMEADDRESS);
                 String userName = (String) userJSON.get(USERNAME);
                 String password = (String) userJSON.get(PASSWORD);
