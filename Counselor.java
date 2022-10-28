@@ -126,7 +126,7 @@ public class Counselor extends Person {
      * Tuesday
      * ...
      */
-    public String viewSchedule(Group group) {
+    public String viewSchedule(int weekNumber, Group group) {
         // String temp = new String();
 
         // This is way cleaner if it works
@@ -137,6 +137,13 @@ public class Counselor extends Person {
         // gonna need to know what group we are talking about before we can call the
         // group method
         // for know it'll be a parameter but maybe we call a get group or something
+
+        //masterSchedule has the weeks
+        //weeks has the list of groups
+        //
+
+
+
         return group.printSchedule();
     }
 

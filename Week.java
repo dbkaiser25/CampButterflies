@@ -91,9 +91,30 @@ public class Week {
         this.isFull = isFull;
     }
 
-    public void generateSchedules() {
+    public void generateSchedules() 
+    {
+        // automation of the schedules will be done in here, and they will be assigned to groups
+        //reason for this is a week has the list of groups, counselors available for the week, 
+        //and campers that want to attend the camp for this week 
 
-        // do schedule things here
+        //to create a group, they need a counselor
+        // then they need maximum of 10 kids preferably by age
+        //          if we do it by age: how will we determine their age
+
+        //sort campers by age
+        
+
+    }
+
+    private void sortCampersByAge()
+    {
+
+    }
+
+    private boolean calculateAge(Date birthDate, Date currentDate)
+    {
+        
+        return true;
     }
 
     public String viewSchedule() {

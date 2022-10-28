@@ -1,0 +1,13 @@
+This will be deleated later 
+
+Breakfast
+activity 1
+activity 2
+Lunch 
+Activity 3
+Activity 4
+Dinner
+Activity 5
+
+Group can't have the same activity twice in the same day
+no two groups should be at an activity
