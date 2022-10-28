@@ -36,7 +36,6 @@ public class CampButterfliesDriver {
         while(running){
             homepage();
             int choice = getChoice(homepageOptions.length-1);
-            clear();
 
             if (choice == -1){
                 continue;

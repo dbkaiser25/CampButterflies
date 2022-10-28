@@ -28,8 +28,24 @@ public class CampFacade
      * Returns the current user that is logged in
      * @return
      */
-    public Person getCurrentUser(){
+    public User getCurrentUser(){
         return currentUser;
+    }
+
+    /**
+     * Returns the current counselor that is logged in
+     * @return
+     */
+    public Counselor getCuurentCounselor(){
+        return currentCounselor;
+    }
+
+    /**
+     * Returns the current director that is logged in
+     * @return
+     */
+    public Director getCurrentDirector(){
+        return currentDirector;
     }
 
     /**
