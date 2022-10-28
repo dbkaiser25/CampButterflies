@@ -101,12 +101,12 @@ public class CampButterfliesDriver {
 		return choice;
 	}
     
-    /**
+    /*
      * Clears the console
-     */
+     
     private void clear() {
 		System.out.print("\033[H\033[2J");
-	}
+	}*/
 
     /**
      * prints the hompage UI
@@ -119,13 +119,13 @@ public class CampButterfliesDriver {
 		}
     }
 
-    /**
+    /*
      * Returns the user back to the mainpage of the camp
-     */
+     
     private void backToHomepage(){
          System.out.println("Enter any key to return to the homepage");
          scan.next();
-    }
+    }*/
 
     /**
      * Prints out camp price and available discounts
@@ -381,7 +381,7 @@ public class CampButterfliesDriver {
      */
     private void userOptions(){
         System.out.println("1. View My Profile\n2. Edit My Profile\n3. View My Existing Campers\n" +
-                            "4. Edit My Existing Campers\n5. Register New Camper\n6. My Current Price\n7. Logout");
+                            "4. Edit My Existing Campers\n5. Register New Camper\n6. View discounts\n7. Logout");
     }
 
     /**
@@ -436,6 +436,9 @@ public class CampButterfliesDriver {
         }
     }
 
+    /**
+     * Prints out the counselors options
+     */
     private void counselorOptions(){
          System.out.println("1. View My Profile\n2. Edit My Profile\n3. View Campers\n4. View Camper Information"+
                             "\n5. View My Schedule\n6. Logout");
@@ -446,6 +449,26 @@ public class CampButterfliesDriver {
      */
     private void directorScreen(){
         welcomeScreen();
+        boolean run = true;
+        while(run){
+            directorOptions();
+            int option = scan.nextInt();
+            switch(option){
+                case 1:
+                    //view profile
+                    break;
+                case 2:
+                    //edit
+                    break;
+                case 3:
+                    //
+                    break;
+            }
+        }
+    }
+
+    private void directorOptions(){
+        System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create new ");
     }
 
     /**
