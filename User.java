@@ -28,7 +28,7 @@ public class User extends Person {
         return userLogin;
     }
 
-    // consider deleating
+    // consider deleting
     public void setUserLogin(LoginInfo userLogin) {
         this.userLogin = userLogin;
     }
@@ -96,7 +96,7 @@ public class User extends Person {
     public String viewCamperProfile(String firstName) {
         for (int i = 0; i < campers.size(); i++) {
             if (campers.get(i).getFirstName().equals(firstName)) {
-                return campers.get(i).toString();
+                return campers.get(i).toStringFull();
             }
         }
         return "There are no campers with that name";
@@ -132,6 +132,6 @@ public class User extends Person {
 
     // TODO consider deleating
     public String toString() {
-        return firstName + ", " + lastName + ", amt of campers:" + campers.size();
+        return firstName + ", " + lastName + ", amount of campers:" + campers.size();
     }
 }

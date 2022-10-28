@@ -127,7 +127,7 @@ public class CampFacade
 
     public boolean qualifiesForDiscount()
     {
-        return true;
+        return currentUser.qualifiesForDiscount();
     }
 
     public void selectWeek()
@@ -144,7 +144,7 @@ public class CampFacade
     {
         String campers = "";
         for(Camper camper: currentUser.getCampers()){
-            campers += camper.toString() + "\n";
+            campers += camper.toStringBrief() + "\n";
         }
         return campers;
     }
@@ -152,6 +152,10 @@ public class CampFacade
     public String viewCamperProfile(String firstName)
     {
         return currentUser.viewCamperProfile(firstName);
+    }
+
+    public String viewCounselorProfile(){
+        return currentCounselor.toString();
     }
 
     public void editCalendar()
