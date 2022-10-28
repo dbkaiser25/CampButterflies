@@ -126,7 +126,7 @@ public class Counselor extends Person {
      * Tuesday
      * ...
      */
-    public String viewSchedule(int weekNumber, Group group) {
+    public String viewSchedule(Camp camp, int weekNumber) {
         // String temp = new String();
 
         // This is way cleaner if it works
@@ -141,6 +141,8 @@ public class Counselor extends Person {
         //masterSchedule has the weeks
         //weeks has the list of groups
         //
+
+        
 
 
 
