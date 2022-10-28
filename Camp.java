@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 public class Camp {
- 
+
     private String name;
     private String description;
     private int year;
@@ -33,13 +33,11 @@ public class Camp {
         masterSchedule = new HashMap<Integer, Week>();
     }
 
-    public int getYear()
-    {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(int year)
-    {
+    public void setYear(int year) {
         this.year = year;
     }
 
@@ -108,7 +106,6 @@ public class Camp {
         return weeks;
     }
 
-
     public String getActivities() {
         String displayActivities = new String();
         for (Activity activity : activities) {
@@ -132,6 +129,12 @@ public class Camp {
 
     }
 
+    public void printMasterSchedule() {
+        for (int i = 0; i < masterSchedule.size(); i++) {
+            System.out.println(masterSchedule.get(i).getTheme());
+        }
+    }
+
     public void editCalendar() {
         // do some editing of the calendar
     }
@@ -144,6 +147,7 @@ public class Camp {
     }
 
     public String toString() {
-        return name + ": " + description;
+        return "CAMP: name: " + name + " description: " + description + "masterSchedule " + masterSchedule
+                + " activities " + activities;
     }
 }
