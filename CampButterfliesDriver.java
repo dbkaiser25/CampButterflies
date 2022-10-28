@@ -36,7 +36,8 @@ public class CampButterfliesDriver {
         while(running){
             homepage();
             int choice = getChoice(homepageOptions.length-1);
-            
+            clear();
+
             if (choice == -1){
                 continue;
             }
@@ -351,7 +352,7 @@ public class CampButterfliesDriver {
                     System.out.println(facade.viewUserProfile());
                     break;
                 case 2:
-                    //edit profile
+                    // TODO edit profile
                     break;
                 case 3:
                     String view = chooseCamper("view");
@@ -359,12 +360,13 @@ public class CampButterfliesDriver {
                     break;
                 case 4:
                     String edit = chooseCamper("edit");
+                    // TODO
                     break;
                 case 5:
                     createCamper();
                     break;
                 case 6:
-                    //view price
+                    discount();
                     break;
                 case 7:
                     run=false;
@@ -380,7 +382,7 @@ public class CampButterfliesDriver {
      */
     private void userOptions(){
         System.out.println("1. View My Profile\n2. Edit My Profile\n3. View My Existing Campers\n" +
-                            "4. Edit My Existing Campers\n5. Register New Camper\n6. My Discounts\n7. Logout");
+                            "4. Edit My Existing Campers\n5. Register New Camper\n6. My Current Price\n7. Logout");
     }
 
     /**
@@ -393,10 +395,51 @@ public class CampButterfliesDriver {
     }
 
     /**
+     * Prints out the users total in the camp
+     */
+    private void discount(){
+        //TODO print out their total price (675*campers*camp weeks)
+        if(facade.qualifiesForDiscount())
+            System.out.println("You qualify for a 10% discount");
+        else
+            System.out.println("You do not qualify for a discount");
+    }
+
+    /**
      * The screen counselors see when they login
      */
     private void counselorScreen(){
         welcomeScreen();
+        boolean run = true;
+        while(run){
+            counselorOptions();
+            int option = scan.nextInt();
+            switch(option){
+                case 1:
+                    System.out.println(facade.viewCounselorProfile());
+                    break;
+                case 2:
+                    //edit
+                    break;
+                case 3:
+                    //view campers
+                    break;
+                case 4:
+                    //view campers full
+                    break;
+                case 5:
+                    //view schedule
+                    break;
+                case 6:
+                    run = false;
+                    break;
+            }
+        }
+    }
+
+    private void counselorOptions(){
+         System.out.println("1. View My Profile\n2. Edit My Profile\n3. View Campers\n4. View Camper Information"+
+                            "\n5. View My Schedule\n6. Logout");
     }
 
     /**

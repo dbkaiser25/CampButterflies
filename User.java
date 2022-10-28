@@ -28,7 +28,7 @@ public class User extends Person {
         return userLogin;
     }
 
-    // consider deleating
+    // consider deleting
     public void setUserLogin(LoginInfo userLogin) {
         this.userLogin = userLogin;
     }
