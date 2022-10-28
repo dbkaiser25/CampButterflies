@@ -126,27 +126,17 @@ public class Counselor extends Person {
      * Tuesday
      * ...
      */
-    public String viewSchedule(Camp camp, int weekNumber) {
-        // String temp = new String();
 
-        // This is way cleaner if it works
-        // for (DayOfWeek day : DayOfWeek.values()) {
-        // temp = temp + getActivities(group, day) + "\n";
-        // }
-
-        // gonna need to know what group we are talking about before we can call the
-        // group method
-        // for know it'll be a parameter but maybe we call a get group or something
-
-        //masterSchedule has the weeks
-        //weeks has the list of groups
-        //
-
-        
-
-
-
-        return group.printSchedule();
+    public String viewSchedule(Camp camp, int weekNumber) 
+    {
+        for(Group g: camp.getMasterSchedule().get(weekNumber).getGroups())
+        {
+            if(g.getCounselor().getFirstName().equals(firstName) && g.getCounselor().getLastName().equals(lastName))
+            {
+                return g.printSchedule();
+            }
+        }
+        return "You are not apart of a group";
     }
 
     // helper method for viewSchedule
