@@ -132,11 +132,10 @@ public class Director extends Person {
    }
 
    public String toString() {
-      return "works";
-      // String temp = new String();
-      // temp = "Director: " + firstName + " " + lastName + "\nUsername: "
-      // + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString()
-      // + "\nAddress: " + homeAddress;
-      // return temp;
+      String temp = new String();
+      temp = "Director: " + firstName + " " + lastName + "\nUsername: "
+      + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString()
+      + "\nAddress: " + homeAddress;
+      return temp;
    }
 }
