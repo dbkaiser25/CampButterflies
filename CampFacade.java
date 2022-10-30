@@ -392,6 +392,52 @@ public class CampFacade
         return currentCounselor.toString();
     }
 
+    /**
+     * returns the directors profile
+     * @return
+     */
+    public String viewDirectorProfile(){
+        return currentDirector.toString();
+    }
+
+    /**
+     * changes the directors first name
+     * @param firstName
+     */
+    public void editDirectorFirstName(String firstName){
+        currentDirector.setFirstName(firstName);
+    }
+
+    /**
+     * changes the directors last name
+     * @param lastName
+     */
+    public void editDirectorLastName(String lastName){
+        currentDirector.setLastName(lastName);
+    }
+
+    /**
+     * changes the directors home address
+     * @param homeAddress
+     */
+    public void editDirectorHomeAddress(String homeAddress){
+        currentDirector.setHomeAddress(homeAddress);
+    }
+
+    /**
+     * changes tha directors date of birth
+     * @param dob
+     */
+    public void editDirectorDateOfBirth(Date dob){
+        currentDirector.setDateOfBirth(dob);
+    }
+
+    public void newCamp(String name, String desc, int weeks, int year){
+        Camp camp = new Camp(name, desc, weeks);
+        camp.setYear(year);
+        campList.addCamp(camp);
+    }
+
     public void editCalendar()
     {
 

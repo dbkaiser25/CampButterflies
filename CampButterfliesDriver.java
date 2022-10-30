@@ -1,3 +1,4 @@
+import java.lang.annotation.IncompleteAnnotationException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,7 +44,10 @@ public class CampButterfliesDriver {
 
             switch(choice){
                 case 1:
-                    System.out.println(facade.getActivities("Camp Blue Butterflies"));
+                    System.out.println("Which camps activities would you like to see?");
+                    System.out.println(facade.getCampList());
+                    String camp = scan.nextLine();
+                    System.out.println(facade.getActivities(camp));
                     break;
                 case 2:
                     weeks();
@@ -99,8 +103,11 @@ public class CampButterfliesDriver {
 
 
     private void weeks(){
+        System.out.println("Which camps sessions would you like to see?");
+        System.out.println(facade.getCampList());
+        String camp = scan.nextLine();
         int i = 1;
-        for(Week week: facade.getWeeks("Camp Blue Butterflies")){
+        for(Week week: facade.getWeeks(camp)){
             System.out.println("Week " + i + ": " + week);
             i++;
         }
@@ -187,12 +194,15 @@ public class CampButterfliesDriver {
             System.out.println("Camper Information");
             Camper camper = createCamper();
             campers.add(camper);
+            System.out.println("Which camp would you like to sign up for?");
+            System.out.println(facade.getCampList());
+            String camp = scan.nextLine();
             boolean moreWeeks = true;
             while(moreWeeks){
                 System.out.println("Which week would you like to register for?");
-                System.out.println(facade.getWeeks("Camp Blue Butterflies"));
+                System.out.println(facade.getWeeks(camp));
                 int week = scan.nextInt();
-                facade.getCampList().getCamp("Camp Blue Butterflies").getWeek(week);
+                facade.getCampList().getCamp(camp).getWeek(week);
                 camper.addWeek(week);
                 String answer = get("Would you like to add another week?(yes/no)");
                 if(answer.equalsIgnoreCase("no"))
@@ -201,8 +211,8 @@ public class CampButterfliesDriver {
             String answer = get("Would you like to add more campers?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
                     more = false;
+        
         }
-
         facade.addUser(firstName, lastName, doB, homeAddress, loginInfo, campers);
     }
 
@@ -311,11 +321,14 @@ public class CampButterfliesDriver {
                     moreContacts = false;
         }
 
+        System.out.println("Which camp would you like to sign up for?");
+        System.out.println(facade.getCampList());
+        String camp = scan.nextLine();
         boolean moreWeeks = true;
         while(moreWeeks){
             System.out.println("Which week would you like to register for?");
-            System.out.println(facade.getWeeks("Camp Blue Butterflies"));
-            facade.getCampList().getCamp("Camp Blue Butterflies").getWeek(scan.nextInt());
+            System.out.println(facade.getWeeks(camp));
+            facade.getCampList().getCamp(camp).getWeek(scan.nextInt());
             String answer = get("Would you like to add another week?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
                     moreWeeks = false;
@@ -363,6 +376,13 @@ public class CampButterfliesDriver {
             System.out.println("Sorry " + date + " is not valid");
             return null;
         }
+    }
+
+     /**
+     * Welcomes the user once they sign in with their first and last name
+     */
+    private void welcomeScreen(){
+        System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
     }
 
     /**
@@ -704,13 +724,13 @@ public class CampButterfliesDriver {
             int option = scan.nextInt();
             switch(option){
                 case 1:
-                    //view profile
+                    System.out.println(facade.viewDirectorProfile());
                     break;
                 case 2:
-                    //edit profile
+                    editDirector();
                     break;
                 case 3:
-                    //create new camp
+                    createCamp();
                     break;
                 case 4:
                     System.out.println("What Camp would you like to see?");
@@ -756,12 +776,46 @@ public class CampButterfliesDriver {
     }
 
     /**
-     * Welcomes the user once they sign in with their first and last name
+     * edits the directors information
      */
-    private void welcomeScreen(){
-        System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
+    private void editDirector(){
+        boolean run=true;
+        while(run){
+            System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
+                            "\n3. Home Address\n4. Date of Birth\n5. Quit");
+            switch(scan.nextInt()){
+                case 1:
+                    String newfirstname = get("First Name");
+                    facade.editDirectorFirstName(newfirstname);
+                    break;
+                case 2:
+                    String newlastname = get("Last Name");
+                    facade.editDirectorLastName(newlastname);
+                    break;
+                case 3:
+                    String newhomeaddress = get("Home Address");
+                    facade.editDirectorHomeAddress(newhomeaddress);
+                    break;
+                case 4:
+                    String newdob = get("Date of Birth(MM/DD/YYYY");
+                    facade.editDirectorDateOfBirth(formatDate(newdob));
+                    break;
+                case 5:
+                    run = false;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
+            }
+        }
     }
 
+    private void createCamp(){
+        int year = Integer.parseInt(get("Year of Camp"));
+        String name = get("Name of Camp");
+        String description = get("Short Description of Camp");
+        int weeks = Integer.parseInt("Number of Weeks");
+        facade.newCamp(name, description, weeks, year);
+    }
 
 
     public static void main(String[] args){
