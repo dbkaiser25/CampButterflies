@@ -358,7 +358,7 @@ public class CampButterfliesDriver {
                     facade.viewCamperProfile(view);
                     break;
                 case 4:
-                    String edit = chooseCamper("edit");
+                    //String edit = chooseCamper("edit");
                     // TODO
                     break;
                 case 5:
@@ -397,11 +397,14 @@ public class CampButterfliesDriver {
      * Prints out the users total in the camp
      */
     private void discount(){
-        //TODO print out their total price (675*campers*camp weeks)
         if(facade.qualifiesForDiscount())
             System.out.println("You qualify for a 10% discount");
         else
             System.out.println("You do not qualify for a discount");
+    }
+
+    private void editUser(){
+        System.out.println("What would you like to edit:\n ");
     }
 
     /**
