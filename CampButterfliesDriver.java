@@ -707,11 +707,38 @@ public class CampButterfliesDriver {
                     //view profile
                     break;
                 case 2:
-                    //edit
+                    //edit profile
                     break;
                 case 3:
-                    //
+                    //create new camp
                     break;
+                case 4:
+                    System.out.println("What Camp would you like to see?");
+                    System.out.println(facade.getActivities(scan.nextLine()));
+                    break;
+                case 5:
+                    //edit activities
+                    break;
+                case 6:
+                    //all counselors
+                    break;
+                case 7:
+                    //remove counselor
+                    break;
+                case 8:
+                    //all campers
+                    break;
+                case 9:
+                    //remove camper
+                    break;
+                case 10:
+                    //view schedule
+                    break;
+                case 11:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");
             }
         }
     }
@@ -720,7 +747,9 @@ public class CampButterfliesDriver {
      * options on the directors homepage
      */
     private void directorOptions(){
-        System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create new ");
+        System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites"+
+                            "\n6. View All Counselors\n7. Remove Counselor\n8. View All Campers\n9. Remove Camper\n10. View Schedules" +
+                            "\n11. Logout");
     }
 
     /**

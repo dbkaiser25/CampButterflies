@@ -131,6 +131,11 @@ public class CampFacade
         counselorList.addCounselor(counselor);
     }
 
+    /**
+     * changes campers first name
+     * @param camper
+     * @param firstName
+     */
     public void editCamperFirstName(String camper, String firstName)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -140,6 +145,11 @@ public class CampFacade
             currentCamper.setFirstName(firstName);
     }
 
+    /**
+     * changes campers last name
+     * @param camper
+     * @param lastName
+     */
     public void editCamperLastName(String camper, String lastName)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -149,6 +159,11 @@ public class CampFacade
             currentCamper.setLastName(lastName);
     }
 
+    /**
+     * changes campers home address
+     * @param camper
+     * @param homeAddress
+     */
     public void editCamperHomeAddress(String camper, String homeAddress)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -158,6 +173,11 @@ public class CampFacade
             currentCamper.setHomeAddress(homeAddress);
     }
 
+    /**
+     * changes campers date of birth
+     * @param camper
+     * @param dateOfBirth
+     */
     public void editCamperDateOfBirth(String camper, Date dateOfBirth)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -167,6 +187,11 @@ public class CampFacade
             currentCamper.setDateOfBirth(dateOfBirth);
     }
 
+    /**
+     * changes campers sex
+     * @param camper
+     * @param sex
+     */
     public void editCamperSex(String camper, Sex sex)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -176,6 +201,11 @@ public class CampFacade
             currentCamper.setSex(sex);
     }
 
+    /**
+     * edits campers allergy list
+     * @param camper
+     * @param allergies
+     */
     public void editCamperAllergies(String camper, ArrayList<String> allergies)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -185,6 +215,11 @@ public class CampFacade
             currentCamper.setAllergies(allergies);
     }
 
+    /**
+     * edits campers emergency contacts list
+     * @param camper
+     * @param contacts
+     */
     public void editCamperEmergencyContacts(String camper, ArrayList<Contact> contacts)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -194,6 +229,11 @@ public class CampFacade
             currentCamper.setEmergencyContacts(contacts);
     }
 
+    /**
+     * edits campers doctor
+     * @param camper
+     * @param doctor
+     */
     public void editCamperPediatrician(String camper, Contact doctor)
     {
         Camper currentCamper = currentUser.getCamper(camper);
@@ -203,77 +243,128 @@ public class CampFacade
             currentCamper.setPediatrician(doctor);
     }
 
+    /**
+     * changes users first name
+     * @param firstName
+     */
     public void editUserFirstName(String firstName)
     {
         currentUser.setFirstName(firstName);
     }
 
+    /**
+     * changes users last name
+     * @param lastName
+     */
     public void editUserLastName(String lastName)
     {
         currentUser.setLastName(lastName);
     }
 
+    /**
+     * chnages users home address
+     * @param homeAddress
+     */
     public void editUserHomeAddress(String homeAddress)
     {
         currentUser.setHomeAddress(homeAddress);
     }
 
+    /**
+     * changes users date of birth
+     * @param dateOfBirth
+     */
     public void editUserDateOfBirth(Date dateOfBirth)
     {
 
         currentUser.setDateOfBirth(dateOfBirth);
     }
 
+    /**
+     * changes counselors first name
+     * @param firstName
+     */
     public void editCounselorFirstName(String firstName)
     {
         currentCounselor.setFirstName(firstName);
     }
 
+    /**
+     * changes counselors last name
+     * @param lastName
+     */
     public void editCounselorLastName(String lastName)
     {
         currentCounselor.setLastName(lastName);
     }
 
+    /**
+     * changes chounselors home address
+     * @param homeAddress
+     */
     public void editCounselorHomeAddress(String homeAddress)
     {
         currentCounselor.setHomeAddress(homeAddress);
     }
 
+    /**
+     * changes counselors phone number
+     * @param phoneNumber
+     */
     public void editCounselorPhoneNumber(String phoneNumber)
     {
         currentCounselor.setPhoneNumber(phoneNumber);
     }
 
+    /**
+     * changes counselors date of birth
+     * @param dob
+     */
     public void editCounselorDateOfBirth(Date dob)
     {
         currentCounselor.setDateOfBirth(dob);
     }
 
+    /**
+     * edits counselors emergency contacts list
+     * @param contacts
+     */
     public void editCounselorEmergencyContacts(ArrayList<Contact> contacts)
     {
         currentCounselor.setEmergencyContacts(contacts);
     }
 
+    /**
+     * edits counselors doctor
+     * @param doctor
+     */
     public void editCounselorDoctor(Contact doctor)
     {
         currentCounselor.setPediatrician(doctor);
     }
 
+    /**
+     * returns true if they qualify for a discount
+     * @return
+     */
     public boolean qualifiesForDiscount()
     {
         return currentUser.qualifiesForDiscount();
     }
 
-    public void selectWeek()
-    {
-
-    }
-
+    /**
+     * returns user profile
+     * @return
+     */
     public String viewUserProfile()
     {
         return currentUser.viewUserProfile();
     }
 
+    /**
+     * returns all of the campers a user has
+     * @return
+     */
     public String viewCampers()
     {
         String campers = "";
@@ -283,11 +374,20 @@ public class CampFacade
         return campers;
     }
 
+    /**
+     * returns a specific camper profile
+     * @param firstName
+     * @return
+     */
     public String viewCamperProfile(String firstName)
     {
         return currentUser.viewCamperProfile(firstName);
     }
 
+    /**
+     * returns counselors profile
+     * @return
+     */
     public String viewCounselorProfile(){
         return currentCounselor.toString();
     }
@@ -297,6 +397,10 @@ public class CampFacade
 
     }
 
+    /**
+     * returns the calendar
+     * @return
+     */
     public String viewCalendar()
     {
         return null;
