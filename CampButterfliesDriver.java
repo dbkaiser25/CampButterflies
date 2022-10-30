@@ -411,11 +411,14 @@ public class CampButterfliesDriver {
             System.out.println("You do not qualify for a discount");
     }
 
+    /**
+     * Gives the user options to edit their profile, then edits the profile
+     */
     private void editUser(){
         boolean run=true;
         while(run){
             System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
-                            "\n3. Home Address\n4. Date of Birth");
+                            "\n3. Home Address\n4. Date of Birth\n5. Quit");
             switch(scan.nextInt()){
                 case 1:
                     String newfirstname = get("First Name");
@@ -433,21 +436,25 @@ public class CampButterfliesDriver {
                     String newdob = get("Date of Birth(MM/DD/YYYY");
                     facade.editUserDateOfBirth(formatDate(newdob));
                     break;
+                case 5:
+                    run = false;
                 default:
                     System.out.println("Please enter a valid number");
                     break;
             }
-            String answer = get("Would you like to continue editing?(yes/no)");
-            if(answer.equalsIgnoreCase("no"))
-                    run = false;
         }
     }
 
+    /**
+     * edits the campers profile
+     * @param firstname name of camper being edited
+     */
     private void editCamper(String firstname){
         boolean run=true;
         while(run){
             System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
-                            "\n3. Home Address\n4. Date of Birth\n5. Sex");
+                                "\n3. Home Address\n4. Date of Birth\n5. Sex\n6. Allergies" +
+                                "\n7. Emergency Contacts\n8. Doctor Information\n9. Quit");
             switch(scan.nextInt()){
                 case 1:
                     String newfirstname = get("First Name");
@@ -468,16 +475,118 @@ public class CampButterfliesDriver {
                 case 5:
                     Sex newdate = Enum.valueOf(Sex.class,get("Sex(MALE/FEMALE)"));
                     facade.editCamperSex(firstname, newdate);
+                    break;
+                case 6:
+                    editAllergies(firstname);
+                    break;
+                case 7:
+                    facade.editCamperEmergencyContacts(firstname, editEC(facade.getCurrentUser().getCamper(firstname).getEmergencyContacts()));
+                    break;
+                case 8:
+                    facade.editCamperPediatrician(firstname, editDoctor(facade.getCurrentUser().getCamper(firstname).getPediatrician()));
+                case 9:
+                    run = false;
+                    break;
                 default:
                     System.out.println("Please enter a valid number");
                     break;
             }
-            String answer = get("Would you like to continue editing?(yes/no)");
-            if(answer.equalsIgnoreCase("no"))
-                    run = false;
         }
     }
 
+    /**
+     * edits the campers allergy information
+     * @param camper
+     */
+    private void editAllergies(String camper){
+        ArrayList<String> newAllergies = (ArrayList<String>)facade.getCurrentUser().getCamper(camper).getAllergies().clone();
+        boolean run=true;
+        while(run){
+            System.out.println("1. Delete An Existing Allergy\n2.Add A New Allergy\n3. Finish Editing Allergies");
+            switch(scan.nextInt()){
+                case 1:
+                    System.out.println("Choose an allergy to delete");
+                    for(int i = 0; i < newAllergies.size(); i++){
+                        System.out.println((i+1)+". " + newAllergies.get(i));
+                    }
+                    newAllergies.remove(scan.nextInt()-1);
+                    break;
+                case 2:
+                    newAllergies.add(get("Allergy"));
+                    break;
+                case 3:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
+            }
+        }
+        facade.editCamperAllergies(camper, newAllergies);
+    }
+
+    /**
+     * edits emergency contacts
+     * @param emrgencyContacts 
+     * @return the edited arrayList
+     */
+    private ArrayList<Contact> editEC(ArrayList<Contact> emergencyContacts){
+        System.out.println("1. Add New Emergency Contact\n2. Remove An Existing Emergency Contact");
+        int choice = scan.nextInt();
+        if(choice == 1){
+            System.out.println("New Emergency Contact");
+            String contactFirstName = get("First Name");
+            String contactLastName = get("Last Name");
+            String conatctphoneNumber = get("Phone Number");
+            String contactAddress = get("Email Address");
+            String conatctrelationToPerson = get("Relation To Person");
+            Contact contact = new Contact(contactFirstName, contactLastName, conatctphoneNumber, contactAddress, conatctrelationToPerson);
+            emergencyContacts.add(contact);
+        }
+        else if(choice == 2){
+            System.out.println("Remove: ");
+            for(int i = 0; i < emergencyContacts.size(); i++){
+                System.out.println((i+1) + ". " + emergencyContacts.get(i).getFirstName() + " " + emergencyContacts.get(i).getLastName());
+            }
+            emergencyContacts.remove(scan.nextInt());
+        }
+        else 
+            System.out.println("Please enter a valid number");
+        return emergencyContacts;
+    }
+
+    /**
+     * edits doctor information
+     * @param doctor
+     * @return
+     */
+    private Contact editDoctor(Contact doctor){
+        boolean run = true;
+        while(run){
+            System.out.println("Change: \n1. First Name\n2. Last Name\n3. Phone Number\n4. Email Address\n5. Quit");
+            switch(scan.nextInt()){
+                case 1:
+                    doctor.setFirstName(get("First Name"));
+                    break;
+                case 2:
+                    doctor.setLastName(get("Last Name"));
+                    break;
+                case 3:
+                    doctor.setPhoneNumber(get("Phone Number"));
+                    break;
+                case 4:
+                    doctor.setEmailAddress(get("Email Address"));
+                    break;
+                case 5:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
+            }
+        }
+        return doctor;
+    }
 
     /**
      * The screen counselors see when they login
@@ -542,6 +651,9 @@ public class CampButterfliesDriver {
         }
     }
 
+    /**
+     * options on the directors homepage
+     */
     private void directorOptions(){
         System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create new ");
     }

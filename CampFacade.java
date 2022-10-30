@@ -176,13 +176,31 @@ public class CampFacade
             currentCamper.setSex(sex);
     }
 
-    public void editCamperAllergies(String camper, String firstName)
+    public void editCamperAllergies(String camper, ArrayList<String> allergies)
     {
         Camper currentCamper = currentUser.getCamper(camper);
         if(currentCamper==null)
             System.out.println("There is no camper with that name");
         else
-            currentCamper.setAllergies(null);;
+            currentCamper.setAllergies(allergies);
+    }
+
+    public void editCamperEmergencyContacts(String camper, ArrayList<Contact> contacts)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setEmergencyContacts(contacts);
+    }
+
+    public void editCamperPediatrician(String camper, Contact doctor)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setPediatrician(doctor);
     }
 
     public void editUserFirstName(String firstName)
