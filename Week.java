@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Week {
@@ -127,5 +128,14 @@ public class Week {
 
     public void editSchedule() {
         // edit da schedule here
+    }
+
+    public String toString(){
+        Calendar start = Calendar.getInstance();
+        start.setTime(startDate); 
+        Calendar end = Calendar.getInstance();
+        end.setTime(endDate);
+        return String.valueOf(start.get(start.MONTH))+"/" + String.valueOf(start.get(start.DAY_OF_MONTH)) + " - " 
+                + String.valueOf(end.get(end.MONTH)) +"/"+ String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
     }
 }

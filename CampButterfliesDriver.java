@@ -46,7 +46,7 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getActivities("Camp Blue Butterflies"));
                     break;
                 case 2:
-                    System.out.println(facade.getWeeks("Camp Blue Butterflies"));
+                    weeks();
                     break;
                 case 3:
                     price();
@@ -96,6 +96,15 @@ public class CampButterfliesDriver {
 
 		return choice;
 	}
+
+
+    private void weeks(){
+        int i = 1;
+        for(Week week: facade.getWeeks("Camp Blue Butterflies")){
+            System.out.println("Week " + i + ": " + week);
+            i++;
+        }
+    }
     
     /*
      * Clears the console
