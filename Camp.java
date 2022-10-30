@@ -91,6 +91,9 @@ public class Camp {
      * change it
      * let me know if it works how you want
      */
+
+    
+     
     public Week getWeek(Integer num) {
         return masterSchedule.get(num);
     }

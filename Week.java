@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Calendar;
 
 public class Week {
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
@@ -91,8 +92,26 @@ public class Week {
         this.isFull = isFull;
     }
 
+    public void addCamper(Camper camper)
+    {
+        if(camper != null)
+        {
+            campers.add(camper);
+        }
+    }
+
+    public void addCounselor(Counselor counselor)
+    {
+        if(counselor != null)
+        {
+            counselors.add(counselor);
+        }
+    }
+
     public void generateSchedules() 
     {
+        //we need to figure out what the current date is for camper age
+        Date currentDate = new Date();
         // automation of the schedules will be done in here, and they will be assigned to groups
         //reason for this is a week has the list of groups, counselors available for the week, 
         //and campers that want to attend the camp for this week 
@@ -102,19 +121,61 @@ public class Week {
         //          if we do it by age: how will we determine their age
 
         //sort campers by age
+
+        /*
+         * How to select a month/day/year from the date
+            Date dob = convertToDate(dateOfBirth);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dob); 
+            System.out.println("calendar month " + calendar.get(Calendar.MONTH));
+         */
+
+        for(Camper c: campers)
+        {
+            int temp = calculateAge(c.getDateOfBirth(), currentDate);
+
+        }
         
 
     }
 
-    private void sortCampersByAge()
+    private void sortCampersByAge(Date birthDate, Date currentDate)
     {
+       
 
+    
     }
 
-    private boolean calculateAge(Date birthDate, Date currentDate)
+    private int calculateAge(Date birthDate, Date currentDate)
     {
+        int month[] = { 31, 28, 31, 30, 31, 30, 31,
+            31, 30, 31, 30, 31};
+
+        Calendar calBirthDate = Calendar.getInstance();
+        Calendar calCurrentDate = Calendar.getInstance();
+        calBirthDate.setTime(birthDate);
+        calCurrentDate.setTime(currentDate);
+
+        //int[] cd = {calCurrentDate.get(Calendar.DATE), calCurrentDate.get(Calendar.MONTH), calCurrentDate.get(Calendar.YEAR)};
+        //int[] bd = {calBirthDate.get(Calendar.DATE), calBirthDate.get(Calendar.MONTH), calBirthDate.get(Calendar.YEAR)};
+    
+        int currentMonth, birthMonth;
+        int currentYear, birthYear;
+
+        currentMonth = calCurrentDate.get(Calendar.MONTH);
+        birthMonth = calBirthDate.get(Calendar.MONTH);
+
+        currentYear = calCurrentDate.get(Calendar.YEAR);
+        birthYear = calBirthDate.get(Calendar.YEAR);
+
+        if(birthMonth > currentMonth)
+        {
+            currentYear = currentYear - 1;
+            //cd[2] = cd[2] - 1;
+        }
         
-        return true;
+        return currentYear - birthYear;
+        //return cd[2] - bd[2];
     }
 
     public String viewSchedule() {
