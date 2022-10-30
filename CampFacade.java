@@ -483,6 +483,10 @@ public class CampFacade
         Camp camp = campList.getCamp(campName);
         return camp.getActivities();
     }
+
+    public void setActivities(String camp, ArrayList<Activity> activities){
+        campList.getCamp(camp).setActivities(activities);
+    }
    
     /**
      * returns all the weeks the camp offers
