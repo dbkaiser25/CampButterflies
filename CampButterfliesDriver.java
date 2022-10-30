@@ -187,6 +187,17 @@ public class CampButterfliesDriver {
             System.out.println("Camper Information");
             Camper camper = createCamper();
             campers.add(camper);
+            boolean moreWeeks = true;
+            while(moreWeeks){
+                System.out.println("Which week would you like to register for?");
+                System.out.println(facade.getWeeks("Camp Blue Butterflies"));
+                int week = scan.nextInt();
+                facade.getCampList().getCamp("Camp Blue Butterflies").getWeek(week);
+                camper.addWeek(week);
+                String answer = get("Would you like to add another week?(yes/no)");
+                if(answer.equalsIgnoreCase("no"))
+                    moreWeeks = false;
+            }
             String answer = get("Would you like to add more campers?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
                     more = false;
@@ -256,6 +267,8 @@ public class CampButterfliesDriver {
             if(answer.equalsIgnoreCase("no"))
                     moreContacts = false;
         }
+        
+        
         return facade.addCamper(firstName, lastName, homeAddress, doB, sex, medications, allergies, emergencyContacts, pediatrician);
     }
 
@@ -296,6 +309,16 @@ public class CampButterfliesDriver {
             String answer = get("Would you like to add more emergency contacts?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
                     moreContacts = false;
+        }
+
+        boolean moreWeeks = true;
+        while(moreWeeks){
+            System.out.println("Which week would you like to register for?");
+            System.out.println(facade.getWeeks("Camp Blue Butterflies"));
+            facade.getCampList().getCamp("Camp Blue Butterflies").getWeek(scan.nextInt());
+            String answer = get("Would you like to add another week?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    moreWeeks = false;
         }
 
         facade.addCounselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB, emergencyContacts, pediatrician, loginInfo);
@@ -602,7 +625,7 @@ public class CampButterfliesDriver {
                     System.out.println(facade.viewCounselorProfile());
                     break;
                 case 2:
-                    //edit
+                    editCounselor();
                     break;
                 case 3:
                     //view campers

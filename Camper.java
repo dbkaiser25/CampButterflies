@@ -14,6 +14,7 @@ public class Camper extends Person {
     private ArrayList<Contact> emergencyContacts = new ArrayList<Contact>();
     private Contact pediatrician;
     private Date dateOfBirth;
+    private ArrayList<Integer> weeks;
 
     /**
      * The following attributes are needed to create an individual camper
@@ -34,6 +35,7 @@ public class Camper extends Person {
         this.allergies = allergies;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
+        weeks = new ArrayList<>();
     }
 
     // constructor with UUID
@@ -46,6 +48,7 @@ public class Camper extends Person {
         this.allergies = allergies;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
+        weeks = new ArrayList<>();
     }
 
     public Sex getSex() {
@@ -88,6 +91,17 @@ public class Camper extends Person {
         this.pediatrician = pediatrician;
     }
 
+    public void addWeek(int week){
+        weeks.add(week);
+    }
+
+    public String getWeeks(){
+        String temp = "";
+        for(int i = 0; i < weeks.size(); i++){
+            temp += "Week " + weeks.get(i) +"\n";
+        }
+        return temp;
+    }
     
 
     /**
