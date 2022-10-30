@@ -527,7 +527,7 @@ public class CampButterfliesDriver {
 
     /**
      * edits emergency contacts
-     * @param emrgencyContacts 
+     * @param emergencyContacts 
      * @return the edited arrayList
      */
     private ArrayList<Contact> editEC(ArrayList<Contact> emergencyContacts){
@@ -626,6 +626,48 @@ public class CampButterfliesDriver {
     private void counselorOptions(){
          System.out.println("1. View My Profile\n2. Edit My Profile\n3. View Campers\n4. View Camper Information"+
                             "\n5. View My Schedule\n6. Logout");
+    }
+
+    private void editCounselor(){
+        boolean run=true;
+        while(run){
+            System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
+                                "\n3. Home Address\n4. Date of Birth\n5. Phone Number" +
+                                "\n6. Emergency Contacts\n7. Doctor Information\n8. Quit");
+            switch(scan.nextInt()){
+                case 1:
+                    String newfirstname = get("First Name");
+                    facade.editCounselorFirstName(newfirstname);
+                    break;
+                case 2:
+                    String newlastname = get("Last Name");
+                    facade.editCounselorLastName(newlastname);
+                    break;
+                case 3:
+                    String newhomeaddress = get("Home Address");
+                    facade.editCounselorHomeAddress(newhomeaddress);
+                    break;
+                case 4:
+                    String newdob = get("Date of Birth(MM/DD/YYYY");
+                    facade.editCounselorDateOfBirth(formatDate(newdob));
+                    break;
+                case 5:
+                    String newphonenumber = get("Phone Number");
+                    facade.editCounselorPhoneNumber(newphonenumber);
+                    break;
+                case 6:
+                    facade.editCounselorEmergencyContacts(editEC(facade.getCurrentCounselor().getEmergencyContacts()));
+                    break;
+                case 7:
+                    facade.editCounselorDoctor(editDoctor(facade.getCurrentCounselor().getPediatrician()));
+                case 8:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
+            }
+        }
     }
 
     /**

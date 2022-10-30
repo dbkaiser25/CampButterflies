@@ -36,7 +36,7 @@ public class CampFacade
      * Returns the current counselor that is logged in
      * @return
      */
-    public Counselor getCuurentCounselor(){
+    public Counselor getCurrentCounselor(){
         return currentCounselor;
     }
 
@@ -222,6 +222,41 @@ public class CampFacade
     {
 
         currentUser.setDateOfBirth(dateOfBirth);
+    }
+
+    public void editCounselorFirstName(String firstName)
+    {
+        currentCounselor.setFirstName(firstName);
+    }
+
+    public void editCounselorLastName(String lastName)
+    {
+        currentCounselor.setLastName(lastName);
+    }
+
+    public void editCounselorHomeAddress(String homeAddress)
+    {
+        currentCounselor.setHomeAddress(homeAddress);
+    }
+
+    public void editCounselorPhoneNumber(String phoneNumber)
+    {
+        currentCounselor.setPhoneNumber(phoneNumber);
+    }
+
+    public void editCounselorDateOfBirth(Date dob)
+    {
+        currentCounselor.setDateOfBirth(dob);
+    }
+
+    public void editCounselorEmergencyContacts(ArrayList<Contact> contacts)
+    {
+        currentCounselor.setEmergencyContacts(contacts);
+    }
+
+    public void editCounselorDoctor(Contact doctor)
+    {
+        currentCounselor.setPediatrician(doctor);
     }
 
     public boolean qualifiesForDiscount()
