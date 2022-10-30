@@ -73,6 +73,19 @@ public class Director extends Person {
       return false;
    }
 
+   //to view an individual schedule, I need to know what camp were talking about
+   //what week and what group were talking about
+   public String getGroupSchedule(int campNumber, Integer weekNumber, int groupNumber)
+   {
+      return camps.get(campNumber).getMasterSchedule().get(weekNumber).getGroups().get(groupNumber).printSchedule();
+   }
+
+   //to view schedule for an entire weeek (all of the groups )
+   public String getWeekSchedule(int campNumber, Integer weekNumber)
+   {
+      return camps.get(campNumber).getMasterSchedule().get(weekNumber).viewSchedule();
+   }
+
    //view all of the activities 
    public String viewActivities(int year) 
    {
