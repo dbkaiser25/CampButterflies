@@ -130,6 +130,15 @@ public class User extends Person {
         // to a camperList?
     }
 
+    public Camper getCamper(String firstname){
+        for (int i = 0; i < campers.size(); i++) {
+            if (campers.get(i).getFirstName().equals(firstName)) {
+                return campers.get(i);
+            }
+        }
+        return null;
+    }
+
     // TODO consider deleating
     public String toString() {
         return firstName + ", " + lastName + ", amount of campers:" + campers.size();

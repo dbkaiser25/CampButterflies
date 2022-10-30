@@ -36,7 +36,7 @@ public class CampFacade
      * Returns the current counselor that is logged in
      * @return
      */
-    public Counselor getCuurentCounselor(){
+    public Counselor getCurrentCounselor(){
         return currentCounselor;
     }
 
@@ -131,14 +131,132 @@ public class CampFacade
         counselorList.addCounselor(counselor);
     }
 
-    public void editCamperProfile()
+    public void editCamperFirstName(String camper, String firstName)
     {
-
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setFirstName(firstName);
     }
 
-    public void editUserProfile()
+    public void editCamperLastName(String camper, String lastName)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setLastName(lastName);
+    }
+
+    public void editCamperHomeAddress(String camper, String homeAddress)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setHomeAddress(homeAddress);
+    }
+
+    public void editCamperDateOfBirth(String camper, Date dateOfBirth)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setDateOfBirth(dateOfBirth);
+    }
+
+    public void editCamperSex(String camper, Sex sex)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setSex(sex);
+    }
+
+    public void editCamperAllergies(String camper, ArrayList<String> allergies)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setAllergies(allergies);
+    }
+
+    public void editCamperEmergencyContacts(String camper, ArrayList<Contact> contacts)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setEmergencyContacts(contacts);
+    }
+
+    public void editCamperPediatrician(String camper, Contact doctor)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setPediatrician(doctor);
+    }
+
+    public void editUserFirstName(String firstName)
+    {
+        currentUser.setFirstName(firstName);
+    }
+
+    public void editUserLastName(String lastName)
+    {
+        currentUser.setLastName(lastName);
+    }
+
+    public void editUserHomeAddress(String homeAddress)
+    {
+        currentUser.setHomeAddress(homeAddress);
+    }
+
+    public void editUserDateOfBirth(Date dateOfBirth)
     {
 
+        currentUser.setDateOfBirth(dateOfBirth);
+    }
+
+    public void editCounselorFirstName(String firstName)
+    {
+        currentCounselor.setFirstName(firstName);
+    }
+
+    public void editCounselorLastName(String lastName)
+    {
+        currentCounselor.setLastName(lastName);
+    }
+
+    public void editCounselorHomeAddress(String homeAddress)
+    {
+        currentCounselor.setHomeAddress(homeAddress);
+    }
+
+    public void editCounselorPhoneNumber(String phoneNumber)
+    {
+        currentCounselor.setPhoneNumber(phoneNumber);
+    }
+
+    public void editCounselorDateOfBirth(Date dob)
+    {
+        currentCounselor.setDateOfBirth(dob);
+    }
+
+    public void editCounselorEmergencyContacts(ArrayList<Contact> contacts)
+    {
+        currentCounselor.setEmergencyContacts(contacts);
+    }
+
+    public void editCounselorDoctor(Contact doctor)
+    {
+        currentCounselor.setPediatrician(doctor);
     }
 
     public boolean qualifiesForDiscount()
