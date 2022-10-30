@@ -131,14 +131,79 @@ public class CampFacade
         counselorList.addCounselor(counselor);
     }
 
-    public void editCamperProfile()
+    public void editCamperFirstName(String camper, String firstName)
     {
-        
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setFirstName(firstName);
     }
 
-    public void editUserProfile()
+    public void editCamperLastName(String camper, String lastName)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setLastName(lastName);
+    }
+
+    public void editCamperHomeAddress(String camper, String homeAddress)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setHomeAddress(homeAddress);
+    }
+
+    public void editCamperDateOfBirth(String camper, Date dateOfBirth)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setDateOfBirth(dateOfBirth);
+    }
+
+    public void editCamperSex(String camper, Sex sex)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setSex(sex);
+    }
+
+    public void editCamperAllergies(String camper, String firstName)
+    {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if(currentCamper==null)
+            System.out.println("There is no camper with that name");
+        else
+            currentCamper.setAllergies(null);;
+    }
+
+    public void editUserFirstName(String firstName)
+    {
+        currentUser.setFirstName(firstName);
+    }
+
+    public void editUserLastName(String lastName)
+    {
+        currentUser.setLastName(lastName);
+    }
+
+    public void editUserHomeAddress(String homeAddress)
+    {
+        currentUser.setHomeAddress(homeAddress);
+    }
+
+    public void editUserDateOfBirth(Date dateOfBirth)
     {
 
+        currentUser.setDateOfBirth(dateOfBirth);
     }
 
     public boolean qualifiesForDiscount()

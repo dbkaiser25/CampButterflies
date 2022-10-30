@@ -44,19 +44,15 @@ public class CampButterfliesDriver {
             switch(choice){
                 case 1:
                     System.out.println(facade.getActivities("Camp Blue Butterflies"));
-                    //backToHomepage();
                     break;
                 case 2:
                     System.out.println(facade.getWeeks("Camp Blue Butterflies"));
-                    //backToHomepage();
                     break;
                 case 3:
                     price();
-                    //backToHomepage();
                     break;
                 case 4:
                     contact();
-                    //backToHomepage();
                     break;
                 case 5:
                     createAccount();
@@ -86,7 +82,7 @@ public class CampButterfliesDriver {
 			choice = Integer.parseInt(scan.nextLine());
 		} catch (Exception e) {
            //clear();
-			System.out.println("You need to enter a valid number\n");
+			System.out.println("Please enter a valid number\n");
 			return -1;
 		}
 
@@ -351,15 +347,15 @@ public class CampButterfliesDriver {
                     System.out.println(facade.viewUserProfile());
                     break;
                 case 2:
-                    // TODO edit profile
+                    editUser();
                     break;
                 case 3:
                     String view = chooseCamper("view");
-                    facade.viewCamperProfile(view);
+                    System.out.println(facade.viewCamperProfile(view));
                     break;
                 case 4:
-                    //String edit = chooseCamper("edit");
-                    // TODO
+                    String edit = chooseCamper("edit");
+                    editCamper(edit);
                     break;
                 case 5:
                     createCamper();
@@ -369,6 +365,9 @@ public class CampButterfliesDriver {
                     break;
                 case 7:
                     run=false;
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");
                     break;
             }
         }
@@ -398,14 +397,78 @@ public class CampButterfliesDriver {
      */
     private void discount(){
         if(facade.qualifiesForDiscount())
-            System.out.println("You qualify for a 10% discount");
+            System.out.println("You qualify for a 10% discount!");
         else
             System.out.println("You do not qualify for a discount");
     }
 
     private void editUser(){
-        System.out.println("What would you like to edit:\n ");
+        boolean run=true;
+        while(run){
+            System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
+                            "\n3. Home Address\n4. Date of Birth");
+            switch(scan.nextInt()){
+                case 1:
+                    String newfirstname = get("First Name");
+                    facade.editUserFirstName(newfirstname);
+                    break;
+                case 2:
+                    String newlastname = get("Last Name");
+                    facade.editUserLastName(newlastname);
+                    break;
+                case 3:
+                    String newhomeaddress = get("Home Address");
+                    facade.editUserHomeAddress(newhomeaddress);
+                    break;
+                case 4:
+                    String newdob = get("Date of Birth(MM/DD/YYYY");
+                    facade.editUserDateOfBirth(formatDate(newdob));
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
+            }
+            String answer = get("Would you like to continue editing?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    run = false;
+        }
     }
+
+    private void editCamper(String firstname){
+        boolean run=true;
+        while(run){
+            System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
+                            "\n3. Home Address\n4. Date of Birth\n5. Sex");
+            switch(scan.nextInt()){
+                case 1:
+                    String newfirstname = get("First Name");
+                    facade.editCamperFirstName(firstname, newfirstname);
+                    break;
+                case 2:
+                    String newlastname = get("Last Name");
+                    facade.editCamperLastName(firstname, newlastname);
+                    break;
+                case 3:
+                    String newhomeaddress = get("Home Address");
+                    facade.editCamperHomeAddress(firstname, newhomeaddress);
+                    break;
+                case 4:
+                    String newdob = get("Date of Birth(MM/DD/YYYY");
+                    facade.editCamperDateOfBirth(firstname, formatDate(newdob));
+                    break;
+                case 5:
+                    Sex newdate = Enum.valueOf(Sex.class,get("Sex(MALE/FEMALE)"));
+                    facade.editCamperSex(firstname, newdate);
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
+            }
+            String answer = get("Would you like to continue editing?(yes/no)");
+            if(answer.equalsIgnoreCase("no"))
+                    run = false;
+        }
+    }
+
 
     /**
      * The screen counselors see when they login
