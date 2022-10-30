@@ -432,10 +432,31 @@ public class CampFacade
         currentDirector.setDateOfBirth(dob);
     }
 
+    /**
+     * Adds a New Camp to campList
+     * @param name
+     * @param desc
+     * @param weeks
+     * @param year
+     */
     public void newCamp(String name, String desc, int weeks, int year){
         Camp camp = new Camp(name, desc, weeks);
         camp.setYear(year);
         campList.addCamp(camp);
+    }
+
+    /**
+     * Initializes each week of a camp
+     * @param camp
+     * @param week
+     * @param startDate
+     * @param endDate
+     * @param theme
+     */
+    public void setWeek(String camp, int week, Date startDate, Date endDate, String theme){
+        campList.getCamp(camp).getWeek(week).setStartDate(startDate);
+        campList.getCamp(camp).getWeek(week).setEndDate(endDate);
+        campList.getCamp(camp).getWeek(week).setTheme(theme);
     }
 
     public void editCalendar()

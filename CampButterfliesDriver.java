@@ -802,6 +802,7 @@ public class CampButterfliesDriver {
                     break;
                 case 5:
                     run = false;
+                    break;
                 default:
                     System.out.println("Please enter a valid number");
                     break;
@@ -815,8 +816,29 @@ public class CampButterfliesDriver {
         String description = get("Short Description of Camp");
         int weeks = Integer.parseInt("Number of Weeks");
         facade.newCamp(name, description, weeks, year);
+        for(int i = 1; i <= weeks; i++){
+            System.out.println("Week " + i + ": ");
+            Date startDate = formatDate(get("Start Date(MM/DD/YYYY)"));
+            Date endDate = formatDate(get("End Date(MM/DD/YYYY)"));
+            String theme = get("Theme");
+            facade.setWeek(name,i-1,startDate,endDate,theme);
+        }
+        int numActivities = Integer.parseInt(get("How many activities would you like to add"));
+        ArrayList<Activity> activities = new ArrayList<>();
+        for(int i = 1; i <=numActivities; i++){
+            System.out.println("Activity " + i);
+            String activityName = get("Name");
+            String activityDesc = get("Description");
+            String location = get("Location");
+            Activity activity = new Activity(activityName, location, activityDesc);
+            activities.add(activity);
+        }
+        facade.getCampList().getCamp(name).setActivities(activities);
     }
 
+    private void editActivites(){
+
+    }
 
     public static void main(String[] args){
         CampFacade facade = new CampFacade();
