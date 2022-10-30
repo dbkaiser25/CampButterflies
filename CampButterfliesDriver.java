@@ -771,7 +771,7 @@ public class CampButterfliesDriver {
      */
     private void directorOptions(){
         System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites"+
-                            "\n6. View All Counselors\n7. Remove Counselor\n8. View All Campers\n9. Remove Camper\n10. View Schedules" +
+                            "\n6. View a Counselors Information\n7. Remove Counselor\n8. View All Campers\n9. Remove Camper\n10. View Schedules" +
                             "\n11. Generate Schedules\n12. Logout");
     }
 
