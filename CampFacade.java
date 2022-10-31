@@ -433,7 +433,7 @@ public class CampFacade
     }
 
     /**
-     * Adds a New Camp to campList
+     * Adds a new Camp to campList
      * @param name
      * @param desc
      * @param weeks
@@ -484,6 +484,11 @@ public class CampFacade
         return camp.getActivities();
     }
 
+    /**
+     * sets activities for a camp
+     * @param camp
+     * @param activities
+     */
     public void setActivities(String camp, ArrayList<Activity> activities){
         campList.getCamp(camp).setActivities(activities);
     }
@@ -500,5 +505,12 @@ public class CampFacade
         return weeks;
     }
 
+    public ArrayList<Camper> getCampers(String camp, int week){
+        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
+    }
+
+    public String getSchedule(String camp, int week){
+        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
+    }
 }
 

@@ -648,19 +648,45 @@ public class CampButterfliesDriver {
                     editCounselor();
                     break;
                 case 3:
-                    //view campers
+                    viewGroup();
                     break;
                 case 4:
-                    //view campers full
+                    viewGroupInfo();
                     break;
                 case 5:
-                    //view schedule
+                    String camp = get("Camp");
+                    int week = Integer.parseInt(get("Week"));
+                    System.out.println(facade.getSchedule(camp, week));
                     break;
                 case 6:
                     run = false;
                     break;
             }
         }
+    }
+
+    /**
+     * Displays all campers in the counselors group
+     */
+    private void viewGroup(){
+        String camp = get("Camp");
+        int week = Integer.parseInt(get("Week"));
+        ArrayList<Camper> campers = facade.getCampers(camp, week);
+        for(Camper camper: campers){
+            System.out.println(camper.toStringBrief()+"\n");
+        } 
+    }
+
+    /**
+     * Displays teh information of all campers in the group
+     */
+    private void viewGroupInfo(){
+        String camp = get("Camp");
+        int week = Integer.parseInt(get("Week"));
+        ArrayList<Camper> campers = facade.getCampers(camp, week);
+        for(Camper camper: campers){
+            System.out.println(camper.toStringFull()+"\n");
+        } 
     }
 
     /**
@@ -733,7 +759,7 @@ public class CampButterfliesDriver {
                     createCamp();
                     break;
                 case 4:
-                    System.out.println("What Camp would you like to see?");
+                    System.out.println("What camp would you like to see?");
                     System.out.println(facade.getActivities(scan.nextLine()));
                     break;
                 case 5:
@@ -868,7 +894,7 @@ public class CampButterfliesDriver {
     }
 
     /**
-     * edits parttivular activities
+     * edits particular activities
      * @param camp
      */
     private void editActivies(String camp){

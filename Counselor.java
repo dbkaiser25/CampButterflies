@@ -92,6 +92,10 @@ public class Counselor extends Person {
         this.userLogin = userLogin;
     }
 
+    public UUID getUUID(){
+        return uuid;
+    }
+
     // counselors need to be able to view the campers in their group
     // Can we just pass them their group somehow? I am going to assume we can but to
     // be determined later TODO
