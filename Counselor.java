@@ -172,7 +172,7 @@ public class Counselor extends Person {
         return temp;
     }
 
-    // DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
+
 
     // to be deleated
     private String printEmergencyContacts() {
