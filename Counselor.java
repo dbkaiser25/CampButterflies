@@ -183,4 +183,10 @@ public class Counselor extends Person {
         return temp;
     }
 
+    //this was modified from user's select weeks
+    public void selectWeek(Camp camp, int weekNumber) 
+    {
+        camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
+    }
+
 }
