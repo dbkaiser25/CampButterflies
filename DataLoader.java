@@ -15,18 +15,18 @@ import org.json.simple.parser.JSONParser;
 public class DataLoader extends DataConstants {
 
     public static void main(String[] args) {
-        ArrayList<Director> directors = DataLoader.loadDirectors();
-        for (int i = 0; i < directors.size(); i++) {
-            System.out.println("DIRECTOR email: " + directors.get(i).getEmail());
-        }
-        ArrayList<Camp> camps = DataLoader.loadCamps();
-        for (int i = 0; i < camps.size(); i++) {
-            System.out.println("CAMP: " + camps.get(i));
-        }
-        // ArrayList<Camper> campers = DataLoader.loadCampers();
-        // for (int i = 0; i < campers.size(); i++) {
-        // System.out.println("CAMPER: " + campers.get(i));
+        // ArrayList<Director> directors = DataLoader.loadDirectors();
+        // for (int i = 0; i < directors.size(); i++) {
+        // System.out.println("DIRECTOR email: " + directors.get(i).getEmail());
         // }
+        // ArrayList<Camp> camps = DataLoader.loadCamps();
+        // for (int i = 0; i < camps.size(); i++) {
+        // System.out.println("CAMP: " + camps.get(i));
+        // }
+        ArrayList<Camper> campers = DataLoader.loadCampers();
+        for (int i = 0; i < campers.size(); i++) {
+            System.out.println("CAMPER: " + campers.get(i));
+        }
         // ArrayList<Counselor> counselors = DataLoader.loadCounselors();
         // for (int i = 0; i < counselors.size(); i++) {
         // System.out.println("COUNSELOR: " + counselors.get(i).getFirstName());

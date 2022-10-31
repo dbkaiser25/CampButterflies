@@ -21,26 +21,26 @@ public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
 
-        // CamperList campers = CamperList.getInstance();
-        // campers.saveCampers();
-        // ArrayList<Camper> newCampers = DataLoader.loadCampers();
-        // for (int i = 0; i < newCampers.size(); i++) {
-        // System.out.println(newCampers.get(i));
-        // }
+        CamperList campers = CamperList.getInstance();
+        campers.saveCampers();
+        ArrayList<Camper> newCampers = DataLoader.loadCampers();
+        for (int i = 0; i < newCampers.size(); i++) {
+            System.out.println(newCampers.get(i));
+        }
 
-        // CounselorList counselors = CounselorList.getInstance();
-        // counselors.saveCounselor();
-        // ArrayList<Counselor> newCounselors = DataLoader.loadCounselors();
-        // for (int i = 0; i < newCounselors.size(); i++) {
-        // System.out.println(newCounselors.get(i));
-        // }
+        CounselorList counselors = CounselorList.getInstance();
+        counselors.saveCounselor();
+        ArrayList<Counselor> newCounselors = DataLoader.loadCounselors();
+        for (int i = 0; i < newCounselors.size(); i++) {
+            System.out.println(newCounselors.get(i));
+        }
 
-        // UserList users = UserList.getInstance();
-        // users.saveUsers();
-        // ArrayList<User> newUsers = DataLoader.loadUsers();
-        // for (int i = 0; i < newUsers.size(); i++) {
-        // System.out.println(newUsers.get(i));
-        // }
+        UserList users = UserList.getInstance();
+        users.saveUsers();
+        ArrayList<User> newUsers = DataLoader.loadUsers();
+        for (int i = 0; i < newUsers.size(); i++) {
+            System.out.println(newUsers.get(i));
+        }
 
         DirectorList directors = DirectorList.getInstance();
         directors.saveDirector();
