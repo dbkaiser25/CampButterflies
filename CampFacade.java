@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CampFacade 
-{
+public class CampFacade {
     private CampList campList;
     private CamperList camperList;
     private UserList userList;
@@ -15,8 +14,7 @@ public class CampFacade
     /**
      * Creates the Camp facade with all of the instances of the lists
      */
-    public CampFacade()
-    {
+    public CampFacade() {
         campList = CampList.getInstance();
         camperList = CamperList.getInstance();
         userList = UserList.getInstance();
@@ -26,52 +24,54 @@ public class CampFacade
 
     /**
      * Returns the current user that is logged in
+     * 
      * @return
      */
-    public User getCurrentUser(){
+    public User getCurrentUser() {
         return currentUser;
     }
 
     /**
      * Returns the current counselor that is logged in
+     * 
      * @return
      */
-    public Counselor getCurrentCounselor(){
+    public Counselor getCurrentCounselor() {
         return currentCounselor;
     }
 
     /**
      * Returns the current director that is logged in
+     * 
      * @return
      */
-    public Director getCurrentDirector(){
+    public Director getCurrentDirector() {
         return currentDirector;
     }
 
     /**
      * returns all camps
+     * 
      * @return all camps
      */
-    public CampList getCampList(){
+    public CampList getCampList() {
         return campList;
     }
 
     /**
      * Checks to see if login information exists
-     * @param userLogin 
+     * 
+     * @param userLogin
      * @return true if it exists, false if it doesnt
      */
-    public int Login(LoginInfo userLogin)
-    {
-        if(directorList.haveDirector(userLogin)){
+    public int Login(LoginInfo userLogin) {
+        if (directorList.haveDirector(userLogin)) {
             currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
             return 3;
-        }
-        else if(userList.haveUser(userLogin)){
+        } else if (userList.haveUser(userLogin)) {
             currentUser = userList.getUserByUserName(userLogin.getUserName());
             return 1;
-        }
-        else if(counselorList.haveCounselor(userLogin)){
+        } else if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
             return 2;
         }
@@ -80,6 +80,7 @@ public class CampFacade
 
     /**
      * Adds a user
+     * 
      * @param firstName
      * @param lastName
      * @param doB
@@ -87,7 +88,8 @@ public class CampFacade
      * @param loginInfo
      * @param campers
      */
-    public void addUser(String firstName, String lastName, Date doB, String homeAddress, LoginInfo loginInfo, ArrayList<Camper> campers){
+    public void addUser(String firstName, String lastName, Date doB, String homeAddress, LoginInfo loginInfo,
+            ArrayList<Camper> campers) {
 
         User user = new User(firstName, lastName, doB, homeAddress, loginInfo, campers);
         userList.addUser(user);
@@ -95,6 +97,7 @@ public class CampFacade
 
     /**
      * Adds a camper
+     * 
      * @param firstName
      * @param lastName
      * @param homeAddress
@@ -106,15 +109,18 @@ public class CampFacade
      * @param pediatrician
      * @return
      */
-    public Camper addCamper(String firstName, String lastName, String homeAddress, Date doB, Sex sex, ArrayList<Medication> medications,ArrayList<String> allergies, 
-                            ArrayList<Contact> emergencyContacts, Contact pediatrician){
-        Camper camper = new Camper(firstName, lastName, homeAddress, doB, sex, medications, allergies, emergencyContacts, pediatrician);
+    public Camper addCamper(String firstName, String lastName, String homeAddress, Date doB, Sex sex,
+            ArrayList<Medication> medications, ArrayList<String> allergies,
+            ArrayList<Contact> emergencyContacts, Contact pediatrician) {
+        Camper camper = new Camper(firstName, lastName, homeAddress, doB, sex, medications, allergies,
+                emergencyContacts, pediatrician);
         camperList.addCamper(camper);
         return camper;
     }
 
     /**
      * Adds a counselor
+     * 
      * @param firstName
      * @param lastName
      * @param phoneNumber
@@ -125,21 +131,23 @@ public class CampFacade
      * @param pediatrician
      * @param loginInfo
      */
-    public void addCounselor(String firstName, String lastName, String phoneNumber, String emailAddress, String homeAddress, Date doB, ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo loginInfo)
-    {
-        Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB, emergencyContacts, pediatrician, loginInfo);
+    public void addCounselor(String firstName, String lastName, String phoneNumber, String emailAddress,
+            String homeAddress, Date doB, ArrayList<Contact> emergencyContacts, Contact pediatrician,
+            LoginInfo loginInfo) {
+        Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB,
+                emergencyContacts, pediatrician, loginInfo);
         counselorList.addCounselor(counselor);
     }
 
     /**
      * changes campers first name
+     * 
      * @param camper
      * @param firstName
      */
-    public void editCamperFirstName(String camper, String firstName)
-    {
+    public void editCamperFirstName(String camper, String firstName) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setFirstName(firstName);
@@ -147,13 +155,13 @@ public class CampFacade
 
     /**
      * changes campers last name
+     * 
      * @param camper
      * @param lastName
      */
-    public void editCamperLastName(String camper, String lastName)
-    {
+    public void editCamperLastName(String camper, String lastName) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setLastName(lastName);
@@ -161,13 +169,13 @@ public class CampFacade
 
     /**
      * changes campers home address
+     * 
      * @param camper
      * @param homeAddress
      */
-    public void editCamperHomeAddress(String camper, String homeAddress)
-    {
+    public void editCamperHomeAddress(String camper, String homeAddress) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setHomeAddress(homeAddress);
@@ -175,13 +183,13 @@ public class CampFacade
 
     /**
      * changes campers date of birth
+     * 
      * @param camper
      * @param dateOfBirth
      */
-    public void editCamperDateOfBirth(String camper, Date dateOfBirth)
-    {
+    public void editCamperDateOfBirth(String camper, Date dateOfBirth) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setDateOfBirth(dateOfBirth);
@@ -189,13 +197,13 @@ public class CampFacade
 
     /**
      * changes campers sex
+     * 
      * @param camper
      * @param sex
      */
-    public void editCamperSex(String camper, Sex sex)
-    {
+    public void editCamperSex(String camper, Sex sex) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setSex(sex);
@@ -203,13 +211,13 @@ public class CampFacade
 
     /**
      * edits campers allergy list
+     * 
      * @param camper
      * @param allergies
      */
-    public void editCamperAllergies(String camper, ArrayList<String> allergies)
-    {
+    public void editCamperAllergies(String camper, ArrayList<String> allergies) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setAllergies(allergies);
@@ -217,13 +225,13 @@ public class CampFacade
 
     /**
      * edits campers emergency contacts list
+     * 
      * @param camper
      * @param contacts
      */
-    public void editCamperEmergencyContacts(String camper, ArrayList<Contact> contacts)
-    {
+    public void editCamperEmergencyContacts(String camper, ArrayList<Contact> contacts) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setEmergencyContacts(contacts);
@@ -231,13 +239,13 @@ public class CampFacade
 
     /**
      * edits campers doctor
+     * 
      * @param camper
      * @param doctor
      */
-    public void editCamperPediatrician(String camper, Contact doctor)
-    {
+    public void editCamperPediatrician(String camper, Contact doctor) {
         Camper currentCamper = currentUser.getCamper(camper);
-        if(currentCamper==null)
+        if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
             currentCamper.setPediatrician(doctor);
@@ -245,201 +253,209 @@ public class CampFacade
 
     /**
      * changes users first name
+     * 
      * @param firstName
      */
-    public void editUserFirstName(String firstName)
-    {
+    public void editUserFirstName(String firstName) {
         currentUser.setFirstName(firstName);
     }
 
     /**
      * changes users last name
+     * 
      * @param lastName
      */
-    public void editUserLastName(String lastName)
-    {
+    public void editUserLastName(String lastName) {
         currentUser.setLastName(lastName);
     }
 
     /**
      * chnages users home address
+     * 
      * @param homeAddress
      */
-    public void editUserHomeAddress(String homeAddress)
-    {
+    public void editUserHomeAddress(String homeAddress) {
         currentUser.setHomeAddress(homeAddress);
     }
 
     /**
      * changes users date of birth
+     * 
      * @param dateOfBirth
      */
-    public void editUserDateOfBirth(Date dateOfBirth)
-    {
+    public void editUserDateOfBirth(Date dateOfBirth) {
 
         currentUser.setDateOfBirth(dateOfBirth);
     }
 
     /**
      * changes counselors first name
+     * 
      * @param firstName
      */
-    public void editCounselorFirstName(String firstName)
-    {
+    public void editCounselorFirstName(String firstName) {
         currentCounselor.setFirstName(firstName);
     }
 
     /**
      * changes counselors last name
+     * 
      * @param lastName
      */
-    public void editCounselorLastName(String lastName)
-    {
+    public void editCounselorLastName(String lastName) {
         currentCounselor.setLastName(lastName);
     }
 
     /**
      * changes chounselors home address
+     * 
      * @param homeAddress
      */
-    public void editCounselorHomeAddress(String homeAddress)
-    {
+    public void editCounselorHomeAddress(String homeAddress) {
         currentCounselor.setHomeAddress(homeAddress);
     }
 
     /**
      * changes counselors phone number
+     * 
      * @param phoneNumber
      */
-    public void editCounselorPhoneNumber(String phoneNumber)
-    {
+    public void editCounselorPhoneNumber(String phoneNumber) {
         currentCounselor.setPhoneNumber(phoneNumber);
     }
 
     /**
      * changes counselors date of birth
+     * 
      * @param dob
      */
-    public void editCounselorDateOfBirth(Date dob)
-    {
+    public void editCounselorDateOfBirth(Date dob) {
         currentCounselor.setDateOfBirth(dob);
     }
 
     /**
      * edits counselors emergency contacts list
+     * 
      * @param contacts
      */
-    public void editCounselorEmergencyContacts(ArrayList<Contact> contacts)
-    {
+    public void editCounselorEmergencyContacts(ArrayList<Contact> contacts) {
         currentCounselor.setEmergencyContacts(contacts);
     }
 
     /**
      * edits counselors doctor
+     * 
      * @param doctor
      */
-    public void editCounselorDoctor(Contact doctor)
-    {
+    public void editCounselorDoctor(Contact doctor) {
         currentCounselor.setPediatrician(doctor);
     }
 
     /**
      * returns true if they qualify for a discount
+     * 
      * @return
      */
-    public boolean qualifiesForDiscount()
-    {
-        return currentUser.qualifiesForDiscount(campList,0);
+    public boolean qualifiesForDiscount() {
+        return true;
+        // return currentUser.qualifiesForDiscount(campList,0);
     }
 
     /**
      * returns user profile
+     * 
      * @return
      */
-    public String viewUserProfile()
-    {
+    public String viewUserProfile() {
         return currentUser.viewUserProfile();
     }
 
     /**
      * returns all of the campers a user has
+     * 
      * @return
      */
-    public String viewCampers()
-    {
+    public String viewCampers() {
         String campers = "";
-        for(Camper camper: currentUser.getCampers()){
-            campers += camper.toStringBrief() + "\n" + camper.getWeeks() +"\n";
+        for (Camper camper : currentUser.getCampers()) {
+            campers += camper.toStringBrief() + "\n" + camper.getWeeks() + "\n";
         }
         return campers;
     }
 
     /**
      * returns a specific camper profile
+     * 
      * @param firstName
      * @return
      */
-    public String viewCamperProfile(String firstName)
-    {
+    public String viewCamperProfile(String firstName) {
         return currentUser.viewCamperProfile(firstName);
     }
 
     /**
      * returns counselors profile
+     * 
      * @return
      */
-    public String viewCounselorProfile(){
+    public String viewCounselorProfile() {
         return currentCounselor.toString();
     }
 
     /**
      * returns the directors profile
+     * 
      * @return
      */
-    public String viewDirectorProfile(){
+    public String viewDirectorProfile() {
         return currentDirector.toString();
     }
 
     /**
      * changes the directors first name
+     * 
      * @param firstName
      */
-    public void editDirectorFirstName(String firstName){
+    public void editDirectorFirstName(String firstName) {
         currentDirector.setFirstName(firstName);
     }
 
     /**
      * changes the directors last name
+     * 
      * @param lastName
      */
-    public void editDirectorLastName(String lastName){
+    public void editDirectorLastName(String lastName) {
         currentDirector.setLastName(lastName);
     }
 
     /**
      * changes the directors home address
+     * 
      * @param homeAddress
      */
-    public void editDirectorHomeAddress(String homeAddress){
+    public void editDirectorHomeAddress(String homeAddress) {
         currentDirector.setHomeAddress(homeAddress);
     }
 
     /**
      * changes tha directors date of birth
+     * 
      * @param dob
      */
-    public void editDirectorDateOfBirth(Date dob){
+    public void editDirectorDateOfBirth(Date dob) {
         currentDirector.setDateOfBirth(dob);
     }
 
     /**
      * Adds a new Camp to campList
+     * 
      * @param name
      * @param desc
      * @param weeks
      * @param year
      */
-    public void newCamp(String name, String desc, int weeks, int year){
+    public void newCamp(String name, String desc, int weeks, int year) {
         Camp camp = new Camp(name, desc, weeks);
         camp.setYear(year);
         campList.addCamp(camp);
@@ -447,59 +463,60 @@ public class CampFacade
 
     /**
      * Initializes each week of a camp
+     * 
      * @param camp
      * @param week
      * @param startDate
      * @param endDate
      * @param theme
      */
-    public void setWeek(String camp, int week, Date startDate, Date endDate, String theme){
+    public void setWeek(String camp, int week, Date startDate, Date endDate, String theme) {
         campList.getCamp(camp).getWeek(week).setStartDate(startDate);
         campList.getCamp(camp).getWeek(week).setEndDate(endDate);
         campList.getCamp(camp).getWeek(week).setTheme(theme);
     }
 
-    public void editCalendar()
-    {
+    public void editCalendar() {
 
     }
 
     /**
      * returns the calendar
+     * 
      * @return
      */
-    public String viewCalendar()
-    {
+    public String viewCalendar() {
         return null;
     }
 
     /**
      * returns all the activities the camp offers
+     * 
      * @param campName
      * @return
      */
-    public String getActivities(String campName)
-    {
+    public String getActivities(String campName) {
         Camp camp = campList.getCamp(campName);
         return camp.getActivities();
     }
 
     /**
      * sets activities for a camp
+     * 
      * @param camp
      * @param activities
      */
-    public void setActivities(String camp, ArrayList<Activity> activities){
+    public void setActivities(String camp, ArrayList<Activity> activities) {
         campList.getCamp(camp).setActivities(activities);
     }
-   
+
     /**
      * returns all the weeks the camp offers
+     * 
      * @param campName
      * @return
      */
-    public ArrayList<Week> getWeeks(String campName)
-    {
+    public ArrayList<Week> getWeeks(String campName) {
         Camp camp = campList.getCamp(campName);
         ArrayList<Week> weeks = camp.getWeeks();
         return weeks;
@@ -507,42 +524,45 @@ public class CampFacade
 
     /**
      * returns a counselors campers
+     * 
      * @param camp
      * @param week
      * @return
      */
-    public ArrayList<Camper> getGroup(String camp, int week){
+    public ArrayList<Camper> getGroup(String camp, int week) {
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
     /**
      * returns a counselors schedule
+     * 
      * @param camp
      * @param week
      * @return
      */
-    public String getSchedule(String camp, int week){
+    public String getSchedule(String camp, int week) {
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
     }
 
-    public String getSchedule(String camp, int week, int group){
+    public String getSchedule(String camp, int week, int group) {
         return campList.getCamp(camp).getWeek(week).getGroupByNumber(group).printSchedule();
     }
 
     /**
      * returns the camperlist
+     * 
      * @return
      */
-    public CamperList getCamperList(){
+    public CamperList getCamperList() {
         return camperList;
     }
 
     /**
      * returns the counselorlist
+     * 
      * @return
      */
-    public CounselorList getCounselorList(){
+    public CounselorList getCounselorList() {
         return counselorList;
     }
 }
-

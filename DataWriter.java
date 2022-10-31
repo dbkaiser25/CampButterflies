@@ -49,12 +49,12 @@ public class DataWriter extends DataConstants {
         // System.out.println(newDirectors.get(i).getEmail());
         // }
 
-        // CampList camps = CampList.getInstance();
-        // camps.saveCamps();
-        // ArrayList<Camp> newCamps = DataLoader.loadCamps();
-        // for (int i = 0; i < newCamps.size(); i++) {
-        // System.out.println("test 2 " + newCamps.get(i));
-        // }
+        CampList camps = CampList.getInstance();
+        camps.saveCamps();
+        ArrayList<Camp> newCamps = DataLoader.loadCamps();
+        for (int i = 0; i < newCamps.size(); i++) {
+            System.out.println("test 2 " + newCamps.get(i));
+        }
         UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
         writeGroupFiles(id);
     }
@@ -535,15 +535,26 @@ public class DataWriter extends DataConstants {
         Group group = campList.getGroupByUUID(id);
         System.out.println("ID: " + id);
         System.out.println(group);
-        HashMap<DayOfWeek, ArrayList<Activity>> groupSchedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
-        System.out.println(group.getCounselor().getFirstName());
-        try (FileWriter file = new FileWriter("schedules/" + group.getCounselor().getFirstName() + "'s Group")) { // how
-                                                                                                                  // do
-                                                                                                                  // I
-                                                                                                                  // create
-                                                                                                                  // a
+        // for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
+        // group.getSchedule().entrySet()) {
+        // ArrayList<Activity> activities = entry.getValue();
+        // for (int i = 0; i < activities.size(); i++) {
+        // System.out.println("activity: " + activities.get(i));
+        // }
+        // }
+        // above test works- prints all activities in JSON
+
+        try (FileWriter file = new FileWriter("schedules/" + group.getCounselor().getFirstName() + "'s Group")) {
+            // for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
+            // group.getSchedule().entrySet()) {
+            // ArrayList<Activity> activities = entry.getValue();
+            // for (int i = 0; i < activities.size(); i++) {
+            // // System.out.println("activity: " + activities.get(i));\
+            // String temp = activities.get(i).toString();
+            // file.write(temp);
+            // }
+            // }
             // new txt file
-            file.write("testing");
             file.write(group.printSchedule());
 
         } catch (IOException e) {

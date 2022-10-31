@@ -65,7 +65,7 @@ public class Group {
         this.schedule = schedule;
     }
 
-    public Group(Group group) {
+    public Group() {
     }
 
     /**
@@ -116,29 +116,38 @@ public class Group {
 
     // printing the schedule assuming its not empty
     public String printSchedule() {
-        System.out.println("in group schedule");
-        String temp = "test";
+        ArrayList<String> schedule = new ArrayList<String>();
+        String temp = new String();
 
-        // for (DayOfWeek day : DayOfWeek.values()) {
-        // // temp = temp + getActivities(group, day) + "\n";
-        // temp = temp + getActivities(day) + "\n";
-        // }
+        for (DayOfWeek day : DayOfWeek.values()) {
+            // temp = temp + getActivities(group, day) + "\n";
+            System.out.println(getActivities(day));
+            schedule.add("day " + day + ": " + getActivities(day));
+        }
+        for (int i = 0; i < schedule.size(); i++) {
+            temp = temp + schedule.get(i);
+        }
         return temp;
     }
 
     // helper method for printSchedule
     // Same thing can be modified for prettier output
-    // private ArrayList<Activity> getActivities(DayOfWeek day) {
-    // System.out.println("Entered method");
-    // for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
-    // schedule.entrySet()) {
-    // System.out.println("Entered for-loop");
-    // ArrayList<Activity> activities = entry.getValue();
-    // return activities;
-    // }
-    // return null;
+    private String getActivities(DayOfWeek day) {
+        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : schedule.entrySet()) {
+            ArrayList<Activity> activities = entry.getValue();
+            System.out.println("size " + activities.size());
+            String thisActivity = new String();
+            ArrayList<String> strings = new ArrayList<String>();
+            for (int i = 0; i < activities.size(); i++) {
+                strings.add(activities.get(i).toString());
+                // System.out.println(strings.get(i));
+                thisActivity = thisActivity + " " + activities.get(i).toString() + "\n";
+            }
+            return thisActivity;
+        }
+        return null;
 
-    // }
+    }
 
     // when the schedule is automatically generated, it can be assigned as this
     // group's schedule
