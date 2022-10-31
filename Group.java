@@ -9,6 +9,8 @@ import java.util.UUID;
  */
 public class Group {
     private UUID uuid;
+    private Counselor counselor;
+    private ArrayList<Camper> campers = new ArrayList<Camper>();
 
     public UUID getUuid() {
         return uuid;
@@ -38,9 +40,6 @@ public class Group {
         this.schedule = schedule;
     }
 
-    private Counselor counselor;
-    private ArrayList<Camper> campers = new ArrayList<Camper>();
-
     // TODO adding new HashMap Configuration figure out if its good
     private HashMap<DayOfWeek, ArrayList<Activity>> schedule;
 
@@ -64,6 +63,9 @@ public class Group {
         this.counselor = counselor;
         this.campers = campers;
         this.schedule = schedule;
+    }
+
+    public Group(Group group) {
     }
 
     /**

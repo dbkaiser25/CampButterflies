@@ -392,6 +392,73 @@ public class CampFacade
         return currentCounselor.toString();
     }
 
+    /**
+     * returns the directors profile
+     * @return
+     */
+    public String viewDirectorProfile(){
+        return currentDirector.toString();
+    }
+
+    /**
+     * changes the directors first name
+     * @param firstName
+     */
+    public void editDirectorFirstName(String firstName){
+        currentDirector.setFirstName(firstName);
+    }
+
+    /**
+     * changes the directors last name
+     * @param lastName
+     */
+    public void editDirectorLastName(String lastName){
+        currentDirector.setLastName(lastName);
+    }
+
+    /**
+     * changes the directors home address
+     * @param homeAddress
+     */
+    public void editDirectorHomeAddress(String homeAddress){
+        currentDirector.setHomeAddress(homeAddress);
+    }
+
+    /**
+     * changes tha directors date of birth
+     * @param dob
+     */
+    public void editDirectorDateOfBirth(Date dob){
+        currentDirector.setDateOfBirth(dob);
+    }
+
+    /**
+     * Adds a new Camp to campList
+     * @param name
+     * @param desc
+     * @param weeks
+     * @param year
+     */
+    public void newCamp(String name, String desc, int weeks, int year){
+        Camp camp = new Camp(name, desc, weeks);
+        camp.setYear(year);
+        campList.addCamp(camp);
+    }
+
+    /**
+     * Initializes each week of a camp
+     * @param camp
+     * @param week
+     * @param startDate
+     * @param endDate
+     * @param theme
+     */
+    public void setWeek(String camp, int week, Date startDate, Date endDate, String theme){
+        campList.getCamp(camp).getWeek(week).setStartDate(startDate);
+        campList.getCamp(camp).getWeek(week).setEndDate(endDate);
+        campList.getCamp(camp).getWeek(week).setTheme(theme);
+    }
+
     public void editCalendar()
     {
 
@@ -416,6 +483,15 @@ public class CampFacade
         Camp camp = campList.getCamp(campName);
         return camp.getActivities();
     }
+
+    /**
+     * sets activities for a camp
+     * @param camp
+     * @param activities
+     */
+    public void setActivities(String camp, ArrayList<Activity> activities){
+        campList.getCamp(camp).setActivities(activities);
+    }
    
     /**
      * returns all the weeks the camp offers
@@ -429,5 +505,12 @@ public class CampFacade
         return weeks;
     }
 
+    public ArrayList<Camper> getCampers(String camp, int week){
+        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
+    }
+
+    public String getSchedule(String camp, int week){
+        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
+    }
 }
 

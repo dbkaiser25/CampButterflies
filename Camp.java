@@ -33,10 +33,9 @@ public class Camp {
         masterSchedule = new HashMap<Integer, Week>();
     }
 
-    //constructor to create a new camp for director when he wants 
-    //to make a new camp for a new year or something
-    public Camp(String name, String description, int weekNumber)
-    {
+    // constructor to create a new camp for director when he wants
+    // to make a new camp for a new year or something
+    public Camp(String name, String description, int weekNumber) {
         this.name = name;
         this.description = description;
         masterSchedule = new HashMap<Integer, Week>(weekNumber);
@@ -103,8 +102,6 @@ public class Camp {
      * let me know if it works how you want
      */
 
-    
-     
     public Week getWeek(Integer num) {
         return masterSchedule.get(num);
     }

@@ -15,46 +15,48 @@ import org.json.simple.JSONObject;
  * notes on automation
  * makeSchedule should have other methods to help it
  * should have themes, schedules, year, number of cabins, - in facade
- * 
  */
 
 public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
-        CamperList campers = CamperList.getInstance();
-        campers.saveCampers();
-        ArrayList<Camper> newCampers = DataLoader.loadCampers();
-        for (int i = 0; i < newCampers.size(); i++) {
-            System.out.println(newCampers.get(i));
-        }
 
-        CounselorList counselors = CounselorList.getInstance();
-        counselors.saveCounselor();
-        ArrayList<Counselor> newCounselors = DataLoader.loadCounselors();
-        for (int i = 0; i < newCounselors.size(); i++) {
-            System.out.println(newCounselors.get(i));
-        }
+        // CamperList campers = CamperList.getInstance();
+        // campers.saveCampers();
+        // ArrayList<Camper> newCampers = DataLoader.loadCampers();
+        // for (int i = 0; i < newCampers.size(); i++) {
+        // System.out.println(newCampers.get(i));
+        // }
 
-        UserList users = UserList.getInstance();
-        users.saveUsers();
-        ArrayList<User> newUsers = DataLoader.loadUsers();
-        for (int i = 0; i < newUsers.size(); i++) {
-            System.out.println(newUsers.get(i));
-        }
+        // CounselorList counselors = CounselorList.getInstance();
+        // counselors.saveCounselor();
+        // ArrayList<Counselor> newCounselors = DataLoader.loadCounselors();
+        // for (int i = 0; i < newCounselors.size(); i++) {
+        // System.out.println(newCounselors.get(i));
+        // }
+
+        // UserList users = UserList.getInstance();
+        // users.saveUsers();
+        // ArrayList<User> newUsers = DataLoader.loadUsers();
+        // for (int i = 0; i < newUsers.size(); i++) {
+        // System.out.println(newUsers.get(i));
+        // }
 
         DirectorList directors = DirectorList.getInstance();
         directors.saveDirector();
         ArrayList<Director> newDirectors = DataLoader.loadDirectors();
         for (int i = 0; i < newDirectors.size(); i++) {
-            System.out.println(newDirectors.get(i));
+            System.out.println(newDirectors.get(i).getEmail());
         }
 
-        CampList camps = CampList.getInstance();
-        camps.saveCamps();
-        ArrayList<Camp> newCamps = DataLoader.loadCamps();
-        for (int i = 0; i < newCamps.size(); i++) {
-            System.out.println("test 2 " + newCamps.get(i));
-        }
+        // CampList camps = CampList.getInstance();
+        // camps.saveCamps();
+        // ArrayList<Camp> newCamps = DataLoader.loadCamps();
+        // for (int i = 0; i < newCamps.size(); i++) {
+        // System.out.println("test 2 " + newCamps.get(i));
+        // }
+        // UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
+        // writeGroupFiles(id);
     }
 
     public static void saveCampers() { // finished not tested
@@ -284,6 +286,7 @@ public class DataWriter extends DataConstants {
         directorDetails.put(HOMEADDRESS, director.getHomeAddress());
         directorDetails.put(USERNAME, director.getUserLogin().getUserName());
         directorDetails.put(PASSWORD, director.getUserLogin().getPassword());
+        directorDetails.put(EMAIL, director.getEmail());
 
         JSONArray calendarArr = new JSONArray();
         for (int a = 0; a < director.getCamps().size(); a++) {
@@ -523,14 +526,25 @@ public class DataWriter extends DataConstants {
     public static void writeGroupFiles(UUID id) {
         // get the group, write the schedule, add it to a txt file
         // should print schedule, allergy information of all campers
-        Group group = CampList.getInstance().getGroupByUUID(id); // getting group
-        HashMap<DayOfWeek, ArrayList<Activity>> groupSchedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
 
-        try (FileWriter file = new FileWriter(CAMP_FILE)) { // how do I create a new txt file
-            // must write entire Hashmap to txt file, along with group name, other
-            // formatting stuff
-            // file.write(); // should write the hashmap
-            file.flush();
+        // CounselorList c = CounselorList.getInstance();
+        // Counselor coun = c.getCounselorByUUID(id);
+        // System.out.println("Counselor name "+coun.getFirstName());
+
+        CampList campList = CampList.getInstance(); // getting group
+        ArrayList<Group> groups = campList.getGroupsFromCamp(campList);
+        System.out.println("group size" + groups.size());
+        ArrayList<Camp> camps = campList.getCamps();
+        System.out.println("Size " + camps.size());
+        Group group = campList.getGroupByUUID(id);
+        System.out.println("ID: " + id);
+        System.out.println(group);
+        HashMap<DayOfWeek, ArrayList<Activity>> groupSchedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
+        System.out.println(group.getCounselor().getFirstName());
+        try (FileWriter file = new FileWriter(group.getCounselor().getFirstName() + "'s Group")) { // how do I create a
+                                                                                                   // new txt file
+            file.write("testing");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

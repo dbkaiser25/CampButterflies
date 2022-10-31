@@ -15,10 +15,10 @@ import org.json.simple.parser.JSONParser;
 public class DataLoader extends DataConstants {
 
     public static void main(String[] args) {
-        // ArrayList<Director> directors = DataLoader.loadDirectors();
-        // for (int i = 0; i < directors.size(); i++) {
-        // System.out.println("DIRECTOR: " + directors.get(i).getFirstName());
-        // }
+        ArrayList<Director> directors = DataLoader.loadDirectors();
+        for (int i = 0; i < directors.size(); i++) {
+            System.out.println("DIRECTOR email: " + directors.get(i).getEmail());
+        }
         // ArrayList<Camp> camps = DataLoader.loadCamps();
         // for (int i = 0; i < camps.size(); i++) {
         // System.out.println("CAMP: " + camps.get(i));
@@ -31,10 +31,10 @@ public class DataLoader extends DataConstants {
         // for (int i = 0; i < counselors.size(); i++) {
         // System.out.println("COUNSELOR: " + counselors.get(i).getFirstName());
         // }
-        ArrayList<User> users = DataLoader.loadUsers();
-        for (int i = 0; i < users.size(); i++) {
-            System.out.println("USER: " + users.get(i));
-        }
+        // ArrayList<User> users = DataLoader.loadUsers();
+        // for (int i = 0; i < users.size(); i++) {
+        // System.out.println("USER: " + users.get(i));
+        // }
 
     }
 
@@ -205,6 +205,8 @@ public class DataLoader extends DataConstants {
                 String homeAddress = (String) directorJSON.get(HOMEADDRESS);
                 String userName = (String) directorJSON.get(USERNAME);
                 String password = (String) directorJSON.get(PASSWORD);
+                String email = (String) directorJSON.get(EMAIL);
+                System.out.println("Email " + email);
                 LoginInfo directorLogin = new LoginInfo(userName, password);
 
                 JSONArray jsonCalendar = (JSONArray) directorJSON.get(CALENDAR);
@@ -239,6 +241,8 @@ public class DataLoader extends DataConstants {
                                 Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
                                 campersList.add(camper);
                             }
+                            Counselor c = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
+                            System.out.println(c.getFirstName());
                             JSONArray group_schedule = (JSONArray) jsonGroup.get(GROUP_SCHEDULE);
                             HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek, ArrayList<Activity>>();
                             for (int m = 0; m < group_schedule.size(); m++) {
@@ -257,7 +261,10 @@ public class DataLoader extends DataConstants {
                                 }
                                 groupHashMap.put(day, dailyActivities);
                             }
-                            groups.add(new Group(groupNum, counselor, campersList, groupHashMap));
+                            Group g = new Group(groupNum, counselor, campersList, groupHashMap);
+                            // groups.add(new Group(groupNum, counselor, campersList, groupHashMap));
+                            groups.add(g);
+
                         }
                         ArrayList<Counselor> week_counselors = new ArrayList<Counselor>();
                         JSONArray counselorsJSON = (JSONArray) weekJSON.get(WEEK_COUNSELORS);
@@ -301,7 +308,7 @@ public class DataLoader extends DataConstants {
                     calendar = new Camp(campName, campDescription, masterScheduleHash, activities, year);
                     camps.add(calendar);
                 }
-                directors.add(new Director(id, firstName, lastName, dob, homeAddress, directorLogin, camps));
+                directors.add(new Director(id, firstName, lastName, dob, homeAddress, email, directorLogin, camps));
             }
             return directors;
         } catch (Exception e) {

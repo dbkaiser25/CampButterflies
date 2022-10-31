@@ -1,3 +1,4 @@
+import java.lang.annotation.IncompleteAnnotationException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,7 +44,10 @@ public class CampButterfliesDriver {
 
             switch(choice){
                 case 1:
-                    System.out.println(facade.getActivities("Camp Blue Butterflies"));
+                    System.out.println("Which camps activities would you like to see?");
+                    System.out.println(facade.getCampList());
+                    String camp = scan.nextLine();
+                    System.out.println(facade.getActivities(camp));
                     break;
                 case 2:
                     weeks();
@@ -99,8 +103,11 @@ public class CampButterfliesDriver {
 
 
     private void weeks(){
+        System.out.println("Which camps sessions would you like to see?");
+        System.out.println(facade.getCampList());
+        String camp = scan.nextLine();
         int i = 1;
-        for(Week week: facade.getWeeks("Camp Blue Butterflies")){
+        for(Week week: facade.getWeeks(camp)){
             System.out.println("Week " + i + ": " + week);
             i++;
         }
@@ -187,12 +194,15 @@ public class CampButterfliesDriver {
             System.out.println("Camper Information");
             Camper camper = createCamper();
             campers.add(camper);
+            System.out.println("Which camp would you like to sign up for?");
+            System.out.println(facade.getCampList());
+            String camp = scan.nextLine();
             boolean moreWeeks = true;
             while(moreWeeks){
                 System.out.println("Which week would you like to register for?");
-                System.out.println(facade.getWeeks("Camp Blue Butterflies"));
+                System.out.println(facade.getWeeks(camp));
                 int week = scan.nextInt();
-                facade.getCampList().getCamp("Camp Blue Butterflies").getWeek(week);
+                facade.getCampList().getCamp(camp).getWeek(week);
                 camper.addWeek(week);
                 String answer = get("Would you like to add another week?(yes/no)");
                 if(answer.equalsIgnoreCase("no"))
@@ -201,8 +211,8 @@ public class CampButterfliesDriver {
             String answer = get("Would you like to add more campers?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
                     more = false;
+        
         }
-
         facade.addUser(firstName, lastName, doB, homeAddress, loginInfo, campers);
     }
 
@@ -311,11 +321,14 @@ public class CampButterfliesDriver {
                     moreContacts = false;
         }
 
+        System.out.println("Which camp would you like to sign up for?");
+        System.out.println(facade.getCampList());
+        String camp = scan.nextLine();
         boolean moreWeeks = true;
         while(moreWeeks){
             System.out.println("Which week would you like to register for?");
-            System.out.println(facade.getWeeks("Camp Blue Butterflies"));
-            facade.getCampList().getCamp("Camp Blue Butterflies").getWeek(scan.nextInt());
+            System.out.println(facade.getWeeks(camp));
+            facade.getCampList().getCamp(camp).getWeek(scan.nextInt());
             String answer = get("Would you like to add another week?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
                     moreWeeks = false;
@@ -363,6 +376,13 @@ public class CampButterfliesDriver {
             System.out.println("Sorry " + date + " is not valid");
             return null;
         }
+    }
+
+     /**
+     * Welcomes the user once they sign in with their first and last name
+     */
+    private void welcomeScreen(){
+        System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
     }
 
     /**
@@ -628,19 +648,45 @@ public class CampButterfliesDriver {
                     editCounselor();
                     break;
                 case 3:
-                    //view campers
+                    viewGroup();
                     break;
                 case 4:
-                    //view campers full
+                    viewGroupInfo();
                     break;
                 case 5:
-                    //view schedule
+                    String camp = get("Camp");
+                    int week = Integer.parseInt(get("Week"));
+                    System.out.println(facade.getSchedule(camp, week));
                     break;
                 case 6:
                     run = false;
                     break;
             }
         }
+    }
+
+    /**
+     * Displays all campers in the counselors group
+     */
+    private void viewGroup(){
+        String camp = get("Camp");
+        int week = Integer.parseInt(get("Week"));
+        ArrayList<Camper> campers = facade.getCampers(camp, week);
+        for(Camper camper: campers){
+            System.out.println(camper.toStringBrief()+"\n");
+        } 
+    }
+
+    /**
+     * Displays teh information of all campers in the group
+     */
+    private void viewGroupInfo(){
+        String camp = get("Camp");
+        int week = Integer.parseInt(get("Week"));
+        ArrayList<Camper> campers = facade.getCampers(camp, week);
+        for(Camper camper: campers){
+            System.out.println(camper.toStringFull()+"\n");
+        } 
     }
 
     /**
@@ -704,20 +750,20 @@ public class CampButterfliesDriver {
             int option = scan.nextInt();
             switch(option){
                 case 1:
-                    //view profile
+                    System.out.println(facade.viewDirectorProfile());
                     break;
                 case 2:
-                    //edit profile
+                    editDirector();
                     break;
                 case 3:
-                    //create new camp
+                    createCamp();
                     break;
                 case 4:
-                    System.out.println("What Camp would you like to see?");
+                    System.out.println("What camp would you like to see?");
                     System.out.println(facade.getActivities(scan.nextLine()));
                     break;
                 case 5:
-                    //edit activities
+                    changeActivites();
                     break;
                 case 6:
                     //all counselors
@@ -735,6 +781,9 @@ public class CampButterfliesDriver {
                     //view schedule
                     break;
                 case 11:
+                    //generate schedule
+                    break;
+                case 12:
                     run = false;
                     break;
                 default:
@@ -748,18 +797,148 @@ public class CampButterfliesDriver {
      */
     private void directorOptions(){
         System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites"+
-                            "\n6. View All Counselors\n7. Remove Counselor\n8. View All Campers\n9. Remove Camper\n10. View Schedules" +
-                            "\n11. Logout");
+                            "\n6. View a Counselors Information\n7. Remove Counselor\n8. View All Campers\n9. Remove Camper\n10. View Schedules" +
+                            "\n11. Generate Schedules\n12. Logout");
     }
 
     /**
-     * Welcomes the user once they sign in with their first and last name
+     * edits the directors information
      */
-    private void welcomeScreen(){
-        System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
+    private void editDirector(){
+        boolean run=true;
+        while(run){
+            System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
+                            "\n3. Home Address\n4. Date of Birth\n5. Quit");
+            switch(scan.nextInt()){
+                case 1:
+                    String newfirstname = get("First Name");
+                    facade.editDirectorFirstName(newfirstname);
+                    break;
+                case 2:
+                    String newlastname = get("Last Name");
+                    facade.editDirectorLastName(newlastname);
+                    break;
+                case 3:
+                    String newhomeaddress = get("Home Address");
+                    facade.editDirectorHomeAddress(newhomeaddress);
+                    break;
+                case 4:
+                    String newdob = get("Date of Birth(MM/DD/YYYY");
+                    facade.editDirectorDateOfBirth(formatDate(newdob));
+                    break;
+                case 5:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
+            }
+        }
     }
 
+    /**
+     * prompts dircetor for new camp information 
+     */
+    private void createCamp(){
+        int year = Integer.parseInt(get("Year of Camp"));
+        String name = get("Name of Camp");
+        String description = get("Short Description of Camp");
+        int weeks = Integer.parseInt("Number of Weeks");
+        facade.newCamp(name, description, weeks, year);
+        for(int i = 1; i <= weeks; i++){
+            System.out.println("Week " + i + ": ");
+            Date startDate = formatDate(get("Start Date(MM/DD/YYYY)"));
+            Date endDate = formatDate(get("End Date(MM/DD/YYYY)"));
+            String theme = get("Theme");
+            facade.setWeek(name,i-1,startDate,endDate,theme);
+        }
+        int numActivities = Integer.parseInt(get("How many activities would you like to add"));
+        ArrayList<Activity> activities = new ArrayList<>();
+        for(int i = 1; i <=numActivities; i++){
+            System.out.println("Activity " + i);
+            String activityName = get("Name");
+            String activityDesc = get("Description");
+            String location = get("Location");
+            Activity activity = new Activity(activityName, location, activityDesc);
+            activities.add(activity);
+        }
+        facade.getCampList().getCamp(name).setActivities(activities);
+    }
 
+    /**
+     * Changes activities for a given camp
+     */
+    private void changeActivites(){
+        String camp = get("Which Camp would you like to change the activities for");
+        boolean run = true;
+        while(run){
+            System.out.println("Would you like to: \n1. Edit Current Activites \n2. Delete Current Activites"+
+                                "\n3. Add New Activities \n4. Quit");
+            switch(scan.nextInt()){
+                case 1:
+                    editActivies(camp);
+                    break;
+                case 2:
+                    deleteActivity(camp);
+                    break;
+                case 3:
+                    addActivity(camp);
+                    break;
+                case 4:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Please enter a valid number");                
+            }
+        }
+    }
+
+    /**
+     * edits particular activities
+     * @param camp
+     */
+    private void editActivies(String camp){
+        System.out.println("Which Activity would you like to edit?");
+        int i = 0;
+        for(Activity activity : facade.getCampList().getCamp(camp).getActivitiesArrayList()){
+            System.out.println(i + ". " + activity);
+            i++;
+        }  
+        int num = scan.nextInt()-1;
+        System.out.println("New Activity");
+        String activityName = get("Name");
+        String activityDesc = get("Description");
+        String location = get("Location");
+        Activity activity = new Activity(activityName, location, activityDesc);
+        facade.getCampList().getCamp(camp).getActivitiesArrayList().set(num, activity);
+    }
+
+    /**
+     * deletes a particular activity
+     * @param camp
+     */
+    private void deleteActivity(String camp){
+        System.out.println("Which Activity would you like to delete?");
+        int i = 0;
+        for(Activity activity : facade.getCampList().getCamp(camp).getActivitiesArrayList()){
+            System.out.println(i + ". " + activity);
+            i++;
+        }  
+        facade.getCampList().getCamp(camp).getActivitiesArrayList().remove(scan.nextInt()-1);
+    }
+
+    /**
+     * adds an activity to a camp
+     * @param camp
+     */
+    private void addActivity(String camp){
+        System.out.println("New Activity");
+        String activityName = get("Name");
+        String activityDesc = get("Description");
+        String location = get("Location");
+        Activity activity = new Activity(activityName, location, activityDesc);
+        facade.getCampList().getCamp(camp).getActivitiesArrayList().add(activity);
+    }
 
     public static void main(String[] args){
         CampFacade facade = new CampFacade();
