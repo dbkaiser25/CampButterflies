@@ -3,9 +3,9 @@ import java.util.UUID;
 
 public class CampList {
 
-    private ArrayList<Camp> camps;
+    private ArrayList<Camp> camps = new ArrayList<Camp>();
     private static CampList campList;
-    private ArrayList<Group> groups = new ArrayList<Group>();
+    private static ArrayList<Group> groups = new ArrayList<Group>();
     // private static GroupList groupList;
 
     private CampList() {
@@ -46,7 +46,20 @@ public class CampList {
         return null;
     }
 
+    public ArrayList<Group> getGroupsFromCamp(CampList c) {
+        for (int i = 0; i < c.getCamps().size(); i++) {
+            for (int j = 0; j < c.getCamps().get(i).getWeeks().size(); j++) {
+                for (int k = 0; k < c.getCamps().get(i).getWeeks().get(j).getGroups().size(); k++) {
+                    groups.add(new Group(c.getCamps().get(i).getWeeks().get(j).getGroups().get(k)));
+                    System.out.println(groups.get(k));
+                }
+            }
+        }
+        return groups;
+    }
+
     public Group getGroupByUUID(UUID id) {
+
         for (Group g : groups) {
             if (g.getUuid().equals(id)) {
                 return g;

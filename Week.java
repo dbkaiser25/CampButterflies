@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.UUID;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -75,6 +76,15 @@ public class Week {
         this.isFull = isFull;
     }
 
+    public Group getGroupByUUID(UUID id) {
+        for (Group g : groups) {
+            if (g.getUuid().equals(id)) {
+                return g;
+            }
+        }
+        return null;
+    }
+
     // Maybe we want an empty constructor, for when new weeks need to be registered
     public Week() {
         // Constructor goes here
@@ -93,73 +103,66 @@ public class Week {
         this.isFull = isFull;
     }
 
-    public void addCamper(Camper camper)
-    {
-        if(camper != null)
-        {
+    public void addCamper(Camper camper) {
+        if (camper != null) {
             campers.add(camper);
         }
     }
 
-    public void addCounselor(Counselor counselor)
-    {
-        if(counselor != null)
-        {
+    public void addCounselor(Counselor counselor) {
+        if (counselor != null) {
             counselors.add(counselor);
         }
     }
 
-    public void generateSchedules() 
-    {
-        //we need to figure out what the current date is for camper age
+    public void generateSchedules() {
+        // we need to figure out what the current date is for camper age
         Date currentDate = new Date();
-        // automation of the schedules will be done in here, and they will be assigned to groups
-        //reason for this is a week has the list of groups, counselors available for the week, 
-        //and campers that want to attend the camp for this week 
+        // automation of the schedules will be done in here, and they will be assigned
+        // to groups
+        // reason for this is a week has the list of groups, counselors available for
+        // the week,
+        // and campers that want to attend the camp for this week
 
-        //to create a group, they need a counselor
+        // to create a group, they need a counselor
         // then they need maximum of 10 kids preferably by age
-        //          if we do it by age: how will we determine their age
+        // if we do it by age: how will we determine their age
 
-        //sort campers by age
+        // sort campers by age
 
         /*
          * How to select a month/day/year from the date
-            Date dob = convertToDate(dateOfBirth);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dob); 
-            System.out.println("calendar month " + calendar.get(Calendar.MONTH));
+         * Date dob = convertToDate(dateOfBirth);
+         * Calendar calendar = Calendar.getInstance();
+         * calendar.setTime(dob);
+         * System.out.println("calendar month " + calendar.get(Calendar.MONTH));
          */
 
-        for(Camper c: campers)
-        {
+        for (Camper c : campers) {
             int temp = calculateAge(c.getDateOfBirth(), currentDate);
 
         }
-        
 
     }
 
-    private void sortCampersByAge(Date birthDate, Date currentDate)
-    {
-       
+    private void sortCampersByAge(Date birthDate, Date currentDate) {
 
-    
     }
 
-    private int calculateAge(Date birthDate, Date currentDate)
-    {
+    private int calculateAge(Date birthDate, Date currentDate) {
         int month[] = { 31, 28, 31, 30, 31, 30, 31,
-            31, 30, 31, 30, 31};
+                31, 30, 31, 30, 31 };
 
         Calendar calBirthDate = Calendar.getInstance();
         Calendar calCurrentDate = Calendar.getInstance();
         calBirthDate.setTime(birthDate);
         calCurrentDate.setTime(currentDate);
 
-        //int[] cd = {calCurrentDate.get(Calendar.DATE), calCurrentDate.get(Calendar.MONTH), calCurrentDate.get(Calendar.YEAR)};
-        //int[] bd = {calBirthDate.get(Calendar.DATE), calBirthDate.get(Calendar.MONTH), calBirthDate.get(Calendar.YEAR)};
-    
+        // int[] cd = {calCurrentDate.get(Calendar.DATE),
+        // calCurrentDate.get(Calendar.MONTH), calCurrentDate.get(Calendar.YEAR)};
+        // int[] bd = {calBirthDate.get(Calendar.DATE),
+        // calBirthDate.get(Calendar.MONTH), calBirthDate.get(Calendar.YEAR)};
+
         int currentMonth, birthMonth;
         int currentYear, birthYear;
 
@@ -169,14 +172,13 @@ public class Week {
         currentYear = calCurrentDate.get(Calendar.YEAR);
         birthYear = calBirthDate.get(Calendar.YEAR);
 
-        if(birthMonth > currentMonth)
-        {
+        if (birthMonth > currentMonth) {
             currentYear = currentYear - 1;
-            //cd[2] = cd[2] - 1;
+            // cd[2] = cd[2] - 1;
         }
-        
+
         return currentYear - birthYear;
-        //return cd[2] - bd[2];
+        // return cd[2] - bd[2];
     }
 
     public String viewSchedule() {
@@ -191,12 +193,12 @@ public class Week {
         // edit da schedule here
     }
 
-    public String toString(){
+    public String toString() {
         Calendar start = Calendar.getInstance();
-        start.setTime(startDate); 
+        start.setTime(startDate);
         Calendar end = Calendar.getInstance();
         end.setTime(endDate);
-        return String.valueOf(start.get(start.MONTH))+"/" + String.valueOf(start.get(start.DAY_OF_MONTH)) + " - " 
-                + String.valueOf(end.get(end.MONTH)) +"/"+ String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
+        return String.valueOf(start.get(start.MONTH)) + "/" + String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
+                + String.valueOf(end.get(end.MONTH)) + "/" + String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
     }
 }

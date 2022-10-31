@@ -8,21 +8,24 @@ public class Director extends Person {
    // private Calendar calendar; Consider this deleated, i don't think it is needed
    private LoginInfo userLogin;
    private ArrayList<Camp> camps = new ArrayList<Camp>();
+   private String email;
 
    public Director(String firstName, String lastName, Date dateOfBirth,
-         String homeAddress, LoginInfo userLogin, ArrayList<Camp> camps) {
+         String homeAddress, String email, LoginInfo userLogin, ArrayList<Camp> camps) {
       super(firstName, lastName, dateOfBirth, homeAddress);
       this.camps = camps;
       this.userLogin = userLogin;
+      this.email = email;
       // the calendar will probably need to call the get instance of the calendar
       // object but yea that aint written yet
    }
 
    public Director(UUID uuid, String firstName, String lastName, Date dateOfBirth,
-         String homeAddress, LoginInfo userLogin, ArrayList<Camp> camps) {
+         String homeAddress, String email, LoginInfo userLogin, ArrayList<Camp> camps) {
       super(uuid, firstName, lastName, dateOfBirth, homeAddress);
       this.camps = camps;
       this.userLogin = userLogin;
+      this.email = email;
    }
 
    public LoginInfo getUserLogin() {
@@ -31,6 +34,18 @@ public class Director extends Person {
 
    public ArrayList<Camp> getCamps() {
       return camps;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setUserLogin(LoginInfo userLogin) {
+      this.userLogin = userLogin;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
    }
 
    public void setCamps(ArrayList<Camp> camps) {
@@ -73,44 +88,35 @@ public class Director extends Person {
       return false;
    }
 
-   //to view an individual schedule, I need to know what camp were talking about
-   //what week and what group were talking about
-   public String getGroupSchedule(int campNumber, Integer weekNumber, int groupNumber)
-   {
+   // to view an individual schedule, I need to know what camp were talking about
+   // what week and what group were talking about
+   public String getGroupSchedule(int campNumber, Integer weekNumber, int groupNumber) {
       return camps.get(campNumber).getMasterSchedule().get(weekNumber).getGroups().get(groupNumber).printSchedule();
    }
 
-   //to view schedule for an entire weeek (all of the groups )
-   public String getWeekSchedule(int campNumber, Integer weekNumber)
-   {
+   // to view schedule for an entire weeek (all of the groups )
+   public String getWeekSchedule(int campNumber, Integer weekNumber) {
       return camps.get(campNumber).getMasterSchedule().get(weekNumber).viewSchedule();
    }
 
-   //view all of the activities 
-   public String viewActivities(int year) 
-   {
+   // view all of the activities
+   public String viewActivities(int year) {
       String temp = new String();
-      for(Camp c: camps)
-      {
-         if(c.getYear() == year)
-         {
-            for(Activity a: c.getActivitiesArrayList())
-            {
+      for (Camp c : camps) {
+         if (c.getYear() == year) {
+            for (Activity a : c.getActivitiesArrayList()) {
                temp = temp + a.toString() + "\n";
             }
             return temp;
          }
       }
-      //no camp with the given year
+      // no camp with the given year
       return null;
    }
 
-   public void addActivity(int year, Activity activity) 
-   {
-      for(Camp c: camps)
-      {
-         if(c.getYear() == year)
-         {
+   public void addActivity(int year, Activity activity) {
+      for (Camp c : camps) {
+         if (c.getYear() == year) {
             c.getActivitiesArrayList().add(activity);
             break;
          }
@@ -119,10 +125,8 @@ public class Director extends Person {
 
    public void removeActivity(int year, Activity activity) {
 
-      for(Camp c: camps)
-      {
-         if(c.getYear() == year)
-         {
+      for (Camp c : camps) {
+         if (c.getYear() == year) {
             for (int i = 0; i < c.getActivitiesArrayList().size(); i++) {
                if (c.getActivitiesArrayList().get(i).equals(activity)) {
                   c.getActivitiesArrayList().remove(i);
@@ -132,7 +136,7 @@ public class Director extends Person {
             break;
          }
       }
-      
+
    }
 
    public String viewCounselorInfo(String firstName, String lastName) {
@@ -147,8 +151,9 @@ public class Director extends Person {
    public String toString() {
       String temp = new String();
       temp = "Director: " + firstName + " " + lastName + "\nUsername: "
-      + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString()
-      + "\nAddress: " + homeAddress;
+            + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString()
+            + "\nAddress: " + homeAddress;
       return temp;
    }
+
 }
