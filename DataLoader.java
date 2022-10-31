@@ -19,10 +19,10 @@ public class DataLoader extends DataConstants {
         for (int i = 0; i < directors.size(); i++) {
             System.out.println("DIRECTOR email: " + directors.get(i).getEmail());
         }
-        // ArrayList<Camp> camps = DataLoader.loadCamps();
-        // for (int i = 0; i < camps.size(); i++) {
-        // System.out.println("CAMP: " + camps.get(i));
-        // }
+        ArrayList<Camp> camps = DataLoader.loadCamps();
+        for (int i = 0; i < camps.size(); i++) {
+            System.out.println("CAMP: " + camps.get(i));
+        }
         // ArrayList<Camper> campers = DataLoader.loadCampers();
         // for (int i = 0; i < campers.size(); i++) {
         // System.out.println("CAMPER: " + campers.get(i));
@@ -333,8 +333,9 @@ public class DataLoader extends DataConstants {
                 for (int j = 0; j < jsonHash.size(); j++) {
                     JSONObject JSONWeek = (JSONObject) jsonHash.get(j);
                     Integer week_num = ((Long) JSONWeek.get(WEEK_NUM)).intValue();
-                    String theme = (String) JSONWeek.get(THEME);
                     JSONObject weekJSON = (JSONObject) JSONWeek.get(WEEK);
+                    String theme = (String) weekJSON.get(THEME);
+                    System.out.println("theme " + theme);
                     ArrayList<Group> groups = new ArrayList<Group>();
                     JSONArray groupsJSON = (JSONArray) weekJSON.get(GROUPS);
                     for (int l = 0; l < groupsJSON.size(); l++) {

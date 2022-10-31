@@ -42,12 +42,12 @@ public class DataWriter extends DataConstants {
         // System.out.println(newUsers.get(i));
         // }
 
-        // DirectorList directors = DirectorList.getInstance();
-        // directors.saveDirector();
-        // ArrayList<Director> newDirectors = DataLoader.loadDirectors();
-        // for (int i = 0; i < newDirectors.size(); i++) {
-        // System.out.println(newDirectors.get(i).getEmail());
-        // }
+        DirectorList directors = DirectorList.getInstance();
+        directors.saveDirector();
+        ArrayList<Director> newDirectors = DataLoader.loadDirectors();
+        for (int i = 0; i < newDirectors.size(); i++) {
+            System.out.println(newDirectors.get(i).getEmail());
+        }
 
         CampList camps = CampList.getInstance();
         camps.saveCamps();
@@ -306,6 +306,7 @@ public class DataWriter extends DataConstants {
                 JSONObject weekObj = new JSONObject();
                 Week week = entry.getValue();
                 weekObj.put(THEME, week.getTheme());
+                System.out.println(week.getTheme());
                 JSONArray groupsArray = new JSONArray();
                 for (int i = 0; i < week.getGroups().size(); i++) {
                     JSONObject groupObj = new JSONObject();
