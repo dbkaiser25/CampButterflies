@@ -41,7 +41,7 @@ public class Group {
     }
 
     // TODO adding new HashMap Configuration figure out if its good
-    private HashMap<DayOfWeek, ArrayList<Activity>> schedule;
+    private HashMap<DayOfWeek, ArrayList<Activity>> schedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
 
     /**
      * Creates an instance of a class with the following attributes
@@ -65,14 +65,7 @@ public class Group {
         this.schedule = schedule;
     }
 
-    //idk if anybody is using this cuz if they aren't deleate
     public Group(Group group) {
-    }
-
-    //i need an empty constructor
-    public Group()
-    {
-        uuid = UUID.randomUUID();
     }
 
     /**
@@ -123,25 +116,29 @@ public class Group {
 
     // printing the schedule assuming its not empty
     public String printSchedule() {
-        String temp = new String();
+        System.out.println("in group schedule");
+        String temp = "test";
 
-        for (DayOfWeek day : DayOfWeek.values()) {
-            // temp = temp + getActivities(group, day) + "\n";
-            temp = temp + getActivities(day) + "\n";
-        }
+        // for (DayOfWeek day : DayOfWeek.values()) {
+        // // temp = temp + getActivities(group, day) + "\n";
+        // temp = temp + getActivities(day) + "\n";
+        // }
         return temp;
     }
 
     // helper method for printSchedule
     // Same thing can be modified for prettier output
-    private String getActivities(DayOfWeek day) {
-        String temp = new String();
-        temp = day.toString() + "\n";
-        for (int i = 0; i < schedule.get(day).size(); i++) {
-            temp = temp + schedule.get(day).get(i).getName() + "\n";
-        }
-        return temp;
-    }
+    // private ArrayList<Activity> getActivities(DayOfWeek day) {
+    // System.out.println("Entered method");
+    // for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
+    // schedule.entrySet()) {
+    // System.out.println("Entered for-loop");
+    // ArrayList<Activity> activities = entry.getValue();
+    // return activities;
+    // }
+    // return null;
+
+    // }
 
     // when the schedule is automatically generated, it can be assigned as this
     // group's schedule
