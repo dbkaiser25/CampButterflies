@@ -58,6 +58,14 @@ public class CampFacade {
         return campList;
     }
 
+    public String getCamps(){
+        String camps = "";
+        for(Camp camp: campList.getCamps()){
+            camps += camp.getName();
+        }
+        return camps;
+    }
+
     /**
      * Checks to see if login information exists
      * 

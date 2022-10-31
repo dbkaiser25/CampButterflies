@@ -1,9 +1,10 @@
-import java.lang.annotation.IncompleteAnnotationException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * the UI code for the Camp Butterfly program 
@@ -36,16 +37,12 @@ public class CampButterfliesDriver {
         boolean running = true;
         while(running){
             homepage();
-            int choice = getChoice(homepageOptions.length-1);
-
-            if (choice == -1){
-                continue;
-            }
+            int choice = scan.nextInt();
 
             switch(choice){
                 case 1:
                     System.out.println("Which camps activities would you like to see?");
-                    System.out.println(facade.getCampList());
+                    System.out.println(facade.getCamps());
                     String camp = scan.nextLine();
                     System.out.println(facade.getActivities(camp));
                     break;
@@ -68,40 +65,18 @@ public class CampButterfliesDriver {
                     System.out.println("Have a good day!");
                     running = false;
                     break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
             }                       
-            
-
+            pause();
         }
     }
 
+
     /**
-     * makes sure that the choice entered by the user is valid
-     * @param range the valid range in options
-     * @return the choice or -1 if not valid
+     * Prints out the available weeks for a certain camp
      */
-    private int getChoice(int range){
-        int choice;
-
-		try {
-			choice = Integer.parseInt(scan.nextLine());
-		} catch (Exception e) {
-           //clear();
-			System.out.println("Please enter a valid number\n");
-			return -1;
-		}
-
-		//clear();
-
-		if (choice < 1 || choice > range) {
-			///clear();
-			System.out.println("Sorry, your option is not in the valid range.\n");
-			return -1;
-		}
-
-		return choice;
-	}
-
-
     private void weeks(){
         System.out.println("Which camps sessions would you like to see?");
         System.out.println(facade.getCampList());
@@ -131,13 +106,17 @@ public class CampButterfliesDriver {
 		}
     }
 
-    /*
-     * Returns the user back to the mainpage of the camp
-     
-    private void backToHomepage(){
-         System.out.println("Enter any key to return to the homepage");
-         scan.next();
-    }*/
+
+    /**
+     * Pauses the code to give users time to look at the new information
+     */
+    private void pause(){
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (Exception e) {
+            System.out.println("Timer error");
+        }
+    }
 
     /**
      * Prints out camp price and available discounts
