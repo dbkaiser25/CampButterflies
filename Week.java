@@ -85,6 +85,10 @@ public class Week {
         return null;
     }
 
+    public Group getGroupByNumber(int num){
+        return groups.get(num-1);
+    }
+
     // Maybe we want an empty constructor, for when new weeks need to be registered
     public Week() {
         // Constructor goes here

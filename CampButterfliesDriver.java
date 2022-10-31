@@ -671,7 +671,7 @@ public class CampButterfliesDriver {
     private void viewGroup(){
         String camp = get("Camp");
         int week = Integer.parseInt(get("Week"));
-        ArrayList<Camper> campers = facade.getCampers(camp, week);
+        ArrayList<Camper> campers = facade.getGroup(camp, week);
         for(Camper camper: campers){
             System.out.println(camper.toStringBrief()+"\n");
         } 
@@ -683,7 +683,7 @@ public class CampButterfliesDriver {
     private void viewGroupInfo(){
         String camp = get("Camp");
         int week = Integer.parseInt(get("Week"));
-        ArrayList<Camper> campers = facade.getCampers(camp, week);
+        ArrayList<Camper> campers = facade.getGroup(camp, week);
         for(Camper camper: campers){
             System.out.println(camper.toStringFull()+"\n");
         } 
@@ -766,24 +766,32 @@ public class CampButterfliesDriver {
                     changeActivites();
                     break;
                 case 6:
-                    //all counselors
+                    System.out.println(facade.getCounselorList());
                     break;
                 case 7:
-                    //remove counselor
+                    String firstName = get("Counselor's First Name");
+                    String lastName = get("Counselor's Last Name");
+                    System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8:
-                    //all campers
+                    //remove counselor
                     break;
                 case 9:
-                    //remove camper
+                    System.out.println(facade.getCamperList());
                     break;
                 case 10:
-                    //view schedule
+                    //remove camper
                     break;
                 case 11:
-                    //generate schedule
+                    String camp = get("Camp");
+                    int week = Integer.parseInt(get("Week"));
+                    int group = Integer.parseInt(get("Group"));
+                    System.out.println(facade.getSchedule(camp, week, group));
                     break;
                 case 12:
+                    //generate schedule
+                    break;
+                case 13:
                     run = false;
                     break;
                 default:
@@ -796,9 +804,9 @@ public class CampButterfliesDriver {
      * options on the directors homepage
      */
     private void directorOptions(){
-        System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites"+
-                            "\n6. View a Counselors Information\n7. Remove Counselor\n8. View All Campers\n9. Remove Camper\n10. View Schedules" +
-                            "\n11. Generate Schedules\n12. Logout");
+        System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites\n6. View All Counselors"+
+                            "\n7. View a Counselors Information\n8. Remove Counselor\n9. View All Campers\n10. Remove Camper\n11. View Schedules" +
+                            "\n12. Generate Schedules\n13. Logout");
     }
 
     /**

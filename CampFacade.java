@@ -505,12 +505,44 @@ public class CampFacade
         return weeks;
     }
 
-    public ArrayList<Camper> getCampers(String camp, int week){
+    /**
+     * returns a counselors campers
+     * @param camp
+     * @param week
+     * @return
+     */
+    public ArrayList<Camper> getGroup(String camp, int week){
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
+    /**
+     * returns a counselors schedule
+     * @param camp
+     * @param week
+     * @return
+     */
     public String getSchedule(String camp, int week){
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
+    }
+
+    public String getSchedule(String camp, int week, int group){
+        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group).printSchedule();
+    }
+
+    /**
+     * returns the camperlist
+     * @return
+     */
+    public CamperList getCamperList(){
+        return camperList;
+    }
+
+    /**
+     * returns the counselorlist
+     * @return
+     */
+    public CounselorList getCounselorList(){
+        return counselorList;
     }
 }
 
