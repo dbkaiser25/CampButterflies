@@ -214,4 +214,8 @@ public class User extends Person {
     public String toString() {
         return firstName + ", " + lastName + ", amount of campers:" + campers.size();
     }
+
+    public boolean qualifiesForDiscount(CampList campList, int campNumber) {
+        return false;
+    }
 }
