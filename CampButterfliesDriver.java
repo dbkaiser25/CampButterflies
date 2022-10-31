@@ -780,7 +780,11 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCamperList());
                     break;
                 case 10:
-                    //remove camper
+                    String campname = get("Camp");
+                    int weeknum = Integer.parseInt(get("Week"));
+                    String campername = get("Camper First Name");
+                    String camperlname = get("Camper Last Name");
+                    facade.removeCamper(campername, camperlname, facade.getCampList().getCamp(campname).getWeek(weeknum));
                     break;
                 case 11:
                     String camp = get("Camp");
@@ -789,9 +793,6 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getSchedule(camp, week, group));
                     break;
                 case 12:
-                    //generate schedule
-                    break;
-                case 13:
                     run = false;
                     break;
                 default:
@@ -806,7 +807,7 @@ public class CampButterfliesDriver {
     private void directorOptions(){
         System.out.println("1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites\n6. View All Counselors"+
                             "\n7. View a Counselors Information\n8. Remove Counselor\n9. View All Campers\n10. Remove Camper\n11. View Schedules" +
-                            "\n12. Generate Schedules\n13. Logout");
+                            "\n12. Logout");
     }
 
     /**
@@ -871,6 +872,9 @@ public class CampButterfliesDriver {
             activities.add(activity);
         }
         facade.getCampList().getCamp(name).setActivities(activities);
+        for(int i = 0; i<weeks; i++){
+            facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
+        }
     }
 
     /**

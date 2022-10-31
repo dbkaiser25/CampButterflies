@@ -459,20 +459,6 @@ public class CampFacade
         campList.getCamp(camp).getWeek(week).setTheme(theme);
     }
 
-    public void editCalendar()
-    {
-
-    }
-
-    /**
-     * returns the calendar
-     * @return
-     */
-    public String viewCalendar()
-    {
-        return null;
-    }
-
     /**
      * returns all the activities the camp offers
      * @param campName
@@ -544,5 +530,16 @@ public class CampFacade
     public CounselorList getCounselorList(){
         return counselorList;
     }
+
+    /**
+     * removes a camper from a week
+     * @param firstName
+     * @param lastName
+     * @param week
+     */
+    public void removeCamper(String firstName, String lastName, Week week){
+        currentDirector.removeCamper(firstName,lastName,week);
+    }
+
 }
 

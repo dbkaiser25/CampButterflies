@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch CampButterfliesDriver",
+            "request": "launch",
+            "mainClass": "CampButterfliesDriver",
+            "projectName": "CampButterflies_22d7feab"
+        },
+        {
+            "type": "java",
             "name": "Launch CreateUUIDs",
             "request": "launch",
             "mainClass": "CreateUUIDs",
