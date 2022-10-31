@@ -42,12 +42,12 @@ public class DataWriter extends DataConstants {
         // System.out.println(newUsers.get(i));
         // }
 
-        DirectorList directors = DirectorList.getInstance();
-        directors.saveDirector();
-        ArrayList<Director> newDirectors = DataLoader.loadDirectors();
-        for (int i = 0; i < newDirectors.size(); i++) {
-            System.out.println(newDirectors.get(i).getEmail());
-        }
+        // DirectorList directors = DirectorList.getInstance();
+        // directors.saveDirector();
+        // ArrayList<Director> newDirectors = DataLoader.loadDirectors();
+        // for (int i = 0; i < newDirectors.size(); i++) {
+        // System.out.println(newDirectors.get(i).getEmail());
+        // }
 
         // CampList camps = CampList.getInstance();
         // camps.saveCamps();
@@ -55,8 +55,8 @@ public class DataWriter extends DataConstants {
         // for (int i = 0; i < newCamps.size(); i++) {
         // System.out.println("test 2 " + newCamps.get(i));
         // }
-        // UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
-        // writeGroupFiles(id);
+        UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
+        writeGroupFiles(id);
     }
 
     public static void saveCampers() { // finished not tested
@@ -532,18 +532,19 @@ public class DataWriter extends DataConstants {
         // System.out.println("Counselor name "+coun.getFirstName());
 
         CampList campList = CampList.getInstance(); // getting group
-        ArrayList<Group> groups = campList.getGroupsFromCamp(campList);
-        System.out.println("group size" + groups.size());
-        ArrayList<Camp> camps = campList.getCamps();
-        System.out.println("Size " + camps.size());
         Group group = campList.getGroupByUUID(id);
         System.out.println("ID: " + id);
         System.out.println(group);
         HashMap<DayOfWeek, ArrayList<Activity>> groupSchedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
         System.out.println(group.getCounselor().getFirstName());
-        try (FileWriter file = new FileWriter(group.getCounselor().getFirstName() + "'s Group")) { // how do I create a
-                                                                                                   // new txt file
+        try (FileWriter file = new FileWriter("schedules/" + group.getCounselor().getFirstName() + "'s Group")) { // how
+                                                                                                                  // do
+                                                                                                                  // I
+                                                                                                                  // create
+                                                                                                                  // a
+            // new txt file
             file.write("testing");
+            file.write(group.printSchedule());
 
         } catch (IOException e) {
             e.printStackTrace();

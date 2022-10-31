@@ -106,12 +106,16 @@ public class Camp {
 
     public ArrayList<Week> getWeeks() {
         ArrayList<Week> weeks = new ArrayList<Week>();
-        Integer weekNum = 0;
-        for (int i = 0; i < masterSchedule.size(); i++) {
-            Week week = masterSchedule.get(weekNum);
+
+        for (HashMap.Entry<Integer, Week> entry : masterSchedule.entrySet()) {
+            Week week = entry.getValue();
             weeks.add(week);
-            weekNum++;
         }
+        // for (int i = 0; i < masterSchedule.size(); i++) {
+        // Week week = masterSchedule.get(weekNum);
+        // weeks.add(week);
+        // weekNum++;
+        // }
         return weeks;
     }
 

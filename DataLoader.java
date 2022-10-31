@@ -206,7 +206,6 @@ public class DataLoader extends DataConstants {
                 String userName = (String) directorJSON.get(USERNAME);
                 String password = (String) directorJSON.get(PASSWORD);
                 String email = (String) directorJSON.get(EMAIL);
-                System.out.println("Email " + email);
                 LoginInfo directorLogin = new LoginInfo(userName, password);
 
                 JSONArray jsonCalendar = (JSONArray) directorJSON.get(CALENDAR);
