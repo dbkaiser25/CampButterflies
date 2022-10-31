@@ -92,6 +92,10 @@ public class Counselor extends Person {
         this.userLogin = userLogin;
     }
 
+    public UUID getUUID(){
+        return uuid;
+    }
+
     // counselors need to be able to view the campers in their group
     // Can we just pass them their group somehow? I am going to assume we can but to
     // be determined later TODO
@@ -168,7 +172,7 @@ public class Counselor extends Person {
         return temp;
     }
 
-    // DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
+
 
     // to be deleated
     private String printEmergencyContacts() {
@@ -177,6 +181,12 @@ public class Counselor extends Person {
             temp = temp + c.toString() + "\n";
         }
         return temp;
+    }
+
+    //this was modified from user's select weeks
+    public void selectWeek(Camp camp, int weekNumber) 
+    {
+        camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
     }
 
 }

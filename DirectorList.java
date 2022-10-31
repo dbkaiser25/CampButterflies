@@ -53,6 +53,9 @@ public class DirectorList
     public ArrayList<Director> getDirectors() {
         return directors; 
     }
+
+    //what is this method and why does it just return null???????
+    //TODO figure out what this is supposed to be
     public Director getDirector()
     {
         return null;

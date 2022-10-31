@@ -65,7 +65,14 @@ public class Group {
         this.schedule = schedule;
     }
 
+    //idk if anybody is using this cuz if they aren't deleate
     public Group(Group group) {
+    }
+
+    //i need an empty constructor
+    public Group()
+    {
+        uuid = UUID.randomUUID();
     }
 
     /**

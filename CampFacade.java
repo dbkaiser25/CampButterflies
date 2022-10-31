@@ -349,7 +349,7 @@ public class CampFacade
      */
     public boolean qualifiesForDiscount()
     {
-        return currentUser.qualifiesForDiscount();
+        return currentUser.qualifiesForDiscount(campList,0);
     }
 
     /**
@@ -433,7 +433,7 @@ public class CampFacade
     }
 
     /**
-     * Adds a New Camp to campList
+     * Adds a new Camp to campList
      * @param name
      * @param desc
      * @param weeks
@@ -484,6 +484,11 @@ public class CampFacade
         return camp.getActivities();
     }
 
+    /**
+     * sets activities for a camp
+     * @param camp
+     * @param activities
+     */
     public void setActivities(String camp, ArrayList<Activity> activities){
         campList.getCamp(camp).setActivities(activities);
     }
@@ -500,5 +505,44 @@ public class CampFacade
         return weeks;
     }
 
+    /**
+     * returns a counselors campers
+     * @param camp
+     * @param week
+     * @return
+     */
+    public ArrayList<Camper> getGroup(String camp, int week){
+        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
+    }
+
+    /**
+     * returns a counselors schedule
+     * @param camp
+     * @param week
+     * @return
+     */
+    public String getSchedule(String camp, int week){
+        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
+    }
+
+    public String getSchedule(String camp, int week, int group){
+        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group).printSchedule();
+    }
+
+    /**
+     * returns the camperlist
+     * @return
+     */
+    public CamperList getCamperList(){
+        return camperList;
+    }
+
+    /**
+     * returns the counselorlist
+     * @return
+     */
+    public CounselorList getCounselorList(){
+        return counselorList;
+    }
 }
 
