@@ -27,7 +27,7 @@ public class Activity {
      * @return a string description of the activity
      */
     public String toString() {
-        return name + ": " + description + "\n" + location;
+        return "Activity: " + name + ", Location: " + location + ", Description: " + description;
     }
 
     public String getName() {

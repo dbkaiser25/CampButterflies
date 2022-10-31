@@ -544,17 +544,8 @@ public class DataWriter extends DataConstants {
         // }
         // above test works- prints all activities in JSON
 
-        try (FileWriter file = new FileWriter("schedules/" + group.getCounselor().getFirstName() + "'s Group")) {
-            // for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
-            // group.getSchedule().entrySet()) {
-            // ArrayList<Activity> activities = entry.getValue();
-            // for (int i = 0; i < activities.size(); i++) {
-            // // System.out.println("activity: " + activities.get(i));\
-            // String temp = activities.get(i).toString();
-            // file.write(temp);
-            // }
-            // }
-            // new txt file
+        try (FileWriter file = new FileWriter(
+                "schedules/Counselor" + group.getCounselor().getFirstName() + "'s Group")) {
             file.write(group.printSchedule());
 
         } catch (IOException e) {
