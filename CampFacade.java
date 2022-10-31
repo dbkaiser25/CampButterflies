@@ -349,7 +349,7 @@ public class CampFacade
      */
     public boolean qualifiesForDiscount()
     {
-        return currentUser.qualifiesForDiscount();
+        return currentUser.qualifiesForDiscount(campList,0);
     }
 
     /**
