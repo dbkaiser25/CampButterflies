@@ -109,6 +109,33 @@ public class Week {
         }
     }
 
+    public boolean containsCamper(ArrayList<Camper> userCampers)
+    {
+        for(Camper c: campers)
+        {
+            for(int i = 0; i < userCampers.size(); i++)
+            {
+                if(c.getFirstName().equals(userCampers.get(i).getFirstName()) 
+                && c.getLastName().equals(userCampers.get(i).getLastName()))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsCamper(String firstName, String lastName)
+    {
+        for(Camper c: campers)
+        {
+            if(c.getFirstName().equals(firstName)
+            && c.getLastName().equals(lastName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void generateSchedules() 
     {
         //we need to figure out what the current date is for camper age

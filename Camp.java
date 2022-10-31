@@ -81,6 +81,8 @@ public class Camp {
         return description;
     }
 
+
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -118,9 +120,25 @@ public class Camp {
         return weeks;
     }
 
-    public String getActivities() {
+    public boolean qualifiesForDiscount(ArrayList<Camper> campers)
+    {
+        for(int i = 0; i < masterSchedule.size(); i++)
+        {
+            //does this need to by typecasted?
+            if(masterSchedule.get((Integer) i).containsCamper(campers))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getActivities() 
+    {
         String displayActivities = new String();
-        for (Activity activity : activities) {
+
+        for (Activity activity : activities) 
+        {
             displayActivities += activity.toString() + "\n";
         }
 
