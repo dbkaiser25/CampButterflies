@@ -172,7 +172,7 @@ public class Counselor extends Person {
         return temp;
     }
 
-    // DUPLICATE CODE THERE MUST BE A BETTER WAYYYYYY!!!!!!!!!!!!!
+
 
     // to be deleated
     private String printEmergencyContacts() {
@@ -181,6 +181,12 @@ public class Counselor extends Person {
             temp = temp + c.toString() + "\n";
         }
         return temp;
+    }
+
+    //this was modified from user's select weeks
+    public void selectWeek(Camp camp, int weekNumber) 
+    {
+        camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
     }
 
 }

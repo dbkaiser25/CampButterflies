@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Calendar;
+import java.util.Random;
 
 public class Week {
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
@@ -90,12 +91,15 @@ public class Week {
     }
 
     // Maybe we want an empty constructor, for when new weeks need to be registered
-    public Week() {
+    public Week() 
+    {
         // Constructor goes here
+        
     }
 
     // and a full one so that when we read from JSON we can create weeks that have
     // already been created/registered
+    //hmm this might be altered because it may need to read a schedule
     public Week(String theme, ArrayList<Group> groups, ArrayList<Counselor> counselors, ArrayList<Camper> campers,
             Date startDate, Date endDate, boolean isFull) {
         this.theme = theme;
@@ -119,7 +123,35 @@ public class Week {
         }
     }
 
-    public void generateSchedules() {
+    public boolean containsCamper(ArrayList<Camper> userCampers)
+    {
+        for(Camper c: campers)
+        {
+            for(int i = 0; i < userCampers.size(); i++)
+            {
+                if(c.getFirstName().equals(userCampers.get(i).getFirstName()) 
+                && c.getLastName().equals(userCampers.get(i).getLastName()))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsCamper(String firstName, String lastName)
+    {
+        for(Camper c: campers)
+        {
+            if(c.getFirstName().equals(firstName)
+            && c.getLastName().equals(lastName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+        //The camp needs to tell the week what list of activities are available
+    public boolean generateSchedules(ArrayList<Activity> activities) {
         // we need to figure out what the current date is for camper age
         Date currentDate = new Date();
         // automation of the schedules will be done in here, and they will be assigned
@@ -132,6 +164,8 @@ public class Week {
         // then they need maximum of 10 kids preferably by age
         // if we do it by age: how will we determine their age
 
+        //then each group needs a schedule
+
         // sort campers by age
 
         /*
@@ -142,15 +176,117 @@ public class Week {
          * System.out.println("calendar month " + calendar.get(Calendar.MONTH));
          */
 
-        for (Camper c : campers) {
+         //there probably is a better way to initialize the groups
+         Group g1 = new Group();
+         groups.add(g1);
+         Group g2 = new Group();
+         groups.add(g2);
+         Group g3 = new Group();
+         groups.add(g3);
+         Group g4 = new Group();
+         groups.add(g4);
+         Group g5 = new Group();
+         groups.add(g5);
+         Group g6 = new Group();
+         groups.add(g6);
+
+        for (Camper c : campers) 
+        {
+            int[] groupTotals = new int[6];
             int temp = calculateAge(c.getDateOfBirth(), currentDate);
 
+            //TECHNICALLY there are no requirements or specifications on how the list of campers 
+            //will be for generating groups. I'm never one to assume the best outcome but I'll be doing that, 
+            //It is a lower priority to insert code to better split groups with worse/less nice data
+             
+            if(temp == 7 || temp ==8)
+            {
+                //groupTotals[0]++;
+                groups.get(0).addCamper(c);
+            }
+            else if(temp == 9 || temp == 10)
+            {
+                //groupTotals[1]++;
+                groups.get(1).addCamper(c);
+            }
+            else if(temp == 11 || temp == 12)
+            {
+                //groupTotals[2]++;
+                groups.get(2).addCamper(c);
+            }
+            else if(temp == 13 || temp == 14)
+            {
+                //groupTotals[3]++;
+                groups.get(3).addCamper(c);
+            }
+            else if(temp == 15 || temp == 16)
+            {
+                //groupTotals[4]++;
+                groups.get(4).addCamper(c);
+            }
+            else if(temp == 17 || temp == 18)
+            {
+                //groupTotals[5]++;
+                groups.get(5).addCamper(c);
+            }
         }
 
-    }
+        //From here we assume that groups has been properly populated
+        //give each group a counselor
+        if(counselors.size() > 6 || counselors.size() <= 0)
+        {
+            //Either too many or not enough counselors assigned to the week
+            return false;
+        }
+        else
+        {
+            for(int i = 0; i < counselors.size(); i++)
+            {
+                groups.get(i).setCounselor(counselors.get(i));
+            }
+        }
 
-    private void sortCampersByAge(Date birthDate, Date currentDate) {
+        //generate a schedule for each (g)roup
+        //Random rand = new Random();
+        ArrayList<Activity> meals = getMeals();
+        Random rand = new Random();
+        for(int g = 0; g < groups.size(); g++)
+        {
 
+            HashMap<DayOfWeek, ArrayList<Activity>> schedule = 
+            new HashMap<DayOfWeek, ArrayList<Activity>>();
+
+            //need a schedule for every (d)ay
+            //groups.get(i).setSchedule(generateGroupSchedule(activities));
+            for(int d = 0; d < 7; d++)
+            {
+                ArrayList<Activity> groupActivities = new ArrayList<Activity>(8);
+
+                for(int i = 0; i < 8; i++ )
+                {
+                    if(i%3 == 0)
+                    {
+                        groupActivities.add(meals.get(i/3)); //wether or not to add a meal
+                    }
+                    else
+                    {
+                        int randomIndex = rand.nextInt(activities.size()); //generate random index
+                        groupActivities.add(activities.get(randomIndex)); //add random index activity to list of group activities
+                        activities.remove(randomIndex); //TODO remove activity so we cant get it again. 
+                        //TODO Do we need to clone activities or something so we don't change it idk 
+
+                    }
+                }
+                //schedule for this day is completed
+                DayOfWeek[] dOW = DayOfWeek.values();
+                schedule.put(dOW[d],groupActivities);
+            }
+
+            //The group's schedule for the week is completed
+            groups.get(g).setSchedule(schedule);
+        }
+
+    return true;
     }
 
     private int calculateAge(Date birthDate, Date currentDate) {
@@ -204,5 +340,19 @@ public class Week {
         end.setTime(endDate);
         return String.valueOf(start.get(start.MONTH)) + "/" + String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
                 + String.valueOf(end.get(end.MONTH)) + "/" + String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
+    }
+
+    public ArrayList<Activity> getMeals()
+    {
+        Activity breakfast = new Activity("Breakfast","Dining Hall","Eat Breakfast");
+        Activity lunch = new Activity("Lunch","Dining Hall","Eat Lunch");
+        Activity dinner = new Activity("Dinner","Dining Hall","Eat Dinner");
+
+        ArrayList<Activity> meals = new ArrayList<Activity>(3);
+        meals.add(breakfast);
+        meals.add(lunch);
+        meals.add(dinner);
+
+        return meals;
     }
 }

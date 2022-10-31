@@ -80,25 +80,12 @@ public class Camp {
         return description;
     }
 
+
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     * Derek: I need to be able to access a specific week within the masterSchedule
-     * so if you could make getters and setters that could get a specific week and
-     * integer
-     * within the hashmap that'd be amazing
-     * essentially in the writer I want to be able to call:
-     * "campDetails.put(THEME, camp.getMasterSchedule().getWeek().getTheme());"
-     * which should theoretically write the camp's theme to the json file
-     * text me if you need help, not crazy urgent but I can't write the writer file
-     * without this
-     * -Zak
-     * Zak: this hashmap essentially functions as an array but i didn't want to
-     * change it
-     * let me know if it works how you want
-     */
 
     public Week getWeek(Integer num) {
         return masterSchedule.get(num);
@@ -115,9 +102,25 @@ public class Camp {
         return weeks;
     }
 
-    public String getActivities() {
+    public boolean qualifiesForDiscount(ArrayList<Camper> campers)
+    {
+        for(int i = 0; i < masterSchedule.size(); i++)
+        {
+            //does this need to by typecasted?
+            if(masterSchedule.get((Integer) i).containsCamper(campers))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getActivities() 
+    {
         String displayActivities = new String();
-        for (Activity activity : activities) {
+
+        for (Activity activity : activities) 
+        {
             displayActivities += activity.toString() + "\n";
         }
 
@@ -138,6 +141,8 @@ public class Camp {
 
     }
 
+    //I don't like this method name but I have to think it was written like this for a reason
+    //If it's useful for the facade i won't change it but
     public void printMasterSchedule() {
         for (int i = 0; i < masterSchedule.size(); i++) {
             System.out.println(masterSchedule.get(i).getTheme());
@@ -148,11 +153,16 @@ public class Camp {
         // do some editing of the calendar
     }
 
-    public String viewCalendar() {
-        // TODO write method
-        // TODO figure out if this is essentially just a toString method and should
-        // be changed to that and create view schedule in Facade
-        return null;
+    //You could make an argument that printing higher levels of schedules (masterSchedule)
+    //should be formatted differently but that is of lower priority (prolly 3)
+    public String viewCalendar() 
+    {
+        String temp = new String();
+        for(int i = 0; i < masterSchedule.size(); i++)
+        {
+            temp = temp + "\t\tWeek: " + i + "\n" + masterSchedule.get(i).viewSchedule() + "\n\n";
+        }
+        return temp;
     }
 
     public String toString() {
