@@ -115,7 +115,6 @@ public class Week {
         }
     }
 
-<<<<<<< HEAD
     public boolean containsCamper(ArrayList<Camper> userCampers)
     {
         for(Camper c: campers)
@@ -143,13 +142,9 @@ public class Week {
         return false;
     }
 
-    public void generateSchedules() 
-    {
         //we need to figure out what the current date is for camper age
-=======
     public void generateSchedules() {
         // we need to figure out what the current date is for camper age
->>>>>>> 90e5edc37a79ade17fb874d2812b4668c0e9f429
         Date currentDate = new Date();
         // automation of the schedules will be done in here, and they will be assigned
         // to groups
