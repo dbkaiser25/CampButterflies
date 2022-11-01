@@ -183,6 +183,7 @@ public class CampButterfliesDriver {
             System.out.println("Which camp would you like to sign up for?");
             System.out.println(facade.getCamps());
             String camp = scan.nextLine();
+            System.out.println("Pick a week");
             boolean moreWeeks = true;
             while(moreWeeks){
                 int i = 1;
@@ -190,6 +191,7 @@ public class CampButterfliesDriver {
                     System.out.println("Week " + i + ": " + week);
                     i++;
                 }
+                System.out.println("Week Number:");
                 int week = scan.nextInt();
                 scan.nextLine();
                 facade.getCampList().getCamp(camp).getWeek(week);
@@ -314,6 +316,7 @@ public class CampButterfliesDriver {
         System.out.println("Which camp would you like to sign up for?");
         System.out.println(facade.getCamps());
         String camp = scan.nextLine();
+        System.out.println("Pick a week");
         boolean moreWeeks = true;
         while(moreWeeks){
             int i = 1;
@@ -321,6 +324,7 @@ public class CampButterfliesDriver {
                     System.out.println("Week " + i + ": " + week);
                     i++;
                 }
+            System.out.println("Week Number:");
             facade.getCampList().getCamp(camp).getWeek(scan.nextInt());
             scan.nextLine();
             String answer = get("Would you like to add another week?(yes/no)");
