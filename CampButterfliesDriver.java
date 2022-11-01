@@ -835,14 +835,19 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8:
-                    System.out.println("Doesnt work");
+                    //Derek wrote this not sure if its right
+                    //System.out.println("Doesnt work");
+                    String campName = get("Camp");
+                    String counselorname = get("Counselor First Name"); //I assume this is the proper call to prompt
+                    String counselorlname = get("Counselor Last Name");
+                    facade.removeCounselor(counselorname,counselorlname,facade.getCampList().getCamp(campName));
                     break;
                 case 9:
                     System.out.println(facade.getCampers());
                     break;
                 case 10:
                     String campname = get("Camp");
-                    int weeknum = Integer.parseInt(get("Week"));
+                    //int weeknum = Integer.parseInt(get("Week"));
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname,
