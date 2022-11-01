@@ -960,7 +960,7 @@ public class CampButterfliesDriver {
             scan.nextLine();
             switch (choice) {
                 case 1:
-                    editActivies(camp);
+                    editActivities(camp);
                     break;
                 case 2:
                     deleteActivity(camp);
@@ -982,14 +982,15 @@ public class CampButterfliesDriver {
      * 
      * @param camp
      */
-    private void editActivies(String camp) {
+    private void editActivities(String camp) {
         System.out.println("Which Activity would you like to edit?");
-        int i = 0;
+        int i = 1;
         for (Activity activity : facade.getCampList().getCamp(camp).getActivitiesArrayList()) {
             System.out.println(i + ". " + activity);
             i++;
         }
         int num = scan.nextInt() - 1;
+        //int num = scan.nextInt();
         scan.nextLine();
         System.out.println("New Activity");
         String activityName = get("Name");
@@ -1006,7 +1007,7 @@ public class CampButterfliesDriver {
      */
     private void deleteActivity(String camp) {
         System.out.println("Which Activity would you like to delete?");
-        int i = 0;
+        int i = 1;
         for (Activity activity : facade.getCampList().getCamp(camp).getActivitiesArrayList()) {
             System.out.println(i + ". " + activity);
             i++;
