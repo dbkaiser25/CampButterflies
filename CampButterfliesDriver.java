@@ -387,7 +387,7 @@ public class CampButterfliesDriver {
      * Welcomes the user once they sign in with their first and last name
      */
     private void welcomeDirectorScreen(){
-        System.out.println("\nWelcome Back, " + facade.getCurrentDirector().getFirstName() +" " + facade.getCurrentDirector().getLastName() + "!");
+                System.out.println("\nWelcome Back, " + facade.getCurrentDirector().getFirstName() +" " + facade.getCurrentDirector().getLastName() + "!");
     }
 
     /**
