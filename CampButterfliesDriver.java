@@ -822,7 +822,7 @@ public class CampButterfliesDriver {
                     changeActivites();
                     break;
                 case 6: // View All counselors
-                    System.out.println(facade.getCounselorList());
+                    System.out.println(facade.getCounselors());
 
                     break;
                 case 7: // View a Counselors Information
