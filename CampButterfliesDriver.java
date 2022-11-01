@@ -577,7 +577,8 @@ public class CampButterfliesDriver {
      * @param camper
      */
     private void editAllergies(String camper) {
-        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies().clone();
+        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies()
+                .clone();
         boolean run = true;
         while (run) {
             System.out.println("1. Delete An Existing Allergy\n2.Add A New Allergy\n3. Finish Editing Allergies");

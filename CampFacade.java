@@ -87,7 +87,7 @@ public class CampFacade {
         }
         if (userList.haveUser(userLogin)) {
             currentUser = userList.getUserByUserName(userLogin.getUserName());
-            //num = 2;
+            // num = 2;
             return 2;
         }
         if (counselorList.haveCounselor(userLogin)) {
@@ -514,10 +514,15 @@ public class CampFacade {
      * @param theme
      */
     // problem in this method
-    public void setWeek(String camp, int week, Date startDate, Date endDate, String theme) {
-        campList.getCamp(camp).getWeek(week).setStartDate(startDate);
-        campList.getCamp(camp).getWeek(week).setEndDate(endDate);
-        campList.getCamp(camp).getWeek(week).setTheme(theme);
+    public void setWeek(String name, int week, Date startDate, Date endDate, String theme) {
+        // need to be able to get the camp by the name
+        // Camp camp = campList.setCamp(name);
+        // System.out.println("year " + camp.getYear());
+        // // this.campList.getCamp(name).getWeek()
+        System.out.println(campList.getCamp(name).getWeek(week).toString());
+        campList.getCamp(name).getWeek(week).setStartDate(startDate);
+        campList.getCamp(name).getWeek(week).setEndDate(endDate);
+        campList.getCamp(name).getWeek(week).setTheme(theme);
         campList.saveCamps();
     }
 
@@ -577,6 +582,7 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Camper> getGroup(String camp, int week) {
+        System.out.println(campList.getCamp(camp).getWeek(week));
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
@@ -625,12 +631,9 @@ public class CampFacade {
         camperList.saveCampers();
     }
 
-    public void removeCounselor(String firstName, String lastName, Camp camp)
-    {
-        currentDirector.removeCounselor(firstName,lastName,camp);
+    public void removeCounselor(String firstName, String lastName, Camp camp) {
+        currentDirector.removeCounselor(firstName, lastName, camp);
         counselorList.saveCounselor();
     }
-
-  
 
 }
