@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Week {
+    public static void main(String[] args) {
+
+    }
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
     // private HashMap<Group, ArrayList<Activity>> schedule; TODO this is the old
     // HashMap Configuration see if new is good then fully delete
@@ -101,9 +104,8 @@ public class Week {
     }
 
     // Maybe we want an empty constructor, for when new weeks need to be registered
-    public Week() 
-    {
-        
+    public Week() {
+
         // Constructor goes here
 
     }
@@ -313,7 +315,7 @@ public class Week {
         for (Group g : groups) {
             temp = temp + "\n\n\t\t" + g.printSchedule();
         }
-        return null;
+        return temp;
     }
 
     public void editSchedule() {
