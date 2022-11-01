@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 //Director doesn't have an email?!?!?! i think thats an issue
 public class Director extends Person {
@@ -149,10 +150,16 @@ public class Director extends Person {
 
    public String toString() {
       String temp = new String();
-      temp = "Director: " + firstName + " " + lastName + "\nUsername: "
-            + userLogin.getUserName() + "\nDate of Birth: " + dateOfBirth.toString()
-            + "\nAddress: " + homeAddress;
+      temp = "\nDirector: " + firstName + " " + lastName + "\nUsername: "
+      + userLogin.getUserName() + "\nDate of Birth: " 
+      + formatDate(dateOfBirth) + "\nAddress: " + homeAddress + "\n";
       return temp;
+   }
+
+   private String formatDate(Date d)
+   {
+      SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+      return formatter.format(d);
    }
 
 }
