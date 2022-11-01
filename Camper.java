@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * A class that defines a camper for the camp
@@ -133,12 +134,18 @@ public class Camper extends Person {
          * medicalInfo + "\nPhone Number: " + phoneNumber;
          */
 
-        temp = "Camper: " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.toString()
+        temp = "\nCamper: " + firstName + " " + lastName + "\nDate of Birth: " + formatDate(dateOfBirth) 
                 + "\nAddress: " + homeAddress + "\nSex: " + sex + "\nMedications: \n" + printMedication()
                 + "\nAllergies: \n"
                 + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() + "\nPediatrician: \n"
-                + pediatrician.toString();
+                + pediatrician.toString() + "\n";
         return temp;
+    }
+
+    private String formatDate(Date d)
+    {
+      SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+      return formatter.format(d);
     }
 
     // helper methods
