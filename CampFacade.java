@@ -70,7 +70,7 @@ public class CampFacade {
      * Checks to see if login information exists
      * 
      * @param userLogin
-     * @return true if it exists, false if it doesnt
+     * @return 
      */
     public int Login(LoginInfo userLogin) {
         if (userList.haveUser(userLogin)) {
@@ -79,8 +79,7 @@ public class CampFacade {
         } else if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
             return 3;
-        }
-        else if (directorList.haveDirector(userLogin)) {
+        }else if (directorList.haveDirector(userLogin)) {
             currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
             return 1;
         } 

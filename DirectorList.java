@@ -27,6 +27,7 @@ public class DirectorList
         else
         {
             directors.add(director);
+            saveDirector();
             return true;
         }
     }

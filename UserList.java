@@ -21,6 +21,7 @@ public class UserList {
             return false;
         } else {
             users.add(user);
+            saveUsers();
         }
         return false;
     }
