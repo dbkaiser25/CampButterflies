@@ -13,15 +13,6 @@ public class CampButterfliesDriver {
     private Scanner scan;
     private String[] homepageOptions = new String[7];
     private CampFacade facade;
-<<<<<<< HEAD
-=======
-
-    public static void main(String[] args) {
-        CampFacade facade = new CampFacade();
-        CampButterfliesDriver driver = new CampButterfliesDriver(facade);
-        driver.run();
-    }
->>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
 
     /**
      * Creates the driver and initializes the scanner
@@ -400,10 +391,6 @@ public class CampButterfliesDriver {
      * Welcomes the user once they sign in with their first and last name
      */
     private void welcomeUserScreen() {
-<<<<<<< HEAD
-        System.out.println("here");
-=======
->>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
         System.out.println("\nWelcome Back, " + facade.getCurrentUser().getFirstName() + " "
                 + facade.getCurrentUser().getLastName() + "!");
     }
@@ -842,31 +829,24 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8:
-<<<<<<< HEAD
                     // remove counselor
-=======
-                    //Derek wrote this not sure if its right
-                    //System.out.println("Doesnt work");
+                    // Derek wrote this not sure if its right
+                    // System.out.println("Doesnt work");
                     String campName = get("Camp");
-                    String counselorname = get("Counselor First Name"); //I assume this is the proper call to prompt
+                    String counselorname = get("Counselor First Name"); // I assume this is the proper call to prompt
                     String counselorlname = get("Counselor Last Name");
-                    facade.removeCounselor(counselorname,counselorlname,facade.getCampList().getCamp(campName));
->>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
+                    facade.removeCounselor(counselorname, counselorlname, facade.getCampList().getCamp(campName));
                     break;
                 case 9:
                     System.out.println(facade.getCampers());
                     break;
                 case 10:
                     String campname = get("Camp");
-                    //int weeknum = Integer.parseInt(get("Week"));
+                    // int weeknum = Integer.parseInt(get("Week"));
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname,
-<<<<<<< HEAD
-                            facade.getCampList().getCamp(campname).getWeek(weeknum));
-=======
                             facade.getCampList().getCamp(campname));
->>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
                     break;
                 case 11:
                     String camp = get("Camp");
@@ -1049,12 +1029,9 @@ public class CampButterfliesDriver {
         facade.getCampList().getCamp(camp).getActivitiesArrayList().add(activity);
     }
 
-<<<<<<< HEAD
     public static void main(String[] args) {
         CampFacade facade = new CampFacade();
         CampButterfliesDriver driver = new CampButterfliesDriver(facade);
         driver.run();
     }
-=======
->>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
 }
