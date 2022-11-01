@@ -61,6 +61,7 @@ public class Director extends Person {
       camps.add(camp);
    }
 
+   /* 
    //to be deleted old implementation
    public void removeCamper(String firstName, String lastName, Week week) {
       // 1. they need to be removed from the list of campers for that given week
@@ -76,24 +77,7 @@ public class Director extends Person {
          }
       }
    }
-
-   // 2. they need to be removed from whatever group they are in
-   // helper method
-   private boolean removeCamperFromGroups(Week week, Camper camperToBeRemoved) {
-      for (Group g : week.getGroups()) 
-      {
-         for (int i = 0; i < g.getCampers().size(); i++) 
-         {
-            if (g.getCampers().get(i).equals(camperToBeRemoved)) 
-            {
-               g.getCampers().remove(i);
-               return true;
-            }
-         }
-      }
-      // camper not found
-      return false;
-   }
+   */
 
    public void removeCamper(String firstName, String lastName, Camp camp)
    {
@@ -115,6 +99,25 @@ public class Director extends Person {
             }
          }
       }
+   }
+
+   // 2. they need to be removed from whatever group they are in
+   // helper method
+   private boolean removeCamperFromGroups(Week week, Camper camperToBeRemoved) 
+   {
+      for (Group g : week.getGroups()) 
+      {
+         for (int i = 0; i < g.getCampers().size(); i++) 
+         {
+            if (g.getCampers().get(i).equals(camperToBeRemoved)) 
+            {
+               g.getCampers().remove(i);
+               return true;
+            }
+         }
+      }
+      // camper not found
+      return false;
    }
 
    public void removeCounselor(String firstName, String lastName, Camp camp)

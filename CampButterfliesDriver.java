@@ -846,7 +846,7 @@ public class CampButterfliesDriver {
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname,
-                            facade.getCampList().getCamp(campname).getWeek(weeknum));
+                            facade.getCampList().getCamp(campname));
                     break;
                 case 11:
                     String camp = get("Camp");

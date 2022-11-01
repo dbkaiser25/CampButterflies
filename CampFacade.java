@@ -619,9 +619,11 @@ public class CampFacade {
      * @param lastName
      * @param week
      */
-    public void removeCamper(String firstName, String lastName, Week week) {
-        currentDirector.removeCamper(firstName, lastName, week);
+    public void removeCamper(String firstName, String lastName, Camp camp) {
+        currentDirector.removeCamper(firstName, lastName, camp);
         camperList.saveCampers();
     }
+
+  
 
 }
