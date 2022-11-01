@@ -13,6 +13,15 @@ public class CampButterfliesDriver {
     private Scanner scan;
     private String[] homepageOptions = new String[7];
     private CampFacade facade;
+<<<<<<< HEAD
+=======
+
+    public static void main(String[] args) {
+        CampFacade facade = new CampFacade();
+        CampButterfliesDriver driver = new CampButterfliesDriver(facade);
+        driver.run();
+    }
+>>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
 
     /**
      * Creates the driver and initializes the scanner
@@ -181,7 +190,7 @@ public class CampButterfliesDriver {
             System.out.println("\nCamper Information");
             Camper camper = createCamper();
             campers.add(camper);
-            System.out.println("Which camp would you like to sign up for?");
+            System.out.println("Which camp would you like to sign up for? (Enter a number)");
             System.out.println(facade.getCamps());
             String camp = scan.nextLine();
             System.out.println("Pick a week");
@@ -349,6 +358,7 @@ public class CampButterfliesDriver {
         String userName = get("Username");
         String password = get("Password");
         LoginInfo loginInfo = new LoginInfo(userName, password);
+        System.out.println(userName + "" + password);
         int loginnum = facade.Login(loginInfo);
         if (loginnum == 1) {
             directorScreen();
@@ -390,7 +400,10 @@ public class CampButterfliesDriver {
      * Welcomes the user once they sign in with their first and last name
      */
     private void welcomeUserScreen() {
+<<<<<<< HEAD
         System.out.println("here");
+=======
+>>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
         System.out.println("\nWelcome Back, " + facade.getCurrentUser().getFirstName() + " "
                 + facade.getCurrentUser().getLastName() + "!");
     }
@@ -510,6 +523,7 @@ public class CampButterfliesDriver {
                     break;
                 case 5:
                     run = false;
+                    break;
                 default:
                     System.out.println("Please enter a valid number");
                     break;
@@ -707,6 +721,9 @@ public class CampButterfliesDriver {
                 case 6:
                     run = false;
                     break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
             }
             pause();
         }
@@ -816,7 +833,7 @@ public class CampButterfliesDriver {
                 case 5:
                     changeActivites();
                     break;
-                case 6:
+                case 6: // needs work
                     System.out.println(facade.getCounselorList());
                     break;
                 case 7:
@@ -825,18 +842,31 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8:
+<<<<<<< HEAD
                     // remove counselor
+=======
+                    //Derek wrote this not sure if its right
+                    //System.out.println("Doesnt work");
+                    String campName = get("Camp");
+                    String counselorname = get("Counselor First Name"); //I assume this is the proper call to prompt
+                    String counselorlname = get("Counselor Last Name");
+                    facade.removeCounselor(counselorname,counselorlname,facade.getCampList().getCamp(campName));
+>>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
                     break;
                 case 9:
                     System.out.println(facade.getCampers());
                     break;
                 case 10:
                     String campname = get("Camp");
-                    int weeknum = Integer.parseInt(get("Week"));
+                    //int weeknum = Integer.parseInt(get("Week"));
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname,
+<<<<<<< HEAD
                             facade.getCampList().getCamp(campname).getWeek(weeknum));
+=======
+                            facade.getCampList().getCamp(campname));
+>>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
                     break;
                 case 11:
                     String camp = get("Camp");
@@ -849,6 +879,7 @@ public class CampButterfliesDriver {
                     break;
                 default:
                     System.out.println("Please enter a valid number");
+                    break;
             }
             pause();
         }
@@ -910,7 +941,8 @@ public class CampButterfliesDriver {
         int year = Integer.parseInt(get("Year of Camp"));
         String name = get("Name of Camp");
         String description = get("Short Description of Camp");
-        int weeks = Integer.parseInt("Number of Weeks");
+        String weekString = get("Number of Weeks");
+        int weeks = Integer.parseInt(weekString);
         facade.newCamp(name, description, weeks, year);
         for (int i = 1; i <= weeks; i++) {
             System.out.println("Week " + i + ": ");
@@ -1017,9 +1049,12 @@ public class CampButterfliesDriver {
         facade.getCampList().getCamp(camp).getActivitiesArrayList().add(activity);
     }
 
+<<<<<<< HEAD
     public static void main(String[] args) {
         CampFacade facade = new CampFacade();
         CampButterfliesDriver driver = new CampButterfliesDriver(facade);
         driver.run();
     }
+=======
+>>>>>>> f2a4d88378d1761a0c4bebbd3971d9e40e70d0f7
 }

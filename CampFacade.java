@@ -90,6 +90,7 @@ public class CampFacade {
         }
         if (userList.haveUser(userLogin)) {
             currentUser = userList.getUserByUserName(userLogin.getUserName());
+            //num = 2;
             return 2;
         }
         if (counselorList.haveCounselor(userLogin)) {
@@ -515,6 +516,7 @@ public class CampFacade {
      * @param endDate
      * @param theme
      */
+    // problem in this method
     public void setWeek(String camp, int week, Date startDate, Date endDate, String theme) {
         campList.getCamp(camp).getWeek(week).setStartDate(startDate);
         campList.getCamp(camp).getWeek(week).setEndDate(endDate);
@@ -621,9 +623,17 @@ public class CampFacade {
      * @param lastName
      * @param week
      */
-    public void removeCamper(String firstName, String lastName, Week week) {
-        currentDirector.removeCamper(firstName, lastName, week);
+    public void removeCamper(String firstName, String lastName, Camp camp) {
+        currentDirector.removeCamper(firstName, lastName, camp);
         camperList.saveCampers();
     }
+
+    public void removeCounselor(String firstName, String lastName, Camp camp)
+    {
+        currentDirector.removeCounselor(firstName,lastName,camp);
+        counselorList.saveCounselor();
+    }
+
+  
 
 }

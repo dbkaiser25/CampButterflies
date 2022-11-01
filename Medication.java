@@ -37,8 +37,8 @@ public class Medication
 
     public String toString() {
         return "Medication Name: " + type +
-                "Dosage Amount: " + dose +
-                "Time Taken: " + time;
+                " Dosage Amount: " + dose +
+                " Time Taken: " + time;
     }
 
     

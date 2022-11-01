@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * A class that defines a counselor
@@ -164,15 +165,19 @@ public class Counselor extends Person {
 
     public String toString() {
         String temp = new String();
-        temp = "Counselor:  " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName()
-                + "\nDate of Birth: "
-                + dateOfBirth.toString() + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress
+        temp = "\nCounselor:  " + firstName + " " + lastName + "\nUsername: " + userLogin.getUserName()
+                + "\nDate of Birth: " + formatDate(dateOfBirth)
+                + "\nAddress: " + homeAddress + "\nEmail: " + emailAddress
                 + "\nPhone Number: " + phoneNumber + "\nEmergency Contacts: \n" + printEmergencyContacts()
-                + "\nPediatrician: \n" + pediatrician;
+                + "\nPediatrician: \n" + pediatrician + "\n";
         return temp;
     }
 
-
+    private String formatDate(Date d)
+    {
+      SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+      return formatter.format(d);
+    }
 
     // to be deleated
     private String printEmergencyContacts() {
