@@ -827,7 +827,9 @@ public class CampButterfliesDriver {
                     changeActivites();
                     break;
                 case 6: // needs work
-                    System.out.println(facade.getCounselorList());
+                    //System.out.println(facade.getCounselorList());
+                    System.out.println(facade.getCounselors());
+
                     break;
                 case 7:
                     String firstName = get("Counselor's First Name");
@@ -903,7 +905,6 @@ public class CampButterfliesDriver {
                     break;
                 case 3:
                     String newhomeaddress = get("Home Address");
-                    facade.editDirectorHomeAddress(newhomeaddress);
                     break;
                 case 4:
                     String newdob = get("Date of Birth(MM/DD/YYYY");
