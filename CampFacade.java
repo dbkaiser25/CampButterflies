@@ -395,8 +395,7 @@ public class CampFacade {
      * @return
      */
     public boolean qualifiesForDiscount() {
-        return true;
-        // return currentUser.qualifiesForDiscount(campList,0);
+        return currentUser.qualifiesForDiscount(campList,1);
     }
 
     /**
