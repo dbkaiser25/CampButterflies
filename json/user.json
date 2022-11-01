@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
   {
     "id": "6c4c8332-580a-4e19-9166-fc6b2f8d12aa",
@@ -37,6 +36,3 @@
     ]
   }
 ]
-=======
-[{"firstName":"Susan","lastName":"Atkinson","password":"sUs@n@tkinson","user_campers":["45bd6f4e-a88e-448a-b911-1048c5b3ea6a","1035e216-e038-4541-abe9-a4e5441eb592"],"dateOfBirth":"11\/15\/1985","id":"6c4c8332-580a-4e19-9166-fc6b2f8d12aa","homeAddress":"101 Premier Drive","username":"susanatkinson"},{"firstName":"Cindy","lastName":"Smith","password":"CSmith1980","user_campers":["1035e216-e038-4541-abe9-a4e5441eb592"],"dateOfBirth":"05\/02\/1980","id":"eaf1e16b-8715-44ce-a0f1-788a42e9a6dc","homeAddress":"20 Windy Street","username":"cindysmith"},{"firstName":"Adam","lastName":"Smalls","password":"AdamSmalls1125","user_campers":["45bd6f4e-a88e-448a-b911-1048c5b3ea6a"],"dateOfBirth":"03\/24\/1984","id":"3e7084bd-9262-45f6-a82c-cee6fc09fdff","homeAddress":"77 Baker Court","username":"adamsmalls"},{"firstName":"Kathy","lastName":"Brown","password":"Kathy","user_campers":["dc248018-26bc-4145-90b7-dc839a8b41f1"],"dateOfBirth":"01\/09\/1971","id":"50ea6a91-d93f-4c39-a072-081b914e2509","homeAddress":"123","username":"Kathy"}]
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
