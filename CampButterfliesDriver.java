@@ -181,7 +181,7 @@ public class CampButterfliesDriver {
             System.out.println("\nCamper Information");
             Camper camper = createCamper();
             campers.add(camper);
-            System.out.println("Which camp would you like to sign up for? (Enter a number)");
+            System.out.println("Which camp would you like to sign up for?");
             System.out.println(facade.getCamps());
             String camp = scan.nextLine();
             System.out.println("Pick a week");
@@ -578,8 +578,7 @@ public class CampButterfliesDriver {
      * @param camper
      */
     private void editAllergies(String camper) {
-        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies()
-                .clone();
+        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies().clone();
         boolean run = true;
         while (run) {
             System.out.println("1. Delete An Existing Allergy\n2.Add A New Allergy\n3. Finish Editing Allergies");
@@ -834,11 +833,8 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8: // Remove Counselor
-                    // remove counselor
-                    // Derek wrote this not sure if its right
-                    // System.out.println("Doesnt work");
                     String campName = get("Camp");
-                    String counselorname = get("Counselor First Name"); // I assume this is the proper call to prompt
+                    String counselorname = get("Counselor First Name"); 
                     String counselorlname = get("Counselor Last Name");
                     facade.removeCounselor(counselorname, counselorlname, facade.getCampList().getCamp(campName));
                     break;
@@ -852,11 +848,9 @@ public class CampButterfliesDriver {
 
                 case 11: // Remove Camper
                     String campname = get("Camp");
-                    // int weeknum = Integer.parseInt(get("Week"));
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
-                    facade.removeCamper(campername, camperlname,
-                            facade.getCampList().getCamp(campname));
+                    facade.removeCamper(campername, camperlname, facade.getCampList().getCamp(campname));
                     break;
                 case 12: // View Schedule
                     String camp = get("Camp");
