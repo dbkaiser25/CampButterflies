@@ -39,6 +39,7 @@ public class CampList {
     public Camp getCamp(String name) {
         for (Camp c : camps) {
             if (c.getName().equals(name)) {
+                System.out.println("camp name " + c.getName());
                 return c;
             }
         }

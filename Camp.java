@@ -85,7 +85,15 @@ public class Camp {
     }
 
     public Week getWeek(Integer num) {
-        return masterSchedule.get(num);
+        Week week = new Week();
+        for (HashMap.Entry<Integer, Week> entry : masterSchedule.entrySet()) {
+            Integer weekInt = entry.getKey();
+            Week thisWeek = entry.getValue();
+            if (num == weekInt) {
+                week = thisWeek;
+            }
+        }
+        return week;
     }
 
     public ArrayList<Week> getWeeks() {
