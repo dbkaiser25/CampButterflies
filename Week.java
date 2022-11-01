@@ -195,8 +195,9 @@ public class Week {
         Group g6 = new Group();
         groups.add(g6);
 
+        
+
         for (Camper c : campers) {
-            int[] groupTotals = new int[6];
             int temp = calculateAge(c.getDateOfBirth(), currentDate);
 
             // TECHNICALLY there are no requirements or specifications on how the list of

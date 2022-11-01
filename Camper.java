@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 /**
  * A class that defines a camper for the camp
@@ -177,5 +178,44 @@ public class Camper extends Person {
 
     public String toString() {
         return firstName + " " + lastName;
+    }
+
+    // TODO ill look at this later
+    public boolean selectWeek(Camp camp, Integer weekNumber) 
+    {
+        //In the UI, the user will register their campers
+        //then, they select the weeks option to figure out what weeks they want to sign up for
+        //and what camper gets signed up for whatever week
+        //paramters: we need to know what camp and year were talking about, 
+        //           we need to know which camper
+        //           and then which week
+        //im thinking this method will get called once to sign a camper up for a week
+        //then again for a different week
+        //then again for a different camper
+
+        //so for this method to work
+        //the camper needs to be added to the campers array list in week
+        //we can get to this by accessing the master schedule in camp
+
+        if(!)
+
+        /* 
+        if(!camp.getMasterSchedule().get(weekNumber).isFull())
+        {
+            camp.getMasterSchedule().get(weekNumber).getCampers().add(campers.get(camperNumber));
+            return true;
+        }
+        return false;
+        */
+    }
+
+    public ArrayList<Week> getWeeks(Camp camp, Integer weekNumber) {
+        ArrayList<Week> weeks = new ArrayList<Week>();
+
+        for (HashMap.Entry<Integer, Week> entry : camp.getMasterSchedule().entrySet()) {
+            Week week = entry.getValue();
+            //weeks.add(week);
+        }
+        return week;
     }
 }
