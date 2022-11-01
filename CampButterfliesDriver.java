@@ -723,7 +723,7 @@ public class CampButterfliesDriver {
     private void viewGroup() {
         String camp = get("Camp");
         int week = Integer.parseInt(get("Week Number"));
-        ArrayList<Camper> campers = facade.getGroup(camp, week);
+        ArrayList<Camper> campers = facade.getGroup(camp, week - 1);
         for (Camper camper : campers) {
             System.out.println(camper.toStringBrief() + "\n");
         }
