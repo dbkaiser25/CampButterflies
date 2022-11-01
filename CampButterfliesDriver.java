@@ -177,17 +177,21 @@ public class CampButterfliesDriver {
         ArrayList<Camper> campers = new ArrayList<>();
         boolean more = true;
         while(more){
-            System.out.println("Camper Information");
+            System.out.println("\nCamper Information");
             Camper camper = createCamper();
             campers.add(camper);
             System.out.println("Which camp would you like to sign up for?");
-            System.out.println(facade.getCampList());
+            System.out.println(facade.getCamps());
             String camp = scan.nextLine();
             boolean moreWeeks = true;
             while(moreWeeks){
-                System.out.println("Which week would you like to register for?");
-                System.out.println(facade.getWeeks(camp));
+                int i = 1;
+                for(Week week: facade.getWeeks(camp)){
+                    System.out.println("Week " + i + ": " + week);
+                    i++;
+                }
                 int week = scan.nextInt();
+                scan.nextLine();
                 facade.getCampList().getCamp(camp).getWeek(week);
                 camper.addWeek(week);
                 String answer = get("Would you like to add another week?(yes/no)");
@@ -233,7 +237,7 @@ public class CampButterfliesDriver {
         ArrayList<String> allergies = new ArrayList<>();
         boolean moreAllergies = true;
         while(moreAllergies){
-            String allergy = get("Allergies:");
+            String allergy = get("Allergies");
             allergies.add(allergy);
             String answer = get("Would you like to add more allergies?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
@@ -308,13 +312,17 @@ public class CampButterfliesDriver {
         }
 
         System.out.println("Which camp would you like to sign up for?");
-        System.out.println(facade.getCampList());
+        System.out.println(facade.getCamps());
         String camp = scan.nextLine();
         boolean moreWeeks = true;
         while(moreWeeks){
-            System.out.println("Which week would you like to register for?");
-            System.out.println(facade.getWeeks(camp));
+            int i = 1;
+                for(Week week: facade.getWeeks(camp)){
+                    System.out.println("Week " + i + ": " + week);
+                    i++;
+                }
             facade.getCampList().getCamp(camp).getWeek(scan.nextInt());
+            scan.nextLine();
             String answer = get("Would you like to add another week?(yes/no)");
             if(answer.equalsIgnoreCase("no"))
                     moreWeeks = false;
@@ -330,12 +338,16 @@ public class CampButterfliesDriver {
         String userName = get("Username");
         String password = get("Password");
         LoginInfo loginInfo = new LoginInfo(userName, password);
-        if(facade.Login(loginInfo)==1)
+        int loginnum = facade.Login(loginInfo);
+        if(loginnum==1){
             userScreen();
-        else if(facade.Login(loginInfo)==2)
+        }
+        else if(loginnum==2){
             counselorScreen();
-        else if (facade.Login(loginInfo)==3)
+        }
+        else if (loginnum==3){
             directorScreen();
+        }
         else
             System.out.println("Username and Password are not valid");
     }
@@ -546,6 +558,7 @@ public class CampButterfliesDriver {
                         System.out.println((i+1)+". " + newAllergies.get(i));
                     }
                     newAllergies.remove(scan.nextInt()-1);
+                    scan.nextLine();
                     break;
                 case 2:
                     newAllergies.add(get("Allergy"));
@@ -569,6 +582,7 @@ public class CampButterfliesDriver {
     private ArrayList<Contact> editEC(ArrayList<Contact> emergencyContacts){
         System.out.println("1. Add New Emergency Contact\n2. Remove An Existing Emergency Contact");
         int choice = scan.nextInt();
+        scan.nextLine();
         if(choice == 1){
             System.out.println("New Emergency Contact");
             String contactFirstName = get("First Name");
@@ -585,6 +599,7 @@ public class CampButterfliesDriver {
                 System.out.println((i+1) + ". " + emergencyContacts.get(i).getFirstName() + " " + emergencyContacts.get(i).getLastName());
             }
             emergencyContacts.remove(scan.nextInt());
+            scan.nextLine();
         }
         else 
             System.out.println("Please enter a valid number");
@@ -920,6 +935,7 @@ public class CampButterfliesDriver {
             i++;
         }  
         int num = scan.nextInt()-1;
+        scan.nextLine();
         System.out.println("New Activity");
         String activityName = get("Name");
         String activityDesc = get("Description");
@@ -940,6 +956,7 @@ public class CampButterfliesDriver {
             i++;
         }  
         facade.getCampList().getCamp(camp).getActivitiesArrayList().remove(scan.nextInt()-1);
+        scan.nextLine();
     }
 
     /**
