@@ -576,7 +576,6 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Camper> getGroup(String camp, int week) {
-        System.out.println(campList.getCamp(camp).getWeek(week));
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
