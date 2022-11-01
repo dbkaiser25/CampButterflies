@@ -179,8 +179,6 @@ public class Counselor extends Person {
       return formatter.format(d);
     }
 
-
-
     // to be deleated
     private String printEmergencyContacts() {
         String temp = new String();

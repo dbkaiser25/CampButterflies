@@ -61,12 +61,15 @@ public class Director extends Person {
       camps.add(camp);
    }
 
+   //to be deleted old implementation
    public void removeCamper(String firstName, String lastName, Week week) {
       // 1. they need to be removed from the list of campers for that given week
-      for (int i = 0; i < week.getCampers().size(); i++) {
+      for (int i = 0; i < week.getCampers().size(); i++) 
+      {
          if (week.getCampers().get(i).getFirstName().equals(firstName)
-               && week.getCampers().get(i).getLastName().equals(lastName)) {
-            removeCamperFromGroup(week, week.getCampers().get(i));
+         &&  week.getCampers().get(i).getLastName().equals(lastName)) 
+         {
+            removeCamperFromGroups(week, week.getCampers().get(i));
             week.getCampers().remove(i);
             // exit the loop
             i = week.getCampers().size();
@@ -76,10 +79,13 @@ public class Director extends Person {
 
    // 2. they need to be removed from whatever group they are in
    // helper method
-   private boolean removeCamperFromGroup(Week week, Camper camperToBeRemoved) {
-      for (Group g : week.getGroups()) {
-         for (int i = 0; i < g.getCampers().size(); i++) {
-            if (g.getCampers().get(i).equals(camperToBeRemoved)) {
+   private boolean removeCamperFromGroups(Week week, Camper camperToBeRemoved) {
+      for (Group g : week.getGroups()) 
+      {
+         for (int i = 0; i < g.getCampers().size(); i++) 
+         {
+            if (g.getCampers().get(i).equals(camperToBeRemoved)) 
+            {
                g.getCampers().remove(i);
                return true;
             }
@@ -88,6 +94,57 @@ public class Director extends Person {
       // camper not found
       return false;
    }
+
+   public void removeCamper(String firstName, String lastName, Camp camp)
+   {
+      for(int w = 0; w < camp.getMasterSchedule().size(); w++)
+      {
+         for(int c = 0; c < camp.getMasterSchedule().get(w).getCampers().size(); c++)
+         {
+            if(camp.getMasterSchedule().get(w).getCampers().get(c).getFirstName().equals(firstName)
+            && camp.getMasterSchedule().get(w).getCampers().get(c).getLastName().equals(lastName))
+            {
+               //remove them from any groups
+               removeCamperFromGroups(camp.getMasterSchedule().get(w), camp.getMasterSchedule().get(w).getCampers().get(c));
+
+               //remove them from the master list so they can't be put into any more groups
+               camp.getMasterSchedule().get(w).getCampers().remove(c);
+
+               //exit this week and check more weeks
+               c = camp.getMasterSchedule().get(w).getCampers().size();
+            }
+         }
+      }
+   }
+
+   public void removeCounselor(String firstName, String lastName, Camp camp)
+   {
+      //they need to be removed from the list of counselors for any week
+      for(int w = 0; w < camp.getMasterSchedule().size(); w++)
+      {
+         for(int c = 0; c < camp.getMasterSchedule().get(w).getCounselors().size(); c++)
+         {
+            if(camp.getMasterSchedule().get(w).getCounselors().get(c).getFirstName().equals(firstName) 
+            && camp.getMasterSchedule().get(w).getCounselors().get(c).getLastName().equals(lastName))
+            {
+               for(int g = 0; g < camp.getMasterSchedule().get(w).getGroups().size(); g++)
+               {
+                  if(camp.getMasterSchedule().get(w).getGroups().get(g).getCounselor().equals
+                  (camp.getMasterSchedule().get(w).getCounselors().get(c)))
+                  {
+                     //I don't like setting anything to null but he has to get removed somehow
+                     camp.getMasterSchedule().get(w).getGroups().get(g).setCounselor(null);
+                     g = camp.getMasterSchedule().get(w).getGroups().size();
+                  }
+               }
+               camp.getMasterSchedule().get(w).getCounselors().remove(c);
+               c = camp.getMasterSchedule().get(w).getCounselors().size();
+            }
+         }
+      }
+   }
+
+   
 
    // to view an individual schedule, I need to know what camp were talking about
    // what week and what group were talking about
