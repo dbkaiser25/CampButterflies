@@ -136,7 +136,6 @@ public class Director extends Person {
             break;
          }
       }
-
    }
 
    public String viewCounselorInfo(String firstName, String lastName) {

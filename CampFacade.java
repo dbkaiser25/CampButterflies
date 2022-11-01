@@ -79,7 +79,7 @@ public class CampFacade {
         } else if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
             return 3;
-        }else if (directorList.haveDirector(userLogin)) {
+        } else if (directorList.haveDirector(userLogin)) {
             currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
             return 1;
         } 
