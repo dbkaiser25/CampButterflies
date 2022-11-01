@@ -340,13 +340,13 @@ public class CampButterfliesDriver {
         LoginInfo loginInfo = new LoginInfo(userName, password);
         int loginnum = facade.Login(loginInfo);
         if(loginnum==1){
-            userScreen();
+            directorScreen();
         }
         else if(loginnum==2){
-            counselorScreen();
+            userScreen();
         }
         else if (loginnum==3){
-            directorScreen();
+            counselorScreen();
         }
         else
             System.out.println("Username and Password are not valid");
@@ -379,15 +379,29 @@ public class CampButterfliesDriver {
      /**
      * Welcomes the user once they sign in with their first and last name
      */
-    private void welcomeScreen(){
-        System.out.println("Welcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
+    private void welcomeUserScreen(){
+        System.out.println("\nWelcome Back, " + facade.getCurrentUser().getFirstName() +" " + facade.getCurrentUser().getLastName() + "!");
+    }
+
+    /**
+     * Welcomes the user once they sign in with their first and last name
+     */
+    private void welcomeDirectorScreen(){
+        System.out.println("\nWelcome Back, " + facade.getCurrentDirector().getFirstName() +" " + facade.getCurrentDirector().getLastName() + "!");
+    }
+
+    /**
+     * Welcomes the user once they sign in with their first and last name
+     */
+    private void welcomeCounselorScreen(){
+        System.out.println("\nWelcome Back, " + facade.getCurrentCounselor().getFirstName() +" " + facade.getCurrentCounselor().getLastName() + "!");
     }
 
     /**
      * The screen users see when they login
      */
     private void userScreen(){
-        welcomeScreen();
+        welcomeUserScreen();
         boolean run = true;
         while(run){
             userOptions();
@@ -645,7 +659,7 @@ public class CampButterfliesDriver {
      * The screen counselors see when they login
      */
     private void counselorScreen(){
-        welcomeScreen();
+        welcomeCounselorScreen();
         boolean run = true;
         while(run){
             counselorOptions();
@@ -756,7 +770,7 @@ public class CampButterfliesDriver {
      * The screen directors see when the login
      */
     private void directorScreen(){
-        welcomeScreen();
+        welcomeDirectorScreen();
         boolean run = true;
         while(run){
             directorOptions();

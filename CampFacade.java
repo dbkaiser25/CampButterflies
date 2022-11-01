@@ -73,15 +73,15 @@ public class CampFacade {
      * @return true if it exists, false if it doesnt
      */
     public int Login(LoginInfo userLogin) {
-        if (directorList.haveDirector(userLogin)) {
+        /*if (directorList.haveDirector(userLogin)) {
             currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
-            return 3;
-        } else if (userList.haveUser(userLogin)) {
-            currentUser = userList.getUserByUserName(userLogin.getUserName());
             return 1;
+        } else */if (userList.haveUser(userLogin)) {
+            currentUser = userList.getUserByUserName(userLogin.getUserName());
+            return 2;
         } else if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
-            return 2;
+            return 3;
         }
         return 0;
     }
