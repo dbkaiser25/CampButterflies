@@ -38,13 +38,11 @@ public class CampButterfliesDriver {
         while(running){
             homepage();
             int choice = scan.nextInt();
+            scan.nextLine();
 
             switch(choice){
                 case 1:
-                    System.out.println("Which camps activities would you like to see?");
-                    System.out.println(facade.getCamps());
-                    String camp = scan.nextLine();
-                    System.out.println(facade.getActivities(camp));
+                    activites();
                     break;
                 case 2:
                     weeks();
@@ -73,13 +71,21 @@ public class CampButterfliesDriver {
         }
     }
 
+    /**
+     * Prints out activities for a certain camp
+     */
+    private void activites(){
+        System.out.println("Which camp's activities would you like to see?");
+        System.out.println(facade.getCamps()+"\n");
+        System.out.println(facade.getActivities(scan.nextLine()));
+    }
 
     /**
      * Prints out the available weeks for a certain camp
      */
     private void weeks(){
         System.out.println("Which camps sessions would you like to see?");
-        System.out.println(facade.getCampList());
+        System.out.println(facade.getCamps()+"\n");
         String camp = scan.nextLine();
         int i = 1;
         for(Week week: facade.getWeeks(camp)){
@@ -112,7 +118,7 @@ public class CampButterfliesDriver {
      */
     private void pause(){
         try {
-            TimeUnit.MILLISECONDS.sleep(500);
+            TimeUnit.MILLISECONDS.sleep(600);
         } catch (Exception e) {
             System.out.println("Timer error");
         }
@@ -144,6 +150,7 @@ public class CampButterfliesDriver {
     private void createAccount(){
         System.out.println("Would you like to create a \n1. Parent Account \n2. Counselor Account");
         int choice = scan.nextInt();
+        scan.nextLine();
         switch(choice){
             case 1:
                 createUser();
@@ -373,6 +380,7 @@ public class CampButterfliesDriver {
         while(run){
             userOptions();
             int option = scan.nextInt();
+            scan.nextLine();
             switch(option){
                 case 1: 
                     System.out.println(facade.viewUserProfile());
@@ -441,7 +449,9 @@ public class CampButterfliesDriver {
         while(run){
             System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
                             "\n3. Home Address\n4. Date of Birth\n5. Quit");
-            switch(scan.nextInt()){
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch(choice){
                 case 1:
                     String newfirstname = get("First Name");
                     facade.editUserFirstName(newfirstname);
@@ -477,7 +487,9 @@ public class CampButterfliesDriver {
             System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
                                 "\n3. Home Address\n4. Date of Birth\n5. Sex\n6. Allergies" +
                                 "\n7. Emergency Contacts\n8. Doctor Information\n9. Quit");
-            switch(scan.nextInt()){
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch(choice){
                 case 1:
                     String newfirstname = get("First Name");
                     facade.editCamperFirstName(firstname, newfirstname);
@@ -525,7 +537,9 @@ public class CampButterfliesDriver {
         boolean run=true;
         while(run){
             System.out.println("1. Delete An Existing Allergy\n2.Add A New Allergy\n3. Finish Editing Allergies");
-            switch(scan.nextInt()){
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch(choice){
                 case 1:
                     System.out.println("Choose an allergy to delete");
                     for(int i = 0; i < newAllergies.size(); i++){
@@ -586,7 +600,9 @@ public class CampButterfliesDriver {
         boolean run = true;
         while(run){
             System.out.println("Change: \n1. First Name\n2. Last Name\n3. Phone Number\n4. Email Address\n5. Quit");
-            switch(scan.nextInt()){
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch(choice){
                 case 1:
                     doctor.setFirstName(get("First Name"));
                     break;
@@ -619,6 +635,7 @@ public class CampButterfliesDriver {
         while(run){
             counselorOptions();
             int option = scan.nextInt();
+            scan.nextLine();
             switch(option){
                 case 1:
                     System.out.println(facade.viewCounselorProfile());
@@ -682,7 +699,9 @@ public class CampButterfliesDriver {
             System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
                                 "\n3. Home Address\n4. Date of Birth\n5. Phone Number" +
                                 "\n6. Emergency Contacts\n7. Doctor Information\n8. Quit");
-            switch(scan.nextInt()){
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch(choice){
                 case 1:
                     String newfirstname = get("First Name");
                     facade.editCounselorFirstName(newfirstname);
@@ -727,6 +746,7 @@ public class CampButterfliesDriver {
         while(run){
             directorOptions();
             int option = scan.nextInt();
+            scan.nextLine();
             switch(option){
                 case 1:
                     System.out.println(facade.viewDirectorProfile());
@@ -797,7 +817,9 @@ public class CampButterfliesDriver {
         while(run){
             System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
                             "\n3. Home Address\n4. Date of Birth\n5. Quit");
-            switch(scan.nextInt()){
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch(choice){
                 case 1:
                     String newfirstname = get("First Name");
                     facade.editDirectorFirstName(newfirstname);
@@ -865,7 +887,9 @@ public class CampButterfliesDriver {
         while(run){
             System.out.println("Would you like to: \n1. Edit Current Activites \n2. Delete Current Activites"+
                                 "\n3. Add New Activities \n4. Quit");
-            switch(scan.nextInt()){
+            int choice = scan.nextInt();
+            scan.nextLine();
+            switch(choice){
                 case 1:
                     editActivies(camp);
                     break;

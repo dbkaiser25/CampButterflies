@@ -504,8 +504,11 @@ public class CampFacade {
      * @return
      */
     public String getActivities(String campName) {
-        Camp camp = campList.getCamp(campName);
-        return camp.getActivities();
+        for(Camp camp : campList.getCamps()){
+            if(camp.getName().equals(campName))
+                return camp.getActivities();
+        }
+        return "This camp does not exist";
     }
 
     /**
@@ -525,9 +528,11 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Week> getWeeks(String campName) {
-        Camp camp = campList.getCamp(campName);
-        ArrayList<Week> weeks = camp.getWeeks();
-        return weeks;
+        for(Camp camp : campList.getCamps()){
+            if(camp.getName().equals(campName))
+                return camp.getWeeks();
+        }
+        return null;
     }
 
     /**
