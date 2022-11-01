@@ -332,18 +332,11 @@ public class CampButterfliesDriver {
         boolean moreWeeks = true;
         while (moreWeeks) {
             int i = 1;
-<<<<<<< HEAD
-            for (Week week : facade.getWeeks(camp)) {
-                System.out.println("Week " + i + ": " + week);
-                i++;
-            }
-=======
                 for(Week week: facade.getWeeks(camp)){
                     System.out.println("Week " + i + ": " + week);
                     i++;
                 }
             System.out.println("Week Number:");
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
             facade.getCampList().getCamp(camp).getWeek(scan.nextInt());
             scan.nextLine();
             String answer = get("Would you like to add another week?(yes/no)");
@@ -364,17 +357,10 @@ public class CampButterfliesDriver {
         LoginInfo loginInfo = new LoginInfo(userName, password);
         System.out.println(userName + "" + password);
         int loginnum = facade.Login(loginInfo);
-<<<<<<< HEAD
-        System.out.println(loginnum);
-        if (loginnum == 1) {
-            directorScreen();
-        } else if (loginnum == 2) {
-=======
         if(loginnum==1){
            directorScreen();
         }
         else if(loginnum==2){
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
             userScreen();
         } else if (loginnum == 3) {
             counselorScreen();
@@ -419,14 +405,8 @@ public class CampButterfliesDriver {
     /**
      * Welcomes the user once they sign in with their first and last name
      */
-<<<<<<< HEAD
-    private void welcomeDirectorScreen() {
-        System.out.println("\nWelcome Back, " + facade.getCurrentDirector().getFirstName() + " "
-                + facade.getCurrentDirector().getLastName() + "!");
-=======
     private void welcomeDirectorScreen(){
                 System.out.println("\nWelcome Back, " + facade.getCurrentDirector().getFirstName() +" " + facade.getCurrentDirector().getLastName() + "!");
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
     }
 
     /**
@@ -853,13 +833,8 @@ public class CampButterfliesDriver {
                 case 8:
                     // remove counselor
                     break;
-<<<<<<< HEAD
-                case 9: // needs work
-                    System.out.println(facade.getCamperList());
-=======
                 case 9:
                     System.out.println(facade.getCampers());
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
                     break;
                 case 10:
                     String campname = get("Camp");

@@ -60,13 +60,8 @@ public class CampFacade {
 
     public String getCamps() {
         String camps = "";
-<<<<<<< HEAD
-        for (Camp camp : campList.getCamps()) {
-            camps += camp.getName();
-=======
         for(Camp camp: campList.getCamps()){
             camps += camp.getName() + "\n";
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
         }
         return camps;
     }
@@ -86,41 +81,19 @@ public class CampFacade {
      * @return 
      */
     public int Login(LoginInfo userLogin) {
-<<<<<<< HEAD
-        for (int i = 0; i < userList.getUsers().size(); i++) {
-            System.out.println("User Name: " + userList.getUsers().get(i).getFirstName());
-        }
-        System.out.println(userList.haveUser(userLogin));
-        System.out.println(counselorList.haveCounselor(userLogin));
-        System.out.println(directorList.haveDirector(userLogin));
-        int num = 0;
-=======
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
         if (userList.haveUser(userLogin)) {
             currentUser = userList.getUserByUserName(userLogin.getUserName());
-            num = 2;
+            //num = 2;
+            return 2;
         }
         if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
-<<<<<<< HEAD
-            num = 3;
-        }
-        if (directorList.haveDirector(userLogin)) {
-            for (int i = 0; i < directorList.getDirectors().size(); i++) {
-                System.out.println("name " + directorList.getDirectors().get(i).getFirstName());
-            }
-            currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
-            num = 1;
-        }
-        return num;
-=======
             return 3;
         } else if (directorList.haveDirector(userLogin)) {
             currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
             return 1;
         } 
         return 0;
->>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
     }
 
     /**
