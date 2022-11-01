@@ -61,9 +61,17 @@ public class CampFacade {
     public String getCamps(){
         String camps = "";
         for(Camp camp: campList.getCamps()){
-            camps += camp.getName();
+            camps += camp.getName() + "\n";
         }
         return camps;
+    }
+
+    public String getCampers(){
+        String campers = "";
+        for(Camper camper: camperList.getCampers()){
+            campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
+        }
+        return campers;
     }
 
     /**

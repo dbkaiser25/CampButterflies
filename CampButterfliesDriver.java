@@ -344,7 +344,7 @@ public class CampButterfliesDriver {
         LoginInfo loginInfo = new LoginInfo(userName, password);
         int loginnum = facade.Login(loginInfo);
         if(loginnum==1){
-            directorScreen();
+           directorScreen();
         }
         else if(loginnum==2){
             userScreen();
@@ -812,7 +812,7 @@ public class CampButterfliesDriver {
                     //remove counselor
                     break;
                 case 9:
-                    System.out.println(facade.getCamperList());
+                    System.out.println(facade.getCampers());
                     break;
                 case 10:
                     String campname = get("Camp");
