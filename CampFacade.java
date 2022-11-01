@@ -623,7 +623,7 @@ public class CampFacade {
     public String getCounselors()
     {
         String counselors = new String();
-        counselors = "\n";
+        counselors = "\nCounselors: \n";
         for(Counselor c: counselorList.getCounselors())
         {
             counselors = counselors + c.getFirstName() + " " + c.getLastName() + "\n";
