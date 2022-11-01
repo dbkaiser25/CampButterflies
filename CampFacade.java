@@ -58,9 +58,9 @@ public class CampFacade {
         return campList;
     }
 
-    public String getCamps(){
+    public String getCamps() {
         String camps = "";
-        for(Camp camp: campList.getCamps()){
+        for (Camp camp : campList.getCamps()) {
             camps += camp.getName();
         }
         return camps;
@@ -73,17 +73,29 @@ public class CampFacade {
      * @return true if it exists, false if it doesnt
      */
     public int Login(LoginInfo userLogin) {
-        if (directorList.haveDirector(userLogin)) {
-            currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
-            return 1;
-        } else if (userList.haveUser(userLogin)) {
-            currentUser = userList.getUserByUserName(userLogin.getUserName());
-            return 2;
-        } else if (counselorList.haveCounselor(userLogin)) {
-            currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
-            return 3;
+        for (int i = 0; i < userList.getUsers().size(); i++) {
+            System.out.println("User Name: " + userList.getUsers().get(i).getFirstName());
         }
-        return 0;
+        System.out.println(userList.haveUser(userLogin));
+        System.out.println(counselorList.haveCounselor(userLogin));
+        System.out.println(directorList.haveDirector(userLogin));
+        int num = 0;
+        if (userList.haveUser(userLogin)) {
+            currentUser = userList.getUserByUserName(userLogin.getUserName());
+            num = 2;
+        }
+        if (counselorList.haveCounselor(userLogin)) {
+            currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
+            num = 3;
+        }
+        if (directorList.haveDirector(userLogin)) {
+            for (int i = 0; i < directorList.getDirectors().size(); i++) {
+                System.out.println("name " + directorList.getDirectors().get(i).getFirstName());
+            }
+            currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
+            num = 1;
+        }
+        return num;
     }
 
     /**
@@ -478,6 +490,7 @@ public class CampFacade {
      * @param endDate
      * @param theme
      */
+    // problem in this method
     public void setWeek(String camp, int week, Date startDate, Date endDate, String theme) {
         campList.getCamp(camp).getWeek(week).setStartDate(startDate);
         campList.getCamp(camp).getWeek(week).setEndDate(endDate);
@@ -504,8 +517,8 @@ public class CampFacade {
      * @return
      */
     public String getActivities(String campName) {
-        for(Camp camp : campList.getCamps()){
-            if(camp.getName().equals(campName))
+        for (Camp camp : campList.getCamps()) {
+            if (camp.getName().equals(campName))
                 return camp.getActivities();
         }
         return "This camp does not exist";
@@ -528,8 +541,8 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Week> getWeeks(String campName) {
-        for(Camp camp : campList.getCamps()){
-            if(camp.getName().equals(campName))
+        for (Camp camp : campList.getCamps()) {
+            if (camp.getName().equals(campName))
                 return camp.getWeeks();
         }
         return null;
