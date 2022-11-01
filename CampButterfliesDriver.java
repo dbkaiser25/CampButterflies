@@ -39,7 +39,7 @@ public class CampButterfliesDriver {
             homepage();
             int choice = scan.nextInt();
             scan.nextLine();
-            System.out.println("");
+            clear();
             switch (choice) {
                 case 1:
                     activites();
@@ -96,11 +96,11 @@ public class CampButterfliesDriver {
 
     /*
      * Clears the console
-     * 
-     * private void clear() {
-     * System.out.print("\033[H\033[2J");
-     * }
      */
+     private void clear() {
+        System.out.print("\033[H\033[2J");
+     }
+     
 
     /**
      * prints the hompage UI
@@ -420,6 +420,7 @@ public class CampButterfliesDriver {
             userOptions();
             int option = scan.nextInt();
             scan.nextLine();
+            clear();
             switch (option) {
                 case 1:
                     System.out.println(facade.viewUserProfile());
@@ -686,6 +687,7 @@ public class CampButterfliesDriver {
             counselorOptions();
             int option = scan.nextInt();
             scan.nextLine();
+            clear();
             switch (option) {
                 case 1:
                     System.out.println(facade.viewCounselorProfile());
@@ -802,6 +804,7 @@ public class CampButterfliesDriver {
             directorOptions();
             int option = scan.nextInt();
             scan.nextLine();
+            clear();
             switch (option) {
                 case 1: //View My Profile
                     System.out.println(facade.viewDirectorProfile());
