@@ -81,9 +81,6 @@ public class CampFacade {
      * @return
      */
     public int Login(LoginInfo userLogin) {
-        System.out.println(directorList.haveDirector(userLogin));
-        System.out.println(userList.haveUser(userLogin));
-        System.out.println(counselorList.haveCounselor(userLogin));
         if (directorList.haveDirector(userLogin)) {
             currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
             return 1;
