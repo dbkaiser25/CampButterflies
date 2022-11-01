@@ -577,7 +577,8 @@ public class CampButterfliesDriver {
      * @param camper
      */
     private void editAllergies(String camper) {
-        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies().clone();
+        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies()
+                .clone();
         boolean run = true;
         while (run) {
             System.out.println("1. Delete An Existing Allergy\n2.Add A New Allergy\n3. Finish Editing Allergies");
@@ -819,7 +820,8 @@ public class CampButterfliesDriver {
                     changeActivites();
                     break;
                 case 6: // View All counselors
-                    System.out.println(facade.getCounselorList());
+                    //System.out.println(facade.getCounselorList());
+                    System.out.println(facade.getCounselors());
 
                     break;
                 case 7: //View a Counselors Information
@@ -902,7 +904,6 @@ public class CampButterfliesDriver {
                     break;
                 case 3:
                     String newhomeaddress = get("Home Address");
-                    facade.editDirectorHomeAddress(newhomeaddress);
                     break;
                 case 4:
                     String newdob = get("Date of Birth(MM/DD/YYYY");

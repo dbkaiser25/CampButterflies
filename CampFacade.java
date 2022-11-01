@@ -395,7 +395,7 @@ public class CampFacade {
      * @return
      */
     public boolean qualifiesForDiscount() {
-        return currentUser.qualifiesForDiscount(campList,1);
+        return currentUser.qualifiesForDiscount(campList, 1);
     }
 
     /**
@@ -514,10 +514,11 @@ public class CampFacade {
      */
     // problem in this method
     public void setWeek(String name, int week, Date startDate, Date endDate, String theme) {
-       
+
         campList.getCamp(name).getWeek(week).setStartDate(startDate);
         campList.getCamp(name).getWeek(week).setEndDate(endDate);
         campList.getCamp(name).getWeek(week).setTheme(theme);
+        campList.saveCamps();
     }
 
     /**
@@ -591,7 +592,7 @@ public class CampFacade {
     }
 
     public String getSchedule(String camp, int week, int group) {
-        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group).printSchedule();
+        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group - 1).printSchedule();
     }
 
     /**
@@ -611,6 +612,25 @@ public class CampFacade {
     public CounselorList getCounselorList() {
         return counselorList;
     }
+
+    public String getCounselors() {
+        String counselors = new String();
+        counselors = "\nCounselors: \n";
+        for (Counselor c : counselorList.getCounselors()) {
+            counselors = counselors + c.getFirstName() + " " + c.getLastName() + "\n";
+        }
+        return counselors;
+    }
+
+    /*
+     * public String getCampers(){
+     * String campers = "";
+     * for(Camper camper: camperList.getCampers()){
+     * campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
+     * }
+     * return campers;
+     * }
+     */
 
     /**
      * removes a camper from a week

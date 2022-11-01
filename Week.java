@@ -101,7 +101,9 @@ public class Week {
     }
 
     // Maybe we want an empty constructor, for when new weeks need to be registered
-    public Week() {
+    public Week() 
+    {
+        
         // Constructor goes here
 
     }
