@@ -135,8 +135,8 @@ public class Camper extends Person {
 
         temp = "Camper: " + firstName + " " + lastName + "\nDate of Birth: " + dateOfBirth.toString()
                 + "\nAddress: " + homeAddress + "\nSex: " + sex + "\nMedications: \n" + printMedication()
-                + "\nAllergies: "
-                + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() + "\nPediatrician: "
+                + "\nAllergies: \n"
+                + printAllergies() + "\nEmergency Contacts: \n" + printEmergencyContacts() + "\nPediatrician: \n"
                 + pediatrician.toString();
         return temp;
     }

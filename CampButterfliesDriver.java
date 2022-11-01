@@ -501,6 +501,7 @@ public class CampButterfliesDriver {
                     break;
                 case 5:
                     run = false;
+                    break;
                 default:
                     System.out.println("Please enter a valid number");
                     break;
@@ -691,6 +692,9 @@ public class CampButterfliesDriver {
                 case 6:
                     run = false;
                     break;
+                default:
+                    System.out.println("Please enter a valid number");
+                    break;
             }
             pause();
         }
@@ -809,7 +813,7 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8:
-                    //remove counselor
+                    System.out.println("Doesnt work");
                     break;
                 case 9:
                     System.out.println(facade.getCampers());
@@ -832,6 +836,7 @@ public class CampButterfliesDriver {
                     break;
                 default:
                     System.out.println("Please enter a valid number");
+                    break;
             }
             pause();
         }
