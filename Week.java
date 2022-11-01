@@ -184,6 +184,7 @@ public class Week {
          */
 
         // there probably is a better way to initialize the groups
+        
         Group g1 = new Group();
         groups.add(g1);
         Group g2 = new Group();
