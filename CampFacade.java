@@ -524,7 +524,6 @@ public class CampFacade {
         campList.getCamp(name).getWeek(week).setStartDate(startDate);
         campList.getCamp(name).getWeek(week).setEndDate(endDate);
         campList.getCamp(name).getWeek(week).setTheme(theme);
-        campList.saveCamps();
     }
 
     /**
