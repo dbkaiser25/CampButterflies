@@ -35,6 +35,7 @@ public class Camper extends Person {
         this.allergies = allergies;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
+        this.dateOfBirth = dateOfBirth;
         weeks = new ArrayList<>();
     }
 
@@ -48,6 +49,7 @@ public class Camper extends Person {
         this.allergies = allergies;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
+        this.dateOfBirth = dateOfBirth;
         weeks = new ArrayList<>();
     }
 
@@ -120,7 +122,7 @@ public class Camper extends Person {
     // different groups need to see different amounts of camper information
     // when director or user wants to see camper information
     public String toStringFull() {
-        String temp = new String(); 
+        String temp = ""; 
 
         /*
          * temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " +

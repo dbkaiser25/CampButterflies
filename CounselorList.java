@@ -23,6 +23,7 @@ public class CounselorList {
             return false;
         } else {
             counselors.add(counselor);
+            saveCounselor();
             return true;
         }
     }

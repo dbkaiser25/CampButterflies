@@ -60,19 +60,33 @@ public class CampFacade {
 
     public String getCamps() {
         String camps = "";
+<<<<<<< HEAD
         for (Camp camp : campList.getCamps()) {
             camps += camp.getName();
+=======
+        for(Camp camp: campList.getCamps()){
+            camps += camp.getName() + "\n";
+>>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
         }
         return camps;
+    }
+
+    public String getCampers(){
+        String campers = "";
+        for(Camper camper: camperList.getCampers()){
+            campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
+        }
+        return campers;
     }
 
     /**
      * Checks to see if login information exists
      * 
      * @param userLogin
-     * @return true if it exists, false if it doesnt
+     * @return 
      */
     public int Login(LoginInfo userLogin) {
+<<<<<<< HEAD
         for (int i = 0; i < userList.getUsers().size(); i++) {
             System.out.println("User Name: " + userList.getUsers().get(i).getFirstName());
         }
@@ -80,12 +94,15 @@ public class CampFacade {
         System.out.println(counselorList.haveCounselor(userLogin));
         System.out.println(directorList.haveDirector(userLogin));
         int num = 0;
+=======
+>>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
         if (userList.haveUser(userLogin)) {
             currentUser = userList.getUserByUserName(userLogin.getUserName());
             num = 2;
         }
         if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
+<<<<<<< HEAD
             num = 3;
         }
         if (directorList.haveDirector(userLogin)) {
@@ -96,6 +113,14 @@ public class CampFacade {
             num = 1;
         }
         return num;
+=======
+            return 3;
+        } else if (directorList.haveDirector(userLogin)) {
+            currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
+            return 1;
+        } 
+        return 0;
+>>>>>>> 387115d564c16a6151e0fe1dca49156bcc548fb5
     }
 
     /**
@@ -171,6 +196,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setFirstName(firstName);
+        camperList.saveCampers();
     }
 
     /**
@@ -185,6 +211,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setLastName(lastName);
+        camperList.saveCampers();
     }
 
     /**
@@ -199,6 +226,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setHomeAddress(homeAddress);
+        camperList.saveCampers();
     }
 
     /**
@@ -213,6 +241,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setDateOfBirth(dateOfBirth);
+        camperList.saveCampers();
     }
 
     /**
@@ -227,6 +256,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setSex(sex);
+        camperList.saveCampers();
     }
 
     /**
@@ -241,6 +271,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setAllergies(allergies);
+        camperList.saveCampers();
     }
 
     /**
@@ -255,6 +286,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setEmergencyContacts(contacts);
+        camperList.saveCampers();
     }
 
     /**
@@ -269,6 +301,7 @@ public class CampFacade {
             System.out.println("There is no camper with that name");
         else
             currentCamper.setPediatrician(doctor);
+        camperList.saveCampers();
     }
 
     /**
@@ -278,6 +311,7 @@ public class CampFacade {
      */
     public void editUserFirstName(String firstName) {
         currentUser.setFirstName(firstName);
+        userList.saveUsers();
     }
 
     /**
@@ -287,6 +321,7 @@ public class CampFacade {
      */
     public void editUserLastName(String lastName) {
         currentUser.setLastName(lastName);
+        userList.saveUsers();
     }
 
     /**
@@ -296,6 +331,7 @@ public class CampFacade {
      */
     public void editUserHomeAddress(String homeAddress) {
         currentUser.setHomeAddress(homeAddress);
+        userList.saveUsers();
     }
 
     /**
@@ -306,6 +342,7 @@ public class CampFacade {
     public void editUserDateOfBirth(Date dateOfBirth) {
 
         currentUser.setDateOfBirth(dateOfBirth);
+        userList.saveUsers();
     }
 
     /**
@@ -315,6 +352,7 @@ public class CampFacade {
      */
     public void editCounselorFirstName(String firstName) {
         currentCounselor.setFirstName(firstName);
+        counselorList.saveCounselor();
     }
 
     /**
@@ -324,6 +362,7 @@ public class CampFacade {
      */
     public void editCounselorLastName(String lastName) {
         currentCounselor.setLastName(lastName);
+        counselorList.saveCounselor();
     }
 
     /**
@@ -333,6 +372,7 @@ public class CampFacade {
      */
     public void editCounselorHomeAddress(String homeAddress) {
         currentCounselor.setHomeAddress(homeAddress);
+        counselorList.saveCounselor();
     }
 
     /**
@@ -342,6 +382,7 @@ public class CampFacade {
      */
     public void editCounselorPhoneNumber(String phoneNumber) {
         currentCounselor.setPhoneNumber(phoneNumber);
+        counselorList.saveCounselor();
     }
 
     /**
@@ -351,6 +392,7 @@ public class CampFacade {
      */
     public void editCounselorDateOfBirth(Date dob) {
         currentCounselor.setDateOfBirth(dob);
+        counselorList.saveCounselor();
     }
 
     /**
@@ -360,6 +402,7 @@ public class CampFacade {
      */
     public void editCounselorEmergencyContacts(ArrayList<Contact> contacts) {
         currentCounselor.setEmergencyContacts(contacts);
+        counselorList.saveCounselor();
     }
 
     /**
@@ -369,6 +412,7 @@ public class CampFacade {
      */
     public void editCounselorDoctor(Contact doctor) {
         currentCounselor.setPediatrician(doctor);
+        counselorList.saveCounselor();
     }
 
     /**
@@ -438,6 +482,7 @@ public class CampFacade {
      */
     public void editDirectorFirstName(String firstName) {
         currentDirector.setFirstName(firstName);
+        directorList.saveDirector();
     }
 
     /**
@@ -447,6 +492,7 @@ public class CampFacade {
      */
     public void editDirectorLastName(String lastName) {
         currentDirector.setLastName(lastName);
+        directorList.saveDirector();
     }
 
     /**
@@ -456,6 +502,7 @@ public class CampFacade {
      */
     public void editDirectorHomeAddress(String homeAddress) {
         currentDirector.setHomeAddress(homeAddress);
+        directorList.saveDirector();
     }
 
     /**
@@ -465,6 +512,7 @@ public class CampFacade {
      */
     public void editDirectorDateOfBirth(Date dob) {
         currentDirector.setDateOfBirth(dob);
+        directorList.saveDirector();
     }
 
     /**
@@ -479,6 +527,7 @@ public class CampFacade {
         Camp camp = new Camp(name, desc, weeks);
         camp.setYear(year);
         campList.addCamp(camp);
+        campList.saveCamps();
     }
 
     /**
@@ -495,10 +544,7 @@ public class CampFacade {
         campList.getCamp(camp).getWeek(week).setStartDate(startDate);
         campList.getCamp(camp).getWeek(week).setEndDate(endDate);
         campList.getCamp(camp).getWeek(week).setTheme(theme);
-    }
-
-    public void editCalendar() {
-
+        campList.saveCamps();
     }
 
     /**
@@ -532,6 +578,7 @@ public class CampFacade {
      */
     public void setActivities(String camp, ArrayList<Activity> activities) {
         campList.getCamp(camp).setActivities(activities);
+        campList.saveCamps();
     }
 
     /**
@@ -601,6 +648,7 @@ public class CampFacade {
      */
     public void removeCamper(String firstName, String lastName, Week week) {
         currentDirector.removeCamper(firstName, lastName, week);
+        camperList.saveCampers();
     }
 
 }
