@@ -76,7 +76,7 @@ public class CampButterfliesDriver {
      */
     private void activites() {
         System.out.println("Which camp's activities would you like to see?");
-        System.out.println(facade.getCamps() + "\n");
+        System.out.println(facade.getCamps());
         System.out.println(facade.getActivities(scan.nextLine()));
     }
 
@@ -950,6 +950,7 @@ public class CampButterfliesDriver {
         for (int i = 0; i < weeks; i++) {
             facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
         }
+        facade.getCampList().saveCamps();
     }
 
     /**

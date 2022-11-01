@@ -395,7 +395,7 @@ public class CampFacade {
      * @return
      */
     public boolean qualifiesForDiscount() {
-        return currentUser.qualifiesForDiscount(campList,1);
+        return currentUser.qualifiesForDiscount(campList, 1);
     }
 
     /**
@@ -514,12 +514,6 @@ public class CampFacade {
      */
     // problem in this method
     public void setWeek(String name, int week, Date startDate, Date endDate, String theme) {
-        // need to be able to get the camp by the name
-        // Camp camp = campList.setCamp(name);
-        // System.out.println("year " + camp.getYear());
-        // // this.campList.getCamp(name).getWeek()
-        System.out.println(campList.getCamp(name));
-        System.out.println(campList.getCamp(name).getWeek(week).getTheme());
 
         campList.getCamp(name).getWeek(week).setStartDate(startDate);
         campList.getCamp(name).getWeek(week).setEndDate(endDate);
@@ -583,7 +577,6 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Camper> getGroup(String camp, int week) {
-        System.out.println(campList.getCamp(camp).getWeek(week));
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
@@ -599,7 +592,7 @@ public class CampFacade {
     }
 
     public String getSchedule(String camp, int week, int group) {
-        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group).printSchedule();
+        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group - 1).printSchedule();
     }
 
     /**
@@ -620,12 +613,10 @@ public class CampFacade {
         return counselorList;
     }
 
-    public String getCounselors()
-    {
+    public String getCounselors() {
         String counselors = new String();
         counselors = "\nCounselors: \n";
-        for(Counselor c: counselorList.getCounselors())
-        {
+        for (Counselor c : counselorList.getCounselors()) {
             counselors = counselors + c.getFirstName() + " " + c.getLastName() + "\n";
         }
         return counselors;
@@ -633,12 +624,12 @@ public class CampFacade {
 
     /*
      * public String getCampers(){
-        String campers = "";
-        for(Camper camper: camperList.getCampers()){
-            campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
-        }
-        return campers;
-    }
+     * String campers = "";
+     * for(Camper camper: camperList.getCampers()){
+     * campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
+     * }
+     * return campers;
+     * }
      */
 
     /**

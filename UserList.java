@@ -7,7 +7,6 @@ public class UserList {
 
     private UserList() {
         users = DataLoader.loadUsers();
-        System.out.println("here");
     }
 
     public static UserList getInstance() {

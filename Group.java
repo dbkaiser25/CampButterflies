@@ -117,8 +117,9 @@ public class Group {
     // printing the schedule assuming its not empty
     public String printSchedule() {
 
-        String temp = new String();
-        temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s Group's Schedule:\n";
+        String temp = "";
+        temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s Group's";
+        // Schedule:\n";
         for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : this.getSchedule().entrySet()) {
             ArrayList<Activity> activities = entry.getValue();
             DayOfWeek day = entry.getKey();
