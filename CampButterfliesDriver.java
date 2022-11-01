@@ -803,33 +803,33 @@ public class CampButterfliesDriver {
             int option = scan.nextInt();
             scan.nextLine();
             switch (option) {
-                case 1:
+                case 1: //View My Profile
                     System.out.println(facade.viewDirectorProfile());
                     break;
-                case 2:
+                case 2: //Edit My (director) Profile
                     editDirector();
                     break;
-                case 3:
+                case 3: //Create new camp
                     createCamp();
                     break;
-                case 4:
+                case 4: //View Activities
                     System.out.println("What camp would you like to see?");
                     System.out.println(facade.getActivities(scan.nextLine()));
                     break;
-                case 5:
+                case 5: //Edit Activities
                     changeActivites();
                     break;
-                case 6: // needs work
+                case 6: // View All counselors
                     //System.out.println(facade.getCounselorList());
                     System.out.println(facade.getCounselors());
 
                     break;
-                case 7:
+                case 7: //View a Counselors Information
                     String firstName = get("Counselor's First Name");
                     String lastName = get("Counselor's Last Name");
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
-                case 8:
+                case 8: //Remove Counselor
                     // remove counselor
                     // Derek wrote this not sure if its right
                     // System.out.println("Doesnt work");
@@ -838,24 +838,29 @@ public class CampButterfliesDriver {
                     String counselorlname = get("Counselor Last Name");
                     facade.removeCounselor(counselorname, counselorlname, facade.getCampList().getCamp(campName));
                     break;
-                case 9:
+                case 9: //View All Campers
                     System.out.println(facade.getCampers());
                     break;
-                case 10:
+                case 10: //View A Camper
+                    String camperName = get("Camper's First Name");
+                    String camperlName = get("Camper's Last Name");
+                    System.out.println(facade.getCamperList().getCamperByName(camperName,camperlName));
+                    
+                case 11: //Remove Camper
                     String campname = get("Camp");
                     // int weeknum = Integer.parseInt(get("Week"));
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname,
-                            facade.getCampList().getCamp(campname));
+                        facade.getCampList().getCamp(campname));
                     break;
-                case 11:
+                case 12: //View Schedule
                     String camp = get("Camp");
                     int week = Integer.parseInt(get("Week"));
                     int group = Integer.parseInt(get("Group"));
                     System.out.println(facade.getSchedule(camp, week, group));
                     break;
-                case 12:
+                case 13: //Logout
                     run = false;
                     break;
                 default:
@@ -873,9 +878,9 @@ public class CampButterfliesDriver {
         System.out.println(
                 "1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites\n6. View All Counselors"
                         +
-                        "\n7. View a Counselors Information\n8. Remove Counselor\n9. View All Campers\n10. Remove Camper\n11. View Schedules"
+                        "\n7. View a Counselors Information\n8. Remove Counselor\n9. View All Campers\n10. View a Campers Information\n11. Remove Camper\n12. View Schedules"
                         +
-                        "\n12. Logout");
+                        "\n13. Logout");
     }
 
     /**
