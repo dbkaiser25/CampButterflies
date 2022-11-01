@@ -56,8 +56,11 @@ public class CounselorList {
 
     public boolean haveCounselor(LoginInfo info) {
         for (Counselor counselor : counselors) {
-            if (counselor.getUserLogin().equals(info))
+            if (counselor.getUserLogin().getUserName().equals(info.getUserName())
+                    && counselor.getUserLogin().getPassword().equals(info.getPassword())) {
                 return true;
+            }
+
         }
         return false;
     }

@@ -6,45 +6,37 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch CampButterfliesDriver",
+            "name": "Launch Current File",
             "request": "launch",
-            "mainClass": "CampButterfliesDriver",
-            "projectName": "CampButterflies_9601830"
+            "mainClass": "${file}"
         },
         {
             "type": "java",
             "name": "Launch CampButterfliesDriver",
             "request": "launch",
             "mainClass": "CampButterfliesDriver",
-            "projectName": "CampButterflies_22d7feab"
+            "projectName": "CampButterflies-2_5d123ef3"
         },
         {
             "type": "java",
             "name": "Launch CreateUUIDs",
             "request": "launch",
             "mainClass": "CreateUUIDs",
-            "projectName": "CampButterflies_ff4c34ce"
+            "projectName": "CampButterflies-2_5d123ef3"
         },
         {
             "type": "java",
             "name": "Launch DataLoader",
             "request": "launch",
             "mainClass": "DataLoader",
-            "projectName": "CampButterflies_ff4c34ce"
-        },
-        {
-            "type": "java",
-            "name": "Launch CampButterfliesDriver",
-            "request": "launch",
-            "mainClass": "CampButterfliesDriver",
-            "projectName": "CampButterflies_ff4c34ce"
+            "projectName": "CampButterflies-2_5d123ef3"
         },
         {
             "type": "java",
             "name": "Launch DataWriter",
             "request": "launch",
             "mainClass": "DataWriter",
-            "projectName": "CampButterflies_ff4c34ce"
+            "projectName": "CampButterflies-2_5d123ef3"
         }
     ]
 }

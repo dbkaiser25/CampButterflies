@@ -14,12 +14,6 @@ public class CampButterfliesDriver {
     private String[] homepageOptions = new String[7];
     private CampFacade facade;
 
-    public static void main(String[] args) {
-        CampFacade facade = new CampFacade();
-        CampButterfliesDriver driver = new CampButterfliesDriver(facade);
-        driver.run();
-    }
-
     /**
      * Creates the driver and initializes the scanner
      */
@@ -332,10 +326,10 @@ public class CampButterfliesDriver {
         boolean moreWeeks = true;
         while (moreWeeks) {
             int i = 1;
-                for(Week week: facade.getWeeks(camp)){
-                    System.out.println("Week " + i + ": " + week);
-                    i++;
-                }
+            for (Week week : facade.getWeeks(camp)) {
+                System.out.println("Week " + i + ": " + week);
+                i++;
+            }
             System.out.println("Week Number:");
             facade.getCampList().getCamp(camp).getWeek(scan.nextInt());
             scan.nextLine();
@@ -355,12 +349,10 @@ public class CampButterfliesDriver {
         String userName = get("Username");
         String password = get("Password");
         LoginInfo loginInfo = new LoginInfo(userName, password);
-        System.out.println(userName + "" + password);
         int loginnum = facade.Login(loginInfo);
-        if(loginnum==1){
-           directorScreen();
-        }
-        else if(loginnum==2){
+        if (loginnum == 1) {
+            directorScreen();
+        } else if (loginnum == 2) {
             userScreen();
         } else if (loginnum == 3) {
             counselorScreen();
@@ -405,8 +397,9 @@ public class CampButterfliesDriver {
     /**
      * Welcomes the user once they sign in with their first and last name
      */
-    private void welcomeDirectorScreen(){
-                System.out.println("\nWelcome Back, " + facade.getCurrentDirector().getFirstName() +" " + facade.getCurrentDirector().getLastName() + "!");
+    private void welcomeDirectorScreen() {
+        System.out.println("\nWelcome Back, " + facade.getCurrentDirector().getFirstName() + " "
+                + facade.getCurrentDirector().getLastName() + "!");
     }
 
     /**
@@ -837,19 +830,20 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8:
-                    //Derek wrote this not sure if its right
-                    //System.out.println("Doesnt work");
+                    // remove counselor
+                    // Derek wrote this not sure if its right
+                    // System.out.println("Doesnt work");
                     String campName = get("Camp");
-                    String counselorname = get("Counselor First Name"); //I assume this is the proper call to prompt
+                    String counselorname = get("Counselor First Name"); // I assume this is the proper call to prompt
                     String counselorlname = get("Counselor Last Name");
-                    facade.removeCounselor(counselorname,counselorlname,facade.getCampList().getCamp(campName));
+                    facade.removeCounselor(counselorname, counselorlname, facade.getCampList().getCamp(campName));
                     break;
                 case 9:
                     System.out.println(facade.getCampers());
                     break;
                 case 10:
                     String campname = get("Camp");
-                    //int weeknum = Integer.parseInt(get("Week"));
+                    // int weeknum = Integer.parseInt(get("Week"));
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname,
@@ -1035,4 +1029,9 @@ public class CampButterfliesDriver {
         facade.getCampList().getCamp(camp).getActivitiesArrayList().add(activity);
     }
 
+    public static void main(String[] args) {
+        CampFacade facade = new CampFacade();
+        CampButterfliesDriver driver = new CampButterfliesDriver(facade);
+        driver.run();
+    }
 }

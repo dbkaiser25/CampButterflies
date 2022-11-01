@@ -44,6 +44,13 @@ public class CampList {
         }
         return null;
     }
+    // public void setCamp(String name) {
+    // for(int i=0;i<camps.size()+1;i++) {
+    // if(camps.get(i).getName().equalsIgnoreCase(name)) {
+    // this.camp = camps.get(i);
+    // }
+    // }
+    // }
 
     public Group getGroupByUUID(UUID id) {
         for (Camp camp : camps) {
@@ -65,25 +72,6 @@ public class CampList {
     public void saveCamps() {
         DataWriter.saveCamps();
     }
-
-    /*
-     * Zak do you want these and if so what should they do!!!!!
-     * public Group getGroup()
-     * {
-     * return null;
-     * }
-     * 
-     * public void editGroup()
-     * {
-     * 
-     * }
-     * 
-     * public void saveGroup()
-     * {
-     * 
-     * }
-     * 
-     */
 
     public void editGroup() {
 

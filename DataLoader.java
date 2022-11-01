@@ -240,7 +240,6 @@ public class DataLoader extends DataConstants {
                                 campersList.add(camper);
                             }
                             Counselor c = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
-                            System.out.println(c.getFirstName());
                             JSONArray group_schedule = (JSONArray) jsonGroup.get(GROUP_SCHEDULE);
                             HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek, ArrayList<Activity>>();
                             for (int m = 0; m < group_schedule.size(); m++) {
@@ -334,7 +333,6 @@ public class DataLoader extends DataConstants {
                     Integer week_num = ((Long) JSONWeek.get(WEEK_NUM)).intValue();
                     JSONObject weekJSON = (JSONObject) JSONWeek.get(WEEK);
                     String theme = (String) weekJSON.get(THEME);
-                    System.out.println("theme " + theme);
                     ArrayList<Group> groups = new ArrayList<Group>();
                     JSONArray groupsJSON = (JSONArray) weekJSON.get(GROUPS);
                     for (int l = 0; l < groupsJSON.size(); l++) {
@@ -398,7 +396,6 @@ public class DataLoader extends DataConstants {
                  * figure out how to add to hashMap
                  */
                 ArrayList<Activity> activities = new ArrayList<Activity>();
-                System.out.println("all activities: " + campJSON.get(ALL_ACTIVITIES));
                 JSONArray activitiesJSON = (JSONArray) campJSON.get(ALL_ACTIVITIES);
                 for (int l = 0; l < activitiesJSON.size(); l++) {
                     JSONObject activity = (JSONObject) activitiesJSON.get(l);

@@ -60,16 +60,16 @@ public class CampFacade {
 
     public String getCamps() {
         String camps = "";
-        for(Camp camp: campList.getCamps()){
+        for (Camp camp : campList.getCamps()) {
             camps += camp.getName() + "\n";
         }
         return camps;
     }
 
-    public String getCampers(){
+    public String getCampers() {
         String campers = "";
-        for(Camper camper: camperList.getCampers()){
-            campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
+        for (Camper camper : camperList.getCampers()) {
+            campers += camper.getFirstName() + " " + camper.getLastName() + "\n";
         }
         return campers;
     }
@@ -78,21 +78,22 @@ public class CampFacade {
      * Checks to see if login information exists
      * 
      * @param userLogin
-     * @return 
+     * @return
      */
     public int Login(LoginInfo userLogin) {
+        if (directorList.haveDirector(userLogin)) {
+            currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
+            return 1;
+        }
         if (userList.haveUser(userLogin)) {
             currentUser = userList.getUserByUserName(userLogin.getUserName());
-            //num = 2;
+            // num = 2;
             return 2;
         }
         if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
             return 3;
-        } else if (directorList.haveDirector(userLogin)) {
-            currentDirector = directorList.getDirectorByUserName(userLogin.getUserName());
-            return 1;
-        } 
+        }
         return 0;
     }
 
@@ -513,10 +514,15 @@ public class CampFacade {
      * @param theme
      */
     // problem in this method
-    public void setWeek(String camp, int week, Date startDate, Date endDate, String theme) {
-        campList.getCamp(camp).getWeek(week).setStartDate(startDate);
-        campList.getCamp(camp).getWeek(week).setEndDate(endDate);
-        campList.getCamp(camp).getWeek(week).setTheme(theme);
+    public void setWeek(String name, int week, Date startDate, Date endDate, String theme) {
+        // need to be able to get the camp by the name
+        // Camp camp = campList.setCamp(name);
+        // System.out.println("year " + camp.getYear());
+        // // this.campList.getCamp(name).getWeek()
+        System.out.println(campList.getCamp(name).getWeek(week).toString());
+        campList.getCamp(name).getWeek(week).setStartDate(startDate);
+        campList.getCamp(name).getWeek(week).setEndDate(endDate);
+        campList.getCamp(name).getWeek(week).setTheme(theme);
         campList.saveCamps();
     }
 
@@ -576,6 +582,7 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Camper> getGroup(String camp, int week) {
+        System.out.println(campList.getCamp(camp).getWeek(week));
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
@@ -645,12 +652,9 @@ public class CampFacade {
         camperList.saveCampers();
     }
 
-    public void removeCounselor(String firstName, String lastName, Camp camp)
-    {
-        currentDirector.removeCounselor(firstName,lastName,camp);
+    public void removeCounselor(String firstName, String lastName, Camp camp) {
+        currentDirector.removeCounselor(firstName, lastName, camp);
         counselorList.saveCounselor();
     }
-
-  
 
 }
