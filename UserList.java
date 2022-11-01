@@ -50,9 +50,9 @@ public class UserList {
         return null;
     }
 
-    public User getUser() {
-        return null;
-    }
+    // public User getUser(String user) {
+    //
+    // }
 
     public ArrayList<User> getUsers() {
         return users;

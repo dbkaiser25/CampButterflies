@@ -23,19 +23,18 @@ public class DataLoader extends DataConstants {
         // for (int i = 0; i < camps.size(); i++) {
         // System.out.println("CAMP: " + camps.get(i));
         // }
-        ArrayList<Camper> campers = DataLoader.loadCampers();
-        for (int i = 0; i < campers.size(); i++) {
-            System.out.println("CAMPER: " + campers.get(i));
-        }
+        // ArrayList<Camper> campers = DataLoader.loadCampers();
+        // for (int i = 0; i < campers.size(); i++) {
+        // System.out.println("CAMPER: " + campers.get(i));
+        // }
         // ArrayList<Counselor> counselors = DataLoader.loadCounselors();
         // for (int i = 0; i < counselors.size(); i++) {
         // System.out.println("COUNSELOR: " + counselors.get(i).getFirstName());
         // }
-        // ArrayList<User> users = DataLoader.loadUsers();
-        // for (int i = 0; i < users.size(); i++) {
-        // System.out.println("USER: " + users.get(i));
-        // }
-
+        ArrayList<User> users = DataLoader.loadUsers();
+        for (int i = 0; i < users.size(); i++) {
+            System.out.println("USER: " + users.get(i));
+        }
     }
 
     public static ArrayList<Camper> loadCampers() { // tested: works

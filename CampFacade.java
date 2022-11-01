@@ -58,7 +58,7 @@ public class CampFacade {
         return campList;
     }
 
-    public String getCamps(){
+    public String getCamps() {
         String camps = "";
         for(Camp camp: campList.getCamps()){
             camps += camp.getName() + "\n";
@@ -83,8 +83,10 @@ public class CampFacade {
     public int Login(LoginInfo userLogin) {
         if (userList.haveUser(userLogin)) {
             currentUser = userList.getUserByUserName(userLogin.getUserName());
+            //num = 2;
             return 2;
-        } else if (counselorList.haveCounselor(userLogin)) {
+        }
+        if (counselorList.haveCounselor(userLogin)) {
             currentCounselor = counselorList.getCounselorByUserName(userLogin.getUserName());
             return 3;
         } else if (directorList.haveDirector(userLogin)) {
@@ -510,6 +512,7 @@ public class CampFacade {
      * @param endDate
      * @param theme
      */
+    // problem in this method
     public void setWeek(String camp, int week, Date startDate, Date endDate, String theme) {
         campList.getCamp(camp).getWeek(week).setStartDate(startDate);
         campList.getCamp(camp).getWeek(week).setEndDate(endDate);
@@ -533,8 +536,8 @@ public class CampFacade {
      * @return
      */
     public String getActivities(String campName) {
-        for(Camp camp : campList.getCamps()){
-            if(camp.getName().equals(campName))
+        for (Camp camp : campList.getCamps()) {
+            if (camp.getName().equals(campName))
                 return camp.getActivities();
         }
         return "This camp does not exist";
@@ -558,8 +561,8 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Week> getWeeks(String campName) {
-        for(Camp camp : campList.getCamps()){
-            if(camp.getName().equals(campName))
+        for (Camp camp : campList.getCamps()) {
+            if (camp.getName().equals(campName))
                 return camp.getWeeks();
         }
         return null;
