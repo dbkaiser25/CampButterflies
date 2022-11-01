@@ -89,7 +89,7 @@ public class Camp {
         for (HashMap.Entry<Integer, Week> entry : masterSchedule.entrySet()) {
             Integer weekInt = entry.getKey();
             Week thisWeek = entry.getValue();
-            if (num == weekInt) {
+            if (num - 1 == weekInt) {
                 week = thisWeek;
             }
         }
