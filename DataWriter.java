@@ -11,12 +11,6 @@ import java.util.Date;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-/**
- * notes on automation
- * makeSchedule should have other methods to help it
- * should have themes, schedules, year, number of cabins, - in facade
- */
-
 public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
