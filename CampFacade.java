@@ -624,6 +624,12 @@ public class CampFacade {
         camperList.saveCampers();
     }
 
+    public void removeCounselor(String firstName, String lastName, Camp camp)
+    {
+        currentDirector.removeCounselor(firstName,lastName,camp);
+        counselorList.saveCounselor();
+    }
+
   
 
 }

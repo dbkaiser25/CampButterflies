@@ -99,6 +99,17 @@ public class Director extends Person {
             }
          }
       }
+
+      //they also need to be removed from Camper List
+      for(int c = 0; c < CamperList.getInstance().getCampers().size(); c++)
+      {
+         if(CamperList.getInstance().getCampers().get(c).getFirstName().equals(firstName)
+         && CamperList.getInstance().getCampers().get(c).getLastName().equals(lastName))
+         {
+            CamperList.getInstance().getCampers().remove(c);
+            c = CamperList.getInstance().getCampers().size();
+         }
+      }
    }
 
    // 2. they need to be removed from whatever group they are in
@@ -143,6 +154,17 @@ public class Director extends Person {
                camp.getMasterSchedule().get(w).getCounselors().remove(c);
                c = camp.getMasterSchedule().get(w).getCounselors().size();
             }
+         }
+      }
+
+      //They also need to be removed from Counselor list
+      for(int c = 0; c < CounselorList.getInstance().getCounselors().size(); c++)
+      {
+         if(CounselorList.getInstance().getCounselors().get(c).getFirstName().equals(firstName)
+         && CounselorList.getInstance().getCounselors().get(c).getLastName().equals(lastName))
+         {
+            CounselorList.getInstance().getCounselors().remove(c);
+            c = CounselorList.getInstance().getCounselors().size();
          }
       }
    }
