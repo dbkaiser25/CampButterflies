@@ -34,6 +34,18 @@ public class CamperList {
           return null;
      }
 
+     public Camper getCamperByName(String firstName, String lastName)
+     {
+          for(Camper c: campers)
+          {
+               if(c.getFirstName().equals(firstName) && c.getLastName().equals(lastName))
+               {
+                    return c;
+               }
+          }
+          return null;
+     }
+
      public ArrayList<Camper> getCampers() {
           return campers;
      }
