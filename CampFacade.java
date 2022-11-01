@@ -592,7 +592,7 @@ public class CampFacade {
     }
 
     public String getSchedule(String camp, int week, int group) {
-        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group - 1).printSchedule();
+        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group).printSchedule();
     }
 
     /**

@@ -633,7 +633,9 @@ public class CampButterfliesDriver {
                 System.out.println((i + 1) + ". " + emergencyContacts.get(i).getFirstName() + " "
                         + emergencyContacts.get(i).getLastName());
             }
-            emergencyContacts.remove(scan.nextInt());
+            int index = scan.nextInt();
+            int num = index - 1;
+            emergencyContacts.remove(num);
             scan.nextLine();
         } else
             System.out.println("Please enter a valid number");
@@ -803,33 +805,32 @@ public class CampButterfliesDriver {
             int option = scan.nextInt();
             scan.nextLine();
             switch (option) {
-                case 1: //View My Profile
+                case 1: // View My Profile
                     System.out.println(facade.viewDirectorProfile());
                     break;
-                case 2: //Edit My (director) Profile
+                case 2: // Edit My (director) Profile
                     editDirector();
                     break;
-                case 3: //Create new camp
+                case 3: // Create new camp
                     createCamp();
                     break;
-                case 4: //View Activities
+                case 4: // View Activities
                     System.out.println("What camp would you like to see?");
                     System.out.println(facade.getActivities(scan.nextLine()));
                     break;
-                case 5: //Edit Activities
+                case 5: // Edit Activities
                     changeActivites();
                     break;
                 case 6: // View All counselors
-                    //System.out.println(facade.getCounselorList());
-                    System.out.println(facade.getCounselors());
+                    System.out.println(facade.getCounselorList());
 
                     break;
-                case 7: //View a Counselors Information
+                case 7: // View a Counselors Information
                     String firstName = get("Counselor's First Name");
                     String lastName = get("Counselor's Last Name");
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
-                case 8: //Remove Counselor
+                case 8: // Remove Counselor
                     // remove counselor
                     // Derek wrote this not sure if its right
                     // System.out.println("Doesnt work");
@@ -838,29 +839,29 @@ public class CampButterfliesDriver {
                     String counselorlname = get("Counselor Last Name");
                     facade.removeCounselor(counselorname, counselorlname, facade.getCampList().getCamp(campName));
                     break;
-                case 9: //View All Campers
+                case 9: // View All Campers
                     System.out.println(facade.getCampers());
                     break;
-                case 10: //View A Camper
+                case 10: // View A Camper
                     String camperName = get("Camper's First Name");
                     String camperlName = get("Camper's Last Name");
-                    System.out.println(facade.getCamperList().getCamperByName(camperName,camperlName));
-                    
-                case 11: //Remove Camper
+                    System.out.println(facade.getCamperList().getCamperByName(camperName, camperlName));
+
+                case 11: // Remove Camper
                     String campname = get("Camp");
                     // int weeknum = Integer.parseInt(get("Week"));
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname,
-                        facade.getCampList().getCamp(campname));
+                            facade.getCampList().getCamp(campname));
                     break;
-                case 12: //View Schedule
+                case 12: // View Schedule
                     String camp = get("Camp");
                     int week = Integer.parseInt(get("Week"));
                     int group = Integer.parseInt(get("Group"));
                     System.out.println(facade.getSchedule(camp, week, group));
                     break;
-                case 13: //Logout
+                case 13: // Logout
                     run = false;
                     break;
                 default:
@@ -904,6 +905,7 @@ public class CampButterfliesDriver {
                     break;
                 case 3:
                     String newhomeaddress = get("Home Address");
+                    facade.editDirectorHomeAddress(newhomeaddress);
                     break;
                 case 4:
                     String newdob = get("Date of Birth(MM/DD/YYYY");
@@ -996,7 +998,7 @@ public class CampButterfliesDriver {
             i++;
         }
         int num = scan.nextInt() - 1;
-        //int num = scan.nextInt();
+        // int num = scan.nextInt();
         scan.nextLine();
         System.out.println("New Activity");
         String activityName = get("Name");
