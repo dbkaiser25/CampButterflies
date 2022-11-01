@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 /**
  * A class that defines a counselor
@@ -191,7 +192,20 @@ public class Counselor extends Person {
     //this was modified from user's select weeks
     public void selectWeek(Camp camp, int weekNumber) 
     {
-        camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
+        //camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
+        getWeek(camp,weekNumber).getCounselors().add(this);
+    }
+
+    private Week getWeek(Camp camp, Integer weekNumber) {
+        Week week = new Week();
+        for (HashMap.Entry<Integer, Week> entry : camp.getMasterSchedule().entrySet()) {
+            Integer weekInt = entry.getKey();
+            Week thisWeek = entry.getValue();
+            if (weekNumber - 1 == weekInt) {
+                week = thisWeek;
+            }
+        }
+        return week;
     }
 
 }
