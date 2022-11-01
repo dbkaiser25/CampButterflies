@@ -206,10 +206,17 @@ public class Camper extends Person {
          * }
          * return false;
          */
+         
+        //if(!camp.getMasterSchedule().getWeek(camp,(Integer) weekNumber).isFull())
+        if(getWeek(camp,weekNumber).isFull())
+        {
+            return false;
+        }
+        getWeek(camp,weekNumber).getCampers().add(this);
         return true;
     }
 
-    public Week getWeek(Camp camp, Integer weekNumber) {
+    private Week getWeek(Camp camp, Integer weekNumber) {
         Week week = new Week();
         for (HashMap.Entry<Integer, Week> entry : camp.getMasterSchedule().entrySet()) {
             Integer weekInt = entry.getKey();
