@@ -439,6 +439,7 @@ public class CampButterfliesDriver {
                     System.out.println("Please enter a valid number");
                     break;
             }
+            pause();
         }
 
 
@@ -691,6 +692,7 @@ public class CampButterfliesDriver {
                     run = false;
                     break;
             }
+            pause();
         }
     }
 
@@ -767,6 +769,7 @@ public class CampButterfliesDriver {
                     System.out.println("Please enter a valid number");
                     break;
             }
+            pause();
         }
     }
 
@@ -830,6 +833,7 @@ public class CampButterfliesDriver {
                 default:
                     System.out.println("Please enter a valid number");
             }
+            pause();
         }
     }
 
