@@ -39,7 +39,7 @@ public class CampButterfliesDriver {
             homepage();
             int choice = scan.nextInt();
             scan.nextLine();
-
+            System.out.println("");
             switch (choice) {
                 case 1:
                     activites();
@@ -85,7 +85,7 @@ public class CampButterfliesDriver {
      */
     private void weeks() {
         System.out.println("Which camps sessions would you like to see?");
-        System.out.println(facade.getCamps() + "\n");
+        System.out.println(facade.getCamps());
         String camp = scan.nextLine();
         int i = 1;
         for (Week week : facade.getWeeks(camp)) {
@@ -381,7 +381,7 @@ public class CampButterfliesDriver {
         try {
             return new SimpleDateFormat("MM/dd/yyyy").parse(date);
         } catch (ParseException e) {
-            System.out.println("Sorry " + date + " is not valid");
+            System.out.println("Sorry " + date + " is not a valid date");
             return null;
         }
     }
