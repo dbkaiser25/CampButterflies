@@ -395,8 +395,7 @@ public class CampFacade {
      * @return
      */
     public boolean qualifiesForDiscount() {
-        return true;
-        // return currentUser.qualifiesForDiscount(campList,0);
+        return currentUser.qualifiesForDiscount(campList,1);
     }
 
     /**
@@ -614,6 +613,27 @@ public class CampFacade {
     public CounselorList getCounselorList() {
         return counselorList;
     }
+
+    public String getCounselors()
+    {
+        String counselors = new String();
+        counselors = "\nCounselors: \n";
+        for(Counselor c: counselorList.getCounselors())
+        {
+            counselors = counselors + c.getFirstName() + " " + c.getLastName() + "\n";
+        }
+        return counselors;
+    }
+
+    /*
+     * public String getCampers(){
+        String campers = "";
+        for(Camper camper: camperList.getCampers()){
+            campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
+        }
+        return campers;
+    }
+     */
 
     /**
      * removes a camper from a week
