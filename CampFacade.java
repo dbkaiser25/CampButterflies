@@ -519,7 +519,9 @@ public class CampFacade {
         // Camp camp = campList.setCamp(name);
         // System.out.println("year " + camp.getYear());
         // // this.campList.getCamp(name).getWeek()
-        System.out.println(campList.getCamp(name).getWeek(week).toString());
+        System.out.println(campList.getCamp(name));
+        System.out.println(campList.getCamp(name).getWeek(week).getTheme());
+
         campList.getCamp(name).getWeek(week).setStartDate(startDate);
         campList.getCamp(name).getWeek(week).setEndDate(endDate);
         campList.getCamp(name).getWeek(week).setTheme(theme);
