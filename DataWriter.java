@@ -177,13 +177,11 @@ public class DataWriter extends DataConstants {
          * adding arrayLists
          */
         JSONArray campersJSON = new JSONArray();
-        System.out.println("Size: " + user.getCampers().size());
         for (int i = 0; i < user.getCampers().size(); i++) {
             String camperID = user.getCampers().get(i).getUUID().toString();
             campersJSON.add(camperID);
         }
         userDetails.put(USER_CAMPERS, campersJSON);
-        System.out.println(campersJSON);
         return userDetails;
     }
 
@@ -306,7 +304,6 @@ public class DataWriter extends DataConstants {
                 JSONObject weekObj = new JSONObject();
                 Week week = entry.getValue();
                 weekObj.put(THEME, week.getTheme());
-                System.out.println(week.getTheme());
                 JSONArray groupsArray = new JSONArray();
                 for (int i = 0; i < week.getGroups().size(); i++) {
                     JSONObject groupObj = new JSONObject();
@@ -525,26 +522,9 @@ public class DataWriter extends DataConstants {
     // TODO complete this part by Saturday night
 
     public static void writeGroupFiles(UUID id) {
-        // get the group, write the schedule, add it to a txt file
-        // should print schedule, allergy information of all campers
-
-        // CounselorList c = CounselorList.getInstance();
-        // Counselor coun = c.getCounselorByUUID(id);
-        // System.out.println("Counselor name "+coun.getFirstName());
 
         CampList campList = CampList.getInstance(); // getting group
         Group group = campList.getGroupByUUID(id);
-        System.out.println("ID: " + id);
-        System.out.println(group);
-        // for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
-        // group.getSchedule().entrySet()) {
-        // ArrayList<Activity> activities = entry.getValue();
-        // for (int i = 0; i < activities.size(); i++) {
-        // System.out.println("activity: " + activities.get(i));
-        // }
-        // }
-        // above test works- prints all activities in JSON
-
         try (FileWriter file = new FileWriter(
                 "schedules/Counselor" + group.getCounselor().getFirstName() + "'s Group")) {
             file.write(group.printSchedule());

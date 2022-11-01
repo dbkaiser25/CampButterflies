@@ -9,6 +9,13 @@
             "name": "Launch CampButterfliesDriver",
             "request": "launch",
             "mainClass": "CampButterfliesDriver",
+            "projectName": "CampButterflies-1_5d123ef2"
+        },
+        {
+            "type": "java",
+            "name": "Launch CampButterfliesDriver",
+            "request": "launch",
+            "mainClass": "CampButterfliesDriver",
             "projectName": "CampButterflies_22d7feab"
         },
         {

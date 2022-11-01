@@ -7,6 +7,7 @@ public class UserList {
 
     private UserList() {
         users = DataLoader.loadUsers();
+        System.out.println("here");
     }
 
     public static UserList getInstance() {
@@ -28,8 +29,10 @@ public class UserList {
 
     public boolean haveUser(LoginInfo info) {
         for (User user : users) {
-            if (user.getUserLogin().equals(info))
+            if (user.getUserLogin().getUserName().equals(info.getUserName())
+                    && user.getUserLogin().getPassword().equals(info.getPassword())) {
                 return true;
+            }
         }
         return false;
     }
