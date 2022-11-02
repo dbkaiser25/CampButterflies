@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class CampFacade {
     private CampList campList;
@@ -498,9 +499,8 @@ public class CampFacade {
      * @param weeks
      * @param year
      */
-    public void newCamp(String name, String desc, int weeks, int year) {
-        Camp camp = new Camp(name, desc, weeks);
-        camp.setYear(year);
+    public void newCamp(String name, String desc, int year, ArrayList<Activity> activites, HashMap<Integer, Week> masterSchedule) {
+        Camp camp = new Camp(name, desc, masterSchedule, activites, year);
         campList.addCamp(camp);
         campList.saveCamps();
     }

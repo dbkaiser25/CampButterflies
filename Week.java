@@ -125,6 +125,13 @@ public class Week {
         this.isFull = isFull;
     }
 
+    public Week(String theme, Date startDate, Date endDate, boolean isFull){
+        this.theme = theme;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isFull = isFull;
+    }
+
     public void addCamper(Camper camper) {
         if (camper != null) {
             campers.add(camper);
@@ -430,15 +437,14 @@ public class Week {
     }
 
     public String toString() {
-        // Calendar start = Calendar.getInstance();
-        // start.setTime(this.getStartDate());
-        // Calendar end = Calendar.getInstance();
-        // end.setTime(this.getEndDate());
-        // return String.valueOf(start.get(start.MONTH)) + "/" +
-        // String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
-        // + String.valueOf(end.get(end.MONTH)) + "/" +
-        // String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
-        return "";
+        Calendar start = Calendar.getInstance();
+        start.setTime(this.getStartDate());
+        Calendar end = Calendar.getInstance();
+        end.setTime(this.getEndDate());
+        return String.valueOf(start.get(start.MONTH)) + "/" +
+        String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
+        + String.valueOf(end.get(end.MONTH)) + "/" +
+        String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
     }
 
     public ArrayList<Activity> getMeals() {
