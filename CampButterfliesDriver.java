@@ -865,8 +865,8 @@ public class CampButterfliesDriver {
                     break;
                 case 12: // View Schedule
                     String camp = get("Camp");
-                    int week = Integer.parseInt(get("Week"));
-                    int group = Integer.parseInt(get("Group"));
+                    int week = Integer.parseInt(get("Week Number"));
+                    int group = Integer.parseInt(get("Group Number"));
                     System.out.println(facade.getSchedule(camp, week, group));
                     break;
                 case 13: // Logout
