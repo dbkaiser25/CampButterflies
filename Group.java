@@ -65,6 +65,11 @@ public class Group {
         this.schedule = schedule;
     }
 
+    public Group(UUID uuid)
+    {
+        this.uuid = uuid;
+    }
+
     public Group() {
     }
 
@@ -107,6 +112,8 @@ public class Group {
         }
         return temp;
     }
+
+    
 
     // same thing with this one, do they want the actual schedule or to just view
     // the schedule
