@@ -511,7 +511,7 @@ public class CampFacade {
         campList.saveCamps();
     }
 
-    public void generateSchedules(String camp, ArrayList<Activity> activities)
+    public void generateSchedulesCamp(String camp, ArrayList<Activity> activities)
     {
         for(int w = 0; w < campList.getCamp(camp).getMasterSchedule().size(); w++)
         {
