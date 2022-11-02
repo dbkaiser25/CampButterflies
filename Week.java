@@ -185,6 +185,8 @@ public class Week {
 
         // there probably is a better way to initialize the groups
         
+        /* 
+
         Group g1 = new Group();
         groups.add(g1);
         Group g2 = new Group();
@@ -230,8 +232,11 @@ public class Week {
             }
         }
 
+        */
+
         // From here we assume that groups has been properly populated
         // give each group a counselor
+        /* 
         if (counselors.size() > 6 || counselors.size() <= 0) {
             // Either too many or not enough counselors assigned to the week
             return false;
@@ -240,6 +245,7 @@ public class Week {
                 groups.get(i).setCounselor(counselors.get(i));
             }
         }
+        */
 
         // generate a schedule for each (g)roup
         // Random rand = new Random();
@@ -278,6 +284,55 @@ public class Week {
         return true;
     }
 
+    public void assignCounselors()
+    {
+        ArrayList<Counselor> availableCounselors = new ArrayList<Counselor>(counselors.size());
+        for(int i = 0; i < groups.size(); i++)
+        {
+            if(groups.get(i).getCounselor() != null)
+            {
+                availableCounselors.add(groups.get(i).getCounselor());
+            }
+            else if(availableCounselors.size() == 0)
+            {
+                
+            }
+        }
+        for(int g = 0; g < groups.size(); g++)
+        {
+            //find the first instance of a group without a counselor
+            if(groups.get(g).getCounselor() == null)
+            {
+                //find the first counselor that doesn't have a group
+                for(int c = 0; c < counselors.size(); c++)
+                {
+                    if()
+                }
+            }
+        }
+    }
+
+    /* 
+    private Week getWeek(Camp camp, Integer weekNumber) {
+        Week week = new Week();
+        for (HashMap.Entry<Integer, Week> entry : camp.getMasterSchedule().entrySet()) {
+            Integer weekInt = entry.getKey();
+            Week thisWeek = entry.getValue();
+            if (weekNumber - 1 == weekInt) {
+                week = thisWeek;
+            }
+        }
+        return week;
+    }
+
+    private Group getGroup(Integer groupNumber)
+    {
+        Group group = new Group();
+        for(HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry: )
+    }
+    */
+
+    //this can probably be deleted
     private int calculateAge(Date birthDate, Date currentDate) {
         int month[] = { 31, 28, 31, 30, 31, 30, 31,
                 31, 30, 31, 30, 31 };
