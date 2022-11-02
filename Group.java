@@ -118,10 +118,12 @@ public class Group {
     public String printSchedule() {
 
         String temp = "";
-        /* 
-        temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s Group's";
+
+        // temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s
+        // Group's";
         // Schedule:\n";
-        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : this.getSchedule().entrySet()) {
+        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : getSchedule().entrySet()) {
+            System.out.println("test");
             ArrayList<Activity> activities = entry.getValue();
             DayOfWeek day = entry.getKey();
             for (int i = 0; i < activities.size(); i++) {
@@ -129,15 +131,15 @@ public class Group {
             }
         }
 
-        */
-        for(HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry: getSchedule().entrySet())
-        {
-            DayOfWeek day = entry.getKey();
-            ArrayList<Activity> activities = entry.getValue();
-            //DayOfWeek[] dOW = DayOfWeek.values();
-            temp = temp + "Day: " + day + "\n";
-            
-        }
+        // for(HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry:
+        // getSchedule().entrySet())
+        // {
+        // DayOfWeek day = entry.getKey();
+        // ArrayList<Activity> activities = entry.getValue();
+        // //DayOfWeek[] dOW = DayOfWeek.values();
+        // temp = temp + "Day: " + day + "\n";
+
+        // }
 
         return temp;
     }

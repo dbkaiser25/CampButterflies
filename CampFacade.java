@@ -491,6 +491,13 @@ public class CampFacade {
         directorList.saveDirector();
     }
 
+    public void addCamp(String name, String desc, int year, HashMap<Integer, Week> hashMap,
+            ArrayList<Activity> activities) { // need hashmap
+        Camp camp = new Camp(name, desc, hashMap, activities, year);
+        campList.addCamp(camp);
+    }
+
+
     /**
      * Adds a new Camp to campList
      * 
@@ -502,7 +509,7 @@ public class CampFacade {
     public void newCamp(String name, String desc, int year, ArrayList<Activity> activites, HashMap<Integer, Week> masterSchedule) {
         Camp camp = new Camp(name, desc, masterSchedule, activites, year);
         campList.addCamp(camp);
-        campList.saveCamps();
+        // campList.saveCamps();
     }
 
     /**
@@ -515,13 +522,19 @@ public class CampFacade {
      * @param theme
      */
     // setWeek doesn't work. theme and dates are null
-    public void setWeek(String name, int week, Date startDate, Date endDate, String theme) {
-        campList.getCamp(name).getWeek(week).setStartDate(startDate);
-        campList.getCamp(name).getWeek(week).setEndDate(endDate);
-        campList.getCamp(name).getWeek(week).setTheme(theme);
-        System.out.println("date " + campList.getCamp(name).getWeek(week).getStartDate());
-        System.out.println("theme " + campList.getCamp(name).getWeek(week).getTheme());
+    public void setWeek(String name, int weekNum, Date startDate, Date endDate, String theme) {
+        Camp camp = campList.getCamp(name);
+        Week week = campList.getCamp(name).getWeek(weekNum);
+        week.setStartDate(startDate);
+        week.setEndDate(endDate);
+        week.setTheme(theme);
+        camp.getWeeks().add(week);
+        campList.addCamp(camp);
         campList.saveCamps();
+        /*
+         * see how to write new arrays to JSON.
+         * adding a new camper for parent works. see if you can mimick this.
+         */
     }
 
     /**
@@ -594,8 +607,12 @@ public class CampFacade {
         return campList.getCamp(camp).getWeek(week - 1).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
     }
 
-    public String getSchedule(String camp, int week, int group) { // error here
-        return campList.getCamp(camp).getWeek(week - 1).getGroupByNumber(group).printSchedule();
+    public String getSchedule(String camp, int weekNum, int groupNum) { // error here
+        Week week = campList.getCamp(camp).getWeek(weekNum - 1);
+        Group group = week.getGroupByNumber(groupNum - 1);
+        return group.printSchedule();
+        // return campList.getCamp(camp).getWeek(week - 1).getGroupByNumber(group -
+        // 1).printSchedule();
     }
 
     /**
