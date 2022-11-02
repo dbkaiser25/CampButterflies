@@ -828,7 +828,6 @@ public class CampButterfliesDriver {
                     break;
                 case 4: // View Activities
                     System.out.println("What camp would you like to see?");
-                    System.out.println(facade.getCamps());
                     System.out.println(facade.getActivities(scan.nextLine()));
                     break;
                 case 5: // Edit Activities
@@ -844,7 +843,6 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCounselorList().getCounselorByName(firstName, lastName));
                     break;
                 case 8: // Remove Counselor
-                    System.out.println(facade.getCamps());
                     String campName = get("Camp");
                     String counselorname = get("Counselor First Name");
                     String counselorlname = get("Counselor Last Name");
@@ -859,17 +857,15 @@ public class CampButterfliesDriver {
                     System.out.println(facade.getCamperList().getCamperByName(camperName, camperlName));
 
                 case 11: // Remove Camper
-                    System.out.println(facade.getCamps());
                     String campname = get("Camp");
                     String campername = get("Camper First Name");
                     String camperlname = get("Camper Last Name");
                     facade.removeCamper(campername, camperlname, facade.getCampList().getCamp(campname));
                     break;
                 case 12: // View Schedule
-                    System.out.println(facade.getCamps());
                     String camp = get("Camp");
-                    int week = Integer.parseInt(get("Week Number"));
-                    int group = Integer.parseInt(get("Group Number"));
+                    int week = Integer.parseInt(get("Week"));
+                    int group = Integer.parseInt(get("Group"));
                     System.out.println(facade.getSchedule(camp, week, group));
                     break;
                 case 13: // Logout
@@ -888,7 +884,7 @@ public class CampButterfliesDriver {
      */
     private void directorOptions() {
         System.out.println(
-                "\n1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites\n6. View All Counselors"
+                "1. View My Profile\n2. Edit My Profile\n3. Create New Camp\n4. View Activities\n5. Edit Activites\n6. View All Counselors"
                         +
                         "\n7. View a Counselors Information\n8. Remove Counselor\n9. View All Campers\n10. View a Campers Information\n11. Remove Camper\n12. View Schedules"
                         +
@@ -970,7 +966,6 @@ public class CampButterfliesDriver {
      * Changes activities for a given camp
      */
     private void changeActivites() {
-        System.out.println(facade.getCamps());
         String camp = get("Which Camp would you like to change the activities for");
         boolean run = true;
         while (run) {

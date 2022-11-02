@@ -108,6 +108,9 @@ public class Week {
     public Week() {
 
         // Constructor goes here
+        for (int i = 0; i < 6; i++) {
+            groups.add(new Group());
+        }
 
     }
 

@@ -515,12 +515,14 @@ public class CampFacade {
      * @param theme
      */
     // setWeek doesn't work. theme and dates are null
-    public void setWeek(String name, int week, Date startDate, Date endDate, String theme) {
-        campList.getCamp(name).getWeek(week).setStartDate(startDate);
-        campList.getCamp(name).getWeek(week).setEndDate(endDate);
-        campList.getCamp(name).getWeek(week).setTheme(theme);
-        System.out.println("date " + campList.getCamp(name).getWeek(week).getStartDate());
-        System.out.println("theme " + campList.getCamp(name).getWeek(week).getTheme());
+    public void setWeek(String name, int weekNum, Date startDate, Date endDate, String theme) {
+        Week week = campList.getCamp(name).getWeek(weekNum);
+        System.out.println("Week is " + week);
+        week.setStartDate(startDate);
+        week.setEndDate(endDate);
+        week.setTheme(theme);
+        System.out.println("date " + week.getStartDate());
+        System.out.println("theme " + week.getTheme());
         campList.saveCamps();
     }
 
