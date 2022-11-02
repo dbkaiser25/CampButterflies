@@ -937,9 +937,9 @@ public class CampButterfliesDriver {
             String theme = get("Theme");
             facade.setWeek(name, i - 1, startDate, endDate, theme);
         }
-        int numActivities = Integer.parseInt(get("How many activities would you like to add"));
+        
         ArrayList<Activity> activities = new ArrayList<>();
-        for (int i = 1; i <= numActivities; i++) {
+        for (int i = 1; i <= 6; i++) {
             System.out.println("Activity " + i);
             String activityName = get("Name");
             String activityDesc = get("Description");
