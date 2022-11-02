@@ -502,7 +502,7 @@ public class CampFacade {
         Camp camp = new Camp(name, desc, weeks);
         camp.setYear(year);
         campList.addCamp(camp);
-        campList.saveCamps();
+        // campList.saveCamps();
     }
 
     /**
@@ -516,14 +516,17 @@ public class CampFacade {
      */
     // setWeek doesn't work. theme and dates are null
     public void setWeek(String name, int weekNum, Date startDate, Date endDate, String theme) {
+        Camp camp = campList.getCamp(name);
         Week week = campList.getCamp(name).getWeek(weekNum);
-        System.out.println("Week is " + week);
         week.setStartDate(startDate);
         week.setEndDate(endDate);
         week.setTheme(theme);
-        System.out.println("date " + week.getStartDate());
-        System.out.println("theme " + week.getTheme());
+        camp.getWeeks().add(week);
+        campList.addCamp(camp);
         campList.saveCamps();
+        /*
+         * see how to write new arrays to JSON.
+         */
     }
 
     /**

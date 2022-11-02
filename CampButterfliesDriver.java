@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class CampButterfliesDriver {
     private Scanner scan;
     private String[] homepageOptions = new String[7];
-    private CampFacade facade;
+    private CampFacade facade = new CampFacade();
 
     /**
      * Creates the driver and initializes the scanner
@@ -958,6 +958,7 @@ public class CampButterfliesDriver {
         facade.getCampList().getCamp(name).setActivities(activities);
         for (int i = 0; i < weeks; i++) {
             facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
+            // facade.getCampList().saveCamps();
         }
         facade.getCampList().saveCamps();
     }
