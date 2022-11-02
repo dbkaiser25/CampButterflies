@@ -1,1 +1,103 @@
-[{"allergies":["peanut","strawberries"],"firstName":"Tracy","lastName":"Smith","sex":"FEMALE","medications":[{"dosage":"one shot","time":"when allergy occurs","type":"epipen"}],"dateOfBirth":"03\/02\/2010","id":"1035e216-e038-4541-abe9-a4e5441eb592","contacts":[{"firstName":"Alan","lastName":"Smith","emailAddress":"asmith@gmail.com","phoneNumber":"315-934-2048","relationToPerson":"Father"},{"firstName":"Cindy","lastName":"Smith","emailAddress":"csmith@gmail.com","phoneNumber":"333-593-5902","relationToPerson":"Mother"}],"homeAddress":"20 Windy Street, Downingtown, PA, 19425","pediatrician":{"firstName":"Robert","lastName":"Greene","emailAddress":"rgreen@gmail.com","phoneNumber":"230-123-5445","relationToPerson":"Pediatrician"}},{"allergies":["none"],"firstName":"Joe","lastName":"Smalls","sex":"MALE","medications":[{"dosage":"none","time":null,"type":null}],"dateOfBirth":"01\/13\/2011","id":"45bd6f4e-a88e-448a-b911-1048c5b3ea6a","contacts":[{"firstName":"Adam","lastName":"Smalls","emailAddress":"asmalls@gmail.com","phoneNumber":"442-402-5046","relationToPerson":"Father"},{"firstName":"Christine","lastName":"Smalls","emailAddress":"csmalls@gmail.com","phoneNumber":"534-257-1023","relationToPerson":"Mother"}],"homeAddress":"77 Baker Court","pediatrician":{"firstName":"Robert","lastName":"Greene","emailAddress":"rgreen@gmail.com","phoneNumber":"230-123-5445","relationToPerson":"Pediatrician"}},{"allergies":["peanut","strawberries"],"firstName":"Tracy","lastName":"Smith","sex":"FEMALE","medications":[{"dosage":"one shot","time":"when allergy occurs","type":"epipen"}],"dateOfBirth":"03\/02\/2010","id":"1035e216-e038-4541-abe9-a4e5441eb592","contacts":[{"firstName":"Alan","lastName":"Smith","emailAddress":"asmith@gmail.com","phoneNumber":"315-934-2048","relationToPerson":"Father"},{"firstName":"Cindy","lastName":"Smith","emailAddress":"csmith@gmail.com","phoneNumber":"333-593-5902","relationToPerson":"Mother"}],"homeAddress":"20 Windy Street, Downingtown, PA, 19425","pediatrician":{"firstName":"Robert","lastName":"Greene","emailAddress":"rgreen@gmail.com","phoneNumber":"230-123-5445","relationToPerson":"Pediatrician"}},{"allergies":["none"],"firstName":"Joe","lastName":"Smalls","sex":"MALE","medications":[{"dosage":"none","time":null,"type":null}],"dateOfBirth":"01\/13\/2011","id":"45bd6f4e-a88e-448a-b911-1048c5b3ea6a","contacts":[{"firstName":"Adam","lastName":"Smalls","emailAddress":"asmalls@gmail.com","phoneNumber":"442-402-5046","relationToPerson":"Father"},{"firstName":"Christine","lastName":"Smalls","emailAddress":"csmalls@gmail.com","phoneNumber":"534-257-1023","relationToPerson":"Mother"}],"homeAddress":"77 Baker Court","pediatrician":{"firstName":"Robert","lastName":"Greene","emailAddress":"rgreen@gmail.com","phoneNumber":"230-123-5445","relationToPerson":"Pediatrician"}},{"allergies":["none"],"firstName":"Michelle","lastName":"Brown","sex":"FEMALE","medications":[],"dateOfBirth":"07\/21\/2010","id":"dc248018-26bc-4145-90b7-dc839a8b41f1","contacts":[{"firstName":"Mark","lastName":"Brown","emailAddress":"@uncle.com","phoneNumber":"000-000-0000","relationToPerson":"uncle"}],"homeAddress":"123","pediatrician":{"firstName":"doctoe","lastName":"green","emailAddress":"@email.com","phoneNumber":"123-456-7890","relationToPerson":"Pediatrician"}},{"allergies":["none"],"firstName":"alice","lastName":"smith","sex":"FEMALE","medications":[],"dateOfBirth":"04\/05\/2013","id":"de5bba22-9a8f-4ab0-ac0e-62824a5505d3","contacts":[{"firstName":"c","lastName":"s","emailAddress":"cindysmith@gmail.com","phoneNumber":"042-102-4031","relationToPerson":"mother"}],"homeAddress":"14 brook lane","pediatrician":{"firstName":"Dr.","lastName":"Jones","emailAddress":"drjones@gmail.com","phoneNumber":"303-403-1092","relationToPerson":"Pediatrician"}},{"allergies":["none"],"firstName":"Mitchel","lastName":"Green","sex":"MALE","medications":[],"dateOfBirth":"08\/24\/2010","id":"5262ef00-64de-4915-b5ad-3ed3a9e6ac71","contacts":[{"firstName":"Kathy","lastName":"Green","emailAddress":"kgreen@gmail.com","phoneNumber":"990-882-4658","relationToPerson":"Mother"}],"homeAddress":"198 Drivers Road","pediatrician":{"firstName":"Jon","lastName":"Little","emailAddress":"johnl@doctor.com","phoneNumber":"782-908-9657","relationToPerson":"Pediatrician"}},{"allergies":["apples","peaches"],"firstName":"Charlie","lastName":"Smith","sex":"MALE","medications":[],"dateOfBirth":"03\/29\/2011","id":"36b0405a-5c3c-42ff-b2f0-e6b85ea96d80","contacts":[{"firstName":"Cindy","lastName":"Smith","emailAddress":"smith@gmail.com","phoneNumber":"009-222-3331","relationToPerson":"Mother"}],"homeAddress":"890 Red Street","pediatrician":{"firstName":"Phillip","lastName":"Charles","emailAddress":"doctor@gmail.com","phoneNumber":"892-288-0292","relationToPerson":"Pediatrician"}},{"allergies":["no"],"firstName":"alice","lastName":"s","sex":"FEMALE","medications":[],"dateOfBirth":"05\/06\/2013","id":"92f6b68c-09ea-4bba-9c9b-89eee60bb1c4","contacts":[{"firstName":"c","lastName":"s","emailAddress":"cs@gmail.com","phoneNumber":"204-240-3043","relationToPerson":"mother"}],"homeAddress":"1 circle circle","pediatrician":{"firstName":"dr","lastName":"smith","emailAddress":"drsmith@gmail.com","phoneNumber":"403-350-3505","relationToPerson":"Pediatrician"}}]
+[{
+    "id": "1035e216-e038-4541-abe9-a4e5441eb592",
+    "firstName": "Tracy",
+    "lastName": "Smith",
+    "dateOfBirth": "3/2/2010",
+    "homeAddress": "20 Windy Street, Downingtown, PA, 19425",
+    "sex": "Female",
+    "allergies": ["peanut", "strawberries"],
+    "medications": [{
+        "dosage": "one shot",
+        "type": "epipen",
+        "time": "when allergy occurs"
+    }],
+    "contacts": [{
+            "firstName": "Alan",
+            "lastName": "Smith",
+            "phoneNumber": "315-934-2048",
+            "emailAddress": "asmith@gmail.com",
+            "relationToPerson": "Father"
+        },
+        {
+            "firstName": "Cindy",
+            "lastName": "Smith",
+            "phoneNumber": "333-593-5902",
+            "emailAddress": "csmith@gmail.com",
+            "relationToPerson": "Mother"
+        }
+    ],
+    "pediatrician": {
+        "firstName": "Robert",
+        "lastName": "Greene",
+        "phoneNumber": "230-123-5445",
+        "emailAddress": "rgreen@gmail.com",
+        "relationToPerson": "Pediatrician"
+    }
+},
+{
+    "id": "45bd6f4e-a88e-448a-b911-1048c5b3ea6a",
+    "firstName": "Joe",
+    "lastName": "Smalls",
+    "dateOfBirth": "1/13/2011",
+    "homeAddress": "77 Baker Court",
+    "sex": "Male",
+    "allergies" : ["none"],
+    "medications": [{
+        "name": "none",
+        "medication": "none",
+        "dosage": "none"
+    }],
+    "contacts": [{
+            "firstName": "Adam",
+            "lastName": "Smalls",
+            "phoneNumber": "442-402-5046",
+            "emailAddress": "asmalls@gmail.com",
+            "relationToPerson": "Father"
+        },
+        {
+            "firstName": "Christine",
+            "lastName": "Smalls",
+            "phoneNumber": "534-257-1023",
+            "emailAddress": "csmalls@gmail.com",
+            "relationToPerson": "Mother"
+        }
+    ],
+    "pediatrician": {
+        "firstName": "Robert",
+        "lastName": "Greene",
+        "phoneNumber": "230-123-5445",
+        "emailAddress": "rgreen@gmail.com",
+        "relationToPerson": "Pediatrician"
+  }
+},
+{
+    "id": "9303ed30-f4df-43ce-9014-1c816fcb73aa",
+    "firstName": "Nutella",
+    "lastName": "Davis",
+    "dateOfBirth": "1/13/2006",
+    "homeAddress": "77 Baker Court",
+    "sex": "Male",
+    "allergies" : ["none"],
+    "medications": [{
+        "name": "none",
+        "medication": "none",
+        "dosage": "none"
+    }],
+    "contacts": [{
+            "firstName": "Levaeh",
+            "lastName": "Davis",
+            "phoneNumber": "442-402-5046",
+            "emailAddress": "levaehdavis@gmail.com",
+            "relationToPerson": "Mother"
+        }
+    ],
+    "pediatrician": {
+        "firstName": "Robert",
+        "lastName": "Greene",
+        "phoneNumber": "230-123-5445",
+        "emailAddress": "rgreen@gmail.com",
+        "relationToPerson": "Pediatrician"
+  }
+},
+{"allergies":["peanut","strawberries"],"firstName":"Tracy","lastName":"Smith","sex":"FEMALE","medications":[{"dosage":"one shot","time":"when allergy occurs","type":"epipen"}],"dateOfBirth":"03\/02\/2010","id":"1035e216-e038-4541-abe9-a4e5441eb592","contacts":[{"firstName":"Alan","lastName":"Smith","emailAddress":"asmith@gmail.com","phoneNumber":"315-934-2048","relationToPerson":"Father"},{"firstName":"Cindy","lastName":"Smith","emailAddress":"csmith@gmail.com","phoneNumber":"333-593-5902","relationToPerson":"Mother"}],"homeAddress":"20 Windy Street, Downingtown, PA, 19425","pediatrician":{"firstName":"Robert","lastName":"Greene","emailAddress":"rgreen@gmail.com","phoneNumber":"230-123-5445","relationToPerson":"Pediatrician"}},{"allergies":["none"],"firstName":"Joe","lastName":"Smalls","sex":"MALE","medications":[{"dosage":"none","time":null,"type":null}],"dateOfBirth":"01\/13\/2011","id":"45bd6f4e-a88e-448a-b911-1048c5b3ea6a","contacts":[{"firstName":"Adam","lastName":"Smalls","emailAddress":"asmalls@gmail.com","phoneNumber":"442-402-5046","relationToPerson":"Father"},{"firstName":"Christine","lastName":"Smalls","emailAddress":"csmalls@gmail.com","phoneNumber":"534-257-1023","relationToPerson":"Mother"}],"homeAddress":"77 Baker Court","pediatrician":{"firstName":"Robert","lastName":"Greene","emailAddress":"rgreen@gmail.com","phoneNumber":"230-123-5445","relationToPerson":"Pediatrician"}},{"allergies":["none"],"firstName":"Michelle","lastName":"Brown","sex":"FEMALE","medications":[],"dateOfBirth":"07\/21\/2010","id":"dc248018-26bc-4145-90b7-dc839a8b41f1","contacts":[{"firstName":"Mark","lastName":"Brown","emailAddress":"@uncle.com","phoneNumber":"000-000-0000","relationToPerson":"uncle"}],"homeAddress":"123","pediatrician":{"firstName":"doctoe","lastName":"green","emailAddress":"@email.com","phoneNumber":"123-456-7890","relationToPerson":"Pediatrician"}}]
+
