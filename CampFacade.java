@@ -490,6 +490,11 @@ public class CampFacade {
         directorList.saveDirector();
     }
 
+    public void addCamp(String name, String desc, int year, int weeks, ArrayList<Activity> activities) { // need to have
+                                                                                                         // the hashmap
+
+    }
+
     /**
      * Adds a new Camp to campList
      * 
@@ -498,7 +503,7 @@ public class CampFacade {
      * @param weeks
      * @param year
      */
-    public void newCamp(String name, String desc, int weeks, int year) {
+    public void newCamp(String name, String desc, int weeks, int year) { // maybe make similar to add camp
         Camp camp = new Camp(name, desc, weeks);
         camp.setYear(year);
         campList.addCamp(camp);
@@ -526,6 +531,7 @@ public class CampFacade {
         campList.saveCamps();
         /*
          * see how to write new arrays to JSON.
+         * adding a new camper for parent works. see if you can mimick this.
          */
     }
 

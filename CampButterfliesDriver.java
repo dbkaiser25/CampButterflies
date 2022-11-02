@@ -271,7 +271,7 @@ public class CampButterfliesDriver {
             System.out.print("Week Number:");
             int week = scan.nextInt();
             scan.nextLine();
-            facade.getCampList().getCamp(camp).getWeek(week);
+            facade.getCampList().getCamp(camp).getWeek(week); // saves it here?
             camper.addWeek(week);
             if (!camper.selectWeek(facade.getCampList().getCamp(camp), week)) {
                 System.out.println("Week is full");
@@ -938,6 +938,7 @@ public class CampButterfliesDriver {
         String weekString = get("Number of Weeks");
         int weeks = Integer.parseInt(weekString);
         facade.newCamp(name, description, weeks, year);
+        ArrayList<Week> theseWeeks = new ArrayList<Week>();
         for (int i = 1; i <= weeks; i++) {
             System.out.println("Week " + i + ": ");
             Date startDate = formatDate(get("Start Date(MM/DD/YYYY)"));
@@ -956,11 +957,11 @@ public class CampButterfliesDriver {
             activities.add(activity);
         }
         facade.getCampList().getCamp(name).setActivities(activities);
+        // set activities method
         for (int i = 0; i < weeks; i++) {
             facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
             // facade.getCampList().saveCamps();
         }
-        facade.getCampList().saveCamps();
     }
 
     /**
