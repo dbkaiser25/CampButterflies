@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import javax.print.attribute.HashAttributeSet;
-
 /**
  * the UI code for the Camp Butterfly program
  */
@@ -965,8 +963,7 @@ public class CampButterfliesDriver {
         facade.newCamp(name, description, year, activities, weeks);
         
         for (int i = 0; i < weeknum; i++) {
-            facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
-            // facade.getCampList().saveCamps();
+            facade.generateSchedules(name,i,activities);
         }
 
     }
