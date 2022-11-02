@@ -939,15 +939,16 @@ public class CampButterfliesDriver {
         String weekString = get("Number of Weeks");
         int weeknum = Integer.parseInt(weekString);
 
-        HashMap<Integer,Week> weeks = new HashMap<>();
+        HashMap<Integer, Week> weeks = new HashMap<Integer, Week>();
 
         for (int i = 1; i <= weeknum; i++) {
             System.out.println("Week " + i + ": ");
             Date startDate = formatDate(get("Start Date(MM/DD/YYYY)"));
             Date endDate = formatDate(get("End Date(MM/DD/YYYY)"));
             String theme = get("Theme");
-            Week week = new Week(theme,startDate,endDate,false);
-            weeks.put(i,week);
+            Week week = new Week(theme, startDate, endDate, false);
+            Integer num = Integer.valueOf(i);
+            weeks.put(num, week);
         }
 
         ArrayList<Activity> activities = new ArrayList<>();
@@ -961,9 +962,9 @@ public class CampButterfliesDriver {
         }
 
         facade.newCamp(name, description, year, activities, weeks);
-        
+
         for (int i = 0; i < weeknum; i++) {
-            facade.generateSchedules(name,i,activities);
+            facade.generateSchedules(name, i, activities);
         }
 
     }
