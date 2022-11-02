@@ -963,7 +963,7 @@ public class CampButterfliesDriver {
         facade.newCamp(name, description, year, activities, weeks);
         
         for (int i = 0; i < weeknum; i++) {
-            facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
+            facade.generateSchedules(name,i,activities);
         }
 
     }

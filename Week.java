@@ -126,12 +126,13 @@ public class Week {
         this.isFull = isFull;
     }
 
+    //for facade
     public Week(String theme, Date startDate, Date endDate, boolean isFull){
         this.theme = theme;
         this.startDate = startDate;
         this.endDate = endDate;
         this.isFull = isFull;
-        this.groups = new ArrayList<>();
+        this.groups = new ArrayList<>(6);
         this.counselors = new ArrayList<>();
         this.campers = new ArrayList<>();
     }

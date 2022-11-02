@@ -506,6 +506,11 @@ public class CampFacade {
         campList.saveCamps();
     }
 
+    public void generateSchedules(String camp, int week, ArrayList<Activity> activities){
+        campList.getCamp(camp).getWeek(week).generateSchedules(activities);
+        campList.saveCamps();
+    }
+
     /**
      * Initializes each week of a camp
      * 
