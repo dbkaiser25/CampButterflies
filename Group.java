@@ -125,33 +125,29 @@ public class Group {
 
         String temp = "";
 
-        // temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s
-        // Group's";
-        // Schedule:\n";
+        temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s Group's Schedule:\n";
 
-        /*
-         * for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
-         * getSchedule().entrySet()) {
-         * System.out.println("test");
-         * ArrayList<Activity> activities = entry.getValue();
-         * DayOfWeek day = entry.getKey();
-         * for (int i = 0; i < activities.size(); i++) {
-         * temp = temp + "Day: " + day + "\n\t" + activities.get(i).toString() + "\n";
-         * }
-         * }
-         */
-        System.out.println("Here 1");
-        DayOfWeek[] dOW = DayOfWeek.values();
-        for (int d = 0; d < dOW.length; d++) {
-            System.out.println(schedule.size());
-            System.out.println("size " + schedule.get(dOW[d]).size());
-            System.out.println("Here 2");
-            temp = temp + "\nDay: " + dOW[d] + "\n";
-            for (int a = 0; a < schedule.get(dOW[d]).size(); a++) {
-                System.out.println("Here 3");
-                temp = temp + schedule.get(dOW[d]).get((Integer) a) + "\n";
+        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : getSchedule().entrySet()) {
+            System.out.println("test");
+            ArrayList<Activity> activities = entry.getValue();
+            DayOfWeek day = entry.getKey();
+            for (int i = 0; i < activities.size(); i++) {
+                temp = temp + "Day: " + day + "\n\t" + activities.get(i).toString() + "\n";
             }
         }
+
+        // System.out.println("Here 1");
+        // DayOfWeek[] dOW = DayOfWeek.values();
+        // for (int d = 0; d < dOW.length; d++) {
+        // System.out.println(schedule.size());
+        // System.out.println("size " + schedule.get(dOW[d]).size());
+        // System.out.println("Here 2");
+        // temp = temp + "\nDay: " + dOW[d] + "\n";
+        // for (int a = 0; a < schedule.get(dOW[d]).size(); a++) {
+        // System.out.println("Here 3");
+        // temp = temp + schedule.get(dOW[d]).get((Integer) a) + "\n";
+        // }
+        // }
 
         // for(HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry:
         // getSchedule().entrySet())
