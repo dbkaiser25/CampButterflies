@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -958,12 +959,12 @@ public class CampButterfliesDriver {
         }
         facade.getCampList().getCamp(name).setActivities(activities);
         // set activities method
+        HashMap<Integer, Week> hashMap = new HashMap<Integer, Week>();
         for (int i = 0; i < weeks; i++) {
             facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
             // facade.getCampList().saveCamps();
         }
-        //is this how we are trying to make a new camp, where is the hashmap 
-        facade.addCamp( name, desc, year, hashMap, activities);
+        facade.addCamp(name, description, year, hashMap, activities);
     }
 
     /**
