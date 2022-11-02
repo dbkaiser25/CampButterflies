@@ -7,9 +7,98 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Week {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
+        Counselor c1 = new Counselor("George","Washington",null,null);
+        Counselor c2 = new Counselor("John","Adams",null,null);
+        Counselor c3 = new Counselor("Thomas","Jefferson",null,null);
+        Counselor c4 = new Counselor("James","Madison",null,null);
+        Counselor c5 = new Counselor("Barak","Obama",null,null);
+        Counselor c6 = new Counselor("Donald","Trump",null,null);
 
+        Group g1 = new Group();
+        Group g2 = new Group();
+        Group g3 = new Group();
+        Group g4 = new Group();
+        Group g5 = new Group();
+        Group g6 = new Group();
+
+        Week wk = new Week();
+
+        wk.getCounselors().add(c1);
+        wk.getCounselors().add(c2);
+        wk.getCounselors().add(c3);
+        wk.getCounselors().add(c4);
+        wk.getCounselors().add(c5);
+        wk.getCounselors().add(c6);
+
+        wk.getGroups().add(g1);
+        wk.getGroups().add(g2);
+        wk.getGroups().add(g3);
+        wk.getGroups().add(g4);
+        wk.getGroups().add(g5);
+        wk.getGroups().add(g6);
+
+        Activity a1 = new Activity("Swimming","Lake","Go Swimming");
+        Activity a2 = new Activity("Kayaking","Lake","Go kayaking");
+        Activity a3 = new Activity("Archery","Range","Do Archery");
+        Activity a4 = new Activity("Rifle Shooting", "Range","Do shooting");
+        Activity a5 = new Activity("Dodgeball", "Field", "Play Dodgeball");
+        Activity a6 = new Activity("Soccer", "Field", "Play Soccer");
+
+        ArrayList<Activity> mainActivities = new ArrayList<Activity>();
+        mainActivities.add(a1);
+        mainActivities.add(a2);
+        mainActivities.add(a3);
+        mainActivities.add(a4);
+        mainActivities.add(a5);
+        mainActivities.add(a6);
+
+        wk.assignCounselors();
+        wk.generateSchedules(mainActivities);
+
+        System.out.println("\t\tGroup: " + 0 + "\n" + wk.getGroups().get(0).printSchedule());
+
+        //for(int i = 0; i < wk.getGroups().size(); i++)
+        //{
+            //System.out.println("\t\tGroup: " + i + "\n" + wk.getGroups().get(i).printSchedule());
+        //}
+
+        System.out.println("It didn't crash!!!");
+
+        /* 
+        System.out.println("Before Assign Counselors");
+        for(int i = 0; i < 6; i++)
+        {
+            
+            System.out.println(wk.getGroups().get(i).getCounselor().getFirstName() + " " + wk.getGroups().get(i).getCounselor().getLastName());
+        }
+
+        */
+
+        /* 
+        wk.getGroups().get(2).setCounselor(c6);
+        wk.getGroups().get(1).setCounselor(c5);
+        wk.getGroups().get(5).setCounselor(c1);
+
+        wk.assignCounselors();
+
+        System.out.println("After Assign Counselor");
+        for(int i = 0; i < 6; i++)
+        {
+            System.out.println(wk.getGroups().get(i).getCounselor().getFirstName() + " " + wk.getGroups().get(i).getCounselor().getLastName());
+        }
+
+        */
     }
+
+
+
+
+
+
+
+
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
     // private HashMap<Group, ArrayList<Activity>> schedule; TODO this is the old
     // HashMap Configuration see if new is good then fully delete
@@ -263,6 +352,7 @@ public class Week {
             for (int d = 0; d < 7; d++) 
             {
                 ArrayList<Activity> groupActivities = new ArrayList<Activity>(8);
+                int randomIndex = 0;
                 //create clone of activities array list
                 for(int i = 0; i < activities.size(); i++)
                 {
@@ -278,26 +368,33 @@ public class Week {
                     else 
                     {
                         boolean hasConflict = true;
-                        boolean invalidIndex = true;
-                        int randomIndex = 0;
-                        ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
+                        //boolean invalidIndex = true;
+                        //int randomIndex = 0;
+                        //ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
                         while(hasConflict)
                         {
                             hasConflict = false;
-                            while(invalidIndex)
-                            {
-                                invalidIndex = false;
+
+                            
+
+
+
+
+
+                            //while(invalidIndex)
+                            //{
+                                //invalidIndex = false;
                                 randomIndex = rand.nextInt(tempActivities.size()); // generate random index
-                                for(int k = 0; k < invalidIndexs.size(); k++)
-                                {
-                                    if((Integer) randomIndex == invalidIndexs.get(k))
-                                    {
+                                //for(int k = 0; k < invalidIndexs.size(); k++)
+                                //{
+                                    //if((Integer) randomIndex == invalidIndexs.get(k))
+                                    //{
                                         //it is an invalid index
-                                        invalidIndex = true;
-                                        k = invalidIndexs.size();
-                                    }
-                                }
-                            }
+                                        //invalidIndex = true;
+                                        //k = invalidIndexs.size();
+                                    //}
+                                //}
+                            //}
                             
                             //need to make sure nobody else has this activity at this time
                             for(int j = 0; j < g; j++)
@@ -307,18 +404,25 @@ public class Week {
                                 {
                                     hasConflict = true;
                                     j = g;
-                                    invalidIndexs.add(randomIndex);
+                                    //invalidIndexs.add(randomIndex);
                                 
                                 }
                             }
 
                         }
+                        groupActivities.add(tempActivities.get(randomIndex));
 
                     }
                 }
                 // schedule for this day is completed
                 DayOfWeek[] dOW = DayOfWeek.values();
+                //System.out.print("\nDay: " + dOW[d] + "\n");
                 schedule.put(dOW[d], groupActivities);
+                
+                //for(int i = 0; i < groupActivities.size(); i++)
+                //{
+                    //System.out.println(groupActivities.get(i).toString());
+                //}
             }
 
             // The group's schedule for the week is completed
@@ -461,4 +565,7 @@ public class Week {
 
         return meals;
     }
+
+    
+
 }

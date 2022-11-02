@@ -54,6 +54,13 @@ public class Counselor extends Person {
         this.userLogin = userLogin;
     }
 
+    //temp constructor for testing purposes
+    //TODO delete
+    public Counselor(String firstName, String lastName, Date dateOfBirth, String homeAddress)
+    {
+        super(firstName,lastName,dateOfBirth,homeAddress);
+    }
+
     public String getEmailAddress() {
         return emailAddress;
     }

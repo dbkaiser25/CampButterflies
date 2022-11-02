@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Week",
+            "request": "launch",
+            "mainClass": "Week",
+            "projectName": "CampButterflies_9601830"
+        },
+        {
+            "type": "java",
             "name": "Launch CampButterfliesDriver",
             "request": "launch",
             "mainClass": "CampButterfliesDriver",
