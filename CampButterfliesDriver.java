@@ -997,7 +997,6 @@ public class CampButterfliesDriver {
             i++;
         }
         int num = scan.nextInt() - 1;
-        // int num = scan.nextInt();
         scan.nextLine();
         System.out.println("New Activity");
         String activityName = get("Name");
