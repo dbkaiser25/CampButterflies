@@ -7,8 +7,30 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Week {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
+        /*
+        Week wk = new Week();
+        Activity a1 = new Activity("Swimming",null,null);
+        Activity a2 = new Activity("Kayaking",null,null);
+        Activity a3 = new Activity("Soccer",null,null);
+        Activity a4 = new Activity("Kickball",null,null);
+        Activity a5 = new Activity("Basket Weaving",null,null);
+        Activity a6 = new Activity("Football",null,null);
 
+        ArrayList<Activity> activities = new ArrayList<Activity>();
+        activities.add(a1);
+        activities.add(a2);
+        activities.add(a3);
+        activities.add(a4);
+        activities.add(a5);
+        activities.add(a6);
+
+        wk.generateSchedules(activities);
+        String temp = wk.viewSchedule();
+        System.out.println(temp);
+        */
+        
     }
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
     // private HashMap<Group, ArrayList<Activity>> schedule; TODO this is the old
@@ -437,8 +459,10 @@ public class Week {
 
     public String viewSchedule() {
         String temp = new String();
+        int x = 1;
         for (Group g : groups) {
-            temp = temp + "\n\n\t\t" + g.printSchedule();
+            temp = temp + "\n\n\t\tGroup: " + x + "\n" + g.printSchedule();
+            x++;
         }
         return temp;
     }
