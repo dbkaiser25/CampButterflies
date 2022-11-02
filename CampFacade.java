@@ -491,12 +491,6 @@ public class CampFacade {
         directorList.saveDirector();
     }
 
-    public void addCamp(String name, String desc, int year, HashMap<Integer, Week> hashMap,
-            ArrayList<Activity> activities) { // need hashmap
-        Camp camp = new Camp(name, desc, hashMap, activities, year);
-        campList.addCamp(camp);
-    }
-
 
     /**
      * Adds a new Camp to campList
@@ -509,7 +503,7 @@ public class CampFacade {
     public void newCamp(String name, String desc, int year, ArrayList<Activity> activites, HashMap<Integer, Week> masterSchedule) {
         Camp camp = new Camp(name, desc, masterSchedule, activites, year);
         campList.addCamp(camp);
-        // campList.saveCamps();
+        campList.saveCamps();
     }
 
     /**
