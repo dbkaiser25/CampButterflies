@@ -143,6 +143,7 @@ public class Group {
         System.out.println("Here 1");
         DayOfWeek[] dOW = DayOfWeek.values();
         for (int d = 0; d < dOW.length; d++) {
+            System.out.println(schedule.size());
             System.out.println("size " + schedule.get(dOW[d]).size());
             System.out.println("Here 2");
             temp = temp + "\nDay: " + dOW[d] + "\n";
