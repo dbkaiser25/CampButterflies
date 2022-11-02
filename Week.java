@@ -303,12 +303,20 @@ public class Week {
                             }
 
                         }
+                        groupActivities.add(tempActivities.get(randomIndex));
+                        tempActivities.remove(randomIndex);
 
                     }
                 }
                 // schedule for this day is completed
                 DayOfWeek[] dOW = DayOfWeek.values();
+                // System.out.print("\nDay: " + dOW[d] + "\n");
                 schedule.put(dOW[d], groupActivities);
+
+                // for(int i = 0; i < groupActivities.size(); i++)
+                // {
+                // System.out.println(groupActivities.get(i).toString());
+                // }
             }
 
             // The group's schedule for the week is completed
@@ -437,4 +445,5 @@ public class Week {
 
         return meals;
     }
+
 }

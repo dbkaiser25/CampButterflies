@@ -118,6 +118,7 @@ public class Group {
     public String printSchedule() {
 
         String temp = "";
+        /* 
         temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s Group's";
         // Schedule:\n";
         for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : this.getSchedule().entrySet()) {
@@ -127,6 +128,17 @@ public class Group {
                 temp = temp + "Day: " + day + "\n\t" + activities.get(i).toString() + "\n";
             }
         }
+
+        */
+        for(HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry: getSchedule().entrySet())
+        {
+            DayOfWeek day = entry.getKey();
+            ArrayList<Activity> activities = entry.getValue();
+            //DayOfWeek[] dOW = DayOfWeek.values();
+            temp = temp + "Day: " + day + "\n";
+            
+        }
+
         return temp;
     }
 
