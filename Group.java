@@ -65,9 +65,10 @@ public class Group {
         this.schedule = schedule;
     }
 
-    public Group(UUID uuid)
-    {
+    public Group(UUID uuid) {
         this.uuid = uuid;
+        this.counselor = null;
+        this.campers = null;
     }
 
     public Group() {
@@ -113,8 +114,6 @@ public class Group {
         return temp;
     }
 
-    
-
     // same thing with this one, do they want the actual schedule or to just view
     // the schedule
     public HashMap<DayOfWeek, ArrayList<Activity>> getSchedule() {
@@ -130,23 +129,25 @@ public class Group {
         // Group's";
         // Schedule:\n";
 
-        /* 
-        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : getSchedule().entrySet()) {
-            System.out.println("test");
-            ArrayList<Activity> activities = entry.getValue();
-            DayOfWeek day = entry.getKey();
-            for (int i = 0; i < activities.size(); i++) {
-                temp = temp + "Day: " + day + "\n\t" + activities.get(i).toString() + "\n";
-            }
-        }
-        */
-
+        /*
+         * for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry :
+         * getSchedule().entrySet()) {
+         * System.out.println("test");
+         * ArrayList<Activity> activities = entry.getValue();
+         * DayOfWeek day = entry.getKey();
+         * for (int i = 0; i < activities.size(); i++) {
+         * temp = temp + "Day: " + day + "\n\t" + activities.get(i).toString() + "\n";
+         * }
+         * }
+         */
+        System.out.println("Here 1");
         DayOfWeek[] dOW = DayOfWeek.values();
-        for(int d = 0; d < dOW.length; d++)
-        {
+        for (int d = 0; d < dOW.length; d++) {
+            System.out.println("size " + schedule.get(dOW[d]).size());
+            System.out.println("Here 2");
             temp = temp + "\nDay: " + dOW[d] + "\n";
-            for(int a = 0; a < schedule.get(dOW[d]).size(); a++)
-            {
+            for (int a = 0; a < schedule.get(dOW[d]).size(); a++) {
+                System.out.println("Here 3");
                 temp = temp + schedule.get(dOW[d]).get((Integer) a) + "\n";
             }
         }

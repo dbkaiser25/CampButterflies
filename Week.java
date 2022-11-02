@@ -7,30 +7,29 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Week {
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         /*
-        Week wk = new Week();
-        Activity a1 = new Activity("Swimming",null,null);
-        Activity a2 = new Activity("Kayaking",null,null);
-        Activity a3 = new Activity("Soccer",null,null);
-        Activity a4 = new Activity("Kickball",null,null);
-        Activity a5 = new Activity("Basket Weaving",null,null);
-        Activity a6 = new Activity("Football",null,null);
+         * Week wk = new Week();
+         * Activity a1 = new Activity("Swimming",null,null);
+         * Activity a2 = new Activity("Kayaking",null,null);
+         * Activity a3 = new Activity("Soccer",null,null);
+         * Activity a4 = new Activity("Kickball",null,null);
+         * Activity a5 = new Activity("Basket Weaving",null,null);
+         * Activity a6 = new Activity("Football",null,null);
+         * 
+         * ArrayList<Activity> activities = new ArrayList<Activity>();
+         * activities.add(a1);
+         * activities.add(a2);
+         * activities.add(a3);
+         * activities.add(a4);
+         * activities.add(a5);
+         * activities.add(a6);
+         * 
+         * wk.generateSchedules(activities);
+         * String temp = wk.viewSchedule();
+         * System.out.println(temp);
+         */
 
-        ArrayList<Activity> activities = new ArrayList<Activity>();
-        activities.add(a1);
-        activities.add(a2);
-        activities.add(a3);
-        activities.add(a4);
-        activities.add(a5);
-        activities.add(a6);
-
-        wk.generateSchedules(activities);
-        String temp = wk.viewSchedule();
-        System.out.println(temp);
-        */
-        
     }
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
     // private HashMap<Group, ArrayList<Activity>> schedule; TODO this is the old
@@ -148,8 +147,8 @@ public class Week {
         this.isFull = isFull;
     }
 
-    //for facade
-    public Week(String theme, Date startDate, Date endDate, boolean isFull){
+    // for facade
+    public Week(String theme, Date startDate, Date endDate, boolean isFull) {
         this.theme = theme;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -222,10 +221,9 @@ public class Week {
 
         // initialize groups
 
-        for (int i = 0; i < 6; i++) 
-        {
-            //UUID uuid = UUID.randomUUID();
-            //groups.add(new Group(uuid));
+        for (int i = 0; i < 6; i++) {
+            // UUID uuid = UUID.randomUUID();
+            // groups.add(new Group(uuid));
             groups.add(new Group(UUID.randomUUID()));
         }
 
@@ -397,36 +395,37 @@ public class Week {
         return false;
     }
 
-    public void assignCounselors() {
-        // Array list of potential counselors to be assigned to the group
-        ArrayList<Counselor> availableCounselors = new ArrayList<Counselor>(counselors.size());
+    // public void assignCounselors() {
+    // // Array list of potential counselors to be assigned to the group
+    // ArrayList<Counselor> availableCounselors = new
+    // ArrayList<Counselor>(counselors.size());
 
-        // populate available counselors arraylist
-        for (int c = 0; c < counselors.size(); c++) {
-            availableCounselors.add(counselors.get(c));
-        }
+    // // populate available counselors arraylist
+    // for (int c = 0; c < counselors.size(); c++) {
+    // availableCounselors.add(counselors.get(c));
+    // }
 
-        for (int i = 0; i < groups.size(); i++) {
-            if (groups.get(i).getCounselor() != null) {
-                for (int c = 0; c < counselors.size(); c++) {
-                    if (groups.get(i).getCounselor().equals(counselors.get(c))) {
-                        availableCounselors.remove(counselors.get(c));
-                        c = counselors.size();
-                    }
-                }
-            }
-        }
+    // for (int i = 0; i < groups.size(); i++) {
+    // if (groups.get(i).getCounselor() != null) {
+    // for (int c = 0; c < counselors.size(); c++) {
+    // if (groups.get(i).getCounselor().equals(counselors.get(c))) {
+    // availableCounselors.remove(counselors.get(c));
+    // c = counselors.size();
+    // }
+    // }
+    // }
+    // }
 
-        // int x = 0;
-        for (int i = 0; i < groups.size(); i++) {
-            if (groups.get(i).getCounselor() == null) {
-                groups.get(i).setCounselor(availableCounselors.get(0));
-                availableCounselors.remove(0);
-                // groups.get(i).setCounselor(availableCounselors.get(x));
-                // x++;
-            }
-        }
-    }
+    // // int x = 0;
+    // for (int i = 0; i < groups.size(); i++) {
+    // if (groups.get(i).getCounselor() == null) {
+    // groups.get(i).setCounselor(availableCounselors.get(0));
+    // availableCounselors.remove(0);
+    // // groups.get(i).setCounselor(availableCounselors.get(x));
+    // // x++;
+    // }
+    // }
+    // }
 
     // this can probably be deleted
     private int calculateAge(Date birthDate, Date currentDate) {
@@ -481,9 +480,9 @@ public class Week {
         Calendar end = Calendar.getInstance();
         end.setTime(this.getEndDate());
         return String.valueOf(start.get(start.MONTH)) + "/" +
-        String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
-        + String.valueOf(end.get(end.MONTH)) + "/" +
-        String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
+                String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
+                + String.valueOf(end.get(end.MONTH)) + "/" +
+                String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
     }
 
     public ArrayList<Activity> getMeals() {

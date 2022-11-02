@@ -54,11 +54,19 @@ public class Counselor extends Person {
         this.userLogin = userLogin;
     }
 
-    //temp constructor for testing purposes
-    //TODO delete
-    public Counselor(String firstName, String lastName, Date dateOfBirth, String homeAddress)
-    {
-        super(firstName,lastName,dateOfBirth,homeAddress);
+    // temp constructor for testing purposes
+    // TODO delete
+    public Counselor(String firstName, String lastName, Date dateOfBirth, String homeAddress) {
+        super(firstName, lastName, dateOfBirth, homeAddress);
+    }
+
+    public Counselor() {
+        super(null, null, null, null, null);
+        this.emailAddress = null;
+        this.emergencyContacts = null;
+        this.pediatrician = null;
+        this.phoneNumber = null;
+        this.userLogin = null;
     }
 
     public String getEmailAddress() {
@@ -101,7 +109,7 @@ public class Counselor extends Person {
         this.userLogin = userLogin;
     }
 
-    public UUID getUUID(){
+    public UUID getUUID() {
         return uuid;
     }
 
@@ -140,12 +148,9 @@ public class Counselor extends Person {
      * ...
      */
 
-    public String viewSchedule(Camp camp, int weekNumber) 
-    {
-        for(Group g: camp.getMasterSchedule().get(weekNumber).getGroups())
-        {
-            if(g.getCounselor().getFirstName().equals(firstName) && g.getCounselor().getLastName().equals(lastName))
-            {
+    public String viewSchedule(Camp camp, int weekNumber) {
+        for (Group g : camp.getMasterSchedule().get(weekNumber).getGroups()) {
+            if (g.getCounselor().getFirstName().equals(firstName) && g.getCounselor().getLastName().equals(lastName)) {
                 return g.printSchedule();
             }
         }
@@ -181,10 +186,9 @@ public class Counselor extends Person {
         return temp;
     }
 
-    private String formatDate(Date d)
-    {
-      SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-      return formatter.format(d);
+    private String formatDate(Date d) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        return formatter.format(d);
     }
 
     // to be deleated
@@ -196,11 +200,10 @@ public class Counselor extends Person {
         return temp;
     }
 
-    //this was modified from user's select weeks
-    public void selectWeek(Camp camp, int weekNumber) 
-    {
-        //camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
-        getWeek(camp,weekNumber).getCounselors().add(this);
+    // this was modified from user's select weeks
+    public void selectWeek(Camp camp, int weekNumber) {
+        // camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
+        getWeek(camp, weekNumber).getCounselors().add(this);
     }
 
     private Week getWeek(Camp camp, Integer weekNumber) {

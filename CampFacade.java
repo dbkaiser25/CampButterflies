@@ -491,7 +491,6 @@ public class CampFacade {
         directorList.saveDirector();
     }
 
-
     /**
      * Adds a new Camp to campList
      * 
@@ -500,13 +499,14 @@ public class CampFacade {
      * @param weeks
      * @param year
      */
-    public void newCamp(String name, String desc, int year, ArrayList<Activity> activites, HashMap<Integer, Week> masterSchedule) {
+    public void newCamp(String name, String desc, int year, ArrayList<Activity> activites,
+            HashMap<Integer, Week> masterSchedule) {
         Camp camp = new Camp(name, desc, masterSchedule, activites, year);
         campList.addCamp(camp);
         campList.saveCamps();
     }
 
-    public void generateSchedules(String camp, int week, ArrayList<Activity> activities){
+    public void generateSchedules(String camp, int week, ArrayList<Activity> activities) {
         campList.getCamp(camp).getWeek(week).generateSchedules(activities);
         campList.saveCamps();
     }
@@ -607,6 +607,7 @@ public class CampFacade {
     }
 
     public String getSchedule(String camp, int weekNum, int groupNum) { // error here
+        System.out.println("Week theme " + campList.getCamp(camp).getWeek(weekNum - 1).getTheme());
         Week week = campList.getCamp(camp).getWeek(weekNum - 1);
         Group group = week.getGroupByNumber(groupNum - 1);
         return group.printSchedule();

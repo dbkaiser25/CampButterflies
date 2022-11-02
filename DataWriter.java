@@ -54,8 +54,8 @@ public class DataWriter extends DataConstants {
         // for (int i = 0; i < newCamps.size(); i++) {
         // System.out.println("test 2 " + newCamps.get(i));
         // }
-        // UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
-        // writeGroupFiles(id);
+        UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
+        writeGroupFiles(id);
     }
 
     /**
@@ -464,14 +464,23 @@ public class DataWriter extends DataConstants {
             for (int i = 0; i < week.getGroups().size(); i++) {
                 JSONObject groupObj = new JSONObject();
                 groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString()); // adding group id
-                groupObj.put(COUNSELOR_ID, week.getGroups().get(i).getCounselor().getUUID().toString());
-
+                if (week.getGroups().get(i).getCounselor() == null) {
+                    groupObj.put(COUNSELOR_ID, null);
+                } else {
+                    groupObj.put(COUNSELOR_ID, week.getGroups().get(i).getCounselor().getUUID().toString());
+                }
                 JSONArray campersArr = new JSONArray();
-                for (int j = 0; j < week.getGroups().get(i).getCampers().size(); j++) {
+                if (week.getGroups().get(i).getCampers() == null) {
                     JSONObject camperObj = new JSONObject();
-                    String id = week.getGroups().get(i).getCampers().get(j).getUUID().toString();
-                    camperObj.put(ID, id);
+                    camperObj.put(ID, null);
                     campersArr.add(camperObj);
+                } else {
+                    for (int j = 0; j < week.getGroups().get(i).getCampers().size(); j++) {
+                        JSONObject camperObj = new JSONObject();
+                        String id = week.getGroups().get(i).getCampers().get(j).getUUID().toString();
+                        camperObj.put(ID, id);
+                        campersArr.add(camperObj);
+                    }
                 }
                 groupObj.put(GROUP_CAMPERS, campersArr);
 
