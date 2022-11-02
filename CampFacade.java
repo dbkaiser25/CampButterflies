@@ -156,7 +156,7 @@ public class CampFacade {
         Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB,
                 emergencyContacts, pediatrician, loginInfo);
         counselorList.addCounselor(counselor);
-        //call that one thing
+        // call that one thing
         return counselor;
     }
 
@@ -514,12 +514,13 @@ public class CampFacade {
      * @param endDate
      * @param theme
      */
-    // problem in this method
+    // setWeek doesn't work. theme and dates are null
     public void setWeek(String name, int week, Date startDate, Date endDate, String theme) {
-
         campList.getCamp(name).getWeek(week).setStartDate(startDate);
         campList.getCamp(name).getWeek(week).setEndDate(endDate);
         campList.getCamp(name).getWeek(week).setTheme(theme);
+        System.out.println("date " + campList.getCamp(name).getWeek(week).getStartDate());
+        System.out.println("theme " + campList.getCamp(name).getWeek(week).getTheme());
         campList.saveCamps();
     }
 
@@ -579,7 +580,7 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Camper> getGroup(String camp, int week) {
-        return campList.getCamp(camp).getWeek(week-1).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
+        return campList.getCamp(camp).getWeek(week - 1).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
     /**
@@ -590,11 +591,11 @@ public class CampFacade {
      * @return
      */
     public String getSchedule(String camp, int week) {
-        return campList.getCamp(camp).getWeek(week-1).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
+        return campList.getCamp(camp).getWeek(week - 1).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
     }
 
-    public String getSchedule(String camp, int week, int group) {
-        return campList.getCamp(camp).getWeek(week-1).getGroupByNumber(group).printSchedule();
+    public String getSchedule(String camp, int week, int group) { // error here
+        return campList.getCamp(camp).getWeek(week - 1).getGroupByNumber(group).printSchedule();
     }
 
     /**

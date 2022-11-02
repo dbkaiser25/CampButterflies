@@ -97,10 +97,9 @@ public class CampButterfliesDriver {
     /*
      * Clears the console
      */
-     private void clear() {
+    private void clear() {
         System.out.print("\033[H\033[2J");
-     }
-     
+    }
 
     /**
      * prints the hompage UI
@@ -254,35 +253,35 @@ public class CampButterfliesDriver {
                 moreContacts = false;
         }
 
-        Camper camper = facade.addCamper(firstName, lastName, homeAddress, doB, sex, medications, allergies, emergencyContacts,
-        pediatrician);
+        Camper camper = facade.addCamper(firstName, lastName, homeAddress, doB, sex, medications, allergies,
+                emergencyContacts,
+                pediatrician);
 
         System.out.println("\nWhich camp would you like to sign up for?");
-            System.out.println(facade.getCamps());
-            String camp = scan.nextLine();
-            System.out.println("Pick a week");
-            boolean moreWeeks = true;
-            while (moreWeeks) {
-                int i = 1;
-                for (Week week : facade.getWeeks(camp)) {
-                    System.out.println("Week " + i + ": " + week);
-                    i++;
-                }
-                System.out.print("Week Number:");
-                int week = scan.nextInt();
-                scan.nextLine();
-                facade.getCampList().getCamp(camp).getWeek(week);
-                camper.addWeek(week);
-                if(!camper.selectWeek(facade.getCampList().getCamp(camp),week)){
-                    System.out.println("Week is full");
-                }
-                else{
-                    System.out.println(camper.getFirstName() + " is signed up for week " + week +"!");
-                }
-                String answer = get("Would you like to add another week?(yes/no)");
-                if (answer.equalsIgnoreCase("no"))
-                    moreWeeks = false;
+        System.out.println(facade.getCamps());
+        String camp = scan.nextLine();
+        System.out.println("Pick a week");
+        boolean moreWeeks = true;
+        while (moreWeeks) {
+            int i = 1;
+            for (Week week : facade.getWeeks(camp)) {
+                System.out.println("Week " + i + ": " + week);
+                i++;
             }
+            System.out.print("Week Number:");
+            int week = scan.nextInt();
+            scan.nextLine();
+            facade.getCampList().getCamp(camp).getWeek(week);
+            camper.addWeek(week);
+            if (!camper.selectWeek(facade.getCampList().getCamp(camp), week)) {
+                System.out.println("Week is full");
+            } else {
+                System.out.println(camper.getFirstName() + " is signed up for week " + week + "!");
+            }
+            String answer = get("Would you like to add another week?(yes/no)");
+            if (answer.equalsIgnoreCase("no"))
+                moreWeeks = false;
+        }
 
         return camper;
     }
@@ -328,7 +327,8 @@ public class CampButterfliesDriver {
                 moreContacts = false;
         }
 
-        Counselor counselor = facade.addCounselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB, emergencyContacts,
+        Counselor counselor = facade.addCounselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB,
+                emergencyContacts,
                 pediatrician, loginInfo);
 
         System.out.println("Which camp would you like to sign up for?");
@@ -565,10 +565,12 @@ public class CampButterfliesDriver {
                     editAllergies(firstname);
                     break;
                 case 7:
-                    facade.editCamperEmergencyContacts(firstname, editEC(facade.getCurrentUser().getCamper(firstname).getEmergencyContacts()));
+                    facade.editCamperEmergencyContacts(firstname,
+                            editEC(facade.getCurrentUser().getCamper(firstname).getEmergencyContacts()));
                     break;
                 case 8:
-                    facade.editCamperPediatrician(firstname, editDoctor(facade.getCurrentUser().getCamper(firstname).getPediatrician()));
+                    facade.editCamperPediatrician(firstname,
+                            editDoctor(facade.getCurrentUser().getCamper(firstname).getPediatrician()));
                 case 9:
                     run = false;
                     break;
@@ -585,7 +587,8 @@ public class CampButterfliesDriver {
      * @param camper
      */
     private void editAllergies(String camper) {
-        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies().clone();
+        ArrayList<String> newAllergies = (ArrayList<String>) facade.getCurrentUser().getCamper(camper).getAllergies()
+                .clone();
         boolean run = true;
         while (run) {
             System.out.println("1. Delete An Existing Allergy\n2.Add A New Allergy\n3. Finish Editing Allergies");
@@ -841,7 +844,7 @@ public class CampButterfliesDriver {
                     break;
                 case 8: // Remove Counselor
                     String campName = get("Camp");
-                    String counselorname = get("Counselor First Name"); 
+                    String counselorname = get("Counselor First Name");
                     String counselorlname = get("Counselor Last Name");
                     facade.removeCounselor(counselorname, counselorlname, facade.getCampList().getCamp(campName));
                     break;
@@ -942,7 +945,7 @@ public class CampButterfliesDriver {
             String theme = get("Theme");
             facade.setWeek(name, i - 1, startDate, endDate, theme);
         }
-        
+
         ArrayList<Activity> activities = new ArrayList<>();
         for (int i = 1; i <= 6; i++) {
             System.out.println("Activity " + i);
