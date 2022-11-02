@@ -354,52 +354,44 @@ public class Week {
 
     public void assignCounselors()
     {
+        //Array list of potential counselors to be assigned to the group
         ArrayList<Counselor> availableCounselors = new ArrayList<Counselor>(counselors.size());
+
+        //populate available counselors arraylist
+        for(int c = 0; c < counselors.size(); c++)
+        {
+            availableCounselors.add(counselors.get(c));
+        }
+
+
         for(int i = 0; i < groups.size(); i++)
         {
             if(groups.get(i).getCounselor() != null)
             {
-                availableCounselors.add(groups.get(i).getCounselor());
-            }
-            else if(availableCounselors.size() == 0)
-            {
-                
-            }
-        }
-        for(int g = 0; g < groups.size(); g++)
-        {
-            //find the first instance of a group without a counselor
-            if(groups.get(g).getCounselor() == null)
-            {
-                //find the first counselor that doesn't have a group
                 for(int c = 0; c < counselors.size(); c++)
                 {
-                    if()
+                    if(groups.get(i).getCounselor().equals(counselors.get(c)))
+                    {
+                        availableCounselors.remove(counselors.get(c));
+                        c = counselors.size();
+                    }
                 }
             }
         }
-    }
 
-    /* 
-    private Week getWeek(Camp camp, Integer weekNumber) {
-        Week week = new Week();
-        for (HashMap.Entry<Integer, Week> entry : camp.getMasterSchedule().entrySet()) {
-            Integer weekInt = entry.getKey();
-            Week thisWeek = entry.getValue();
-            if (weekNumber - 1 == weekInt) {
-                week = thisWeek;
+        //int x = 0; 
+        for(int i = 0; i < groups.size(); i++)
+        {
+            if(groups.get(i).getCounselor() == null)
+            {
+                groups.get(i).setCounselor(availableCounselors.get(0));
+                availableCounselors.remove(0);
+                //groups.get(i).setCounselor(availableCounselors.get(x));
+                //x++;
             }
         }
-        return week;
     }
-
-    private Group getGroup(Integer groupNumber)
-    {
-        Group group = new Group();
-        for(HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry: )
-    }
-    */
-
+    
     //this can probably be deleted
     private int calculateAge(Date birthDate, Date currentDate) {
         int month[] = { 31, 28, 31, 30, 31, 30, 31,
