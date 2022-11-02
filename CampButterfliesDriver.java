@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import javax.print.attribute.HashAttributeSet;
-
 /**
  * the UI code for the Camp Butterfly program
  */

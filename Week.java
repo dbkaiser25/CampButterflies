@@ -131,6 +131,9 @@ public class Week {
         this.startDate = startDate;
         this.endDate = endDate;
         this.isFull = isFull;
+        this.groups = new ArrayList<>();
+        this.counselors = new ArrayList<>();
+        this.campers = new ArrayList<>();
     }
 
     public void addCamper(Camper camper) {
