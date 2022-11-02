@@ -96,9 +96,7 @@ public class Week {
         for (int i = 0; i < groups.size(); i++) {
             if (i == num) {
                 group = groups.get(i);
-                System.out.println("group: " + group);
             }
-            System.out.println("in loop");
         }
         return group;
         // return groups.get(num-1);
@@ -189,63 +187,64 @@ public class Week {
 
         // there probably is a better way to initialize the groups
 
-        //initialize groups
-        for(int i = 0; i < 6; i++)
-        {
+        // initialize groups
+        for (int i = 0; i < 6; i++) {
             groups.add(new Group());
         }
-        
-        /* 
 
-
-
-        f
-        Group g1 = new Group();
-        groups.add(g1);
-        Group g2 = new Group();
-        groups.add(g2);
-        Group g3 = new Group();
-        groups.add(g3);
-        Group g4 = new Group();
-        groups.add(g4);
-        Group g5 = new Group();
-        groups.add(g5);
-        Group g6 = new Group();
-        groups.add(g6);
-
-        for (Camper c : campers) {
-            int[] groupTotals = new int[6];
-            int temp = calculateAge(c.getDateOfBirth(), currentDate);
-
-            // TECHNICALLY there are no requirements or specifications on how the list of
-            // campers
-            // will be for generating groups. I'm never one to assume the best outcome but
-            // I'll be doing that,
-            // It is a lower priority to insert code to better split groups with worse/less
-            // nice data
-
-            if (temp == 7 || temp == 8) {
-                // groupTotals[0]++;
-                groups.get(0).addCamper(c);
-            } else if (temp == 9 || temp == 10) {
-                // groupTotals[1]++;
-                groups.get(1).addCamper(c);
-            } else if (temp == 11 || temp == 12) {
-                // groupTotals[2]++;
-                groups.get(2).addCamper(c);
-            } else if (temp == 13 || temp == 14) {
-                // groupTotals[3]++;
-                groups.get(3).addCamper(c);
-            } else if (temp == 15 || temp == 16) {
-                // groupTotals[4]++;
-                groups.get(4).addCamper(c);
-            } else if (temp == 17 || temp == 18) {
-                // groupTotals[5]++;
-                groups.get(5).addCamper(c);
-            }
-        }
-
-        */
+        /*
+         * 
+         * 
+         * 
+         * f
+         * Group g1 = new Group();
+         * groups.add(g1);
+         * Group g2 = new Group();
+         * groups.add(g2);
+         * Group g3 = new Group();
+         * groups.add(g3);
+         * Group g4 = new Group();
+         * groups.add(g4);
+         * Group g5 = new Group();
+         * groups.add(g5);
+         * Group g6 = new Group();
+         * groups.add(g6);
+         * 
+         * for (Camper c : campers) {
+         * int[] groupTotals = new int[6];
+         * int temp = calculateAge(c.getDateOfBirth(), currentDate);
+         * 
+         * // TECHNICALLY there are no requirements or specifications on how the list of
+         * // campers
+         * // will be for generating groups. I'm never one to assume the best outcome
+         * but
+         * // I'll be doing that,
+         * // It is a lower priority to insert code to better split groups with
+         * worse/less
+         * // nice data
+         * 
+         * if (temp == 7 || temp == 8) {
+         * // groupTotals[0]++;
+         * groups.get(0).addCamper(c);
+         * } else if (temp == 9 || temp == 10) {
+         * // groupTotals[1]++;
+         * groups.get(1).addCamper(c);
+         * } else if (temp == 11 || temp == 12) {
+         * // groupTotals[2]++;
+         * groups.get(2).addCamper(c);
+         * } else if (temp == 13 || temp == 14) {
+         * // groupTotals[3]++;
+         * groups.get(3).addCamper(c);
+         * } else if (temp == 15 || temp == 16) {
+         * // groupTotals[4]++;
+         * groups.get(4).addCamper(c);
+         * } else if (temp == 17 || temp == 18) {
+         * // groupTotals[5]++;
+         * groups.get(5).addCamper(c);
+         * }
+         * }
+         * 
+         */
 
         // From here we assume that groups has been properly populated
         // give each group a counselor
@@ -265,7 +264,6 @@ public class Week {
         ArrayList<Activity> meals = getMeals();
         Random rand = new Random();
         ArrayList<Activity> tempActivities = new ArrayList<Activity>(activities.size());
-        
 
         for (int g = 0; g < groups.size(); g++) {
 
@@ -284,38 +282,44 @@ public class Week {
                     if (i % 3 == 0) {
                         groupActivities.add(meals.get(i / 3)); // wether or not to add a meal
                     } else {
-                        boolean hasConflict = true;
-                        boolean invalidIndex = true;
-                        int randomIndex = 0;
-                        ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
-                        while (hasConflict) {
-                            hasConflict = false;
-                            while (invalidIndex) {
-                                invalidIndex = false;
-                                randomIndex = rand.nextInt(tempActivities.size()); // generate random index
-                                for (int k = 0; k < invalidIndexs.size(); k++) {
-                                    if ((Integer) randomIndex == invalidIndexs.get(k)) {
-                                        // it is an invalid index
-                                        invalidIndex = true;
-                                        k = invalidIndexs.size();
-                                    }
-                                }
-                            }
-
-                            // need to make sure nobody else has this activity at this time
-                            for (int j = 0; j < g; j++) {
-                                DayOfWeek[] dOW = DayOfWeek.values();
-                                if (testGroup(groups.get(j), dOW[d], i, tempActivities.get(randomIndex))) {
-                                    hasConflict = true;
-                                    j = g;
-                                    invalidIndexs.add(randomIndex);
-
-                                }
-                            }
-
-                        }
+                        int randomIndex = rand.nextInt(tempActivities.size()); // generate random index
                         groupActivities.add(tempActivities.get(randomIndex));
                         tempActivities.remove(randomIndex);
+                        /*
+                         * boolean hasConflict = true;
+                         * boolean invalidIndex = true;
+                         * int randomIndex = 0;
+                         * ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
+                         * while (hasConflict) {
+                         * hasConflict = false;
+                         * while (invalidIndex) {
+                         * invalidIndex = false;
+                         * randomIndex = rand.nextInt(tempActivities.size()); // generate random index
+                         * for (int k = 0; k < invalidIndexs.size(); k++) {
+                         * if ((Integer) randomIndex == invalidIndexs.get(k)) {
+                         * // it is an invalid index
+                         * invalidIndex = true;
+                         * k = invalidIndexs.size();
+                         * }
+                         * }
+                         * }
+                         */
+                        // need to make sure nobody else has this activity at this time
+                        /*
+                         * for (int j = 0; j < g; j++) {
+                         * DayOfWeek[] dOW = DayOfWeek.values();
+                         * if (testGroup(groups.get(j), dOW[d], i, tempActivities.get(randomIndex))) {
+                         * hasConflict = true;
+                         * j = g;
+                         * invalidIndexs.add(randomIndex);
+                         * 
+                         * }
+                         * }
+                         */
+
+                        // }
+                        // groupActivities.add(tempActivities.get(randomIndex));
+                        // tempActivities.remove(randomIndex);
 
                     }
                 }

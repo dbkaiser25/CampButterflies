@@ -596,8 +596,12 @@ public class CampFacade {
         return campList.getCamp(camp).getWeek(week - 1).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
     }
 
-    public String getSchedule(String camp, int week, int group) { // error here
-        return campList.getCamp(camp).getWeek(week - 1).getGroupByNumber(group).printSchedule();
+    public String getSchedule(String camp, int weekNum, int groupNum) { // error here
+        Week week = campList.getCamp(camp).getWeek(weekNum - 1);
+        Group group = week.getGroupByNumber(groupNum - 1);
+        return group.printSchedule();
+        // return campList.getCamp(camp).getWeek(week - 1).getGroupByNumber(group -
+        // 1).printSchedule();
     }
 
     /**
