@@ -251,24 +251,68 @@ public class Week {
         // Random rand = new Random();
         ArrayList<Activity> meals = getMeals();
         Random rand = new Random();
+        ArrayList<Activity> tempActivities = new ArrayList<Activity>(activities.size());
+        
+
         for (int g = 0; g < groups.size(); g++) {
 
             HashMap<DayOfWeek, ArrayList<Activity>> schedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
 
             // need a schedule for every (d)ay
             // groups.get(i).setSchedule(generateGroupSchedule(activities));
-            for (int d = 0; d < 7; d++) {
+            for (int d = 0; d < 7; d++) 
+            {
                 ArrayList<Activity> groupActivities = new ArrayList<Activity>(8);
+                //create clone of activities array list
+                for(int i = 0; i < activities.size(); i++)
+                {
+                    tempActivities.add(activities.get(i));
+                }
 
-                for (int i = 0; i < 8; i++) {
-                    if (i % 3 == 0) {
+                for (int i = 0; i < 8; i++) 
+                {
+                    if (i % 3 == 0) 
+                    {
                         groupActivities.add(meals.get(i / 3)); // wether or not to add a meal
-                    } else {
-                        int randomIndex = rand.nextInt(activities.size()); // generate random index
-                        groupActivities.add(activities.get(randomIndex)); // add random index activity to list of group
-                                                                          // activities
-                        activities.remove(randomIndex); // TODO remove activity so we cant get it again.
-                        // TODO Do we need to clone activities or something so we don't change it idk
+                    } 
+                    else 
+                    {
+                        boolean hasConflict = true;
+                        boolean invalidIndex = true;
+                        int randomIndex = 0;
+                        ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
+                        while(hasConflict)
+                        {
+                            hasConflict = false;
+                            while(invalidIndex)
+                            {
+                                invalidIndex = false;
+                                randomIndex = rand.nextInt(tempActivities.size()); // generate random index
+                                for(int k = 0; k < invalidIndexs.size(); k++)
+                                {
+                                    if((Integer) randomIndex == invalidIndexs.get(k))
+                                    {
+                                        //it is an invalid index
+                                        invalidIndex = true;
+                                        k = invalidIndexs.size();
+                                    }
+                                }
+                            }
+                            
+                            //need to make sure nobody else has this activity at this time
+                            for(int j = 0; j < g; j++)
+                            {
+                                DayOfWeek[] dOW = DayOfWeek.values();
+                                if(testGroup(groups.get(j),dOW[d],i,tempActivities.get(randomIndex)))
+                                {
+                                    hasConflict = true;
+                                    j = g;
+                                    invalidIndexs.add(randomIndex);
+                                
+                                }
+                            }
+
+                        }
 
                     }
                 }
@@ -283,6 +327,30 @@ public class Week {
 
         return true;
     }
+
+    private boolean testGroup(Group group, DayOfWeek dOW, int timeSlot, Activity newActivity) 
+    {
+        Week week = new Week();
+        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : group.getSchedule().entrySet()) 
+        {
+            DayOfWeek day = entry.getKey();
+            ArrayList<Activity> tempList = entry.getValue();
+            if(day.equals(dOW) && hasConflict(tempList, timeSlot,newActivity))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasConflict(ArrayList<Activity> activities, int timeSlot, Activity newActivity)
+    {
+        if(activities.get(timeSlot).equals(newActivity))
+        {
+            return true;
+        }
+        return false;
+    }   
 
     public void assignCounselors()
     {
