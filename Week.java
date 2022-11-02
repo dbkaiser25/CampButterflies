@@ -7,8 +7,30 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Week {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
+        /*
+        Week wk = new Week();
+        Activity a1 = new Activity("Swimming",null,null);
+        Activity a2 = new Activity("Kayaking",null,null);
+        Activity a3 = new Activity("Soccer",null,null);
+        Activity a4 = new Activity("Kickball",null,null);
+        Activity a5 = new Activity("Basket Weaving",null,null);
+        Activity a6 = new Activity("Football",null,null);
 
+        ArrayList<Activity> activities = new ArrayList<Activity>();
+        activities.add(a1);
+        activities.add(a2);
+        activities.add(a3);
+        activities.add(a4);
+        activities.add(a5);
+        activities.add(a6);
+
+        wk.generateSchedules(activities);
+        String temp = wk.viewSchedule();
+        System.out.println(temp);
+        */
+        
     }
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
     // private HashMap<Group, ArrayList<Activity>> schedule; TODO this is the old
@@ -121,6 +143,13 @@ public class Week {
         this.groups = groups;
         this.counselors = counselors;
         this.campers = campers;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isFull = isFull;
+    }
+
+    public Week(String theme, Date startDate, Date endDate, boolean isFull){
+        this.theme = theme;
         this.startDate = startDate;
         this.endDate = endDate;
         this.isFull = isFull;
@@ -426,8 +455,10 @@ public class Week {
 
     public String viewSchedule() {
         String temp = new String();
+        int x = 1;
         for (Group g : groups) {
-            temp = temp + "\n\n\t\t" + g.printSchedule();
+            temp = temp + "\n\n\t\tGroup: " + x + "\n" + g.printSchedule();
+            x++;
         }
         return temp;
     }
@@ -437,15 +468,14 @@ public class Week {
     }
 
     public String toString() {
-        // Calendar start = Calendar.getInstance();
-        // start.setTime(this.getStartDate());
-        // Calendar end = Calendar.getInstance();
-        // end.setTime(this.getEndDate());
-        // return String.valueOf(start.get(start.MONTH)) + "/" +
-        // String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
-        // + String.valueOf(end.get(end.MONTH)) + "/" +
-        // String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
-        return "";
+        Calendar start = Calendar.getInstance();
+        start.setTime(this.getStartDate());
+        Calendar end = Calendar.getInstance();
+        end.setTime(this.getEndDate());
+        return String.valueOf(start.get(start.MONTH)) + "/" +
+        String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
+        + String.valueOf(end.get(end.MONTH)) + "/" +
+        String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
     }
 
     public ArrayList<Activity> getMeals() {

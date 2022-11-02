@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import javax.print.attribute.HashAttributeSet;
+
 /**
  * the UI code for the Camp Butterfly program
  */
@@ -937,15 +939,17 @@ public class CampButterfliesDriver {
         String name = get("Name of Camp");
         String description = get("Short Description of Camp");
         String weekString = get("Number of Weeks");
-        int weeks = Integer.parseInt(weekString);
-        facade.newCamp(name, description, weeks, year);
-        ArrayList<Week> theseWeeks = new ArrayList<Week>();
-        for (int i = 1; i <= weeks; i++) {
+        int weeknum = Integer.parseInt(weekString);
+
+        HashMap<Integer,Week> weeks = new HashMap<>();
+
+        for (int i = 1; i <= weeknum; i++) {
             System.out.println("Week " + i + ": ");
             Date startDate = formatDate(get("Start Date(MM/DD/YYYY)"));
             Date endDate = formatDate(get("End Date(MM/DD/YYYY)"));
             String theme = get("Theme");
-            facade.setWeek(name, i - 1, startDate, endDate, theme);
+            Week week = new Week(theme,startDate,endDate,false);
+            weeks.put(i,week);
         }
 
         ArrayList<Activity> activities = new ArrayList<>();
@@ -957,14 +961,14 @@ public class CampButterfliesDriver {
             Activity activity = new Activity(activityName, location, activityDesc);
             activities.add(activity);
         }
-        facade.getCampList().getCamp(name).setActivities(activities);
-        // set activities method
-        HashMap<Integer, Week> hashMap = new HashMap<Integer, Week>();
-        for (int i = 0; i < weeks; i++) {
+
+        facade.newCamp(name, description, year, activities, weeks);
+        
+        for (int i = 0; i < weeknum; i++) {
             facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
             // facade.getCampList().saveCamps();
         }
-        facade.addCamp(name, description, year, hashMap, activities);
+
     }
 
     /**

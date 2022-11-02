@@ -162,6 +162,8 @@ public class Camp {
 
     }
 
+    
+
     // I don't like this method name but I have to think it was written like this
     // for a reason
     // If it's useful for the facade i won't change it but
