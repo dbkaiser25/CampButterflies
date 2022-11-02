@@ -962,6 +962,7 @@ public class CampButterfliesDriver {
             facade.getCampList().getCamp(name).getWeek(i).generateSchedules(activities);
             // facade.getCampList().saveCamps();
         }
+        facade.addCamp( name, desc, year, hashMap, activities)
     }
 
     /**
