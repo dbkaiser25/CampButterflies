@@ -54,6 +54,7 @@ public class Group {
         this.counselor = counselor;
         this.campers = campers;
         this.schedule = schedule;
+        
     }
 
     // TODO figure out if JSON or something else needs this
