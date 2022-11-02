@@ -411,6 +411,7 @@ public class Week {
 
                         }
                         groupActivities.add(tempActivities.get(randomIndex));
+                        tempActivities.remove(randomIndex);
 
                     }
                 }
