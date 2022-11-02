@@ -15,6 +15,28 @@ public class Camp {
 
     }
 
+    // name, desc, year, hashMap, activities
+    public void addCamp(String name, String desc, int year, HashMap<Integer, Week> masterSchedule, ArrayList<Activity> activities)
+    {
+        this.name = name;
+        this.description = desc;
+        this.year = year;
+        this.masterSchedule = masterSchedule;
+        this.activities = activities;
+        
+    }
+
+
+    //String name, String desc, int year, int weeks, ArrayList<Activity> activities) 
+    public Camp(String name, String description, int year, int weeks, ArrayList<Activity> activities)
+    {
+        this.name = name;
+        this.description = description;
+        this.year = year;
+        masterSchedule = new HashMap<Integer, Week>(weeks);
+        this.activities = activities;
+    }
+
     // full constructor for reading from JSON
     public Camp(String name, String description, HashMap<Integer, Week> masterSchedule,
             ArrayList<Activity> activities, int year) {

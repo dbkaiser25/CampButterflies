@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class CampFacade {
     private CampList campList;
@@ -490,10 +491,19 @@ public class CampFacade {
         directorList.saveDirector();
     }
 
-    public void addCamp(String name, String desc, int year, int weeks, ArrayList<Activity> activities) { // need to have
-                                                                                                         // the hashmap
+    public void addCamp(String name, String desc, int year, int weeks, ArrayList<Activity> activities) 
+    { // need to have
+     // the hashmap
+        /*
+         * Camper camper = new Camper(firstName, lastName, homeAddress, doB, sex, medications, allergies,
+                emergencyContacts, pediatrician);
+        camperList.addCamper(camper);
+         */
+        Camp camp = new Camp(name,desc,year,weeks,activities);
+        campList.addCamp(camp);
 
     }
+
 
     /**
      * Adds a new Camp to campList
