@@ -7,98 +7,9 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Week {
-    public static void main(String[] args) 
-    {
-        Counselor c1 = new Counselor("George","Washington",null,null);
-        Counselor c2 = new Counselor("John","Adams",null,null);
-        Counselor c3 = new Counselor("Thomas","Jefferson",null,null);
-        Counselor c4 = new Counselor("James","Madison",null,null);
-        Counselor c5 = new Counselor("Barak","Obama",null,null);
-        Counselor c6 = new Counselor("Donald","Trump",null,null);
+    public static void main(String[] args) {
 
-        Group g1 = new Group();
-        Group g2 = new Group();
-        Group g3 = new Group();
-        Group g4 = new Group();
-        Group g5 = new Group();
-        Group g6 = new Group();
-
-        Week wk = new Week();
-
-        wk.getCounselors().add(c1);
-        wk.getCounselors().add(c2);
-        wk.getCounselors().add(c3);
-        wk.getCounselors().add(c4);
-        wk.getCounselors().add(c5);
-        wk.getCounselors().add(c6);
-
-        wk.getGroups().add(g1);
-        wk.getGroups().add(g2);
-        wk.getGroups().add(g3);
-        wk.getGroups().add(g4);
-        wk.getGroups().add(g5);
-        wk.getGroups().add(g6);
-
-        Activity a1 = new Activity("Swimming","Lake","Go Swimming");
-        Activity a2 = new Activity("Kayaking","Lake","Go kayaking");
-        Activity a3 = new Activity("Archery","Range","Do Archery");
-        Activity a4 = new Activity("Rifle Shooting", "Range","Do shooting");
-        Activity a5 = new Activity("Dodgeball", "Field", "Play Dodgeball");
-        Activity a6 = new Activity("Soccer", "Field", "Play Soccer");
-
-        ArrayList<Activity> mainActivities = new ArrayList<Activity>();
-        mainActivities.add(a1);
-        mainActivities.add(a2);
-        mainActivities.add(a3);
-        mainActivities.add(a4);
-        mainActivities.add(a5);
-        mainActivities.add(a6);
-
-        wk.assignCounselors();
-        wk.generateSchedules(mainActivities);
-
-        System.out.println("\t\tGroup: " + 0 + "\n" + wk.getGroups().get(0).printSchedule());
-
-        //for(int i = 0; i < wk.getGroups().size(); i++)
-        //{
-            //System.out.println("\t\tGroup: " + i + "\n" + wk.getGroups().get(i).printSchedule());
-        //}
-
-        System.out.println("It didn't crash!!!");
-
-        /* 
-        System.out.println("Before Assign Counselors");
-        for(int i = 0; i < 6; i++)
-        {
-            
-            System.out.println(wk.getGroups().get(i).getCounselor().getFirstName() + " " + wk.getGroups().get(i).getCounselor().getLastName());
-        }
-
-        */
-
-        /* 
-        wk.getGroups().get(2).setCounselor(c6);
-        wk.getGroups().get(1).setCounselor(c5);
-        wk.getGroups().get(5).setCounselor(c1);
-
-        wk.assignCounselors();
-
-        System.out.println("After Assign Counselor");
-        for(int i = 0; i < 6; i++)
-        {
-            System.out.println(wk.getGroups().get(i).getCounselor().getFirstName() + " " + wk.getGroups().get(i).getCounselor().getLastName());
-        }
-
-        */
     }
-
-
-
-
-
-
-
-
     // TODO figure out the dimension labels of schedule/masterschedule hashmap
     // private HashMap<Group, ArrayList<Activity>> schedule; TODO this is the old
     // HashMap Configuration see if new is good then fully delete
@@ -181,6 +92,7 @@ public class Week {
     public Group getGroupByNumber(int num) {
         Group group = new Group();
         System.out.println("in method");
+        System.out.println(groups.size());
         for (int i = 0; i < groups.size(); i++) {
             if (i == num) {
                 group = groups.get(i);
@@ -274,82 +186,75 @@ public class Week {
 
         // there probably is a better way to initialize the groups
 
-        //initialize groups
-        for(int i = 0; i < 6; i++)
-        {
-            groups.add(new Group());
-        }
-        /* 
-
-
-
-        f
-        Group g1 = new Group();
-        groups.add(g1);
-        Group g2 = new Group();
-        groups.add(g2);
-        Group g3 = new Group();
-        groups.add(g3);
-        Group g4 = new Group();
-        groups.add(g4);
-        Group g5 = new Group();
-        groups.add(g5);
-        Group g6 = new Group();
-        groups.add(g6);
-
-        for (Camper c : campers) {
-            int[] groupTotals = new int[6];
-            int temp = calculateAge(c.getDateOfBirth(), currentDate);
-
-            // TECHNICALLY there are no requirements or specifications on how the list of
-            // campers
-            // will be for generating groups. I'm never one to assume the best outcome but
-            // I'll be doing that,
-            // It is a lower priority to insert code to better split groups with worse/less
-            // nice data
-
-            if (temp == 7 || temp == 8) {
-                // groupTotals[0]++;
-                groups.get(0).addCamper(c);
-            } else if (temp == 9 || temp == 10) {
-                // groupTotals[1]++;
-                groups.get(1).addCamper(c);
-            } else if (temp == 11 || temp == 12) {
-                // groupTotals[2]++;
-                groups.get(2).addCamper(c);
-            } else if (temp == 13 || temp == 14) {
-                // groupTotals[3]++;
-                groups.get(3).addCamper(c);
-            } else if (temp == 15 || temp == 16) {
-                // groupTotals[4]++;
-                groups.get(4).addCamper(c);
-            } else if (temp == 17 || temp == 18) {
-                // groupTotals[5]++;
-                groups.get(5).addCamper(c);
-            }
-        }
-
-        */
+        /*
+         * 
+         * Group g1 = new Group();
+         * groups.add(g1);
+         * Group g2 = new Group();
+         * groups.add(g2);
+         * Group g3 = new Group();
+         * groups.add(g3);
+         * Group g4 = new Group();
+         * groups.add(g4);
+         * Group g5 = new Group();
+         * groups.add(g5);
+         * Group g6 = new Group();
+         * groups.add(g6);
+         * 
+         * for (Camper c : campers) {
+         * int[] groupTotals = new int[6];
+         * int temp = calculateAge(c.getDateOfBirth(), currentDate);
+         * 
+         * // TECHNICALLY there are no requirements or specifications on how the list of
+         * // campers
+         * // will be for generating groups. I'm never one to assume the best outcome
+         * but
+         * // I'll be doing that,
+         * // It is a lower priority to insert code to better split groups with
+         * worse/less
+         * // nice data
+         * 
+         * if (temp == 7 || temp == 8) {
+         * // groupTotals[0]++;
+         * groups.get(0).addCamper(c);
+         * } else if (temp == 9 || temp == 10) {
+         * // groupTotals[1]++;
+         * groups.get(1).addCamper(c);
+         * } else if (temp == 11 || temp == 12) {
+         * // groupTotals[2]++;
+         * groups.get(2).addCamper(c);
+         * } else if (temp == 13 || temp == 14) {
+         * // groupTotals[3]++;
+         * groups.get(3).addCamper(c);
+         * } else if (temp == 15 || temp == 16) {
+         * // groupTotals[4]++;
+         * groups.get(4).addCamper(c);
+         * } else if (temp == 17 || temp == 18) {
+         * // groupTotals[5]++;
+         * groups.get(5).addCamper(c);
+         * }
+         * }
+         * 
+         */
 
         // From here we assume that groups has been properly populated
         // give each group a counselor
-        /* 
-        if (counselors.size() > 6 || counselors.size() <= 0) {
-            // Either too many or not enough counselors assigned to the week
-            return false;
-        } else {
-            for (int i = 0; i < counselors.size(); i++) {
-                groups.get(i).setCounselor(counselors.get(i));
-            }
-        }
-        */
+        /*
+         * if (counselors.size() > 6 || counselors.size() <= 0) {
+         * // Either too many or not enough counselors assigned to the week
+         * return false;
+         * } else {
+         * for (int i = 0; i < counselors.size(); i++) {
+         * groups.get(i).setCounselor(counselors.get(i));
+         * }
+         * }
+         */
 
         // generate a schedule for each (g)roup
         // Random rand = new Random();
         ArrayList<Activity> meals = getMeals();
         Random rand = new Random();
         ArrayList<Activity> tempActivities = new ArrayList<Activity>(activities.size());
-        
 
         for (int g = 0; g < groups.size(); g++) {
 
@@ -357,63 +262,43 @@ public class Week {
 
             // need a schedule for every (d)ay
             // groups.get(i).setSchedule(generateGroupSchedule(activities));
-            for (int d = 0; d < 7; d++) 
-            {
+            for (int d = 0; d < 7; d++) {
                 ArrayList<Activity> groupActivities = new ArrayList<Activity>(8);
-                int randomIndex = 0;
-                //create clone of activities array list
-                for(int i = 0; i < activities.size(); i++)
-                {
+                // create clone of activities array list
+                for (int i = 0; i < activities.size(); i++) {
                     tempActivities.add(activities.get(i));
                 }
 
-                for (int i = 0; i < 8; i++) 
-                {
-                    if (i % 3 == 0) 
-                    {
+                for (int i = 0; i < 8; i++) {
+                    if (i % 3 == 0) {
                         groupActivities.add(meals.get(i / 3)); // wether or not to add a meal
-                    } 
-                    else 
-                    {
+                    } else {
                         boolean hasConflict = true;
-                        //boolean invalidIndex = true;
-                        //int randomIndex = 0;
-                        //ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
-                        while(hasConflict)
-                        {
+                        boolean invalidIndex = true;
+                        int randomIndex = 0;
+                        ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
+                        while (hasConflict) {
                             hasConflict = false;
-
-                            
-
-
-
-
-
-                            //while(invalidIndex)
-                            //{
-                                //invalidIndex = false;
+                            while (invalidIndex) {
+                                invalidIndex = false;
                                 randomIndex = rand.nextInt(tempActivities.size()); // generate random index
-                                //for(int k = 0; k < invalidIndexs.size(); k++)
-                                //{
-                                    //if((Integer) randomIndex == invalidIndexs.get(k))
-                                    //{
-                                        //it is an invalid index
-                                        //invalidIndex = true;
-                                        //k = invalidIndexs.size();
-                                    //}
-                                //}
-                            //}
-                            
-                            //need to make sure nobody else has this activity at this time
-                            for(int j = 0; j < g; j++)
-                            {
+                                for (int k = 0; k < invalidIndexs.size(); k++) {
+                                    if ((Integer) randomIndex == invalidIndexs.get(k)) {
+                                        // it is an invalid index
+                                        invalidIndex = true;
+                                        k = invalidIndexs.size();
+                                    }
+                                }
+                            }
+
+                            // need to make sure nobody else has this activity at this time
+                            for (int j = 0; j < g; j++) {
                                 DayOfWeek[] dOW = DayOfWeek.values();
-                                if(testGroup(groups.get(j),dOW[d],i,tempActivities.get(randomIndex)))
-                                {
+                                if (testGroup(groups.get(j), dOW[d], i, tempActivities.get(randomIndex))) {
                                     hasConflict = true;
                                     j = g;
-                                    //invalidIndexs.add(randomIndex);
-                                
+                                    invalidIndexs.add(randomIndex);
+
                                 }
                             }
 
@@ -425,13 +310,13 @@ public class Week {
                 }
                 // schedule for this day is completed
                 DayOfWeek[] dOW = DayOfWeek.values();
-                //System.out.print("\nDay: " + dOW[d] + "\n");
+                // System.out.print("\nDay: " + dOW[d] + "\n");
                 schedule.put(dOW[d], groupActivities);
-                
-                //for(int i = 0; i < groupActivities.size(); i++)
-                //{
-                    //System.out.println(groupActivities.get(i).toString());
-                //}
+
+                // for(int i = 0; i < groupActivities.size(); i++)
+                // {
+                // System.out.println(groupActivities.get(i).toString());
+                // }
             }
 
             // The group's schedule for the week is completed
@@ -441,50 +326,38 @@ public class Week {
         return true;
     }
 
-    private boolean testGroup(Group group, DayOfWeek dOW, int timeSlot, Activity newActivity) 
-    {
+    private boolean testGroup(Group group, DayOfWeek dOW, int timeSlot, Activity newActivity) {
         Week week = new Week();
-        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : group.getSchedule().entrySet()) 
-        {
+        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : group.getSchedule().entrySet()) {
             DayOfWeek day = entry.getKey();
             ArrayList<Activity> tempList = entry.getValue();
-            if(day.equals(dOW) && hasConflict(tempList, timeSlot,newActivity))
-            {
+            if (day.equals(dOW) && hasConflict(tempList, timeSlot, newActivity)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean hasConflict(ArrayList<Activity> activities, int timeSlot, Activity newActivity)
-    {
-        if(activities.get(timeSlot).equals(newActivity))
-        {
+    private boolean hasConflict(ArrayList<Activity> activities, int timeSlot, Activity newActivity) {
+        if (activities.get(timeSlot).equals(newActivity)) {
             return true;
         }
         return false;
-    }   
+    }
 
-    public void assignCounselors()
-    {
-        //Array list of potential counselors to be assigned to the group
+    public void assignCounselors() {
+        // Array list of potential counselors to be assigned to the group
         ArrayList<Counselor> availableCounselors = new ArrayList<Counselor>(counselors.size());
 
-        //populate available counselors arraylist
-        for(int c = 0; c < counselors.size(); c++)
-        {
+        // populate available counselors arraylist
+        for (int c = 0; c < counselors.size(); c++) {
             availableCounselors.add(counselors.get(c));
         }
 
-
-        for(int i = 0; i < groups.size(); i++)
-        {
-            if(groups.get(i).getCounselor() != null)
-            {
-                for(int c = 0; c < counselors.size(); c++)
-                {
-                    if(groups.get(i).getCounselor().equals(counselors.get(c)))
-                    {
+        for (int i = 0; i < groups.size(); i++) {
+            if (groups.get(i).getCounselor() != null) {
+                for (int c = 0; c < counselors.size(); c++) {
+                    if (groups.get(i).getCounselor().equals(counselors.get(c))) {
                         availableCounselors.remove(counselors.get(c));
                         c = counselors.size();
                     }
@@ -492,20 +365,18 @@ public class Week {
             }
         }
 
-        //int x = 0; 
-        for(int i = 0; i < groups.size(); i++)
-        {
-            if(groups.get(i).getCounselor() == null)
-            {
+        // int x = 0;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groups.get(i).getCounselor() == null) {
                 groups.get(i).setCounselor(availableCounselors.get(0));
                 availableCounselors.remove(0);
-                //groups.get(i).setCounselor(availableCounselors.get(x));
-                //x++;
+                // groups.get(i).setCounselor(availableCounselors.get(x));
+                // x++;
             }
         }
     }
-    
-    //this can probably be deleted
+
+    // this can probably be deleted
     private int calculateAge(Date birthDate, Date currentDate) {
         int month[] = { 31, 28, 31, 30, 31, 30, 31,
                 31, 30, 31, 30, 31 };
@@ -574,7 +445,5 @@ public class Week {
 
         return meals;
     }
-
-    
 
 }
