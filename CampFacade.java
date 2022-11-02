@@ -156,6 +156,7 @@ public class CampFacade {
         Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB,
                 emergencyContacts, pediatrician, loginInfo);
         counselorList.addCounselor(counselor);
+        //call that one thing
         return counselor;
     }
 
@@ -578,7 +579,7 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Camper> getGroup(String camp, int week) {
-        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
+        return campList.getCamp(camp).getWeek(week-1).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 
     /**
@@ -589,11 +590,11 @@ public class CampFacade {
      * @return
      */
     public String getSchedule(String camp, int week) {
-        return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
+        return campList.getCamp(camp).getWeek(week-1).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
     }
 
     public String getSchedule(String camp, int week, int group) {
-        return campList.getCamp(camp).getWeek(week).getGroupByNumber(group).printSchedule();
+        return campList.getCamp(camp).getWeek(week-1).getGroupByNumber(group).printSchedule();
     }
 
     /**
