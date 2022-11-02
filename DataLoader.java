@@ -13,7 +13,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
-
+    /**
+     * main method used for testing loader methods
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         // ArrayList<Director> directors = DataLoader.loadDirectors();
         // for (int i = 0; i < directors.size(); i++) {
@@ -37,7 +41,12 @@ public class DataLoader extends DataConstants {
         }
     }
 
-    public static ArrayList<Camper> loadCampers() { // tested: works
+    /**
+     * reads campers from camper.json
+     * 
+     * @return returns an array list of campers from JSON file
+     */
+    public static ArrayList<Camper> loadCampers() {
         ArrayList<Camper> campers = new ArrayList<Camper>();
 
         try {
@@ -99,7 +108,12 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    public static ArrayList<User> loadUsers() { // tested: works
+    /**
+     * reads users from user.json
+     * 
+     * @return return an arraylist of users from JSON
+     */
+    public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
         try {
@@ -135,6 +149,11 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * reads counselors from counselor.json
+     * 
+     * @return arraylist of counselors from JSON
+     */
     public static ArrayList<Counselor> loadCounselors() { // tested: works
         ArrayList<Counselor> counselors = new ArrayList<Counselor>();
 
@@ -187,6 +206,11 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * reads directors from director.json
+     * 
+     * @return an arraylist of directors from JSON
+     */
     public static ArrayList<Director> loadDirectors() {
         ArrayList<Director> directors = new ArrayList<Director>();
 
@@ -314,6 +338,11 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * reads camps from camp.json
+     * 
+     * @return arraylist of camps from JSON
+     */
     public static ArrayList<Camp> loadCamps() {
         ArrayList<Camp> camps = new ArrayList<Camp>();
 
@@ -416,6 +445,12 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * converts Strings from JSON to dates to be used in backend methods
+     * 
+     * @param date string that will be converted to date
+     * @return return the converted string as a date
+     */
     public static Date convertToDate(String date) {
         try {
             return new SimpleDateFormat("MM/dd/yyyy").parse(date);
