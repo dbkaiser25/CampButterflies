@@ -221,8 +221,12 @@ public class Week {
         // there probably is a better way to initialize the groups
 
         // initialize groups
-        for (int i = 0; i < 6; i++) {
-            groups.add(new Group());
+
+        for (int i = 0; i < 6; i++) 
+        {
+            //UUID uuid = UUID.randomUUID();
+            //groups.add(new Group(uuid));
+            groups.add(new Group(UUID.randomUUID()));
         }
 
         /*
