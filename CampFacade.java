@@ -150,12 +150,13 @@ public class CampFacade {
      * @param pediatrician
      * @param loginInfo
      */
-    public void addCounselor(String firstName, String lastName, String phoneNumber, String emailAddress,
+    public Counselor addCounselor(String firstName, String lastName, String phoneNumber, String emailAddress,
             String homeAddress, Date doB, ArrayList<Contact> emergencyContacts, Contact pediatrician,
             LoginInfo loginInfo) {
         Counselor counselor = new Counselor(firstName, lastName, phoneNumber, emailAddress, homeAddress, doB,
                 emergencyContacts, pediatrician, loginInfo);
         counselorList.addCounselor(counselor);
+        return counselor;
     }
 
     /**
@@ -577,6 +578,10 @@ public class CampFacade {
      * @return
      */
     public ArrayList<Camper> getGroup(String camp, int week) {
+
+        System.out.println("camp " + campList.getCamp(camp).getWeek(week));
+        System.out.println("test "
+                + campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList());
         return campList.getCamp(camp).getWeek(week).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
     }
 

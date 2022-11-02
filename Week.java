@@ -378,12 +378,15 @@ public class Week {
     }
 
     public String toString() {
-        Calendar start = Calendar.getInstance();
-        start.setTime(startDate);
-        Calendar end = Calendar.getInstance();
-        end.setTime(endDate);
-        return String.valueOf(start.get(start.MONTH)) + "/" + String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
-                + String.valueOf(end.get(end.MONTH)) + "/" + String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
+        // Calendar start = Calendar.getInstance();
+        // start.setTime(this.getStartDate());
+        // Calendar end = Calendar.getInstance();
+        // end.setTime(this.getEndDate());
+        // return String.valueOf(start.get(start.MONTH)) + "/" +
+        // String.valueOf(start.get(start.DAY_OF_MONTH)) + " - "
+        // + String.valueOf(end.get(end.MONTH)) + "/" +
+        // String.valueOf(end.get(end.DAY_OF_MONTH)) + " " + theme;
+        return "";
     }
 
     public ArrayList<Activity> getMeals() {

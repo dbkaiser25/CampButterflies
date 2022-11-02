@@ -11,54 +11,56 @@ import java.util.Date;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-/**
- * notes on automation
- * makeSchedule should have other methods to help it
- * should have themes, schedules, year, number of cabins, - in facade
- */
-
 public class DataWriter extends DataConstants {
 
+    /**
+     * main method- used for testing DataWriter methods
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
 
-        CamperList campers = CamperList.getInstance();
-        campers.saveCampers();
-        ArrayList<Camper> newCampers = DataLoader.loadCampers();
-        for (int i = 0; i < newCampers.size(); i++) {
-            System.out.println(newCampers.get(i));
-        }
+        // CamperList campers = CamperList.getInstance();
+        // campers.saveCampers();
+        // ArrayList<Camper> newCampers = DataLoader.loadCampers();
+        // for (int i = 0; i < newCampers.size(); i++) {
+        // System.out.println(newCampers.get(i));
+        // }
 
-        CounselorList counselors = CounselorList.getInstance();
-        counselors.saveCounselor();
-        ArrayList<Counselor> newCounselors = DataLoader.loadCounselors();
-        for (int i = 0; i < newCounselors.size(); i++) {
-            System.out.println(newCounselors.get(i));
-        }
+        // CounselorList counselors = CounselorList.getInstance();
+        // counselors.saveCounselor();
+        // ArrayList<Counselor> newCounselors = DataLoader.loadCounselors();
+        // for (int i = 0; i < newCounselors.size(); i++) {
+        // System.out.println(newCounselors.get(i));
+        // }
 
-        UserList users = UserList.getInstance();
-        users.saveUsers();
-        ArrayList<User> newUsers = DataLoader.loadUsers();
-        for (int i = 0; i < newUsers.size(); i++) {
-            System.out.println(newUsers.get(i));
-        }
+        // UserList users = UserList.getInstance();
+        // users.saveUsers();
+        // ArrayList<User> newUsers = DataLoader.loadUsers();
+        // for (int i = 0; i < newUsers.size(); i++) {
+        // System.out.println(newUsers.get(i));
+        // }
 
-        DirectorList directors = DirectorList.getInstance();
-        directors.saveDirector();
-        ArrayList<Director> newDirectors = DataLoader.loadDirectors();
-        for (int i = 0; i < newDirectors.size(); i++) {
-            System.out.println(newDirectors.get(i).getEmail());
-        }
+        // DirectorList directors = DirectorList.getInstance();
+        // directors.saveDirector();
+        // ArrayList<Director> newDirectors = DataLoader.loadDirectors();
+        // for (int i = 0; i < newDirectors.size(); i++) {
+        // System.out.println(newDirectors.get(i).getEmail());
+        // }
 
-        CampList camps = CampList.getInstance();
-        camps.saveCamps();
-        ArrayList<Camp> newCamps = DataLoader.loadCamps();
-        for (int i = 0; i < newCamps.size(); i++) {
-            System.out.println("test 2 " + newCamps.get(i));
-        }
-        UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
-        writeGroupFiles(id);
+        // CampList camps = CampList.getInstance();
+        // camps.saveCamps();
+        // ArrayList<Camp> newCamps = DataLoader.loadCamps();
+        // for (int i = 0; i < newCamps.size(); i++) {
+        // System.out.println("test 2 " + newCamps.get(i));
+        // }
+        // UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
+        // writeGroupFiles(id);
     }
 
+    /**
+     * saveCampers- saves all campers to camper.json
+     */
     public static void saveCampers() { // finished not tested
         CamperList campers = CamperList.getInstance();
         ArrayList<Camper> camperList = campers.getCampers();
@@ -80,7 +82,14 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    public static JSONObject getCamperJSON(Camper camper) { // finished and tested
+    /**
+     * Helper method for saveCampers- gets individual camper's information and
+     * writes it to JSON file
+     * 
+     * @param camper the camper that will be written to JSON file
+     * @return return a JSONObject of the camper that can be inputted to JSON file
+     */
+    public static JSONObject getCamperJSON(Camper camper) {
         JSONObject camperDetails = new JSONObject();
         camperDetails.put(ID, camper.getUUID().toString());
         camperDetails.put(FIRSTNAME, camper.getFirstName());
@@ -125,7 +134,6 @@ public class DataWriter extends DataConstants {
             contactsJSON.add(contactObj);
         }
         camperDetails.put(CONTACTS, contactsJSON);
-        // see if this works
         JSONObject pediatricianJSON = new JSONObject();
         String firstName = camper.getPediatrician().getFirstName();
         String lastName = camper.getPediatrician().getLastName();
@@ -142,8 +150,8 @@ public class DataWriter extends DataConstants {
         return camperDetails;
     }
 
-    /*
-     * creating save-users and helper getUSERJSON methods
+    /**
+     * writing users to user.json
      */
     public static void saveUsers() { // finished not tested
         UserList users = UserList.getInstance();
@@ -163,7 +171,13 @@ public class DataWriter extends DataConstants {
         }
     }
 
-    private static JSONObject getUserJSON(User user) { // finished not testeed
+    /**
+     * helper method that converts a user to a JSONObject
+     * 
+     * @param user user that will be converted
+     * @return returns a JSONObject that will be written to user.json
+     */
+    private static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put(ID, user.getUUID().toString());
         userDetails.put(FIRSTNAME, user.getFirstName());
@@ -186,7 +200,7 @@ public class DataWriter extends DataConstants {
     }
 
     /*
-     * create saveCounselors and getCounselorsJSON methods
+     * writes counselor to counselor.json
      */
     public static void saveCounselors() { // finished not tested
         CounselorList counselors = CounselorList.getInstance();
@@ -205,6 +219,12 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * helper method that converts a counselor to a JSONObject
+     * 
+     * @param counselor counselor that will be converted
+     * @return JSONObject that will be written to counselor.json
+     */
     public static JSONObject getCounselorJSON(Counselor counselor) { // finished not tested- still need to do date's
         JSONObject counselorDetails = new JSONObject();
         counselorDetails.put(ID, counselor.getUUID().toString());
@@ -213,9 +233,8 @@ public class DataWriter extends DataConstants {
         counselorDetails.put(PHONE_NUM, counselor.getPhoneNumber());
         counselorDetails.put(EMAIL, counselor.getEmailAddress());
         counselorDetails.put(HOMEADDRESS, counselor.getHomeAddress());
-        // see if this works- think it should
         java.util.Date dateOfBirth = counselor.getDateOfBirth();
-        String dob = convertDateToString(dateOfBirth); // think this should work but keep an eye out
+        String dob = convertDateToString(dateOfBirth);
         counselorDetails.put(DOB, dob);
 
         counselorDetails.put(USERNAME, counselor.getUserLogin().getUserName());
@@ -255,7 +274,7 @@ public class DataWriter extends DataConstants {
     }
 
     /*
-     * writing directors and getDirectorJSON methods
+     * writes directors to director.json
      */
     public static void saveDirectors() { // finished not tested
 
@@ -275,6 +294,12 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * converts a director to a JSONObject
+     * 
+     * @param director director that will be converted
+     * @return returns a JSONObject that will be written to director.json
+     */
     private static JSONObject getDirectorsJSON(Director director) {
         JSONObject directorDetails = new JSONObject();
         directorDetails.put(ID, director.getUUID().toString());
@@ -363,17 +388,14 @@ public class DataWriter extends DataConstants {
                     weekCampersArr.add(camperObj);
                 }
                 weekObj.put(WEEK_CAMPERS, weekCampersArr);
-                // week campers added
 
                 weekObj.put(START_DATE, convertDateToString(week.getStartDate()));
                 weekObj.put(END_DATE, convertDateToString(week.getEndDate()));
                 Boolean isFullBool = week.isFull();
                 String isFull = Boolean.toString(isFullBool);
                 weekObj.put(ISFULL, isFull);
-                // added start, end, is full
 
                 calHashObj.put(WEEK, weekObj);
-                // added weeks
                 masterScheduleJSON.add(calHashObj);
                 campDetails.put(CALENDAR_HASH, masterScheduleJSON);
 
@@ -398,8 +420,7 @@ public class DataWriter extends DataConstants {
     }
 
     /*
-     * writing Camp and getCampJSON methods
-     * create campList
+     * writes camps to camp.json
      */
     public static void saveCamps() {
 
@@ -418,6 +439,12 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * converts camp object to JSONObject
+     * 
+     * @param camp camp that will be converted
+     * @return return JSONObject that will be added to camp.json
+     */
     private static Object getCampJSON(Camp camp) {
         JSONObject campDetails = new JSONObject();
         campDetails.put(NAME, camp.getName());
@@ -429,7 +456,6 @@ public class DataWriter extends DataConstants {
             JSONObject calHashObj = new JSONObject();
             Integer num = entry.getKey();
             calHashObj.put(WEEK_NUM, num);
-            // integer added
 
             JSONObject weekObj = new JSONObject();
             Week week = entry.getValue();
@@ -473,7 +499,6 @@ public class DataWriter extends DataConstants {
                 groupsArray.add(groupObj);
             }
             weekObj.put(GROUPS, groupsArray);
-            // groups added
             JSONArray weekCounselorArr = new JSONArray();
             for (int i = 0; i < week.getCounselors().size(); i++) {
                 JSONObject counselorObj = new JSONObject();
@@ -481,7 +506,6 @@ public class DataWriter extends DataConstants {
                 weekCounselorArr.add(counselorObj);
             }
             weekObj.put(WEEK_COUNSELORS, weekCounselorArr);
-            // week counselors added
 
             JSONArray weekCampersArr = new JSONArray();
             for (int i = 0; i < week.getCampers().size(); i++) {
@@ -490,17 +514,14 @@ public class DataWriter extends DataConstants {
                 weekCampersArr.add(camperObj);
             }
             weekObj.put(WEEK_CAMPERS, weekCampersArr);
-            // week campers added
 
             weekObj.put(START_DATE, convertDateToString(week.getStartDate()));
             weekObj.put(END_DATE, convertDateToString(week.getEndDate()));
             Boolean isFullBool = week.isFull();
             String isFull = Boolean.toString(isFullBool);
             weekObj.put(ISFULL, isFull);
-            // added start, end, is full
 
             calHashObj.put(WEEK, weekObj);
-            // added weeks
             masterScheduleJSON.add(calHashObj);
             campDetails.put(CALENDAR_HASH, masterScheduleJSON);
 
@@ -513,14 +534,16 @@ public class DataWriter extends DataConstants {
                 allActivitiesArr.add(activityObj);
             }
             campDetails.put(ALL_ACTIVITIES, allActivitiesArr);
-            // added activities list
 
         }
         return campDetails;
     }
 
-    // TODO complete this part by Saturday night
-
+    /**
+     * writes group schedules to a txt file in "schedules" folder
+     * 
+     * @param id UUID of the group that will have the schedule written
+     */
     public static void writeGroupFiles(UUID id) {
 
         CampList campList = CampList.getInstance(); // getting group
@@ -534,6 +557,12 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * converts Date objects to a String so they can be inputted in JSONObjects
+     * 
+     * @param dateOfBirth date that will be converted to String
+     * @return string that will be put in JSON
+     */
     public static String convertDateToString(Date dateOfBirth) {
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String newDate = df.format(dateOfBirth);
