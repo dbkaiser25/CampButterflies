@@ -273,9 +273,17 @@ public class Week {
          */
 
         // there probably is a better way to initialize the groups
-        
+
+        //initialize groups
+        for(int i = 0; i < 6; i++)
+        {
+            groups.add(new Group());
+        }
         /* 
 
+
+
+        f
         Group g1 = new Group();
         groups.add(g1);
         Group g2 = new Group();
