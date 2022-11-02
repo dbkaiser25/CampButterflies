@@ -189,56 +189,63 @@ public class Week {
 
         // there probably is a better way to initialize the groups
 
-        /*
-         * 
-         * Group g1 = new Group();
-         * groups.add(g1);
-         * Group g2 = new Group();
-         * groups.add(g2);
-         * Group g3 = new Group();
-         * groups.add(g3);
-         * Group g4 = new Group();
-         * groups.add(g4);
-         * Group g5 = new Group();
-         * groups.add(g5);
-         * Group g6 = new Group();
-         * groups.add(g6);
-         * 
-         * for (Camper c : campers) {
-         * int[] groupTotals = new int[6];
-         * int temp = calculateAge(c.getDateOfBirth(), currentDate);
-         * 
-         * // TECHNICALLY there are no requirements or specifications on how the list of
-         * // campers
-         * // will be for generating groups. I'm never one to assume the best outcome
-         * but
-         * // I'll be doing that,
-         * // It is a lower priority to insert code to better split groups with
-         * worse/less
-         * // nice data
-         * 
-         * if (temp == 7 || temp == 8) {
-         * // groupTotals[0]++;
-         * groups.get(0).addCamper(c);
-         * } else if (temp == 9 || temp == 10) {
-         * // groupTotals[1]++;
-         * groups.get(1).addCamper(c);
-         * } else if (temp == 11 || temp == 12) {
-         * // groupTotals[2]++;
-         * groups.get(2).addCamper(c);
-         * } else if (temp == 13 || temp == 14) {
-         * // groupTotals[3]++;
-         * groups.get(3).addCamper(c);
-         * } else if (temp == 15 || temp == 16) {
-         * // groupTotals[4]++;
-         * groups.get(4).addCamper(c);
-         * } else if (temp == 17 || temp == 18) {
-         * // groupTotals[5]++;
-         * groups.get(5).addCamper(c);
-         * }
-         * }
-         * 
-         */
+        //initialize groups
+        for(int i = 0; i < 6; i++)
+        {
+            groups.add(new Group());
+        }
+        
+        /* 
+
+
+
+        f
+        Group g1 = new Group();
+        groups.add(g1);
+        Group g2 = new Group();
+        groups.add(g2);
+        Group g3 = new Group();
+        groups.add(g3);
+        Group g4 = new Group();
+        groups.add(g4);
+        Group g5 = new Group();
+        groups.add(g5);
+        Group g6 = new Group();
+        groups.add(g6);
+
+        for (Camper c : campers) {
+            int[] groupTotals = new int[6];
+            int temp = calculateAge(c.getDateOfBirth(), currentDate);
+
+            // TECHNICALLY there are no requirements or specifications on how the list of
+            // campers
+            // will be for generating groups. I'm never one to assume the best outcome but
+            // I'll be doing that,
+            // It is a lower priority to insert code to better split groups with worse/less
+            // nice data
+
+            if (temp == 7 || temp == 8) {
+                // groupTotals[0]++;
+                groups.get(0).addCamper(c);
+            } else if (temp == 9 || temp == 10) {
+                // groupTotals[1]++;
+                groups.get(1).addCamper(c);
+            } else if (temp == 11 || temp == 12) {
+                // groupTotals[2]++;
+                groups.get(2).addCamper(c);
+            } else if (temp == 13 || temp == 14) {
+                // groupTotals[3]++;
+                groups.get(3).addCamper(c);
+            } else if (temp == 15 || temp == 16) {
+                // groupTotals[4]++;
+                groups.get(4).addCamper(c);
+            } else if (temp == 17 || temp == 18) {
+                // groupTotals[5]++;
+                groups.get(5).addCamper(c);
+            }
+        }
+
+        */
 
         // From here we assume that groups has been properly populated
         // give each group a counselor
@@ -258,6 +265,7 @@ public class Week {
         ArrayList<Activity> meals = getMeals();
         Random rand = new Random();
         ArrayList<Activity> tempActivities = new ArrayList<Activity>(activities.size());
+        
 
         for (int g = 0; g < groups.size(); g++) {
 
