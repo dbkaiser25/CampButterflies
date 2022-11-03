@@ -52,16 +52,8 @@ public class UserList {
         return null;
     }
 
-    // public User getUser(String user) {
-    //
-    // }
-
     public ArrayList<User> getUsers() {
         return users;
-    }
-
-    public void editUser() {
-
     }
 
     public void saveUsers() {
