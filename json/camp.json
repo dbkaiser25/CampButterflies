@@ -1,2 +1,106 @@
-[{"all_activities":[{"name":"swimming","description":"campers will go swimming in Lake Butterfly","location":"Lake Butterfly"},{"name":"Archery","description":"campers will practice archery at the Butterfly range","location":"Butterfly range"}],"calendar_hash":[{"week":{"end_date":"06\/05\/2023","groups":[{"group_campers":[{"id":"1035e216-e038-4541-abe9-a4e5441eb592"},{"id":"45bd6f4e-a88e-448a-b911-1048c5b3ea6a"}],"counselorUUID":"1ba44084-fad3-4c6c-a840-3a3592b25af5","group_UUID":"b6a12faa-3eaa-44f5-8a24-62d6e839d41d","group_schedule":[{"daily_activities":[{"name":"Archery","description":"campers will practice archery at the Butterfly range","location":"Butterfly range"}],"day_of_week":"MONDAY"},{"daily_activities":[{"name":"Kayaking","description":"Campers will go kayaking in Lake Butterfly","location":"Lake Butterfly"}],"day_of_week":"SUNDAY"}]}],"theme":"swimming","isFull":"false","week_counselors":[{"id":"1ba44084-fad3-4c6c-a840-3a3592b25af5"}],"week_campers":[{"id":"1035e216-e038-4541-abe9-a4e5441eb592"},{"id":"45bd6f4e-a88e-448a-b911-1048c5b3ea6a"}],"start_date":"05\/29\/2022"},"week_number":1},{"week":{"end_date":"06\/12\/2023","groups":[{"group_campers":[{"id":"1035e216-e038-4541-abe9-a4e5441eb592"},{"id":"45bd6f4e-a88e-448a-b911-1048c5b3ea6a"}],"counselorUUID":"1ba44084-fad3-4c6c-a840-3a3592b25af5","group_UUID":"289ff272-2beb-4162-9c15-aeac888d198e","group_schedule":[{"daily_activities":[{"name":"Archery","description":"campers will practice archery at the Butterfly range","location":"Butterfly range"}],"day_of_week":"MONDAY"},{"daily_activities":[{"name":"Kayaking","description":"Campers will go kayaking in Lake Butterfly","location":"Lake Butterfly"}],"day_of_week":"SUNDAY"}]}],"theme":"nature","isFull":"false","week_counselors":[{"id":"1ba44084-fad3-4c6c-a840-3a3592b25af5"}],"week_campers":[{"id":"1035e216-e038-4541-abe9-a4e5441eb592"},{"id":"45bd6f4e-a88e-448a-b911-1048c5b3ea6a"}],"start_date":"06\/06\/2023"},"week_number":2}],"year":2022,"name":"Camp Blue Butterflies","description":"Fun outdoor camp"},{"all_activities":[{"name":"swim","description":"swim","location":"pool"},{"name":"arts","description":"art","location":"art room"},{"name":"tennis","description":"tennis","location":"tennis court"},{"name":"kayal","description":"kayak","location":"lake"},{"name":"zipline","description":"zipline","location":"hill"},{"name":"crafts","description":"craft","location":"art room"}],"calendar_hash":[{"week":{"end_date":"06\/08\/2023","groups":[],"theme":"superheroes","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"06\/01\/2023"},"week_number":1},{"week":{"end_date":"06\/17\/2023","groups":[],"theme":"unicorns","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"06\/10\/2023"},"week_number":2}],"year":2023,"name":"2023 summer camp","description":"fun funky fresh camp"},{"all_activities":[{"name":"party","description":"party","location":"party"},{"name":"party","description":"partyparty","location":"party"},{"name":"party","description":"paarty","location":"party"},{"name":"party","description":"party","location":"paty"},{"name":"party","description":"paty","location":"partyp"},{"name":"party","description":"party","location":"party"}],"calendar_hash":[{"week":{"end_date":"07\/27\/2024","groups":[],"theme":"party","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/20\/2024"},"week_number":1}],"year":2024,"name":"PARTYTIME","description":"fun fun fun"}
-]
+[
+    {
+      "name": "Camp Blue Butterflies", 
+      "description": "Fun outdoor camp", 
+      "year": 2022, 
+      "calendar_hash": [
+        {
+          "week_number" : 1, 
+          "week": {
+            "theme":"swimming", 
+            "groups": [{
+              "group_UUID" : "b6a12faa-3eaa-44f5-8a24-62d6e839d41d", 
+              "counselorUUID" :  "1ba44084-fad3-4c6c-a840-3a3592b25af5", 
+              "group_campers" : [{
+                "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
+              },{
+                "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
+              }
+            ],
+              "group_schedule" : [{
+                "day_of_week" : "SUNDAY",
+                "daily_activities" : [{
+                  "name" : "Kayaking", 
+                  "location" : "Lake Butterfly", 
+                  "description" : "Campers will go kayaking in Lake Butterfly"
+                }]
+              },{
+                "day_of_week": "MONDAY", 
+                "daily_activities" : [{
+                  "name" : "Archery", 
+                  "location" :"Butterfly range", 
+                  "description" : "campers will practice archery at the Butterfly range"
+                }]
+              }] 
+            }],
+            "week_counselors" : [{
+              "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
+            }],
+            "week_campers" : [{
+              "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
+            },{
+              "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
+            }],
+            "start_date" : "5/29/2022", 
+            "end_date" : "6/5/2023", 
+            "isFull": "false"
+          }
+        },{
+          
+          "week_number" : 2, 
+          "week": {
+            "theme": "nature",
+            "groups": [{
+              "group_UUID" : "289ff272-2beb-4162-9c15-aeac888d198e", 
+              "counselorUUID" : "1ba44084-fad3-4c6c-a840-3a3592b25af5", 
+              "group_campers" :[{
+                "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
+              },{
+                "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
+              }
+            ],
+            "group_schedule" : [{
+              "day_of_week" : "SUNDAY",
+              "daily_activities" : [{
+                "name" : "Kayaking", 
+                "location" : "Lake Butterfly", 
+                "description" : "Campers will go kayaking in Lake Butterfly"
+              }]
+            },{
+              "day_of_week": "MONDAY", 
+              "daily_activities" : [{
+                "name" : "Archery", 
+                "location" :"Butterfly range", 
+                "description" : "campers will practice archery at the Butterfly range"
+              }]
+            }] 
+            }],
+            "week_counselors": [{
+              "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
+            }
+          ],
+            "week_campers" : [{
+              "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
+            },{
+              "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
+            }
+          ],
+            "start_date": "6/6/2023",
+            "end_date": "6/12/2023",
+            "isFull": "false"
+          }
+        }
+      ],
+      "all_activities" :[
+        {
+        "name": "swimming", 
+        "location": "Lake Butterfly", 
+        "description":"campers will go swimming in Lake Butterfly"
+      },{
+        "name":"Archery", 
+        "location":"Butterfly range",
+        "description":"campers will practice archery at the Butterfly range"
+      }
+    ]
+    }
+  ]

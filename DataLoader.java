@@ -367,15 +367,28 @@ public class DataLoader extends DataConstants {
                     for (int l = 0; l < groupsJSON.size(); l++) {
                         JSONObject jsonGroup = (JSONObject) groupsJSON.get(l);
                         UUID groupNum = UUID.fromString((String) jsonGroup.get(GROUP_ID));
-                        UUID counselorUUID = UUID.fromString((String) jsonGroup.get(COUNSELOR_ID));
-                        Counselor counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
+                        UUID counselorUUID;
+                        Counselor counselor = new Counselor();
+                        if (jsonGroup.get(COUNSELOR_ID) == null) {
+                            counselorUUID = null;
+                            counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
+                        } else {
+                            counselorUUID = UUID.fromString((String) jsonGroup.get(COUNSELOR_ID));
+                            counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
+                        }
+                        counselor = CounselorList.getInstance().getCounselorByUUID(counselorUUID);
                         ArrayList<Camper> campersList = new ArrayList<Camper>();
-                        JSONArray campers = (JSONArray) jsonGroup.get(GROUP_CAMPERS);
-                        for (int m = 0; m < campers.size(); m++) {
-                            JSONObject camperUUID = (JSONObject) campers.get(m);
-                            UUID camperID = UUID.fromString((String) camperUUID.get(ID));
-                            Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
+                        if (jsonGroup.get(GROUP_CAMPERS) == null) {
+                            Camper camper = null;
                             campersList.add(camper);
+                        } else {
+                            JSONArray campers = (JSONArray) jsonGroup.get(GROUP_CAMPERS);
+                            for (int m = 0; m < campers.size(); m++) {
+                                JSONObject camperUUID = (JSONObject) campers.get(m);
+                                UUID camperID = UUID.fromString((String) camperUUID.get(ID));
+                                Camper camper = CamperList.getInstance().getCamperByUUID(camperID);
+                                campersList.add(camper);
+                            }
                         }
                         JSONArray group_schedule = (JSONArray) jsonGroup.get(GROUP_SCHEDULE);
                         HashMap<DayOfWeek, ArrayList<Activity>> groupHashMap = new HashMap<DayOfWeek, ArrayList<Activity>>();

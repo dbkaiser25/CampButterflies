@@ -538,7 +538,7 @@ public class CampButterfliesDriver {
         while (run) {
             System.out.println("What would you like to edit:\n1. First Name \n2. Last Name" +
                     "\n3. Home Address\n4. Date of Birth\n5. Sex\n6. Allergies" +
-                    "\n7. Emergency Contacts\n8. Doctor Information\n9. Quit");
+                    "\n7. Emergency Contacts\n8. Doctor Information\n9. Add a Week\n10. Quit");
             int choice = scan.nextInt();
             scan.nextLine();
             switch (choice) {
@@ -573,6 +573,11 @@ public class CampButterfliesDriver {
                     facade.editCamperPediatrician(firstname,
                             editDoctor(facade.getCurrentUser().getCamper(firstname).getPediatrician()));
                 case 9:
+                    System.out.println(facade.getCamps());
+                    String camp = get("Choose a Camp");
+                    int week = Integer.parseInt(get("Week Number"));
+                    facade.editCamperWeek(firstname, week, camp);
+                case 10:
                     run = false;
                     break;
                 default:
@@ -963,9 +968,12 @@ public class CampButterfliesDriver {
 
         facade.newCamp(name, description, year, activities, weeks);
 
+        /* 
         for (int i = 0; i < weeknum; i++) {
             facade.generateSchedules(name, i, activities);
         }
+        */
+        facade.generateSchedulesCamp(name, activities);
 
     }
 
