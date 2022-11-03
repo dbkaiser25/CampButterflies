@@ -2,32 +2,36 @@
 import java.util.HashMap;
 import java.util.ArrayList;
 
+/**
+ * A class that defines a camp object that can be interacted with by users
+ */
 public class Camp {
 
     private String name;
     private String description;
     private int year;
-    private HashMap<Integer, Week> masterSchedule = new HashMap<Integer, Week>();
     private ArrayList<Activity> activities = new ArrayList<Activity>();
 
-    // Empty constructor if we want to make a new camp? idk if we need this
+    /**
+     * A hashmap that holds the weeks this camp is available for. A director can choose 
+     * how many weeks to create the camp for
+     */
+    private HashMap<Integer, Week> masterSchedule = new HashMap<Integer, Week>();
+    
+    /**
+     * An empty constructor, useful for creating a new instance of camp where attributes are unknown
+     */
     public Camp() {
-
     }
 
-    // name, desc, year, hashMap, activities
-    public void addCamp(String name, String desc, int year, HashMap<Integer, Week> masterSchedule, ArrayList<Activity> activities)
-    {
-        this.name = name;
-        this.description = desc;
-        this.year = year;
-        this.masterSchedule = masterSchedule;
-        this.activities = activities;
-        
-    }
-
-
-    //String name, String desc, int year, int weeks, ArrayList<Activity> activities) 
+    /**
+     * A constructor with all attributes of camp. Useful for reading camp objects in JSON
+     * @param name A string for the name of the camp
+     * @param description A string for the description of the camp
+     * @param year An int for the year of the camp
+     * @param weeks An integer for the number of weeks for the camp
+     * @param activities An array list storing the activites available at the camp
+     */
     public Camp(String name, String description, int year, int weeks, ArrayList<Activity> activities)
     {
         this.name = name;
@@ -37,7 +41,6 @@ public class Camp {
         this.activities = activities;
     }
 
-    // full constructor for reading from JSON
     public Camp(String name, String description, HashMap<Integer, Week> masterSchedule,
             ArrayList<Activity> activities, int year) {
         // TODO figure out Calendar constructor
@@ -48,19 +51,26 @@ public class Camp {
         this.year = year;
     }
 
-    // TODO figure out which constructors are needed --> Ask Zak
     public Camp(String name, String description) {
         this.name = name;
         this.description = description;
         masterSchedule = new HashMap<Integer, Week>();
     }
 
-    // constructor to create a new camp for director when he wants
-    // to make a new camp for a new year or something
     public Camp(String name, String description, int weekNumber) {
         this.name = name;
         this.description = description;
         masterSchedule = new HashMap<Integer, Week>(weekNumber);
+    }
+
+    public void addCamp(String name, String desc, int year, HashMap<Integer, Week> masterSchedule, ArrayList<Activity> activities)
+    {
+        this.name = name;
+        this.description = desc;
+        this.year = year;
+        this.masterSchedule = masterSchedule;
+        this.activities = activities;
+        
     }
 
     public int getYear() {
@@ -130,7 +140,6 @@ public class Camp {
 
     public boolean qualifiesForDiscount(ArrayList<Camper> campers) {
         for (int i = 0; i < masterSchedule.size(); i++) {
-            // does this need to by typecasted?
             if (masterSchedule.get((Integer) i).containsCamper(campers)) {
                 return true;
             }
@@ -144,7 +153,6 @@ public class Camp {
         for (Activity activity : activities) {
             displayActivities += activity.toString() + "\n";
         }
-
         return displayActivities;
     }
 
@@ -162,24 +170,12 @@ public class Camp {
 
     }
 
-    
-
-    // I don't like this method name but I have to think it was written like this
-    // for a reason
-    // If it's useful for the facade i won't change it but
     public void printMasterSchedule() {
         for (int i = 0; i < masterSchedule.size(); i++) {
             System.out.println(masterSchedule.get(i).getTheme());
         }
     }
 
-    public void editCalendar() {
-        // do some editing of the calendar
-    }
-
-    // You could make an argument that printing higher levels of schedules
-    // (masterSchedule)
-    // should be formatted differently but that is of lower priority (prolly 3)
     public String viewCalendar() {
         String temp = new String();
         for (int i = 0; i < masterSchedule.size(); i++) {

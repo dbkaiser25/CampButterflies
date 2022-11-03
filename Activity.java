@@ -1,8 +1,6 @@
 public class Activity {
     /**
      * A class to describe a camp activity
-     * 
-     * @author dbkaiser
      */
     private String name;
     private String location;
@@ -23,7 +21,6 @@ public class Activity {
 
     /**
      * A description of the activity in string form
-     * 
      * @return a string description of the activity
      */
     public String toString() {
