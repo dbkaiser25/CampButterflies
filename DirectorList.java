@@ -6,7 +6,6 @@ public class DirectorList {
     private static DirectorList directorList;
 
     private DirectorList() {
-        // directors = new ArrayList<Director>();
         directors = DataLoader.loadDirectors();
     }
 
@@ -47,29 +46,14 @@ public class DirectorList {
         return directors;
     }
 
-    // what is this method and why does it just return null???????
-    // TODO figure out what this is supposed to be
-    public Director getDirector() {
-        return null;
-    }
-
     public boolean haveDirector(LoginInfo info) {
         for (Director director : directors) {
             if (director.getUserLogin().getUserName().equals(info.getUserName())
                     && director.getUserLogin().getPassword().equals(info.getPassword())) {
                 return true;
             }
-            // System.out.println(
-            // "Director " + director.getUserLogin().getUserName() +
-            // director.getUserLogin().getPassword());
-            // System.out.println("User: " + info.getUserName() + info.getPassword());
-
         }
         return false;
-    }
-
-    public void editDirector() {
-
     }
 
     public void saveDirector() {

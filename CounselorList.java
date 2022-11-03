@@ -3,11 +3,9 @@ import java.util.UUID;
 
 public class CounselorList {
     private ArrayList<Counselor> counselors = new ArrayList<Counselor>();
-    // private ArrayList<Counselor> conselors = new ArrayList();
     private static CounselorList counselorList;
 
     private CounselorList() {
-        // counselors = new ArrayList<Counselor>();
         counselors = DataLoader.loadCounselors();
     }
 
@@ -65,10 +63,6 @@ public class CounselorList {
         return false;
     }
 
-    public void editCounselor() {
-
-    }
-
     public void saveCounselor() {
         DataWriter.saveCounselors();
     }
@@ -76,5 +70,4 @@ public class CounselorList {
     public ArrayList<Counselor> getCounselors() {
         return counselors;
     }
-
 }

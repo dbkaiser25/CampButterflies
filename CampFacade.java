@@ -283,6 +283,24 @@ public class CampFacade {
     }
 
     /**
+     * edits campers week
+     * 
+     * @param camper
+     * @param doctor
+     */
+    public void editCamperWeek(String camper, int week, String camp) {
+        Camper currentCamper = currentUser.getCamper(camper);
+        if (currentCamper == null)
+            System.out.println("There is no camper with that name");
+        else{
+            currentCamper.selectWeek(campList.getCamp(camp), week);
+            currentCamper.addWeek(week);
+        }
+        camperList.saveCampers();
+    }
+
+
+    /**
      * changes users first name
      * 
      * @param firstName
@@ -670,16 +688,6 @@ public class CampFacade {
         }
         return counselors;
     }
-
-    /*
-     * public String getCampers(){
-     * String campers = "";
-     * for(Camper camper: camperList.getCampers()){
-     * campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
-     * }
-     * return campers;
-     * }
-     */
 
     /**
      * removes a camper from a week
