@@ -1,8 +1,6 @@
 
-//import java.util.Date;
 /**
  * An abstract class that defines a person to be inherited 
- * @author dbkaiser
  */
 
 import java.util.UUID;

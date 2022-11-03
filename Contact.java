@@ -1,6 +1,5 @@
 /**
  * A class for a human contact
- * @author dbkaiser
  */
 public class Contact 
 {
@@ -27,10 +26,6 @@ public class Contact
         this.relationToPerson = relationToPerson;
     }
 
-    /**
-     * TODO figure out if this is needed or not
-     * This info might need to be filled in later check camper for explanation
-     */
     public Contact()
     {
 

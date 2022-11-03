@@ -7,7 +7,6 @@ import java.util.HashMap;
 /**
  * A class that defines a camper for the camp
  * 
- * @author dbkaiser
  */
 public class Camper extends Person {
     private Sex sex;

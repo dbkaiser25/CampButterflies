@@ -7,7 +7,6 @@ import java.util.HashMap;
 /**
  * A class that defines a counselor
  * 
- * @author dbkaiser
  */
 public class Counselor extends Person {
 
