@@ -1,6 +1,6 @@
 [
     {
-      "name": "Camp Blue Butterflies", 
+      "name": "2023 Summer Camp", 
       "description": "Fun outdoor camp", 
       "year": 2022, 
       "calendar_hash": [
@@ -10,7 +10,7 @@
             "theme":"swimming", 
             "groups": [{
               "group_UUID" : "b6a12faa-3eaa-44f5-8a24-62d6e839d41d", 
-              "counselorUUID" :  "1ba44084-fad3-4c6c-a840-3a3592b25af5", 
+              "counselorUUID" :  "aa8ed9ea-d2c1-413e-b4be-c609ba472aec", 
               "group_campers" : [{
                 "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
               },{
@@ -34,7 +34,7 @@
               }] 
             }],
             "week_counselors" : [{
-              "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
+              "id" : "aa8ed9ea-d2c1-413e-b4be-c609ba472aec"
             }],
             "week_campers" : [{
               "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
@@ -52,7 +52,7 @@
             "theme": "nature",
             "groups": [{
               "group_UUID" : "289ff272-2beb-4162-9c15-aeac888d198e", 
-              "counselorUUID" : "1ba44084-fad3-4c6c-a840-3a3592b25af5", 
+              "counselorUUID" : "aa8ed9ea-d2c1-413e-b4be-c609ba472aec", 
               "group_campers" :[{
                 "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
               },{
@@ -76,7 +76,7 @@
             }] 
             }],
             "week_counselors": [{
-              "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
+              "id" : "aa8ed9ea-d2c1-413e-b4be-c609ba472aec"
             }
           ],
             "week_campers" : [{

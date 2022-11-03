@@ -102,8 +102,14 @@ public class Week {
     }
 
     public Group getGroupByUUID(UUID id) {
-        for (Group g : groups) {
-            if (g.getUuid().equals(id)) {
+        System.out.println("Size " + groups.size());
+        System.out.println(id);
+        Group g = new Group();
+        for (int i = 0; i < groups.size(); i++) {
+            System.out.println(groups.get(i).getUuid());
+            System.out.println(groups.get(i).getCounselor().getUUID());
+            if (groups.get(i).getUuid().equals(id)) {
+                g = groups.get(i);
                 return g;
             }
         }

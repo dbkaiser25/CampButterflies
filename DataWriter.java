@@ -19,61 +19,20 @@ public class DataWriter extends DataConstants {
      * @param args
      */
     public static void main(String[] args) {
-
-        // CamperList campers = CamperList.getInstance();
-        // campers.saveCampers();
-        // ArrayList<Camper> newCampers = DataLoader.loadCampers();
-        // for (int i = 0; i < newCampers.size(); i++) {
-        // System.out.println(newCampers.get(i));
-        // }
-
-        // CounselorList counselors = CounselorList.getInstance();
-        // counselors.saveCounselor();
-        // ArrayList<Counselor> newCounselors = DataLoader.loadCounselors();
-        // for (int i = 0; i < newCounselors.size(); i++) {
-        // System.out.println(newCounselors.get(i));
-        // }
-
-        // UserList users = UserList.getInstance();
-        // users.saveUsers();
-        // ArrayList<User> newUsers = DataLoader.loadUsers();
-        // for (int i = 0; i < newUsers.size(); i++) {
-        // System.out.println(newUsers.get(i));
-        // }
-
-        // DirectorList directors = DirectorList.getInstance();
-        // directors.saveDirector();
-        // ArrayList<Director> newDirectors = DataLoader.loadDirectors();
-        // for (int i = 0; i < newDirectors.size(); i++) {
-        // System.out.println(newDirectors.get(i).getEmail());
-        // }
-
-        // CampList camps = CampList.getInstance();
-        // camps.saveCamps();
-        // ArrayList<Camp> newCamps = DataLoader.loadCamps();
-        // for (int i = 0; i < newCamps.size(); i++) {
-        // System.out.println("test 2 " + newCamps.get(i));
-        // }
-        UUID id = UUID.fromString("b6a12faa-3eaa-44f5-8a24-62d6e839d41d");
-        writeGroupFiles(id);
     }
 
     /**
      * saveCampers- saves all campers to camper.json
      */
-    public static void saveCampers() { // finished not tested
+    public static void saveCampers() {
         CamperList campers = CamperList.getInstance();
         ArrayList<Camper> camperList = campers.getCampers();
         JSONArray jsonCampers = new JSONArray();
-        /*
-         * creates JSON Objects for campers
-         */
+        // creates JSON Objects for campers
         for (int i = 0; i < camperList.size(); i++) {
             jsonCampers.add(getCamperJSON(camperList.get(i)));
         }
-        /*
-         * writes JSON file
-         */
+        // writes JSON file
         try (FileWriter file = new FileWriter(CAMPER_FILE)) {
             file.write(jsonCampers.toJSONString());
             file.flush();
@@ -107,7 +66,6 @@ public class DataWriter extends DataConstants {
         camperDetails.put(ALLERGIES, allergiesJSON);
         JSONArray medicationsJSON = new JSONArray();
         for (int i = 0; i < camper.getMedications().size(); i++) {
-            // make medication json object
             JSONObject medJSON = new JSONObject();
             String dosage = camper.getMedications().get(i).getDose();
             medJSON.put(DOSAGE, dosage);
@@ -153,12 +111,11 @@ public class DataWriter extends DataConstants {
     /**
      * writing users to user.json
      */
-    public static void saveUsers() { // finished not tested
+    public static void saveUsers() {
         UserList users = UserList.getInstance();
         ArrayList<User> userList = users.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
-        // creating JSON user objects
         for (int i = 0; i < userList.size(); i++) {
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
@@ -186,10 +143,6 @@ public class DataWriter extends DataConstants {
         userDetails.put(HOMEADDRESS, user.getHomeAddress());
         userDetails.put(USERNAME, user.getUserLogin().getUserName());
         userDetails.put(PASSWORD, user.getUserLogin().getPassword());
-
-        /*
-         * adding arrayLists
-         */
         JSONArray campersJSON = new JSONArray();
         for (int i = 0; i < user.getCampers().size(); i++) {
             String camperID = user.getCampers().get(i).getUUID().toString();
@@ -202,12 +155,10 @@ public class DataWriter extends DataConstants {
     /*
      * writes counselor to counselor.json
      */
-    public static void saveCounselors() { // finished not tested
+    public static void saveCounselors() {
         CounselorList counselors = CounselorList.getInstance();
         ArrayList<Counselor> counselorList = counselors.getCounselors();
         JSONArray jsonCounselors = new JSONArray();
-
-        // creating JSON Objects
         for (int i = 0; i < counselorList.size(); i++) {
             jsonCounselors.add(getCounselorJSON(counselorList.get(i)));
         }
@@ -225,7 +176,7 @@ public class DataWriter extends DataConstants {
      * @param counselor counselor that will be converted
      * @return JSONObject that will be written to counselor.json
      */
-    public static JSONObject getCounselorJSON(Counselor counselor) { // finished not tested- still need to do date's
+    public static JSONObject getCounselorJSON(Counselor counselor) {
         JSONObject counselorDetails = new JSONObject();
         counselorDetails.put(ID, counselor.getUUID().toString());
         counselorDetails.put(FIRSTNAME, counselor.getFirstName());
@@ -276,7 +227,7 @@ public class DataWriter extends DataConstants {
     /*
      * writes directors to director.json
      */
-    public static void saveDirectors() { // finished not tested
+    public static void saveDirectors() {
 
         DirectorList directors = DirectorList.getInstance();
         ArrayList<Director> directorList = directors.getDirectors();
@@ -324,7 +275,6 @@ public class DataWriter extends DataConstants {
                 JSONObject calHashObj = new JSONObject();
                 Integer num = entry.getKey();
                 calHashObj.put(WEEK_NUM, num);
-                // integer added
 
                 JSONObject weekObj = new JSONObject();
                 Week week = entry.getValue();
@@ -332,11 +282,8 @@ public class DataWriter extends DataConstants {
                 JSONArray groupsArray = new JSONArray();
                 for (int i = 0; i < week.getGroups().size(); i++) {
                     JSONObject groupObj = new JSONObject();
-                    groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString()); // adding group id
+                    groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString());
                     groupObj.put(COUNSELOR_ID, week.getGroups().get(i).getCounselor().getUUID().toString());
-
-                    // groupObj.put(COUNSELOR_ID,
-                    // week.getGroups().get(i).getCounselor().getUUID().toString());
                     JSONArray campersArr = new JSONArray();
                     for (int j = 0; j < week.getGroups().get(i).getCampers().size(); j++) {
                         JSONObject camperObj = new JSONObject();
@@ -354,8 +301,7 @@ public class DataWriter extends DataConstants {
                         scheduleObj.put(DAY_OF_WEEK, day);
 
                         JSONArray activitiesJSON = new JSONArray();
-                        ArrayList<Activity> dailyActivities = groupEntry.getValue(); // if errors, assign at the end,
-                                                                                     // might be null
+                        ArrayList<Activity> dailyActivities = groupEntry.getValue();
                         for (int k = 0; k < dailyActivities.size(); k++) {
                             JSONObject dailyActivitiesObj = new JSONObject();
                             dailyActivitiesObj.put(NAME, dailyActivities.get(k).getName());
@@ -371,7 +317,6 @@ public class DataWriter extends DataConstants {
                     groupsArray.add(groupObj);
                 }
                 weekObj.put(GROUPS, groupsArray);
-                // groups added
                 JSONArray weekCounselorArr = new JSONArray();
                 for (int i = 0; i < week.getCounselors().size(); i++) {
                     JSONObject counselorObj = new JSONObject();
@@ -379,7 +324,6 @@ public class DataWriter extends DataConstants {
                     weekCounselorArr.add(counselorObj);
                 }
                 weekObj.put(WEEK_COUNSELORS, weekCounselorArr);
-                // week counselors added
 
                 JSONArray weekCampersArr = new JSONArray();
                 for (int i = 0; i < week.getCampers().size(); i++) {
@@ -409,7 +353,6 @@ public class DataWriter extends DataConstants {
                     allActivitiesArr.add(activityObj);
                 }
                 campDetails.put(ALL_ACTIVITIES, allActivitiesArr);
-                // added activities list
 
             }
             calendarArr.add(campDetails);
@@ -463,7 +406,7 @@ public class DataWriter extends DataConstants {
             JSONArray groupsArray = new JSONArray();
             for (int i = 0; i < week.getGroups().size(); i++) {
                 JSONObject groupObj = new JSONObject();
-                groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString()); // adding group id
+                groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString());
                 if (week.getGroups().get(i).getCounselor() == null) {
                     groupObj.put(COUNSELOR_ID, null);
                 } else {
@@ -553,14 +496,50 @@ public class DataWriter extends DataConstants {
      * 
      * @param id UUID of the group that will have the schedule written
      */
-    public static void writeGroupFiles(UUID id) {
+    public static void writeGroupSchedule(UUID id) {
 
-        CampList campList = CampList.getInstance(); // getting group
+        CampList campList = CampList.getInstance();
         Group group = campList.getGroupByUUID(id);
         try (FileWriter file = new FileWriter(
-                "schedules/Counselor" + group.getCounselor().getFirstName() + "'s Group")) {
+                "schedules/Counselor " + group.getCounselor().getFirstName() + "'s Group")) {
             file.write(group.printSchedule());
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * writes a camp's roster to a txt file in roster folder
+     * 
+     * @param id ID of group that will have their roster written
+     */
+    public static void writeRosterToTxt(UUID id) {
+        CampList campList = CampList.getInstance();
+        Group group = campList.getGroupByUUID(id);
+        try (FileWriter file = new FileWriter(
+                "Rosters/Counselor " + group.getCounselor().getFirstName() + "'s Roster")) {
+            for (int i = 0; i < group.getCampers().size(); i++) {
+                file.write("\n" + group.getCampers().get(i).toStringBrief());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * writes a detailed roster to a txt file in roster folder
+     * 
+     * @param id ID of a group that will have their roster written
+     */
+    public static void writeDetailedRosterToTxt(UUID id) {
+        CampList campList = CampList.getInstance();
+        Group group = campList.getGroupByUUID(id);
+        try (FileWriter file = new FileWriter(
+                "Rosters/Counselor " + group.getCounselor().getFirstName() + "'s Detailed Roster")) {
+            for (int i = 0; i < group.getCampers().size(); i++) {
+                file.write("\n" + group.getCampers().get(i).toStringFull());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

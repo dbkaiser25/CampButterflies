@@ -128,7 +128,6 @@ public class Group {
         temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s Group's Schedule:\n";
 
         for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : getSchedule().entrySet()) {
-            System.out.println("test");
             ArrayList<Activity> activities = entry.getValue();
             DayOfWeek day = entry.getKey();
             for (int i = 0; i < activities.size(); i++) {

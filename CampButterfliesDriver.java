@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -735,10 +736,12 @@ public class CampButterfliesDriver {
     private void viewGroup() {
         String camp = get("Camp");
         int week = Integer.parseInt(get("Week Number"));
-        ArrayList<Camper> campers = facade.getGroup(camp, week - 1);
+        ArrayList<Camper> campers = facade.getGroup(camp, week);
+        UUID id = facade.getGroupUUID(camp, week);
         for (Camper camper : campers) {
             System.out.println(camper.toStringBrief() + "\n");
         }
+        DataWriter.writeRosterToTxt(id);
     }
 
     /**
@@ -748,9 +751,11 @@ public class CampButterfliesDriver {
         String camp = get("Camp");
         int week = Integer.parseInt(get("Week Number"));
         ArrayList<Camper> campers = facade.getGroup(camp, week);
+        UUID id = facade.getGroupUUID(camp, week);
         for (Camper camper : campers) {
             System.out.println(camper.toStringFull() + "\n");
         }
+        DataWriter.writeDetailedRosterToTxt(id);
     }
 
     /**
@@ -963,11 +968,11 @@ public class CampButterfliesDriver {
 
         facade.newCamp(name, description, year, activities, weeks);
 
-        /* 
-        for (int i = 0; i < weeknum; i++) {
-            facade.generateSchedules(name, i, activities);
-        }
-        */
+        /*
+         * for (int i = 0; i < weeknum; i++) {
+         * facade.generateSchedules(name, i, activities);
+         * }
+         */
         facade.generateSchedulesCamp(name, activities);
 
     }

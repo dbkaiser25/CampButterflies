@@ -19,26 +19,7 @@ public class DataLoader extends DataConstants {
      * @param args
      */
     public static void main(String[] args) {
-        // ArrayList<Director> directors = DataLoader.loadDirectors();
-        // for (int i = 0; i < directors.size(); i++) {
-        // System.out.println("DIRECTOR email: " + directors.get(i).getEmail());
-        // }
-        // ArrayList<Camp> camps = DataLoader.loadCamps();
-        // for (int i = 0; i < camps.size(); i++) {
-        // System.out.println("CAMP: " + camps.get(i));
-        // }
-        // ArrayList<Camper> campers = DataLoader.loadCampers();
-        // for (int i = 0; i < campers.size(); i++) {
-        // System.out.println("CAMPER: " + campers.get(i));
-        // }
-        // ArrayList<Counselor> counselors = DataLoader.loadCounselors();
-        // for (int i = 0; i < counselors.size(); i++) {
-        // System.out.println("COUNSELOR: " + counselors.get(i).getFirstName());
-        // }
-        ArrayList<User> users = DataLoader.loadUsers();
-        for (int i = 0; i < users.size(); i++) {
-            System.out.println("USER: " + users.get(i));
-        }
+
     }
 
     /**
@@ -238,8 +219,7 @@ public class DataLoader extends DataConstants {
                     JSONObject calendarJSON = (JSONObject) jsonCalendar.get(j);
                     String campName = (String) calendarJSON.get(NAME);
                     String campDescription = (String) calendarJSON.get(DESCRIPTION);
-                    Integer year = ((Long) calendarJSON.get(YEAR)).intValue(); // see if it's ok to cast as Integer
-                                                                               // instead of int
+                    Integer year = ((Long) calendarJSON.get(YEAR)).intValue();
                     JSONArray jsonHash = (JSONArray) calendarJSON.get(CALENDAR_HASH);
                     HashMap<Integer, Week> masterScheduleHash = new HashMap<Integer, Week>();
 
@@ -283,7 +263,6 @@ public class DataLoader extends DataConstants {
                                 groupHashMap.put(day, dailyActivities);
                             }
                             Group g = new Group(groupNum, counselor, campersList, groupHashMap);
-                            // groups.add(new Group(groupNum, counselor, campersList, groupHashMap));
                             groups.add(g);
 
                         }
@@ -303,10 +282,6 @@ public class DataLoader extends DataConstants {
                             Camper camper = CamperList.getInstance().getCamperByUUID(camperUUID);
                             week_campers.add(camper);
                         }
-
-                        /*
-                         * convert all three of these to Date/boolean
-                         */
                         String startDateString = (String) weekJSON.get(START_DATE);
                         Date startDate = convertToDate(startDateString);
                         String endDateString = (String) weekJSON.get(END_DATE);
@@ -434,9 +409,6 @@ public class DataLoader extends DataConstants {
                     Week week = new Week(theme, groups, week_counselors, week_campers, startDate, endDate, isFull);
                     masterScheduleHash.put(week_num, week);
                 }
-                /*
-                 * figure out how to add to hashMap
-                 */
                 ArrayList<Activity> activities = new ArrayList<Activity>();
                 JSONArray activitiesJSON = (JSONArray) campJSON.get(ALL_ACTIVITIES);
                 for (int l = 0; l < activitiesJSON.size(); l++) {
@@ -448,8 +420,6 @@ public class DataLoader extends DataConstants {
                 }
                 Camp camp = new Camp(campName, campDescription, masterScheduleHash, activities, year);
                 camps.add(camp);
-                // camps.add(new Camp(campName, campDescription, masterScheduleHash,
-                // activities));
             }
             return camps;
         } catch (Exception e) {

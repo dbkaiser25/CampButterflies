@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class CampFacade {
     private CampList campList;
@@ -511,10 +512,8 @@ public class CampFacade {
         campList.saveCamps();
     }
 
-    public void generateSchedulesCamp(String camp, ArrayList<Activity> activities)
-    {
-        for(int w = 0; w < campList.getCamp(camp).getMasterSchedule().size(); w++)
-        {
+    public void generateSchedulesCamp(String camp, ArrayList<Activity> activities) {
+        for (int w = 0; w < campList.getCamp(camp).getMasterSchedule().size(); w++) {
             campList.getCamp(camp).getWeek(w).generateSchedules(activities);
         }
     }
@@ -599,8 +598,30 @@ public class CampFacade {
      * @param week
      * @return
      */
-    public ArrayList<Camper> getGroup(String camp, int week) {
-        return campList.getCamp(camp).getWeek(week - 1).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
+    public ArrayList<Camper> getGroup(String camp, int weekNum) {
+        for (HashMap.Entry<Integer, Week> entry : campList.getCamp(camp).getMasterSchedule().entrySet()) {
+            Integer num = entry.getKey();
+            Integer passedNum = Integer.valueOf(weekNum);
+            Week week = entry.getValue();
+            if (num == passedNum) {
+                ArrayList<Camper> campers = new ArrayList<Camper>();
+                campers = week.getGroups().get(weekNum - 1).getCampers();
+                return campers;
+            }
+        }
+        return null;
+    }
+
+    public UUID getGroupUUID(String camp, int weekNum) {
+        for (HashMap.Entry<Integer, Week> entry : campList.getCamp(camp).getMasterSchedule().entrySet()) {
+            Integer num = entry.getKey();
+            Integer passedNum = Integer.valueOf(weekNum);
+            Week week = entry.getValue();
+            if (num == passedNum) {
+                return week.getGroups().get(weekNum - 1).getUuid();
+            }
+        }
+        return null;
     }
 
     /**
