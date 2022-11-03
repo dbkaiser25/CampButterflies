@@ -668,16 +668,6 @@ public class CampFacade {
         return counselors;
     }
 
-    /*
-     * public String getCampers(){
-     * String campers = "";
-     * for(Camper camper: camperList.getCampers()){
-     * campers += camper.getFirstName() +" " + camper.getLastName() + "\n";
-     * }
-     * return campers;
-     * }
-     */
-
     /**
      * removes a camper from a week
      * 
