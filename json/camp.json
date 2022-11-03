@@ -197,12 +197,5 @@
         "description":"campers will practice archery at the Butterfly range"
       }
     ]
-    },
-  
-  {"all_activities":
-    [{"name":"Kayaking","description":"Kayak","location":"Lake Smile"},
-    {"name":"Swimming","description":"Swim","location":"Pool Butterfly"},
-    {"name":"Arts and Crafts","description":"arts and crafts","location":"Art Room"},
-    {"name":"Zipling","description":"zipline","location":"Blue Hill"},
-    {"name":"Soccer","description":"soccer","location":"soccer"},
-    {"name":"archery","description":"archery","location":"targets"}],"calendar_hash":[{"week":{"end_date":"07\/07\/2023","groups":[],"theme":"Hawaiin","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/03\/2023"},"week_number":1},{"week":{"end_date":"07\/14\/2023","groups":[],"theme":"Rosckstars","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/10\/2023"},"week_number":2},{"week":{"end_date":"11\/20\/2024","groups":[],"theme":"Ninja Warriors","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/17\/2023"},"week_number":3},{"week":{"end_date":"07\/28\/2023","groups":[],"theme":"Willy Wonka","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/24\/2023"},"week_number":4},{"week":{"end_date":"08\/04\/2023","groups":[],"theme":"Hollywodd","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/31\/2023"},"week_number":5},{"week":{"end_date":"08\/11\/2023","groups":[],"theme":"Legos","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/07\/2023"},"week_number":6},{"week":{"end_date":"08\/18\/2023","groups":[],"theme":"Cops and Robbers","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/14\/2023"},"week_number":7},{"week":{"end_date":"08\/25\/2023","groups":[],"theme":"Shark Tank","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/21\/2023"},"week_number":8},{"week":{"end_date":"09\/01\/2023","groups":[],"theme":"Smores","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/28\/2023"},"week_number":9}],"year":2023,"name":"Camp Blue Butterflies","description":"Super fun overnight camp"}]
+    }
+  ]

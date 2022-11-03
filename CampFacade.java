@@ -652,6 +652,7 @@ public class CampFacade {
         /*
          * print out a group's schedule
          */
+        System.out.println(campList.getCamp(camp).toString());
         for (HashMap.Entry<Integer, Week> entry : campList.getCamp(camp).getMasterSchedule().entrySet()) {
             Integer num = entry.getKey();
             Integer passedNum = Integer.valueOf(weekNum);
@@ -667,7 +668,7 @@ public class CampFacade {
     }
 
     public String getSchedule(String camp, int weekNum, int groupNum) { // error here
-        System.out.println("Week theme " + campList.getCamp(camp).getWeek(weekNum - 1).getTheme());
+        System.out.println("Week Theme: " + campList.getCamp(camp).getWeek(weekNum - 1).getTheme());
         Week week = campList.getCamp(camp).getWeek(weekNum - 1);
         Group group = week.getGroupByNumber(groupNum - 1);
         return group.printSchedule();
