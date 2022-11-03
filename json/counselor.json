@@ -33,39 +33,6 @@
         "relationToPerson": "Pediatrician"
       }
     },{
-      "id": "1ba44084-fad3-4c6c-a840-3a3592b25af5",
-      "firstName": "Jay",
-      "lastName": "Canton",
-      "dateOfBirth": "04/11/2004",
-      "homeAddress": "16 Canteen Street",
-      "phoneNumber": "484-120-1004",
-      "emailAddress": "jaycanton@gmail.com",
-      "username": "jaycanton",
-      "password": "cantonjay15",
-      "contacts": [
-        {
-          "firstName": "Marissa",
-          "lastName": "Canton",
-          "phoneNumber": "484-204-2095",
-          "emailAddress": "marissacanton@gmail.com",
-          "relationToPerson": "Mother"
-        },
-        {
-          "firstName": "Brandon",
-          "lastName": "Canton",
-          "phoneNumber": "310-102-4044",
-          "emailAddress": "brandoncanton@gmail.com",
-          "relationToPerson": "Father"
-        }
-      ],
-      "pediatrician": {
-        "firstName": "Bridget",
-        "lastName": "Sampson",
-        "phoneNumber": "102-493-2901",
-        "emailAddress": "bridgetsampson@gmail.com",
-        "relationToPerson": "Pediatrician"
-      }
-    },{
       "id": "aa8ed9ea-d2c1-413e-b4be-c609ba472aec",
       "firstName": "Kix",
       "lastName": "Gonzales",

@@ -17,24 +17,119 @@
                 "id" : "45bd6f4e-a88e-448a-b911-1048c5b3ea6a"
               }
             ],
-              "group_schedule" : [{
-                "day_of_week" : "SUNDAY",
-                "daily_activities" : [{
-                  "name" : "Kayaking", 
-                  "location" : "Lake Butterfly", 
-                  "description" : "Campers will go kayaking in Lake Butterfly"
-                }]
-              },{
+              "group_schedule" : [
+                {
                 "day_of_week": "MONDAY", 
                 "daily_activities" : [{
-                  "name" : "Archery", 
-                  "location" :"Butterfly range", 
-                  "description" : "campers will practice archery at the Butterfly range"
+                  "name" : "Breakfast", "description" : "Campers Eat Breakfast", "location" : "Dining Hall"
+                },{
+                  "name":"Arts and Crafts","description":"arts and crafts","location":"Art Room"
+                },{
+                  "name":"Soccer","description":"soccer","location":"soccer"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch","location" : "Dining Hall"
+                },{
+                  "name":"Swimming","description":"Swim","location":"Pool Butterfly"
+                },{
+                  "name":"Kayaking","description":"Kayak","location":"Lake Smile"
+                },{
+                  "name":"archery","description":"archery","location":"targets"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"Ziplining","description":"zipline","location":"Blue Hill"
+                }]
+              },{
+                "day_of_week": "TUESDAY", 
+                "daily_activities" : [{
+                  "name" : "Breakfast", "description" : "Campers Eat Breakfast", "location" : "Dining Hall"
+                },{
+                  "name":"Kayaking","description":"Kayak","location":"Lake Smile"
+                },{
+                  "name":"Swimming","description":"Swim","location":"Pool Butterfly"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"Arts and Crafts","description":"arts and crafts","location":"Art Room"
+                },{
+                  "name":"Ziplining","description":"zipline","location":"Blue Hill"
+                },{
+                  "name":"Soccer","description":"soccer","location":"soccer"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"archery","description":"archery","location":"targets"
+                }]
+              },{
+                "day_of_week": "FRIDAY", 
+                "daily_activities" : [{
+                  "name" : "Breakfast", "description" : "Campers Eat Breakfast", "location" : "Dining Hall"
+                },{
+                  "name":"Soccer","description":"soccer","location":"soccer"
+                },{
+                  "name":"archery","description":"archery","location":"targets"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"Swimming","description":"Swim","location":"Pool Butterfly"
+                  
+                },{
+                  "name":"Kayaking","description":"Kayak","location":"Lake Smile"
+                },{
+                  "name":"Ziplining","description":"zipline","location":"Blue Hill"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"Arts and Crafts","description":"arts and crafts","location":"Art Room"
+                }]
+              },{
+                "day_of_week": "WEDNESDAY", 
+                "daily_activities" : [{
+                  "name" : "Breakfast", "description" : "Campers Eat Breakfast", "location" : "Dining Hall"
+                },{
+                  "name":"Ziplining","description":"zipline","location":"Blue Hill"
+                },{
+                  "name":"Swimming","description":"Swim","location":"Pool Butterfly"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"Soccer","description":"soccer","location":"soccer"
+                },{
+                  "name":"archery","description":"archery","location":"targets"
+                },{
+                  "name":"Arts and Crafts","description":"arts and crafts","location":"Art Room"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"Kayaking","description":"Kayak","location":"Lake Smile"
+                }]
+              },{
+                "day_of_week": "THURSDAY", 
+                "daily_activities" : [{
+                  "name" : "Breakfast", "description" : "Campers Eat Breakfast", "location" : "Dining Hall"
+                },{
+                  "name":"Swimming","description":"Swim","location":"Pool Butterfly"
+                },{
+                  "name":"Arts and Crafts","description":"arts and crafts","location":"Art Room"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"archery","description":"archery","location":"targets"
+                },{
+                  "name":"Kayaking","description":"Kayak","location":"Lake Smile"
+                },{
+                  "name":"Ziplining","description":"zipline","location":"Blue Hill"
+                },{
+                  "name" : "Lunch", "description" : "Campers Eat Lunch", "location" : "Dining Hall"
+                },{
+                  "name":"Soccer","description":"soccer","location":"soccer"
                 }]
               }] 
             }],
             "week_counselors" : [{
-              "id" : "aa8ed9ea-d2c1-413e-b4be-c609ba472aec"
+              "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
+            },{
+                "id" : "aa8ed9ea-d2c1-413e-b4be-c609ba472aec"
             }],
             "week_campers" : [{
               "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
@@ -52,7 +147,7 @@
             "theme": "nature",
             "groups": [{
               "group_UUID" : "289ff272-2beb-4162-9c15-aeac888d198e", 
-              "counselorUUID" : "aa8ed9ea-d2c1-413e-b4be-c609ba472aec", 
+              "counselorUUID" : "1ba44084-fad3-4c6c-a840-3a3592b25af5", 
               "group_campers" :[{
                 "id" : "1035e216-e038-4541-abe9-a4e5441eb592"
               },{
@@ -76,7 +171,7 @@
             }] 
             }],
             "week_counselors": [{
-              "id" : "aa8ed9ea-d2c1-413e-b4be-c609ba472aec"
+              "id" : "1ba44084-fad3-4c6c-a840-3a3592b25af5"
             }
           ],
             "week_campers" : [{
@@ -102,5 +197,12 @@
         "description":"campers will practice archery at the Butterfly range"
       }
     ]
-    }
-  ]
+    },
+  
+  {"all_activities":
+    [{"name":"Kayaking","description":"Kayak","location":"Lake Smile"},
+    {"name":"Swimming","description":"Swim","location":"Pool Butterfly"},
+    {"name":"Arts and Crafts","description":"arts and crafts","location":"Art Room"},
+    {"name":"Zipling","description":"zipline","location":"Blue Hill"},
+    {"name":"Soccer","description":"soccer","location":"soccer"},
+    {"name":"archery","description":"archery","location":"targets"}],"calendar_hash":[{"week":{"end_date":"07\/07\/2023","groups":[],"theme":"Hawaiin","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/03\/2023"},"week_number":1},{"week":{"end_date":"07\/14\/2023","groups":[],"theme":"Rosckstars","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/10\/2023"},"week_number":2},{"week":{"end_date":"11\/20\/2024","groups":[],"theme":"Ninja Warriors","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/17\/2023"},"week_number":3},{"week":{"end_date":"07\/28\/2023","groups":[],"theme":"Willy Wonka","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/24\/2023"},"week_number":4},{"week":{"end_date":"08\/04\/2023","groups":[],"theme":"Hollywodd","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"07\/31\/2023"},"week_number":5},{"week":{"end_date":"08\/11\/2023","groups":[],"theme":"Legos","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/07\/2023"},"week_number":6},{"week":{"end_date":"08\/18\/2023","groups":[],"theme":"Cops and Robbers","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/14\/2023"},"week_number":7},{"week":{"end_date":"08\/25\/2023","groups":[],"theme":"Shark Tank","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/21\/2023"},"week_number":8},{"week":{"end_date":"09\/01\/2023","groups":[],"theme":"Smores","isFull":"false","week_counselors":[],"week_campers":[],"start_date":"08\/28\/2023"},"week_number":9}],"year":2023,"name":"Camp Blue Butterflies","description":"Super fun overnight camp"}]

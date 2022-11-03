@@ -52,7 +52,7 @@ public class Group {
         this.counselor = counselor;
         this.campers = campers;
         this.schedule = schedule;
-        
+
     }
 
     public Group(UUID uuid, Counselor counselor, ArrayList<Camper> campers,
@@ -118,8 +118,9 @@ public class Group {
         for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : getSchedule().entrySet()) {
             ArrayList<Activity> activities = entry.getValue();
             DayOfWeek day = entry.getKey();
+            temp = temp + "Day: " + day + "\n";
             for (int i = 0; i < activities.size(); i++) {
-                temp = temp + "Day: " + day + "\n\t" + activities.get(i).toString() + "\n";
+                temp = temp + "\t" + activities.get(i).toString() + "\n";
             }
         }
         return temp;
