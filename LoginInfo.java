@@ -1,6 +1,5 @@
 /**
  * A clas for a user's login info
- * @author dbkaiser
  */
 public class LoginInfo 
 {

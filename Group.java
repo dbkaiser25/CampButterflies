@@ -11,6 +11,7 @@ public class Group {
     private UUID uuid;
     private Counselor counselor;
     private ArrayList<Camper> campers = new ArrayList<Camper>();
+    private HashMap<DayOfWeek, ArrayList<Activity>> schedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
 
     public UUID getUuid() {
         return uuid;
@@ -40,9 +41,6 @@ public class Group {
         this.schedule = schedule;
     }
 
-    // TODO adding new HashMap Configuration figure out if its good
-    private HashMap<DayOfWeek, ArrayList<Activity>> schedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
-
     /**
      * Creates an instance of a class with the following attributes
      * 
@@ -57,7 +55,6 @@ public class Group {
         
     }
 
-    // TODO figure out if JSON or something else needs this
     public Group(UUID uuid, Counselor counselor, ArrayList<Camper> campers,
             HashMap<DayOfWeek, ArrayList<Activity>> schedule) {
         this.uuid = uuid;
@@ -93,20 +90,14 @@ public class Group {
         return "a string";
     }
 
-    // TODO do we need this
     public Camper getCamper(UUID id) {
         return CamperList.getInstance().getCamperByUUID(id);
-        // idk who needs this but ^^^^^^ this code can prolly just be called from
-        // wherever
-        // its needed, no reason for a messenger method just get rid of the middle man
     }
 
-    // Do they want the actual list or just a pretty string of the list???? TODO
     public ArrayList<Camper> getCamperList() {
         return campers;
     }
 
-    // TODO figure out if we keep this method or the one above ^^^^^ or both
     public String viewCamperList() {
         String temp = new String();
         for (Camper c : campers) {
@@ -115,17 +106,13 @@ public class Group {
         return temp;
     }
 
-    // same thing with this one, do they want the actual schedule or to just view
-    // the schedule
     public HashMap<DayOfWeek, ArrayList<Activity>> getSchedule() {
         return schedule;
     }
 
-    // printing the schedule assuming its not empty
     public String printSchedule() {
 
         String temp = "";
-
         temp = temp + "Counselor " + this.getCounselor().getFirstName() + "'s Group's Schedule:\n";
 
         for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : getSchedule().entrySet()) {
@@ -136,35 +123,9 @@ public class Group {
                 temp = temp + "Day: " + day + "\n\t" + activities.get(i).toString() + "\n";
             }
         }
-
-        // System.out.println("Here 1");
-        // DayOfWeek[] dOW = DayOfWeek.values();
-        // for (int d = 0; d < dOW.length; d++) {
-        // System.out.println(schedule.size());
-        // System.out.println("size " + schedule.get(dOW[d]).size());
-        // System.out.println("Here 2");
-        // temp = temp + "\nDay: " + dOW[d] + "\n";
-        // for (int a = 0; a < schedule.get(dOW[d]).size(); a++) {
-        // System.out.println("Here 3");
-        // temp = temp + schedule.get(dOW[d]).get((Integer) a) + "\n";
-        // }
-        // }
-
-        // for(HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry:
-        // getSchedule().entrySet())
-        // {
-        // DayOfWeek day = entry.getKey();
-        // ArrayList<Activity> activities = entry.getValue();
-        // //DayOfWeek[] dOW = DayOfWeek.values();
-        // temp = temp + "Day: " + day + "\n";
-
-        // }
-
         return temp;
     }
 
-    // when the schedule is automatically generated, it can be assigned as this
-    // group's schedule
     public void setScedule(HashMap<DayOfWeek, ArrayList<Activity>> schedule) {
         this.schedule = schedule;
     }

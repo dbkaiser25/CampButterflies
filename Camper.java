@@ -7,7 +7,6 @@ import java.util.HashMap;
 /**
  * A class that defines a camper for the camp
  * 
- * @author dbkaiser
  */
 public class Camper extends Person {
     private Sex sex;
@@ -25,8 +24,6 @@ public class Camper extends Person {
      * @param medicalInfo       A string for their medical info
      * @param emergencyContacts A list of the camper's emergency contacts
      * @param pediatrician      A contact for the camper's pediatrician
-     *                          TODO Figure out the constructors for emergency
-     *                          contacts and maybe pediatrician
      */
     public Camper(String firstName, String lastName, String homeAddress, Date dateOfBirth,
             Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies,
@@ -41,7 +38,6 @@ public class Camper extends Person {
         weeks = new ArrayList<>();
     }
 
-    // constructor with UUID
     public Camper(UUID uuid, String firstName, String lastName, String homeAddress, Date dateOfBirth,
             Sex sex, ArrayList<Medication> medications, ArrayList<String> allergies,
             ArrayList<Contact> emergencyContacts, Contact pediatrician) {
@@ -111,29 +107,15 @@ public class Camper extends Person {
      * A description of the camper in string form
      * A to string for when a counselor wants to see info about the campers in their
      * group
-     * 
      * @return A string description of the camper
      */
     public String toStringBrief() {
         return firstName + " " + lastName;
-        // + "\n" + dateOfBirth.toString()
-
     }
 
-    // different groups need to see different amounts of camper information
     // when director or user wants to see camper information
     public String toStringFull() {
         String temp = "";
-
-        /*
-         * temp = "Counselor:  " + firstName + " " + lastName + "\nDate of Birth: " +
-         * dateOfBirth.getMonth() +
-         * "/" + dateOfBirth.getDate() + "/" + dateOfBirth.getYear() + "\nAddress: " +
-         * homeAddress +
-         * "\nEmail: " + emailAddress + "\n " + pediatrician + "Medical Info: \n" +
-         * medicalInfo + "\nPhone Number: " + phoneNumber;
-         */
-
         temp = "\nCamper: " + firstName + " " + lastName + "\nDate of Birth: " + formatDate(dateOfBirth)
                 + "\nAddress: " + homeAddress + "\nSex: " + sex + "\nMedications: \n" + printMedication()
                 + "\nAllergies: \n"
@@ -147,9 +129,7 @@ public class Camper extends Person {
         return formatter.format(d);
     }
 
-    // helper methods
-    // it seems weird these methods can't go into their own classes because I'm sure
-    // we'll need em again
+    //helper methods for turning camper information into a string
     private String printMedication() {
         String temp = new String();
         for (Medication m : medications) {
@@ -178,36 +158,8 @@ public class Camper extends Person {
         return firstName + " " + lastName;
     }
 
-    // TODO ill look at this later
     public boolean selectWeek(Camp camp, Integer weekNumber) {
-        // In the UI, the user will register their campers
-        // then, they select the weeks option to figure out what weeks they want to sign
-        // up for
-        // and what camper gets signed up for whatever week
-        // paramters: we need to know what camp and year were talking about,
-        // we need to know which camper
-        // and then which week
-        // im thinking this method will get called once to sign a camper up for a week
-        // then again for a different week
-        // then again for a different camper
-
-        // so for this method to work
-        // the camper needs to be added to the campers array list in week
-        // we can get to this by accessing the master schedule in camp
-
-        // if(!)
-
-        /*
-         * if(!camp.getMasterSchedule().get(weekNumber).isFull())
-         * {
-         * camp.getMasterSchedule().get(weekNumber).getCampers().add(campers.get(
-         * camperNumber));
-         * return true;
-         * }
-         * return false;
-         */
-         
-        //if(!camp.getMasterSchedule().getWeek(camp,(Integer) weekNumber).isFull())
+    
         if(getWeek(camp,weekNumber).isFull())
         {
             return false;

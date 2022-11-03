@@ -56,10 +56,4 @@ public abstract class DataConstants {
     protected static final String USER_CAMPERS = "user_campers";
     protected static final String CAMPER_ID = "camper_id";
 
-    /**
-     * how does the administrator go about setting up the camp
-     * making schedules, groups
-     * generate schedules, generate groups
-     * be able to construct a new calendar with schedules, groups, etc
-     */
 }

@@ -3,39 +3,9 @@ import java.util.UUID;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Calendar;
 import java.util.Random;
 
 public class Week {
-    public static void main(String[] args) {
-        /*
-         * Week wk = new Week();
-         * Activity a1 = new Activity("Swimming",null,null);
-         * Activity a2 = new Activity("Kayaking",null,null);
-         * Activity a3 = new Activity("Soccer",null,null);
-         * Activity a4 = new Activity("Kickball",null,null);
-         * Activity a5 = new Activity("Basket Weaving",null,null);
-         * Activity a6 = new Activity("Football",null,null);
-         * 
-         * ArrayList<Activity> activities = new ArrayList<Activity>();
-         * activities.add(a1);
-         * activities.add(a2);
-         * activities.add(a3);
-         * activities.add(a4);
-         * activities.add(a5);
-         * activities.add(a6);
-         * 
-         * wk.generateSchedules(activities);
-         * String temp = wk.viewSchedule();
-         * System.out.println(temp);
-         */
-
-    }
-    // TODO figure out the dimension labels of schedule/masterschedule hashmap
-    // private HashMap<Group, ArrayList<Activity>> schedule; TODO this is the old
-    // HashMap Configuration see if new is good then fully delete
-    // New configuration does not have any kind of schedule in week rather shifts
-    // them to group and keeps one in camp/calendar
 
     private String theme;
     private ArrayList<Group> groups = new ArrayList<Group>();
@@ -120,22 +90,15 @@ public class Week {
             }
         }
         return group;
-        // return groups.get(num-1);
     }
 
-    // Maybe we want an empty constructor, for when new weeks need to be registered
     public Week() {
-
-        // Constructor goes here
         for (int i = 0; i < 6; i++) {
             groups.add(new Group());
         }
 
     }
 
-    // and a full one so that when we read from JSON we can create weeks that have
-    // already been created/registered
-    // hmm this might be altered because it may need to read a schedule
     public Week(String theme, ArrayList<Group> groups, ArrayList<Counselor> counselors, ArrayList<Camper> campers,
             Date startDate, Date endDate, boolean isFull) {
         this.theme = theme;
@@ -147,7 +110,6 @@ public class Week {
         this.isFull = isFull;
     }
 
-    // for facade
     public Week(String theme, Date startDate, Date endDate, boolean isFull) {
         this.theme = theme;
         this.startDate = startDate;
@@ -191,111 +153,13 @@ public class Week {
         return false;
     }
 
-    // The camp needs to tell the week what list of activities are available
     public boolean generateSchedules(ArrayList<Activity> activities) {
-        // we need to figure out what the current date is for camper age
-        Date currentDate = new Date();
-        // automation of the schedules will be done in here, and they will be assigned
-        // to groups
-        // reason for this is a week has the list of groups, counselors available for
-        // the week,
-        // and campers that want to attend the camp for this week
-
-        // to create a group, they need a counselor
-        // then they need maximum of 10 kids preferably by age
-        // if we do it by age: how will we determine their age
-
-        // then each group needs a schedule
-
-        // sort campers by age
-
-        /*
-         * How to select a month/day/year from the date
-         * Date dob = convertToDate(dateOfBirth);
-         * Calendar calendar = Calendar.getInstance();
-         * calendar.setTime(dob);
-         * System.out.println("calendar month " + calendar.get(Calendar.MONTH));
-         */
-
-        // there probably is a better way to initialize the groups
-
-        // initialize groups
-
         for (int i = 0; i < 6; i++) {
             // UUID uuid = UUID.randomUUID();
             // groups.add(new Group(uuid));
             groups.add(new Group(UUID.randomUUID()));
         }
 
-        /*
-         * 
-         * 
-         * 
-         * f
-         * Group g1 = new Group();
-         * groups.add(g1);
-         * Group g2 = new Group();
-         * groups.add(g2);
-         * Group g3 = new Group();
-         * groups.add(g3);
-         * Group g4 = new Group();
-         * groups.add(g4);
-         * Group g5 = new Group();
-         * groups.add(g5);
-         * Group g6 = new Group();
-         * groups.add(g6);
-         * 
-         * for (Camper c : campers) {
-         * int[] groupTotals = new int[6];
-         * int temp = calculateAge(c.getDateOfBirth(), currentDate);
-         * 
-         * // TECHNICALLY there are no requirements or specifications on how the list of
-         * // campers
-         * // will be for generating groups. I'm never one to assume the best outcome
-         * but
-         * // I'll be doing that,
-         * // It is a lower priority to insert code to better split groups with
-         * worse/less
-         * // nice data
-         * 
-         * if (temp == 7 || temp == 8) {
-         * // groupTotals[0]++;
-         * groups.get(0).addCamper(c);
-         * } else if (temp == 9 || temp == 10) {
-         * // groupTotals[1]++;
-         * groups.get(1).addCamper(c);
-         * } else if (temp == 11 || temp == 12) {
-         * // groupTotals[2]++;
-         * groups.get(2).addCamper(c);
-         * } else if (temp == 13 || temp == 14) {
-         * // groupTotals[3]++;
-         * groups.get(3).addCamper(c);
-         * } else if (temp == 15 || temp == 16) {
-         * // groupTotals[4]++;
-         * groups.get(4).addCamper(c);
-         * } else if (temp == 17 || temp == 18) {
-         * // groupTotals[5]++;
-         * groups.get(5).addCamper(c);
-         * }
-         * }
-         * 
-         */
-
-        // From here we assume that groups has been properly populated
-        // give each group a counselor
-        /*
-         * if (counselors.size() > 6 || counselors.size() <= 0) {
-         * // Either too many or not enough counselors assigned to the week
-         * return false;
-         * } else {
-         * for (int i = 0; i < counselors.size(); i++) {
-         * groups.get(i).setCounselor(counselors.get(i));
-         * }
-         * }
-         */
-
-        // generate a schedule for each (g)roup
-        // Random rand = new Random();
         ArrayList<Activity> meals = getMeals();
         Random rand = new Random();
         ArrayList<Activity> tempActivities = new ArrayList<Activity>(activities.size());
@@ -304,160 +168,29 @@ public class Week {
 
             HashMap<DayOfWeek, ArrayList<Activity>> schedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
 
-            // need a schedule for every (d)ay
-            // groups.get(i).setSchedule(generateGroupSchedule(activities));
             for (int d = 0; d < 7; d++) {
+
                 ArrayList<Activity> groupActivities = new ArrayList<Activity>(8);
-                // create clone of activities array list
+                
                 for (int i = 0; i < activities.size(); i++) {
                     tempActivities.add(activities.get(i));
                 }
-
                 for (int i = 0; i < 8; i++) {
                     if (i % 3 == 0) {
-                        groupActivities.add(meals.get(i / 3)); // wether or not to add a meal
+                        groupActivities.add(meals.get(i / 3)); 
                     } else {
-                        int randomIndex = rand.nextInt(tempActivities.size()); // generate random index
+                        int randomIndex = rand.nextInt(tempActivities.size()); 
                         groupActivities.add(tempActivities.get(randomIndex));
                         tempActivities.remove(randomIndex);
-                        /*
-                         * boolean hasConflict = true;
-                         * boolean invalidIndex = true;
-                         * int randomIndex = 0;
-                         * ArrayList<Integer> invalidIndexs = new ArrayList<Integer>();
-                         * while (hasConflict) {
-                         * hasConflict = false;
-                         * while (invalidIndex) {
-                         * invalidIndex = false;
-                         * randomIndex = rand.nextInt(tempActivities.size()); // generate random index
-                         * for (int k = 0; k < invalidIndexs.size(); k++) {
-                         * if ((Integer) randomIndex == invalidIndexs.get(k)) {
-                         * // it is an invalid index
-                         * invalidIndex = true;
-                         * k = invalidIndexs.size();
-                         * }
-                         * }
-                         * }
-                         */
-                        // need to make sure nobody else has this activity at this time
-                        /*
-                         * for (int j = 0; j < g; j++) {
-                         * DayOfWeek[] dOW = DayOfWeek.values();
-                         * if (testGroup(groups.get(j), dOW[d], i, tempActivities.get(randomIndex))) {
-                         * hasConflict = true;
-                         * j = g;
-                         * invalidIndexs.add(randomIndex);
-                         * 
-                         * }
-                         * }
-                         */
-
-                        // }
-                        // groupActivities.add(tempActivities.get(randomIndex));
-                        // tempActivities.remove(randomIndex);
-
                     }
                 }
-                // schedule for this day is completed
                 DayOfWeek[] dOW = DayOfWeek.values();
-                // System.out.print("\nDay: " + dOW[d] + "\n");
                 schedule.put(dOW[d], groupActivities);
-
-                // for(int i = 0; i < groupActivities.size(); i++)
-                // {
-                // System.out.println(groupActivities.get(i).toString());
-                // }
             }
-
-            // The group's schedule for the week is completed
             groups.get(g).setSchedule(schedule);
         }
 
         return true;
-    }
-
-    private boolean testGroup(Group group, DayOfWeek dOW, int timeSlot, Activity newActivity) {
-        Week week = new Week();
-        for (HashMap.Entry<DayOfWeek, ArrayList<Activity>> entry : group.getSchedule().entrySet()) {
-            DayOfWeek day = entry.getKey();
-            ArrayList<Activity> tempList = entry.getValue();
-            if (day.equals(dOW) && hasConflict(tempList, timeSlot, newActivity)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean hasConflict(ArrayList<Activity> activities, int timeSlot, Activity newActivity) {
-        if (activities.get(timeSlot).equals(newActivity)) {
-            return true;
-        }
-        return false;
-    }
-
-    // public void assignCounselors() {
-    // // Array list of potential counselors to be assigned to the group
-    // ArrayList<Counselor> availableCounselors = new
-    // ArrayList<Counselor>(counselors.size());
-
-    // // populate available counselors arraylist
-    // for (int c = 0; c < counselors.size(); c++) {
-    // availableCounselors.add(counselors.get(c));
-    // }
-
-    // for (int i = 0; i < groups.size(); i++) {
-    // if (groups.get(i).getCounselor() != null) {
-    // for (int c = 0; c < counselors.size(); c++) {
-    // if (groups.get(i).getCounselor().equals(counselors.get(c))) {
-    // availableCounselors.remove(counselors.get(c));
-    // c = counselors.size();
-    // }
-    // }
-    // }
-    // }
-
-    // // int x = 0;
-    // for (int i = 0; i < groups.size(); i++) {
-    // if (groups.get(i).getCounselor() == null) {
-    // groups.get(i).setCounselor(availableCounselors.get(0));
-    // availableCounselors.remove(0);
-    // // groups.get(i).setCounselor(availableCounselors.get(x));
-    // // x++;
-    // }
-    // }
-    // }
-
-    // this can probably be deleted
-    private int calculateAge(Date birthDate, Date currentDate) {
-        int month[] = { 31, 28, 31, 30, 31, 30, 31,
-                31, 30, 31, 30, 31 };
-
-        Calendar calBirthDate = Calendar.getInstance();
-        Calendar calCurrentDate = Calendar.getInstance();
-        calBirthDate.setTime(birthDate);
-        calCurrentDate.setTime(currentDate);
-
-        // int[] cd = {calCurrentDate.get(Calendar.DATE),
-        // calCurrentDate.get(Calendar.MONTH), calCurrentDate.get(Calendar.YEAR)};
-        // int[] bd = {calBirthDate.get(Calendar.DATE),
-        // calBirthDate.get(Calendar.MONTH), calBirthDate.get(Calendar.YEAR)};
-
-        int currentMonth, birthMonth;
-        int currentYear, birthYear;
-
-        currentMonth = calCurrentDate.get(Calendar.MONTH);
-        birthMonth = calBirthDate.get(Calendar.MONTH);
-
-        currentYear = calCurrentDate.get(Calendar.YEAR);
-        birthYear = calBirthDate.get(Calendar.YEAR);
-
-        if (birthMonth > currentMonth) {
-            currentYear = currentYear - 1;
-            // cd[2] = cd[2] - 1;
-        }
-
-        return currentYear - birthYear;
-        // return cd[2] - bd[2];
     }
 
     public String viewSchedule() {
@@ -468,10 +201,6 @@ public class Week {
             x++;
         }
         return temp;
-    }
-
-    public void editSchedule() {
-        // edit da schedule here
     }
 
     public String toString() {
@@ -494,7 +223,6 @@ public class Week {
         meals.add(breakfast);
         meals.add(lunch);
         meals.add(dinner);
-
         return meals;
     }
 
