@@ -5,7 +5,6 @@ public class CampList {
 
     private ArrayList<Camp> camps = new ArrayList<Camp>();
     private static CampList campList;
-    // private static GroupList groupList;
 
     private CampList() {
         camps = DataLoader.loadCamps();
@@ -17,15 +16,6 @@ public class CampList {
         }
         return campList;
     }
-
-    // public boolean addGroup(Group group) {
-    // if (group == null) {
-    // return false;
-    // } else {
-    // groups.add(group);
-    // return true;
-    // }
-    // }
 
     public boolean addCamp(Camp camp) {
         if (camps == null) {
@@ -44,13 +34,6 @@ public class CampList {
         }
         return null;
     }
-    // public void setCamp(String name) {
-    // for(int i=0;i<camps.size()+1;i++) {
-    // if(camps.get(i).getName().equalsIgnoreCase(name)) {
-    // this.camp = camps.get(i);
-    // }
-    // }
-    // }
 
     public Group getGroupByUUID(UUID id) {
         for (Camp camp : camps) {

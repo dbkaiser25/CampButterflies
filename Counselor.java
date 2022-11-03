@@ -10,12 +10,10 @@ import java.util.HashMap;
  * @author dbkaiser
  */
 public class Counselor extends Person {
-    // TODO figure out which classes/arraylists need to be initialized here
+
     private String emailAddress;
     private ArrayList<Contact> emergencyContacts;
     private Contact pediatrician;
-    // private ArrayList<String> allergies = new ArrayList<String>();
-    // private ArrayList<Medication> medications = new ArrayList<Medication>();
     private String phoneNumber;
     private LoginInfo userLogin;
 
@@ -32,8 +30,6 @@ public class Counselor extends Person {
             Date dateOfBirth,
             ArrayList<Contact> emergencyContacts, Contact pediatrician, LoginInfo userLogin) {
         super(firstName, lastName, dateOfBirth, homeAddress);
-        // this.medications = medications;
-        // this.allergies = allergies;
         this.emailAddress = emailAddress;
         this.emergencyContacts = emergencyContacts;
         this.pediatrician = pediatrician;
@@ -52,12 +48,6 @@ public class Counselor extends Person {
         this.pediatrician = pediatrician;
         this.phoneNumber = phoneNumber;
         this.userLogin = userLogin;
-    }
-
-    // temp constructor for testing purposes
-    // TODO delete
-    public Counselor(String firstName, String lastName, Date dateOfBirth, String homeAddress) {
-        super(firstName, lastName, dateOfBirth, homeAddress);
     }
 
     public Counselor() {
@@ -113,40 +103,14 @@ public class Counselor extends Person {
         return uuid;
     }
 
-    // counselors need to be able to view the campers in their group
-    // Can we just pass them their group somehow? I am going to assume we can but to
-    // be determined later TODO
     public String viewCampers(Group group) {
         String temp = new String();
         for (int i = 0; i < group.getCamperList().size(); i++) {
-            // TODO what camper info does the counselor need to see? Right now they get
-            // their first and last name thats it.
             temp = temp + "\n" + group.getCamperList().get(i).getFirstName() + " "
                     + group.getCamperList().get(i).getLastName();
         }
         return temp;
     }
-
-    // TODO clearly there's a bigger problem of how are counselors able to see their
-    // whatever group.
-    // This needs to be determined while I assume we can pass the correct group
-    // This can be modified to give a prettier output but file that under UI problem
-    /*
-     * The string output should look something like this assuming i didn't make any
-     * mistakes
-     * Sunday
-     * Activity1
-     * Activity2
-     * Activity3
-     * ...
-     *
-     * Monday
-     * Activity1
-     * ...
-     * 
-     * Tuesday
-     * ...
-     */
 
     public String viewSchedule(Camp camp, int weekNumber) {
         for (Group g : camp.getMasterSchedule().get(weekNumber).getGroups()) {
@@ -156,25 +120,6 @@ public class Counselor extends Person {
         }
         return "You are not apart of a group";
     }
-
-    // helper method for viewSchedule
-    // Same thing can be modified for prettier output
-    /*
-     * private String getActivities(Group group, DayOfWeek day)
-     * {
-     * this code used to be here but now i believe is in a better place, in groups
-     * it will be deleated eventually
-     * String temp = new String();
-     * temp = day.toString() + "\n";
-     * for (int i = 0; i < group.getSchedule().get(day).size(); i++) {
-     * temp = temp + group.getSchedule().get(day).get(i).getName() + "\n";
-     * }
-     * return temp;
-     * 
-     * 
-     * 
-     * }
-     */
 
     public String toString() {
         String temp = new String();
@@ -200,9 +145,7 @@ public class Counselor extends Person {
         return temp;
     }
 
-    // this was modified from user's select weeks
     public void selectWeek(Camp camp, int weekNumber) {
-        // camp.getMasterSchedule().get(weekNumber).getCounselors().add(this);
         getWeek(camp, weekNumber).getCounselors().add(this);
     }
 
@@ -217,5 +160,4 @@ public class Counselor extends Person {
         }
         return week;
     }
-
 }
