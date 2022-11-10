@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class CampFacade {
     private CampList campList;
@@ -290,14 +291,18 @@ public class CampFacade {
     public void editCamperWeek(String camper, int week, String camp) {
         Camper currentCamper = currentUser.getCamper(camper);
         if (currentCamper == null)
+<<<<<<< HEAD
             System.out.println(camper + " is successfully signed up for week " + week);
         else{
+=======
+            System.out.println("There is no camper with that name");
+        else {
+>>>>>>> cb629210510c753d978e3b407ba89df272b14ba0
             currentCamper.selectWeek(campList.getCamp(camp), week);
             currentCamper.addWeek(week);
         }
         camperList.saveCampers();
     }
-
 
     /**
      * changes users first name
@@ -529,10 +534,8 @@ public class CampFacade {
         campList.saveCamps();
     }
 
-    public void generateSchedulesCamp(String camp, ArrayList<Activity> activities)
-    {
-        for(int w = 0; w < campList.getCamp(camp).getMasterSchedule().size(); w++)
-        {
+    public void generateSchedulesCamp(String camp, ArrayList<Activity> activities) {
+        for (int w = 0; w < campList.getCamp(camp).getMasterSchedule().size(); w++) {
             campList.getCamp(camp).getWeek(w).generateSchedules(activities);
         }
     }
@@ -617,8 +620,30 @@ public class CampFacade {
      * @param week
      * @return
      */
-    public ArrayList<Camper> getGroup(String camp, int week) {
-        return campList.getCamp(camp).getWeek(week - 1).getGroupByUUID(currentCounselor.getUUID()).getCamperList();
+    public ArrayList<Camper> getGroupCampers(String camp, int weekNum) {
+        for (HashMap.Entry<Integer, Week> entry : campList.getCamp(camp).getMasterSchedule().entrySet()) {
+            Integer num = entry.getKey();
+            Integer passedNum = Integer.valueOf(weekNum);
+            Week week = entry.getValue();
+            if (num == passedNum) {
+                ArrayList<Camper> campers = new ArrayList<Camper>();
+                campers = week.getGroups().get(weekNum - 1).getCampers();
+                return campers;
+            }
+        }
+        return null;
+    }
+
+    public UUID getGroupUUID(String camp, int weekNum) {
+        for (HashMap.Entry<Integer, Week> entry : campList.getCamp(camp).getMasterSchedule().entrySet()) {
+            Integer num = entry.getKey();
+            Integer passedNum = Integer.valueOf(weekNum);
+            Week week = entry.getValue();
+            if (num == passedNum) {
+                return week.getGroups().get(weekNum - 1).getUuid();
+            }
+        }
+        return null;
     }
 
     /**
@@ -628,8 +653,23 @@ public class CampFacade {
      * @param week
      * @return
      */
-    public String getSchedule(String camp, int week) {
-        return campList.getCamp(camp).getWeek(week - 1).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
+    public String getSchedule(String camp, int weekNum) {
+        /*
+         * print out a group's schedule
+         */
+        System.out.println(campList.getCamp(camp).toString());
+        for (HashMap.Entry<Integer, Week> entry : campList.getCamp(camp).getMasterSchedule().entrySet()) {
+            Integer num = entry.getKey();
+            Integer passedNum = Integer.valueOf(weekNum);
+            Week week = entry.getValue();
+            if (num == passedNum) {
+                return week.getGroups().get(weekNum - 1).getSchedule().toString();
+            }
+        }
+        return null;
+
+        // return campList.getCamp(camp).getWeek(week -
+        // 1).getGroupByUUID(currentCounselor.getUUID()).printSchedule();
     }
 
     public String getSchedule(String camp, int weekNum, int groupNum) { // error here

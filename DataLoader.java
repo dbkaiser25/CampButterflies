@@ -437,7 +437,7 @@ public class DataLoader extends DataConstants {
     public static Date convertToDate(String date) {
         try {
             return new SimpleDateFormat("MM/dd/yyyy").parse(date);
-        } catch (ParseException e) {
+        } catch (java.text.ParseException e) {
             System.out.println("Sorry " + date + " is not parsable");
             return null;
         }

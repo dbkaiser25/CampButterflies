@@ -283,12 +283,21 @@ public class DataWriter extends DataConstants {
                 for (int i = 0; i < week.getGroups().size(); i++) {
                     JSONObject groupObj = new JSONObject();
                     groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString());
-                    groupObj.put(COUNSELOR_ID, week.getGroups().get(i).getCounselor().getUUID().toString());
+                    if (week.getGroups().get(i).getCounselor() == null
+                            || week.getGroups().get(i).getCounselor().getUUID() == null) {
+                        groupObj.put(COUNSELOR_ID, null);
+                    } else {
+                        groupObj.put(COUNSELOR_ID, week.getGroups().get(i).getCounselor().getUUID().toString());
+                    }
                     JSONArray campersArr = new JSONArray();
                     for (int j = 0; j < week.getGroups().get(i).getCampers().size(); j++) {
                         JSONObject camperObj = new JSONObject();
-                        String id = week.getGroups().get(i).getCampers().get(j).getUUID().toString();
-                        camperObj.put(ID, id);
+                        if (week.getGroups().get(i).getCampers().get(j) == null) {
+                            camperObj.put(ID, null);
+                        } else {
+                            String id = week.getGroups().get(i).getCampers().get(j).getUUID().toString();
+                            camperObj.put(ID, id);
+                        }
                         campersArr.add(camperObj);
                     }
                     groupObj.put(GROUP_CAMPERS, campersArr);
@@ -320,7 +329,11 @@ public class DataWriter extends DataConstants {
                 JSONArray weekCounselorArr = new JSONArray();
                 for (int i = 0; i < week.getCounselors().size(); i++) {
                     JSONObject counselorObj = new JSONObject();
-                    counselorObj.put(ID, week.getCounselors().get(i).getUUID().toString());
+                    if (week.getCounselors().get(i) == null || week.getCounselors().get(i).getUUID() == null) {
+                        counselorObj.put(ID, null);
+                    } else {
+                        counselorObj.put(ID, week.getCounselors().get(i).getUUID().toString());
+                    }
                     weekCounselorArr.add(counselorObj);
                 }
                 weekObj.put(WEEK_COUNSELORS, weekCounselorArr);
@@ -328,7 +341,11 @@ public class DataWriter extends DataConstants {
                 JSONArray weekCampersArr = new JSONArray();
                 for (int i = 0; i < week.getCampers().size(); i++) {
                     JSONObject camperObj = new JSONObject();
-                    camperObj.put(ID, week.getCampers().get(i).getUUID().toString());
+                    if (week.getCampers().get(i) == null || week.getCampers().get(i).getUUID() == null) {
+                        camperObj.put(ID, null);
+                    } else {
+                        camperObj.put(ID, week.getCampers().get(i).getUUID().toString());
+                    }
                     weekCampersArr.add(camperObj);
                 }
                 weekObj.put(WEEK_CAMPERS, weekCampersArr);
@@ -406,8 +423,13 @@ public class DataWriter extends DataConstants {
             JSONArray groupsArray = new JSONArray();
             for (int i = 0; i < week.getGroups().size(); i++) {
                 JSONObject groupObj = new JSONObject();
-                groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString());
-                if (week.getGroups().get(i).getCounselor() == null) {
+                if (week.getGroups().get(i).getUuid() == null) {
+                    groupObj.put(GROUP_ID, null);
+                } else {
+                    groupObj.put(GROUP_ID, week.getGroups().get(i).getUuid().toString());
+                }
+                if (week.getGroups().get(i).getCounselor() == null
+                        || week.getGroups().get(i).getCounselor().getUUID() == null) {
                     groupObj.put(COUNSELOR_ID, null);
                 } else {
                     groupObj.put(COUNSELOR_ID, week.getGroups().get(i).getCounselor().getUUID().toString());
