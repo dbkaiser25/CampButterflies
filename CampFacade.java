@@ -291,13 +291,8 @@ public class CampFacade {
     public void editCamperWeek(String camper, int week, String camp) {
         Camper currentCamper = currentUser.getCamper(camper);
         if (currentCamper == null)
-<<<<<<< HEAD
-            System.out.println(camper + " is successfully signed up for week " + week);
-        else{
-=======
             System.out.println("There is no camper with that name");
         else {
->>>>>>> cb629210510c753d978e3b407ba89df272b14ba0
             currentCamper.selectWeek(campList.getCamp(camp), week);
             currentCamper.addWeek(week);
         }
