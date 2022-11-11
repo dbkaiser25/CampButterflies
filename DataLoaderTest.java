@@ -5,15 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
-import org.junit.jupiter.api.AfterEach;
-import org.json.simple.parser.ParseException;
-
-import java.beans.Transient;
-import java.text.SimpleDateFormat;
-
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +22,9 @@ class DataLoaderTest {
     private DirectorList directorlist = DirectorList.getInstance();
     private ArrayList<Director> directors = directorlist.getDirectors();
 
-    private CampList camplist = CampList.getInstance();
-    private ArrayList<Camp> camps = camplist.getCamps();
+    // private CampList camplist = CampList.getInstance();
+    // private ArrayList<Camp> camps = camplist.getCamps();
+    private ArrayList<Camp> camps = DataLoader.loadCamps();
 
     @BeforeEach
     public void setup() {
@@ -70,37 +63,9 @@ class DataLoaderTest {
         DataWriter.saveUsers();
 
         /*
-         * data for camps and directors were pulled straight from JSON, was having
-         * issues with below lines
+         * data for camps and directors were pulled straight from JSON for simplicity,
+         * was having issues with creating hashmaps, connecting UUIDs, etc.
          */
-
-        // // camps
-        // camps.clear();
-        // HashMap<Integer, Week> ms = new HashMap<Integer, Week>();
-        // HashMap<DayOfWeek, ArrayList<Activity>> schedule = new HashMap<DayOfWeek,
-        // ArrayList<Activity>>();
-        // ArrayList<Activity> activities = new ArrayList<Activity>();
-        // activities.add(new Activity("basektball", "basketball courts", "campers will
-        // play basketball"));
-        // schedule.put(DayOfWeek.FRIDAY, activities);
-        // Group group = new Group(counselors.get(0), campers, schedule);
-        // ArrayList<Group> groups = new ArrayList<Group>();
-        // groups.add(group);
-        // Week week = new Week("basketball", groups, counselors, campers,
-        // convertToDate("06/01/2025"),
-        // convertToDate("06/08/2025"), false);
-        // ms.put(1, week);
-        // camps.add(new Camp("Basketball Camp", "fun summer basketball camp", ms,
-        // activities, 2025));
-        // DataWriter.saveCamps();
-
-        // directors
-        // directors.clear();
-        // dob = convertToDate("5/8/1980");
-        // directors.add(new Director("billy", "director", dob, "44 this lane",
-        // "directorbilly@gmail.com",
-        // new LoginInfo("billy", "ilovecamp"), camps));
-        // DataWriter.saveDirectors();
     }
 
     // camper first name
@@ -419,7 +384,7 @@ class DataLoaderTest {
 
     @Test
     void getCampNameNull() {
-        camps = DataLoader.loadCamps();
+        // camps = DataLoader.loadCamps();
         camps.get(0).setName(null);
         assertEquals(null, camps.get(0).getName());
     }
@@ -433,7 +398,7 @@ class DataLoaderTest {
 
     @Test
     void getCampNameInvalid() {
-        camps = DataLoader.loadCamps();
+        // camps = DataLoader.loadCamps();
         camps.get(0).setName("10593");
         assertNotEquals("10593", camps.get(0).getName());
     }
