@@ -1019,7 +1019,7 @@ public class CampButterfliesDriver {
      * 
      * @param camp
      */
-    public void editActivities(String camp) {
+    private void editActivities(String camp) {
         System.out.println("Which Activity would you like to edit?");
         int i = 1;
         for (Activity activity : facade.getCampList().getCamp(camp).getActivitiesArrayList()) {
