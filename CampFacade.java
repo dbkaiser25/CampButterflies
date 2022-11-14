@@ -169,7 +169,7 @@ public class CampFacade {
      * @param firstName
      */
     public void editCamperFirstName(String camper, String firstName) {
-        Camper currentCamper = currentUser.getCamper(camper);
+        Camper currentCamper = currentUser.getCampers().get(0);
         if (currentCamper == null)
             System.out.println("There is no camper with that name");
         else
